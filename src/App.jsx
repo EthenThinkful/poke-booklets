@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
 
 function App() {
@@ -7,7 +6,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Pokedex!</h1>
+      <h1 className="text-3xl font-bold">Pokedex!</h1>
       <input
       placeholder='search pokemon'
       type='text'
@@ -15,7 +14,7 @@ function App() {
         setPokemon(event.target.value);
       }}
       />
-      <button></button>
+      <button>search</button>
     </div>
   )
 }
