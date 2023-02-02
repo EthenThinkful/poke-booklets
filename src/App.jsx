@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import Axios from "axios";
+import Draggable from "react-draggable";
 
 function App() {
   const [pokemon, setPokemon] = useState("");
@@ -33,9 +34,9 @@ function App() {
         search
       </button>
       <div className="flex justify-center">
-      <img src={pokemonData.img}
+      <Draggable><img src={pokemonData.img}
       className="m-16 w-52"
-      />
+      /></Draggable>
       </div>
     </div>
   );
