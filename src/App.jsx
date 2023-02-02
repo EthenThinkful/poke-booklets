@@ -5,17 +5,21 @@ import Draggable from "react-draggable";
 
 function App() {
   const [pokemon, setPokemon] = useState("");
-  const [pokemonData, setPokemonData] = useState({});
+  const [pokemonData, setPokemonData] = useState(
+    { name: "", species: "", img: "", hp: "" },
+  );
 
   function getPokemon() {
     Axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).then(
       (response) => {
-        setPokemonData({
-          name: pokemon,
-          species: response.data.species.name,
-          img: response.data.sprites.front_default,
-          hp: response.data.stats[0].base_stat,
-        });
+        setPokemonData(
+          {
+            name: pokemon,
+            species: response.data.species.name,
+            img: response.data.sprites.front_default,
+            hp: response.data.stats[0].base_stat,
+          },
+        );
       }
     );
   }
@@ -34,9 +38,11 @@ function App() {
         search
       </button>
       <div className="flex justify-center">
-      <Draggable><img src={pokemonData.img}
-      className="m-16 w-52"
-      /></Draggable>
+        
+          <Draggable>
+            <img src={pokemonData.img} className="m-16 w-52" />
+          </Draggable>
+       
       </div>
     </div>
   );
