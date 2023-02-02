@@ -42,7 +42,7 @@ function App() {
       <div className="flex justify-center">
         {pokemonData.map((poke) => (
           <Draggable>
-          <img src={poke.img} className="m-16 w-52" />
+          <img src={poke.img} className="w-40 m-0" />
         </Draggable>
         ))}
        
