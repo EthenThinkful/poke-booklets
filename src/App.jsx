@@ -25,20 +25,36 @@ function App() {
     );
   }
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    getPokemon();
+  }
+
+  const handleKeypress = e => {
+    // triggers by pressing the enter key
+  if (e.keyCode === 13) {
+    handleSubmit();
+  }
+};
+
   return (
     <div className="App">
       <h1 className="text-3xl font-bold">Pokedex!</h1>
+      <form>
       <input
         className="p-2 rounded-md w-48"
         placeholder="search pokemon"
         type="text"
+        onKeyDown={handleKeypress}
         onChange={(event) => {
           setPokemon(event.target.value.toLocaleLowerCase());
+          {console.log(pokemon)}
         }}
       />
-      <button className="m-8 bg-orange-300 p-2 rounded-md" onClick={getPokemon}>
+      <button className="m-8 bg-orange-300 p-2 rounded-md" type="submit" onClick={handleSubmit}>
         search
       </button>
+      </form>
       <div className="flex justify-center">
         {pokemonData.map((poke) => (
           <Draggable>
