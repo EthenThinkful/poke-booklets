@@ -12,6 +12,7 @@ function App() {
   function getPokemon() {
     Axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).then(
       (response) => {
+
         setPokemonData(
           {
             name: pokemon,
@@ -23,6 +24,7 @@ function App() {
       }
     );
   }
+
   return (
     <div className="App">
       <h1 className="text-3xl font-bold">Pokedex!</h1>
@@ -31,7 +33,7 @@ function App() {
         placeholder="search pokemon"
         type="text"
         onChange={(event) => {
-          setPokemon(event.target.value);
+          setPokemon(event.target.value.toLocaleLowerCase());
         }}
       />
       <button className="m-8 bg-orange-300 p-2 rounded-md" onClick={getPokemon}>
