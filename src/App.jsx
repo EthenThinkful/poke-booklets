@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import React from "react";
 import "./App.css";
 import Axios from "axios";
 import Draggable from "react-draggable";
@@ -37,15 +38,7 @@ function App() {
     }
   };
 
-  // onStart = () => {
-  //   this.setState({activeDrags: ++this.state.activeDrags});
-  // };
-  // onStop = () => {
-  //   this.setState({activeDrags: --this.state.activeDrags});
-  // };
-
-  // const dragHandlers = {onStart: this.onStart, onStop: this.onStop};
-
+  const nodeRef = useRef(null) // do get around strictMode
   return (
     
     <div className="App">
@@ -71,7 +64,7 @@ function App() {
         >
           Add Pokemon!
         </button>
-        <div className="autoCorrect">
+        <div className="dropDown">
           {pokeNames
             .filter((item) => {
               const searchTerm = pokemon.toLocaleLowerCase();
@@ -95,13 +88,17 @@ function App() {
         </div>
       </form>
       <div className="flex justify-center">
-        {pokemonData.map((poke) => (
-          <Draggable >
+        {pokemonData.map((poke, i) => (
+          <Draggable 
+          key={i}
+          nodeRef={nodeRef}
+          >
+            <span ref={nodeRef}>
             <img
               src={poke.img}
               className="w-40 m-0 cursor-pointer"
-              key={poke.hp}
             />
+            </span>
           </Draggable>
         ))}
       </div>
