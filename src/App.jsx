@@ -49,26 +49,31 @@ function App() {
         className="p-2 rounded-md w-48"
         placeholder="search pokemon"
         type="text"
+        value={pokemon}
         onKeyDown={handleKeypress}
         onChange={(event) => {
           setPokemon(event.target.value.toLocaleLowerCase());
           {console.log(pokemon)}
         }}
       />
+      <button className="m-8 bg-orange-300 p-2 rounded-md" type="submit" onClick={handleSubmit}>
+        Add Pokemon!
+      </button>
       <div className="autoCorrect">
-        {pokeNames.map((item) => <div>
+        {pokeNames.filter((item) => {
+          const searchTerm = pokemon.toLocaleLowerCase();
+          const fullName = item.toLocaleLowerCase();
+          return searchTerm && fullName.startsWith(searchTerm) && fullName !== searchTerm;
+        }).slice(0, 10)
+        .map((item) => <div onClick={() => setPokemon(item.toLocaleLowerCase())} key={item}>
           {item}
           </div>)}
-
       </div>
-      <button className="m-8 bg-orange-300 p-2 rounded-md" type="submit" onClick={handleSubmit}>
-        search
-      </button>
       </form>
       <div className="flex justify-center">
         {pokemonData.map((poke) => (
           <Draggable>
-            <img src={poke.img} className="w-40 m-0" />
+            <img src={poke.img} className="w-40 m-0" key={poke.hp}/>
           </Draggable>
         ))}
       </div>
