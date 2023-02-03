@@ -73,7 +73,7 @@ function App() {
       <div className="flex justify-center">
         {pokemonData.map((poke) => (
           <Draggable>
-            <img src={poke.img} className="w-40 m-0 cursor-pointer" key={poke.hp}/>
+            <img src={poke.img} className="w-40 m-0 cursor-pointer hover:animate-bounce" key={poke.hp} />
           </Draggable>
         ))}
       </div>
