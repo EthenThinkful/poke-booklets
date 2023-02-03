@@ -65,7 +65,7 @@ function App() {
           const fullName = item.toLocaleLowerCase();
           return searchTerm && fullName.startsWith(searchTerm) && fullName !== searchTerm;
         }).slice(0, 10)
-        .map((item) => <div onClick={() => setPokemon(item.toLocaleLowerCase())} key={item}>
+        .map((item) => <div onClick={() => setPokemon(item.toLocaleLowerCase())} key={item} className="cursor-pointer">
           {item}
           </div>)}
       </div>
@@ -73,7 +73,7 @@ function App() {
       <div className="flex justify-center">
         {pokemonData.map((poke) => (
           <Draggable>
-            <img src={poke.img} className="w-40 m-0" key={poke.hp}/>
+            <img src={poke.img} className="w-40 m-0 cursor-pointer" key={poke.hp}/>
           </Draggable>
         ))}
       </div>
