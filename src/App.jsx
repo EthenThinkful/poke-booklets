@@ -3,6 +3,7 @@ import React from "react";
 import "./App.css";
 import Axios from "axios";
 import Draggable from "react-draggable";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import pokeNames from "./assets/PokeJSON/pokeNames.json";
 
 function App() {
@@ -38,9 +39,8 @@ function App() {
     }
   };
 
-  const nodeRef = useRef(null) // do get around strictMode
+  const nodeRef = useRef(null); // do get around strictMode
   return (
-    
     <div className="App">
       <h1 className="text-3xl font-bold sm: pb-6">Pokedex!</h1>
       <form>
@@ -89,15 +89,11 @@ function App() {
       </form>
       <div className="flex justify-center">
         {pokemonData.map((poke, i) => (
-          <Draggable 
-          key={i}
-          nodeRef={nodeRef}
-          >
-            <span ref={nodeRef}>
-            <img
-              src={poke.img}
-              className="w-40 m-0 cursor-pointer"
-            />
+          <Draggable key={i} nodeRef={nodeRef}>
+            <span ref={nodeRef} className="cursor-pointer">
+              <TransformComponent>
+                <img src={poke.img} className="w-40 m-0 cursor-pointer" />
+              </TransformComponent>
             </span>
           </Draggable>
         ))}
