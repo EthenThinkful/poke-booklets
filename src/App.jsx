@@ -43,7 +43,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="text-3xl font-bold">Pokedex!</h1>
+      <h1 className="text-3xl font-bold sm: pb-6">Pokedex!</h1>
       <form>
       <input
         className="p-2 rounded-md w-48"
