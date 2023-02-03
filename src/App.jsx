@@ -45,7 +45,7 @@ function App() {
       <h1 className="text-3xl font-bold sm: pb-6">Pokedex!</h1>
       <form>
         <input
-          className="p-2 rounded-md w-48"
+          className="p-2 rounded-md w-48 bg-zinc-800"
           placeholder="search pokemon"
           type="text"
           value={pokemon}
