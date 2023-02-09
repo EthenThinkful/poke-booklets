@@ -5,6 +5,7 @@ import Axios from "axios";
 import Draggable from "react-draggable";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import pokeNames from "./assets/PokeJSON/pokeNames.json";
+import PopUp from "./PopUp";
 
 function App() {
   const [pokemon, setPokemon] = useState("");
@@ -89,10 +90,11 @@ function App() {
       </form>
       <div className="flex justify-center">
         {pokemonData.map((poke, i) => (
-          <Draggable key={i} nodeRef={nodeRef}>
-            <span ref={nodeRef} className="cursor-pointer">
-              <TransformComponent>
-                <img src={poke.img} className="w-40 m-0 cursor-pointer" />
+          <Draggable key={i} nodeRef={nodeRef} >
+            <span ref={nodeRef} className="cursor-pointer" >
+              <TransformComponent >
+                <img src={poke.img} className="w-40 m-0 "/>
+                <PopUp />
               </TransformComponent>
             </span>
           </Draggable>
