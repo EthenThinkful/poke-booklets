@@ -14,6 +14,12 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+@layer base {
+@font-face {
+  font-family: "pokeFont";
+  src: url('./assets/Pokemon_Pixel_Font/Pokemon_GB.ttf');
+  }
+}
 
 @tailwind base;
 @tailwind components;
