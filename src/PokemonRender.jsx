@@ -15,6 +15,7 @@ export default function PokemonRender() {
   const [ability, setAbility] = useState(false);
   const [abilityTwo, setAbilityTwo] = useState(false);
   const [abilityThree, setAbilityThree] = useState(false);
+  const [limitReached, setLimitReached] = useState(true);
 
   function getPokemon() {
     Axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).then(
@@ -58,7 +59,7 @@ export default function PokemonRender() {
   const handleSubmit = (e) => {
     e.preventDefault();
     getPokemon();
-    
+    setLimitReached(!limitReached)
   };
 
   const handleKeypress = (e) => {
@@ -110,6 +111,7 @@ export default function PokemonRender() {
         >
           Add Pokemon!
         </button>
+        {limitReached && Object.keys(pokemon3).length !== 0 ? setTimeout(() => setLimitReached(!limitReached), 3000) && <div className="animate-bounce">Pokemon Limit Reached!</div> : null}
         <div className="dropDown">
           {pokeNames
             .filter((item) => {
