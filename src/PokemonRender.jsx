@@ -101,22 +101,22 @@ export default function PokemonRender() {
       </form>
       <div className="flex justify-center" >
         {pokemonData.map((poke, i) => (
-          <button onClick={handleAbility} className="cursor-pointer" key={i}>
           <Draggable key={i} nodeRef={nodeRef} >
+            <span>
               <TransformComponent>
+              <button onClick={handleAbility} className="cursor-pointer" key={i}>
                 <img src={poke.img} className="w-40 m-0 pb-6" ref={nodeRef}/>
+                </button>
                 {ability
                   ? pokemonData.map((pokemon) => (
-                      <div className="flex" key={pokemon}>
-                        <div className="bg-stone-700 rounded-xl p-4 text-xs" >
+                        <div className="bg-stone-700 rounded-xl p-4 text-xs" key={pokemon.key}>
                           Ability: {pokemon.ability}
-                        </div>
                       </div>
                     ))
                   : null}
               </TransformComponent>
+              </span>
           </Draggable>
-        </button>
         ))}
       </div>
     </div>
