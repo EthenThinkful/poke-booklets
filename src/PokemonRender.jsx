@@ -33,6 +33,7 @@ export default function PokemonRender() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("STUPID")
     getPokemon();
   };
 
@@ -43,8 +44,9 @@ export default function PokemonRender() {
     }
   };
 
-  const handlePoke = (e) => {
+  const handleAbility = (e) => {
     e.preventDefault();
+    console.log("HIHI")
     setAbility(!ability);
   };
 
@@ -97,24 +99,24 @@ export default function PokemonRender() {
             ))}
         </div>
       </form>
-      <div className="flex justify-center">
+      <div className="flex justify-center" >
         {pokemonData.map((poke, i) => (
-          <Draggable key={i} nodeRef={nodeRef}>
-            <span ref={nodeRef} className="cursor-pointer" onClick={handlePoke}>
+          <button onClick={handleAbility} className="cursor-pointer" key={i}>
+          <Draggable key={i} nodeRef={nodeRef} >
               <TransformComponent>
-                <img src={poke.img} className="w-40 m-0 pb-6 " />
+                <img src={poke.img} className="w-40 m-0 pb-6" ref={nodeRef}/>
                 {ability
                   ? pokemonData.map((pokemon) => (
-                      <div className="flex">
-                        <div className="bg-stone-700 rounded-xl cursor-pointer p-4 text-xs">
+                      <div className="flex" key={pokemon}>
+                        <div className="bg-stone-700 rounded-xl p-4 text-xs" >
                           Ability: {pokemon.ability}
                         </div>
                       </div>
                     ))
                   : null}
               </TransformComponent>
-            </span>
           </Draggable>
+        </button>
         ))}
       </div>
     </div>

@@ -6,42 +6,20 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import Axios from "axios";
 
 
-export default function PopUp({pokemon}) {
-    
-    const [details, setDetails] = useState([])
+export default function PopUp() {
 
     const handlePoke = (e) => {
         e.preventDefault();
-        getDetails();
+        console.log("PANUS")
       };
-
-// https://pokeapi.co/api/v2/ability/{id or name}/
-    function getDetails() {
-        Axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).then(
-          (response) => {
-            setDetails([
-              ...details,
-              {
-                ability: response.data.abilities[0].ability.name
-                
-              },
-            ]);
-            console.log(details)
-          }
-          
-        );
-      }
 
     const nodeRef = useRef(null);
 
     return (
-        <div className="PopUp">
+        <button onClick={handlePoke} className="cursor-pointer bg: bg-red-200 p-6 rounded-md">
         <Draggable nodeRef={nodeRef}>
-            <button className="bg: bg-red-200 p-8 rounded-lg" ref={nodeRef} onClick={handlePoke}> Ability </button>
+            <div ref={nodeRef}> Ability </div>
         </Draggable>
-        {details.map((pokemon) =>(
-            <div key={pokemon} className="text-xl p-3">{pokemon.ability}</div>
-        ))}
-        </div>
+        </button>
     )
 }
