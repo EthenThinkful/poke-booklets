@@ -10,7 +10,7 @@ export default function PopUp({pokemon}) {
     
     const [details, setDetails] = useState([])
 
-    const handleSubmit = (e) => {
+    const handlePoke = (e) => {
         e.preventDefault();
         getDetails();
       };
@@ -26,7 +26,7 @@ export default function PopUp({pokemon}) {
                 
               },
             ]);
-            console.log(response)
+            console.log(details)
           }
           
         );
@@ -35,8 +35,13 @@ export default function PopUp({pokemon}) {
     const nodeRef = useRef(null);
 
     return (
-        <Draggable nodeRef={nodeRef}  onClick={console.log("pokemon")}>
-            <button className="bg: bg-red-200 p-8 rounded-lg" ref={nodeRef}> hello dudeski </button>
+        <div className="PopUp">
+        <Draggable nodeRef={nodeRef}>
+            <button className="bg: bg-red-200 p-8 rounded-lg" ref={nodeRef} onClick={handlePoke}> Ability </button>
         </Draggable>
+        {details.map((pokemon) =>(
+            <div key={pokemon} className="text-xl p-3">{pokemon.ability}</div>
+        ))}
+        </div>
     )
 }

@@ -25,8 +25,8 @@ export default function PokemonRender() {
                 key: pokemon,
               },
             ]);
-            console.log(response)
-            console.log(pokemon)
+            // console.log(response)
+            
           }
         );
       }
@@ -50,8 +50,8 @@ export default function PokemonRender() {
           <h1 className="text-3xl font-bold sm: pb-6">Pokedex!</h1>
           <form>
             <input
-              className="p-2 rounded-md w-48 bg-zinc-800"
-              placeholder="search pokemon"
+              className="p-4 rounded-md w-48 bg-zinc-800"
+              placeholder="search"
               type="text"
               value={pokemon}
               onKeyDown={handleKeypress}
@@ -63,7 +63,7 @@ export default function PokemonRender() {
               }}
             />
             <button
-              className="m-8 bg-orange-300 p-2 rounded-md"
+              className="m-8 bg-orange-300 p-4 rounded-md"
               type="submit"
               onClick={handleSubmit}
             >
@@ -85,7 +85,7 @@ export default function PokemonRender() {
                   <div
                     onClick={() => setPokemon(item.toLocaleLowerCase())}
                     key={item}
-                    className="cursor-pointer"
+                    className="cursor-pointer pb-6"
                   >
                     {item}
                   </div>
@@ -99,7 +99,7 @@ export default function PokemonRender() {
                 <span ref={nodeRef} className="cursor-pointer" >
                   <TransformComponent >
                     
-                    <img src={poke.img} className="w-40 m-0"/>
+                    <img src={poke.img} className="w-40 m-0 pb-6"/>
                    
                   </TransformComponent>
                 </span>
@@ -109,7 +109,6 @@ export default function PokemonRender() {
             ))}
           </div>
           <PopUp pokemon={pokemon}/>
-
         </div>
         
       );
