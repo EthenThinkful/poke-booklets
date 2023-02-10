@@ -58,6 +58,7 @@ export default function PokemonRender() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("STUPID")
     getPokemon();
     setLimitReached(!limitReached)
   };
@@ -69,9 +70,11 @@ export default function PokemonRender() {
     }
   };
 
-  const handlePoke = (e) => {
+  const handleAbility = (e) => {
     e.preventDefault();
+
     setAbility(!ability)
+
   };
 
   const handlePoke2 = (e) => {
@@ -135,6 +138,7 @@ export default function PokemonRender() {
             ))}
         </div>
       </form>
+
       <div className="flex justify-center">
         {
           <Draggable key={pokemon1} nodeRef={nodeRef}>
@@ -152,6 +156,7 @@ export default function PokemonRender() {
             </span>
           </Draggable>     
         }
+
       </div>
       <div className="flex justify-center">
       {
