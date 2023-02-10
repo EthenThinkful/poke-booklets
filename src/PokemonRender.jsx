@@ -111,7 +111,7 @@ export default function PokemonRender() {
         >
           Add Pokemon!
         </button>
-        {limitReached && Object.keys(pokemon3).length !== 0 ? setTimeout(() => setLimitReached(!limitReached), 3000) && <div className="animate-bounce">Pokemon Limit Reached!</div> : null}
+        {limitReached && Object.keys(pokemon3).length !== 0 ? setTimeout(() => setLimitReached(!limitReached), 3000) && <div className="animate-bounce pt-2 text-sm">Pokemon Limit Reached!</div> : null}
         <div className="dropDown">
           {pokeNames
             .filter((item) => {
@@ -159,7 +159,7 @@ export default function PokemonRender() {
             <span ref={nodeRef2} key={pokemon2.key} className="cursor-pointer" onClick={handlePoke2}>
               <TransformComponent>
                 <img src={pokemon2.img} className="w-40 m-0 pb-6 "/>
-                {abilityTwo ? (
+                {abilityTwo === true ? (
                   <div className="flex">
                     <div className="bg-stone-700 rounded-xl cursor-pointer p-4 text-xs">
                       Ability: {pokemon2.ability}
