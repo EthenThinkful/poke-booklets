@@ -7,13 +7,16 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import pokeNames from "./assets/PokeJSON/pokeNames.json";
 import PopUp from "./PopUp";
 import PokemonRender from "./PokemonRender";
+import rivalryPhoto from './assets/PokePICS/The-Rivalry.jpg'
 
 function App() {
 
   return (
-    <div className="App font-pokeFont">
+    
+     <div className="font-pokeFont flex justify-center"> 
       <PokemonRender />
-    </div>
+     </div> 
+    
   )
 }
 
