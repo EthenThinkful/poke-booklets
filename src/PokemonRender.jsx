@@ -11,8 +11,10 @@ export default function PokemonRender() {
   const [pokemon, setPokemon] = useState("");
   const [pokemon1, setPokemon1] = useState({});
   const [pokemon2, setPokemon2] = useState({});
+  const [pokemon3, setPokemon3] = useState({});
   const [ability, setAbility] = useState(false);
   const [abilityTwo, setAbilityTwo] = useState(false);
+  const [abilityThree, setAbilityThree] = useState(false);
 
   function getPokemon() {
     Axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).then(
@@ -26,7 +28,7 @@ export default function PokemonRender() {
             key: pokemon,
             ability: response.data.abilities[0].ability.name,
           },
-        ) : 
+        ) : Object.keys(pokemon2).length === 0 ?
         setPokemon2(
           {
             name: pokemon,
@@ -36,7 +38,17 @@ export default function PokemonRender() {
             key: pokemon,
             ability: response.data.abilities[0].ability.name,
           },
-        )
+        ) : Object.keys(pokemon3).length === 0 ? 
+        setPokemon3(
+          {
+            name: pokemon,
+            species: response.data.species.name,
+            img: response.data.sprites.front_default,
+            hp: response.data.stats[0].base_stat,
+            key: pokemon,
+            ability: response.data.abilities[0].ability.name,
+          },
+        ) : null
         // console.log(response);
         // console.log(pokemonData);
       }
@@ -66,8 +78,14 @@ export default function PokemonRender() {
     setAbilityTwo(!abilityTwo)
   }
 
+  const handlePoke3 = (e) => {
+    e.preventDefault();
+    setAbilityThree(!abilityThree)
+  }
+
   const nodeRef = useRef(1); // do get around strictMode
   const nodeRef2 = useRef(2);
+  const nodeRef3 = useRef(3);
   return (
     <div className="PokemonRender">
       <h1 className="text-3xl font-bold sm: pb-6">Pokedex</h1>
@@ -143,6 +161,24 @@ export default function PokemonRender() {
                   <div className="flex">
                     <div className="bg-stone-700 rounded-xl cursor-pointer p-4 text-xs">
                       Ability: {pokemon2.ability}
+                    </div>
+                  </div>
+                ) : null}
+              </TransformComponent>
+            </span>
+          </Draggable>     
+        }
+        </div>
+        <div className="flex justify-center">
+      {
+          <Draggable key={pokemon3} nodeRef={nodeRef3}>
+            <span ref={nodeRef3} key={pokemon3.key} className="cursor-pointer" onClick={handlePoke3}>
+              <TransformComponent>
+                <img src={pokemon3.img} className="w-40 m-0 pb-6 "/>
+                {abilityThree ? (
+                  <div className="flex">
+                    <div className="bg-stone-700 rounded-xl cursor-pointer p-4 text-xs">
+                      Ability: {pokemon3.ability}
                     </div>
                   </div>
                 ) : null}
