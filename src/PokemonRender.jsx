@@ -96,10 +96,10 @@ export default function PokemonRender() {
   const nodeRef3 = useRef(3);
   return (
     <div className="PokemonRender">
-      <h1 className="text-3xl font-bold sm: pb-6">Pokedex</h1>
-      <form className="sm: grid-flow-row">
-        <input
-          className="p-4 text-xs rounded-md w-48 bg-stone-600"
+      <h1 className="text-3xl font-bold sm: pb-6 sm: text-base">Pokedex</h1>
+      <form>
+        <input 
+          className="p-4 text-xs rounded-md w-48 bg-stone-600 sm:p-4"
           placeholder="search"
           type="text"
           value={pokemon}
@@ -112,14 +112,14 @@ export default function PokemonRender() {
           }}
         />
         <button
-          className="m-8 bg-orange-300 p-4 rounded-md text-xs"
+          className="m-8 bg-orange-300 p-4 rounded-md text-xs sm:p-4 sm:m-4"
           type="submit"
           onClick={handleSubmit}
         >
           Add Pokemon!
         </button>
         {limitReached && Object.keys(pokemon3).length !== 0 ? setTimeout(() => setLimitReached(!limitReached), 3000) && <div className="animate-bounce pt-2 text-sm">Pokemon Limit Reached!</div> : null}
-        <div className="dropDown">
+        <div className="dropDown sm:text-xs">
           {pokeNames
             .filter((item) => {
               const searchTerm = pokemon.toLocaleLowerCase();
@@ -135,7 +135,7 @@ export default function PokemonRender() {
               <div
                 onClick={() => setPokemon(item.toLocaleLowerCase())}
                 key={item}
-                className="cursor-pointer pb-6"
+                className="cursor-pointer pb-6 sm:text-xs"
               >
                 {item}
               </div>
@@ -145,8 +145,8 @@ export default function PokemonRender() {
 
       <div className="flex justify-center">
         {
-          <Draggable key={pokemon1} nodeRef={nodeRef}>
-            <span ref={nodeRef} key={pokemon1.key} className="cursor-pointer" onClick={handlePoke}>
+          <Draggable key={pokemon1} nodeRef={nodeRef} >
+            <span ref={nodeRef} key={pokemon1.key} className="cursor-pointer " onClick={handlePoke}>
               <TransformComponent>
                 <img src={pokemon1.img} className="w-40 m-0 pb-6 "/>
                 {ability ? (
@@ -165,7 +165,7 @@ export default function PokemonRender() {
       <div className="flex justify-center">
       {
           <Draggable key={pokemon2} nodeRef={nodeRef2}>
-            <span ref={nodeRef2} key={pokemon2.key} className="cursor-pointer" onClick={handlePoke2}>
+            <span ref={nodeRef2} key={pokemon2.key} className="cursor-pointer " onClick={handlePoke2}>
               <TransformComponent>
                 <img src={pokemon2.img} className="w-40 m-0 pb-6 "/>
                 {abilityTwo === true ? (
@@ -183,7 +183,7 @@ export default function PokemonRender() {
         <div className="flex justify-center">
       {
           <Draggable key={pokemon3} nodeRef={nodeRef3}>
-            <span ref={nodeRef3} key={pokemon3.key} className="cursor-pointer" onClick={handlePoke3}>
+            <span ref={nodeRef3} key={pokemon3.key} className="cursor-pointer " onClick={handlePoke3}>
               <TransformComponent>
                 <img src={pokemon3.img} className="w-40 m-0 pb-6 "/>
                 {abilityThree ? (
