@@ -148,7 +148,7 @@ export default function PokemonRender() {
           <Draggable key={pokemon1} nodeRef={nodeRef} >
             <span ref={nodeRef} key={pokemon1.key} className="cursor-pointer " onClick={handlePoke}>
               <TransformComponent>
-                <img src={pokemon1.img} className="w-40 m-0 pb-6 "/>
+                <img src={pokemon1.img} className="pb-6 "/>
                 {ability ? (
                   <div className="flex">
                     <div className="bg-stone-700 rounded-xl cursor-pointer p-4 text-xs">
@@ -167,7 +167,7 @@ export default function PokemonRender() {
           <Draggable key={pokemon2} nodeRef={nodeRef2}>
             <span ref={nodeRef2} key={pokemon2.key} className="cursor-pointer " onClick={handlePoke2}>
               <TransformComponent>
-                <img src={pokemon2.img} className="w-40 m-0 pb-6 "/>
+                <img src={pokemon2.img} className="pb-6 "/>
                 {abilityTwo === true ? (
                   <div className="flex">
                     <div className="bg-stone-700 rounded-xl cursor-pointer p-4 text-xs">
@@ -185,7 +185,7 @@ export default function PokemonRender() {
           <Draggable key={pokemon3} nodeRef={nodeRef3}>
             <span ref={nodeRef3} key={pokemon3.key} className="cursor-pointer " onClick={handlePoke3}>
               <TransformComponent>
-                <img src={pokemon3.img} className="w-40 m-0 pb-6 "/>
+                <img src={pokemon3.img} className="pb-6 "/>
                 {abilityThree ? (
                   <div className="flex">
                     <div className="bg-stone-700 rounded-xl cursor-pointer p-4 text-xs">
