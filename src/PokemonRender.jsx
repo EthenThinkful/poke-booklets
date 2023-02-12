@@ -99,7 +99,7 @@ export default function PokemonRender() {
       <h1 className="text-base font-bold pb-4">Pokedex</h1>
       <form>
         <input 
-          className="p-3 text-xs rounded-md w-48 bg-stone-600 "
+          className="p-2 text-xs rounded-md w-40 bg-stone-600 "
           placeholder="search"
           type="text"
           value={pokemon}
@@ -112,7 +112,7 @@ export default function PokemonRender() {
           }}
         />
         <button
-          className="m-6 bg-orange-300 p-3 rounded-md text-xs"
+          className="m-6 bg-orange-300 p-2 rounded-md text-xs w-40"
           type="submit"
           onClick={handleSubmit}
         >
