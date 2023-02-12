@@ -96,10 +96,10 @@ export default function PokemonRender() {
   const nodeRef3 = useRef(3);
   return (
     <div className="PokemonRender">
-      <h1 className="text-3xl font-bold sm: pb-6 sm: text-base">Pokedex</h1>
+      <h1 className="text-base font-bold pb-4">Pokedex</h1>
       <form>
         <input 
-          className="p-4 text-xs rounded-md w-48 bg-stone-600 sm:p-4"
+          className="p-3 text-xs rounded-md w-48 bg-stone-600 "
           placeholder="search"
           type="text"
           value={pokemon}
@@ -112,14 +112,14 @@ export default function PokemonRender() {
           }}
         />
         <button
-          className="m-8 bg-orange-300 p-4 rounded-md text-xs sm:p-4 sm:m-4"
+          className="m-6 bg-orange-300 p-3 rounded-md text-xs"
           type="submit"
           onClick={handleSubmit}
         >
           Add Pokemon!
         </button>
         {limitReached && Object.keys(pokemon3).length !== 0 ? setTimeout(() => setLimitReached(!limitReached), 3000) && <div className="animate-bounce pt-2 text-sm">Pokemon Limit Reached!</div> : null}
-        <div className="dropDown sm:text-xs">
+        <div className="dropDown text-xs">
           {pokeNames
             .filter((item) => {
               const searchTerm = pokemon.toLocaleLowerCase();
@@ -135,7 +135,7 @@ export default function PokemonRender() {
               <div
                 onClick={() => setPokemon(item.toLocaleLowerCase())}
                 key={item}
-                className="cursor-pointer pb-6 sm:text-xs"
+                className="cursor-pointer p-2"
               >
                 {item}
               </div>
