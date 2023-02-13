@@ -98,7 +98,7 @@ export default function PokemonRender() {
     <div className="PokemonRender">
       <div className="flex justify-center flex-row relative mb-6">
       <h1 className="text-base font-bold text-xl">Pokedex</h1>
-      <img src={gbaGif} className="w-10 h-10 ml-6 absolute bottom-0.5 right-7 lg:left-96 lg:right-0" />
+      <img src={gbaGif} className="w-10 h-10 ml-6 absolute bottom-0.5 right-8 lg:left-96 lg:right-0" />
       </div>
       <form className="flex flex-row lg: justify-center">
         <input
@@ -121,14 +121,8 @@ export default function PokemonRender() {
         >
           Add Pokemon!
         </button>
-        {limitReached && Object.keys(pokemon3).length !== 0
-          ? setTimeout(() => setLimitReached(!limitReached), 3000) && (
-              <div className="animate-bounce pt-2 text-xs">
-                Pokemon Limit Reached!
-              </div>
-            )
-          : null}
-        <div className="dropDown text-xs">
+      </form>
+      <div className="dropDown text-xs mt-4">
           {pokeNames
             .filter((item) => {
               const searchTerm = pokemon.toLocaleLowerCase();
@@ -150,7 +144,13 @@ export default function PokemonRender() {
               </div>
             ))}
         </div>
-      </form>
+        {limitReached && Object.keys(pokemon3).length !== 0
+          ? setTimeout(() => setLimitReached(!limitReached), 3000) && (
+              <div className="animate-bounce pt-4 text-xs">
+                Pokemon Limit Reached!
+              </div>
+            )
+          : null}
 
       <div className="flex justify-center">
         {
