@@ -6,6 +6,7 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import pokeNames from "./assets/PokeJSON/pokeNames.json";
 import PopUp from "./PopUp";
 import "./PokemonRender.css";
+import gbaGif from "./assets/PokePICS/gba.gif";
 
 
 export default function PokemonRender() {
@@ -95,10 +96,13 @@ export default function PokemonRender() {
   const nodeRef3 = useRef(3);
   return (
     <div className="PokemonRender">
-      <h1 className="text-base font-bold pb-4">Pokedex</h1>
-      <form>
+      <div className="flex justify-center flex-row relative mb-6">
+      <h1 className="text-base font-bold text-xl">Pokedex</h1>
+      <img src={gbaGif} className="w-10 h-10 ml-6 absolute bottom-0.5 right-7 lg:left-96 lg:right-0" />
+      </div>
+      <form className="flex flex-row lg: justify-center">
         <input
-          className="p-3 text-xs rounded-md w-40 bg-stone-600 "
+          className="p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4"
           placeholder="search"
           type="text"
           value={pokemon}
@@ -111,7 +115,7 @@ export default function PokemonRender() {
           }}
         />
         <button
-          className="m-6 bg-orange-300 p-3 rounded-md text-xs w-40"
+          className="p-3 bg-orange-300 rounded-md text-xs w-40 h-14"
           type="submit"
           onClick={handleSubmit}
         >
