@@ -78,6 +78,7 @@ export default function PokemonRender() {
   };
   const handlePoke = (e) => {
     e.preventDefault();
+    console.log('i have been clicked')
     setAbility(!ability)
   }
 
@@ -118,7 +119,7 @@ export default function PokemonRender() {
         >
           Add Pokemon!
         </button>
-        {limitReached && Object.keys(pokemon3).length !== 0 ? setTimeout(() => setLimitReached(!limitReached), 3000) && <div className="animate-bounce pt-2 text-sm">Pokemon Limit Reached!</div> : null}
+        {limitReached && Object.keys(pokemon3).length !== 0 ? setTimeout(() => setLimitReached(!limitReached), 3000) && <div className="animate-bounce pt-2 text-xs">Pokemon Limit Reached!</div> : null}
         <div className="dropDown text-xs">
           {pokeNames
             .filter((item) => {
@@ -145,10 +146,10 @@ export default function PokemonRender() {
 
       <div className="flex justify-center">
         {
-          <Draggable key={pokemon1} nodeRef={nodeRef} >
-            <span ref={nodeRef} key={pokemon1.key} className="cursor-pointer " onClick={handlePoke}>
+          <Draggable nodeRef={nodeRef}>
+            <span ref={nodeRef} className="cursor-pointer " onClick={handlePoke}>
               <TransformComponent>
-                <img src={pokemon1.img} className="pb-6 "/>
+                <img src={pokemon1.img}  />
                 {ability ? (
                   <div className="flex">
                     <div className="bg-stone-700 rounded-xl cursor-pointer p-4 text-xs">
@@ -156,7 +157,8 @@ export default function PokemonRender() {
                     </div>
                   </div>
                 ) : null}
-              </TransformComponent>
+                </TransformComponent>
+              
             </span>
           </Draggable>     
         }
