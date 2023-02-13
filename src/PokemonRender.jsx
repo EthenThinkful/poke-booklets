@@ -7,6 +7,7 @@ import pokeNames from "./assets/PokeJSON/pokeNames.json";
 import PopUp from "./PopUp";
 import "./PokemonRender.css";
 
+
 export default function PokemonRender() {
   const [pokemon, setPokemon] = useState("");
   const [pokemon1, setPokemon1] = useState({});
@@ -157,13 +158,13 @@ export default function PokemonRender() {
             >
               <TransformComponent>
                 <img src={pokemon1.img} />
-                {ability ? (
+                {/* {ability ? (
                   <div className="flex">
                     <div className="bg-stone-700 rounded-xl cursor-pointer p-4 text-xs">
                       Ability: {pokemon1.ability}
                     </div>
                   </div>
-                ) : null}
+                ) : null} */}
               </TransformComponent>
             </span>
           </Draggable>
@@ -179,13 +180,13 @@ export default function PokemonRender() {
             >
               <TransformComponent>
                 <img src={pokemon2.img} />
-                {abilityTwo === true ? (
+                {/* {abilityTwo === true ? (
                   <div className="flex">
                     <div className="bg-stone-700 rounded-xl cursor-pointer p-4 text-xs">
                       Ability: {pokemon2.ability}
                     </div>
                   </div>
-                ) : null}
+                ) : null} */}
               </TransformComponent>
             </span>
           </Draggable>
@@ -201,13 +202,13 @@ export default function PokemonRender() {
             >
               <TransformComponent>
                 <img src={pokemon3.img} />
-                {abilityThree ? (
+                {/* {abilityThree ? (
                   <div className="flex">
                     <div className="bg-stone-700 rounded-xl cursor-pointer p-4 text-xs">
                       Ability: {pokemon3.ability}
                     </div>
                   </div>
-                ) : null}
+                ) : null} */}
               </TransformComponent>
             </span>
           </Draggable>
