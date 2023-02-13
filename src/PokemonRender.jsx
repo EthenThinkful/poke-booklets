@@ -19,37 +19,35 @@ export default function PokemonRender() {
 
   function getPokemon() {
     Axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).then(
-      (response) => { Object.keys(pokemon1).length === 0 ?
-        setPokemon1(
-          {
-            name: pokemon,
-            species: response.data.species.name,
-            img: response.data.sprites.front_default,
-            hp: response.data.stats[0].base_stat,
-            key: pokemon,
-            ability: response.data.abilities[0].ability.name,
-          },
-        ) : Object.keys(pokemon2).length === 0 ?
-        setPokemon2(
-          {
-            name: pokemon,
-            species: response.data.species.name,
-            img: response.data.sprites.front_default,
-            hp: response.data.stats[0].base_stat,
-            key: pokemon,
-            ability: response.data.abilities[0].ability.name,
-          },
-        ) : Object.keys(pokemon3).length === 0 ? 
-        setPokemon3(
-          {
-            name: pokemon,
-            species: response.data.species.name,
-            img: response.data.sprites.front_default,
-            hp: response.data.stats[0].base_stat,
-            key: pokemon,
-            ability: response.data.abilities[0].ability.name,
-          },
-        ) : null
+      (response) => {
+        Object.keys(pokemon1).length === 0
+          ? setPokemon1({
+              name: pokemon,
+              species: response.data.species.name,
+              img: response.data.sprites.front_default,
+              hp: response.data.stats[0].base_stat,
+              key: pokemon,
+              ability: response.data.abilities[0].ability.name,
+            })
+          : Object.keys(pokemon2).length === 0
+          ? setPokemon2({
+              name: pokemon,
+              species: response.data.species.name,
+              img: response.data.sprites.front_default,
+              hp: response.data.stats[0].base_stat,
+              key: pokemon,
+              ability: response.data.abilities[0].ability.name,
+            })
+          : Object.keys(pokemon3).length === 0
+          ? setPokemon3({
+              name: pokemon,
+              species: response.data.species.name,
+              img: response.data.sprites.front_default,
+              hp: response.data.stats[0].base_stat,
+              key: pokemon,
+              ability: response.data.abilities[0].ability.name,
+            })
+          : null;
         // console.log(response);
         // console.log(pokemonData);
       }
@@ -58,9 +56,9 @@ export default function PokemonRender() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("STUPID")
+    console.log("STUPID");
     getPokemon();
-    setLimitReached(!limitReached)
+    setLimitReached(!limitReached);
   };
 
   const handleKeypress = (e) => {
@@ -73,24 +71,23 @@ export default function PokemonRender() {
   const handleAbility = (e) => {
     e.preventDefault();
 
-    setAbility(!ability)
-
+    setAbility(!ability);
   };
   const handlePoke = (e) => {
     e.preventDefault();
-    console.log('i have been clicked')
-    setAbility(!ability)
-  }
+    console.log("i have been clicked");
+    setAbility(!ability);
+  };
 
   const handlePoke2 = (e) => {
     e.preventDefault();
-    setAbilityTwo(!abilityTwo)
-  }
+    setAbilityTwo(!abilityTwo);
+  };
 
   const handlePoke3 = (e) => {
     e.preventDefault();
-    setAbilityThree(!abilityThree)
-  }
+    setAbilityThree(!abilityThree);
+  };
 
   const nodeRef = useRef(1); // do get around strictMode
   const nodeRef2 = useRef(2);
@@ -99,7 +96,7 @@ export default function PokemonRender() {
     <div className="PokemonRender">
       <h1 className="text-base font-bold pb-4">Pokedex</h1>
       <form>
-        <input 
+        <input
           className="p-2 text-xs rounded-md w-40 bg-stone-600 "
           placeholder="search"
           type="text"
@@ -119,7 +116,13 @@ export default function PokemonRender() {
         >
           Add Pokemon!
         </button>
-        {limitReached && Object.keys(pokemon3).length !== 0 ? setTimeout(() => setLimitReached(!limitReached), 3000) && <div className="animate-bounce pt-2 text-xs">Pokemon Limit Reached!</div> : null}
+        {limitReached && Object.keys(pokemon3).length !== 0
+          ? setTimeout(() => setLimitReached(!limitReached), 3000) && (
+              <div className="animate-bounce pt-2 text-xs">
+                Pokemon Limit Reached!
+              </div>
+            )
+          : null}
         <div className="dropDown text-xs">
           {pokeNames
             .filter((item) => {
@@ -147,9 +150,13 @@ export default function PokemonRender() {
       <div className="flex justify-center">
         {
           <Draggable nodeRef={nodeRef}>
-            <span ref={nodeRef} className="cursor-pointer " onClick={handlePoke}>
+            <span
+              ref={nodeRef}
+              className="cursor-pointer "
+              onClick={handlePoke}
+            >
               <TransformComponent>
-                <img src={pokemon1.img}  />
+                <img src={pokemon1.img} />
                 {ability ? (
                   <div className="flex">
                     <div className="bg-stone-700 rounded-xl cursor-pointer p-4 text-xs">
@@ -157,19 +164,21 @@ export default function PokemonRender() {
                     </div>
                   </div>
                 ) : null}
-                </TransformComponent>
-              
+              </TransformComponent>
             </span>
-          </Draggable>     
+          </Draggable>
         }
-
       </div>
       <div className="flex justify-center">
-      {
-          <Draggable key={pokemon2} nodeRef={nodeRef2}>
-            <span ref={nodeRef2} key={pokemon2.key} className="cursor-pointer " onClick={handlePoke2}>
+        {
+          <Draggable nodeRef={nodeRef2}>
+            <span
+              ref={nodeRef2}
+              className="cursor-pointer "
+              onClick={handlePoke2}
+            >
               <TransformComponent>
-                <img src={pokemon2.img} className="pb-6 "/>
+                <img src={pokemon2.img} />
                 {abilityTwo === true ? (
                   <div className="flex">
                     <div className="bg-stone-700 rounded-xl cursor-pointer p-4 text-xs">
@@ -179,15 +188,19 @@ export default function PokemonRender() {
                 ) : null}
               </TransformComponent>
             </span>
-          </Draggable>     
+          </Draggable>
         }
-        </div>
-        <div className="flex justify-center">
-      {
-          <Draggable key={pokemon3} nodeRef={nodeRef3}>
-            <span ref={nodeRef3} key={pokemon3.key} className="cursor-pointer " onClick={handlePoke3}>
+      </div>
+      <div className="flex justify-center">
+        {
+          <Draggable nodeRef={nodeRef3}>
+            <span
+              ref={nodeRef3}
+              className="cursor-pointer "
+              onClick={handlePoke3}
+            >
               <TransformComponent>
-                <img src={pokemon3.img} className="pb-6 "/>
+                <img src={pokemon3.img} />
                 {abilityThree ? (
                   <div className="flex">
                     <div className="bg-stone-700 rounded-xl cursor-pointer p-4 text-xs">
@@ -197,9 +210,9 @@ export default function PokemonRender() {
                 ) : null}
               </TransformComponent>
             </span>
-          </Draggable>     
+          </Draggable>
         }
-        </div>
+      </div>
     </div>
   );
 }
