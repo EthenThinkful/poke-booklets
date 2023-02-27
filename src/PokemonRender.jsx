@@ -98,7 +98,7 @@ export default function PokemonRender() {
     <div className="PokemonRender">
       <div className="flex justify-center flex-row relative mb-6">
       <h1 className="text-base font-bold text-xl">Pokedex</h1>
-      <img src={gbaGif} className="w-10 h-10 ml-6 absolute bottom-0.5 right-8 lg:left-96 lg:right-0" />
+      <img src={gbaGif} className="w-10 h-10 ml-6 relative bottom-3" />
       </div>
       <form className="flex flex-row lg: justify-center">
         <input
