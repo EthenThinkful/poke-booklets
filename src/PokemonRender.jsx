@@ -218,6 +218,9 @@ export default function PokemonRender() {
           </Draggable>
         }
       </div>
+      <footer>
+      <button className="p-1 bg-yellow-300 rounded-md text-xs h-8 absolute inset-x-0 bottom-0">Align</button>
+      </footer>
     </div>
   );
 }
