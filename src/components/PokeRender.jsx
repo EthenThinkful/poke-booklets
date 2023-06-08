@@ -3,11 +3,12 @@ import { useState, useRef } from "react";
 import Axios from "axios";
 import Draggable from "react-draggable";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import pokeNames from "./assets/PokeJSON/pokeNames.json";
-import PopUp from "./PopUp";
-import gbaGif from "./assets/PokePICS/gba.gif";
+import pokeNames from "../assets/PokeJSON/pokeNames.json";
+import PopUp from "../PopUp";
+import gbaGif from "../assets/PokePICS/gba.gif";
 
-export default function PokemonRender() {
+
+export default function PokeRender() {
   const [pokemon, setPokemon] = useState("");
   const [pokemon1, setPokemon1] = useState({});
   const [pokemon2, setPokemon2] = useState({});
@@ -56,7 +57,7 @@ export default function PokemonRender() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("STUPID");
+    console.log("Why do I love Pokemon so much?");
     getPokemon();
     setLimitReached(!limitReached);
   };
@@ -95,7 +96,7 @@ export default function PokemonRender() {
   return (
     <div className="PokemonRender">
       <div className="flex justify-center flex-row relative mb-6">
-      <h1 className="text-base font-bold text-xl">Pokedex</h1>
+      <h1 className="font-bold text-xl">Pokedex</h1>
       <img src={gbaGif} className="w-10 h-10 ml-6 relative bottom-3" />
       </div>
       <form className="flex flex-row lg: justify-center">
