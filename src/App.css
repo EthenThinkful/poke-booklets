@@ -5,6 +5,39 @@
   text-align: center;
 }
 
+.cardRender {
+  float: left;
+}
+
+.card {
+  width: 150px;
+  height: 209px;
+  margin: 1rem 0rem;
+}
+
+.cardDisplay {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  
+  column-gap: 10px;
+  row-gap: 15px;
+}
+
+.zoom {
+  transition: transform .2s; /* Animation */
+}
+
+.zoom:hover {
+  transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+@media screen and (max-width: 576px) {
+  .card {
+    width: 100px;
+    height: 140px;
+  }
+}
+
 /* .App {
   font-family: pokeFont;
 } */

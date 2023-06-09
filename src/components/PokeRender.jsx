@@ -6,6 +6,7 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import pokeNames from "../assets/PokeJSON/pokeNames.json";
 import gbaGif from "../assets/PokePICS/gba.gif";
 import CardRender from "./CardRender";
+import PageFlip from "./PageFlip";
 
 export default function PokeRender() {
   const [pokemon, setPokemon] = useState("");
@@ -94,12 +95,12 @@ export default function PokeRender() {
   const nodeRef3 = useRef(3);
   return (
     <div className="PokemonRender">
+      <CardRender poke={pokemon}/>
       <div className="flex justify-center flex-row relative mb-6">
       <h1 className="font-bold text-xl">Pokedex</h1>
       <img src={gbaGif} className="w-10 h-10 ml-6 relative bottom-3" />
       </div>
       <form className="flex flex-row lg: justify-center">
-        <CardRender poke={pokemon}/>
         <input
           className="p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4"
           placeholder="search"
