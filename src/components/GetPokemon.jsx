@@ -10,6 +10,10 @@ export default function GetPokemon() {
   const [pokemon1, setPokemon1] = useState({});
   const [pokemon2, setPokemon2] = useState({});
   const [pokemon3, setPokemon3] = useState({});
+  const [pokemon4, setPokemon4] = useState({});
+  const [pokemon5, setPokemon5] = useState({});
+  const [pokemon6, setPokemon6] = useState({});
+
   const [limitReached, setLimitReached] = useState(true);
 
   const handleKeypress = (e) => {
@@ -56,7 +60,35 @@ export default function GetPokemon() {
               key: pokemon,
               ability: response.data.abilities[0].ability.name,
             })
-          : null;
+          : Object.keys(pokemon4).length === 0
+          ? setPokemon4({
+              name: pokemon,
+              species: response.data.species.name,
+              img: response.data.sprites.front_default,
+              hp: response.data.stats[0].base_stat,
+              key: pokemon,
+              ability: response.data.abilities[0].ability.name,
+            })
+          : Object.keys(pokemon5).length === 0
+          ? setPokemon5({
+              name: pokemon,
+              species: response.data.species.name,
+              img: response.data.sprites.front_default,
+              hp: response.data.stats[0].base_stat,
+              key: pokemon,
+              ability: response.data.abilities[0].ability.name,
+            })
+          : Object.keys(pokemon6).length === 0
+          ? setPokemon6({
+              name: pokemon,
+              species: response.data.species.name,
+              img: response.data.sprites.front_default,
+              hp: response.data.stats[0].base_stat,
+              key: pokemon,
+              ability: response.data.abilities[0].ability.name,
+            })
+          :
+          null;
       }
     );
   }
@@ -64,6 +96,10 @@ export default function GetPokemon() {
   const nodeRef = useRef(1); // to get around strictMode
   const nodeRef2 = useRef(2);
   const nodeRef3 = useRef(3);
+  const nodeRef4 = useRef(3);
+  const nodeRef5 = useRef(3);
+  const nodeRef6 = useRef(3);
+
   return (
     <div className="iphoneScreen">
         <CardRender poke={pokemon} />
@@ -115,7 +151,7 @@ export default function GetPokemon() {
             ))}
         </div>
     
-    {limitReached && Object.keys(pokemon3).length !== 0
+    {limitReached && Object.keys(pokemon6).length !== 0
           ? setTimeout(() => setLimitReached(!limitReached), 3000) && (
               <div className="animate-bounce pt-4 text-xs">
                 Pokemon Limit Reached!
@@ -187,6 +223,72 @@ export default function GetPokemon() {
             </span>
           </Draggable>
         }
+        <div className="flex justify-center">
+          {
+          <Draggable nodeRef={nodeRef4}>
+            <span
+              ref={nodeRef4}
+              className="cursor-pointer"
+              
+            >
+              <TransformComponent>
+                <img src={pokemon4.img} />
+                {/* {ability ? (
+                  <div className="flex">
+                    <div className="bg-stone-700 rounded-xl cursor-pointer p-4 text-xs">
+                      Ability: {pokemon1.ability}
+                    </div>
+                  </div>
+                ) : null} */}
+              </TransformComponent>
+            </span>
+          </Draggable>
+        }
+        </div>
+        <div className="flex justify-center">
+          {
+          <Draggable nodeRef={nodeRef5}>
+            <span
+              ref={nodeRef5}
+              className="cursor-pointer"
+              
+            >
+              <TransformComponent>
+                <img src={pokemon5.img} />
+                {/* {ability ? (
+                  <div className="flex">
+                    <div className="bg-stone-700 rounded-xl cursor-pointer p-4 text-xs">
+                      Ability: {pokemon1.ability}
+                    </div>
+                  </div>
+                ) : null} */}
+              </TransformComponent>
+            </span>
+          </Draggable>
+        }
+        </div>
+        <div className="flex justify-center">
+          {
+          <Draggable nodeRef={nodeRef6}>
+            <span
+              ref={nodeRef6}
+              className="cursor-pointer"
+              
+            >
+              <TransformComponent>
+                <img src={pokemon6.img} />
+                {/* {ability ? (
+                  <div className="flex">
+                    <div className="bg-stone-700 rounded-xl cursor-pointer p-4 text-xs">
+                      Ability: {pokemon1.ability}
+                    </div>
+                  </div>
+                ) : null} */}
+              </TransformComponent>
+            </span>
+          </Draggable>
+        }
+        </div>
         </div>
       </div>
     </div>
