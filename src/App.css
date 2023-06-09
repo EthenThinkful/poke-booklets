@@ -42,6 +42,11 @@
   display: grid;
 }
 
+.cardBook {
+  width: 700px;
+  height: 700px;
+}
+
 @media screen and (max-width: 576px) {
   .card {
     width: 100px;
