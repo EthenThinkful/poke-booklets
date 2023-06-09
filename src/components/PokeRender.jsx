@@ -4,9 +4,9 @@ import Axios from "axios";
 import Draggable from "react-draggable";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import pokeNames from "../assets/PokeJSON/pokeNames.json";
-import PopUp from "../PopUp";
 import gbaGif from "../assets/PokePICS/gba.gif";
-
+import CardRender from "./CardRender";
+import PageFlip from "./PageFlip";
 
 export default function PokeRender() {
   const [pokemon, setPokemon] = useState("");
@@ -95,6 +95,7 @@ export default function PokeRender() {
   const nodeRef3 = useRef(3);
   return (
     <div className="PokemonRender">
+      <CardRender poke={pokemon}/>
       <div className="flex justify-center flex-row relative mb-6">
       <h1 className="font-bold text-xl">Pokedex</h1>
       <img src={gbaGif} className="w-10 h-10 ml-6 relative bottom-3" />

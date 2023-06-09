@@ -4,6 +4,7 @@ import "./App.css";
 import PokemonRender from "./PokemonRender";
 import PokeRender from "./components/PokeRender";
 import rivalryPhoto from "./assets/PokePICS/The-Rivalry.jpg";
+import CardRender from "./components/CardRender";
 
 
 function App() {
