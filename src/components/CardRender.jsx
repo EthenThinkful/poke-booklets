@@ -4,9 +4,9 @@ import Axios from "axios";
 import pokemon from "pokemontcgsdk";
 import PageFlip from "./PageFlip";
 
-const { REACT_APP_TCG_API } = process.env;
+// const { REACT_APP_TCG_API } = process.env;
 
-pokemon.configure({ apiKey: REACT_APP_TCG_API });
+pokemon.configure({ apiKey: 'b2c47130-c144-4d25-8d96-c71708597019' });
 
 export default function CardRender({ poke }) {
   const [card, setCard] = useState([]);
