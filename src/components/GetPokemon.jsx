@@ -65,7 +65,7 @@ export default function GetPokemon() {
   const nodeRef2 = useRef(2);
   const nodeRef3 = useRef(3);
   return (
-    <div>
+    <div className="iphoneScreen">
         <CardRender poke={pokemon} />
     <div className="PokemonRender">
     <div>
@@ -127,7 +127,7 @@ export default function GetPokemon() {
           <Draggable nodeRef={nodeRef}>
             <span
               ref={nodeRef}
-              className="cursor-pointer "
+              className="cursor-pointer"
               
             >
               <TransformComponent>
