@@ -215,8 +215,7 @@ export default function PokemonRender() {
           </Draggable>
         }
       </div>
-      <footer>
-      </footer>
+
     </div>
   );
 }

@@ -30,15 +30,27 @@
   transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
+.flexPurpose {
+  
+}
+
+.PokemonRender {
+  float: right;
+}
+
+.dropDown {
+  display: grid;
+}
+
 @media screen and (max-width: 576px) {
   .card {
     width: 100px;
     height: 140px;
   }
 
-  .cardRender {
-    
-  }
+  /* .cardRender {
+    float: none;
+  } */
 
   
 }

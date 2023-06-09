@@ -38,7 +38,7 @@ export default function CardRender({ poke }) {
           <div></div>
         ) : (
           card[0].map((res) => (
-            <img src={res.images.small} key={res.name} className="card zoom rounded-xl" />
+            <img src={res.images.small} key={res.images.small} className="card zoom rounded-xl" />
           ))
         )}
         </div>

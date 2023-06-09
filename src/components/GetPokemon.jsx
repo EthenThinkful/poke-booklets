@@ -1,22 +1,30 @@
-import React from "react";
-import { useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import Axios from "axios";
+import pokeNames from "../assets/PokeJSON/pokeNames.json";
+import CardRender from "./CardRender";
 import Draggable from "react-draggable";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import pokeNames from "../assets/PokeJSON/pokeNames.json";
-import gbaGif from "../assets/PokePICS/gba.gif";
-import CardRender from "./CardRender";
-import PageFlip from "./PageFlip";
 
-export default function PokeRender() {
+export default function GetPokemon() {
   const [pokemon, setPokemon] = useState("");
   const [pokemon1, setPokemon1] = useState({});
   const [pokemon2, setPokemon2] = useState({});
   const [pokemon3, setPokemon3] = useState({});
-  const [ability, setAbility] = useState(false);
-  const [abilityTwo, setAbilityTwo] = useState(false);
-  const [abilityThree, setAbilityThree] = useState(false);
   const [limitReached, setLimitReached] = useState(true);
+
+  const handleKeypress = (e) => {
+    // triggers by pressing the enter key
+    if (e.keyCode === 13) {
+      handleSubmit();
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Why do I love Pokemon so much?");
+    getPokemon();
+    setLimitReached(!limitReached);
+  };
 
   function getPokemon() {
     Axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).then(
@@ -49,58 +57,19 @@ export default function PokeRender() {
               ability: response.data.abilities[0].ability.name,
             })
           : null;
-        // console.log(response);
-        // console.log(pokemonData);
       }
     );
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Why do I love Pokemon so much?");
-    getPokemon();
-    setLimitReached(!limitReached);
-  };
-
-  const handleKeypress = (e) => {
-    // triggers by pressing the enter key
-    if (e.keyCode === 13) {
-      handleSubmit();
-    }
-  };
-
-  const handleAbility = (e) => {
-    e.preventDefault();
-
-    setAbility(!ability);
-  };
-  const handlePoke = (e) => {
-    e.preventDefault();
-    console.log("i have been clicked");
-    setAbility(!ability);
-  };
-
-  const handlePoke2 = (e) => {
-    e.preventDefault();
-    setAbilityTwo(!abilityTwo);
-  };
-
-  const handlePoke3 = (e) => {
-    e.preventDefault();
-    setAbilityThree(!abilityThree);
-  };
-
-  const nodeRef = useRef(1); // do get around strictMode
+  const nodeRef = useRef(1); // to get around strictMode
   const nodeRef2 = useRef(2);
   const nodeRef3 = useRef(3);
   return (
+    <div>
+        <CardRender poke={pokemon} />
     <div className="PokemonRender">
-      <CardRender poke={pokemon}/>
-      <div className="flex justify-center flex-row relative mb-6">
-      <h1 className="font-bold text-xl">Pokedex</h1>
-      <img src={gbaGif} className="w-10 h-10 ml-6 relative bottom-3" />
-      </div>
-      <form className="flex flex-row lg: justify-center">
+    <div>
+      <form className="flex">
         <input
           className="p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4"
           placeholder="search"
@@ -122,7 +91,8 @@ export default function PokeRender() {
           Add Pokemon!
         </button>
       </form>
-      <div className="dropDown text-xs mt-4">
+    </div>
+    <div className="dropDown text-xs mt-4">
           {pokeNames
             .filter((item) => {
               const searchTerm = pokemon.toLocaleLowerCase();
@@ -144,21 +114,21 @@ export default function PokeRender() {
               </div>
             ))}
         </div>
-        {limitReached && Object.keys(pokemon3).length !== 0
+    
+    {limitReached && Object.keys(pokemon3).length !== 0
           ? setTimeout(() => setLimitReached(!limitReached), 3000) && (
               <div className="animate-bounce pt-4 text-xs">
                 Pokemon Limit Reached!
               </div>
             )
           : null}
-
-      <div className="flex justify-center">
-        {
+          <div className="flex justify-center">
+          {
           <Draggable nodeRef={nodeRef}>
             <span
               ref={nodeRef}
               className="cursor-pointer "
-              onClick={handlePoke}
+              
             >
               <TransformComponent>
                 <img src={pokemon1.img} />
@@ -173,14 +143,14 @@ export default function PokeRender() {
             </span>
           </Draggable>
         }
-      </div>
-      <div className="flex justify-center">
+        </div>
+        <div className="flex justify-center">
         {
           <Draggable nodeRef={nodeRef2}>
             <span
               ref={nodeRef2}
               className="cursor-pointer "
-              onClick={handlePoke2}
+              
             >
               <TransformComponent>
                 <img src={pokemon2.img} />
@@ -195,14 +165,14 @@ export default function PokeRender() {
             </span>
           </Draggable>
         }
-      </div>
-      <div className="flex justify-center">
+        </div>
+        <div className="flex justify-center">
         {
           <Draggable nodeRef={nodeRef3}>
             <span
               ref={nodeRef3}
               className="cursor-pointer "
-              onClick={handlePoke3}
+              
             >
               <TransformComponent>
                 <img src={pokemon3.img} />
@@ -217,9 +187,8 @@ export default function PokeRender() {
             </span>
           </Draggable>
         }
+        </div>
       </div>
-      <footer>
-      </footer>
     </div>
   );
 }
