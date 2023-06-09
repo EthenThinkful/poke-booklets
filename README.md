@@ -1,7 +1,7 @@
 # PokemonAPIject
 My first Pokemon app (Just for fun!). Still developing ideas for it but mainly just working on this to work with the PokeAPI!
 
-This project uses: Vite, React, NPM, Draggable, react-zoom-pan-pinch, Tailwind CSS, & Axios.
+This project uses: Vite, React, NPM, Draggable, Tailwind CSS, Axios, & the Pokemon TCG API SDK.
 
 Demo: https://candid-tiramisu-895796.netlify.app/
 
