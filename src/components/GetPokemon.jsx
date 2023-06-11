@@ -292,7 +292,7 @@ export default function GetPokemon() {
         }
         </div>
         </div>
-        {/* <CardBook /> */}
+        {/* <CardBook boardCard={pokemon}/> */}
       </div>
     </div>
   );

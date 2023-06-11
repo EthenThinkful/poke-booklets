@@ -1,24 +1,39 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import DraggablePicture from "./DraggablePicture";
 import { useDrop } from "react-dnd";
+import pokemon from "pokemontcgsdk";
 
-export default function CardBook({ boardCard }) {
+pokemon.configure({ apiKey: "b2c47130-c144-4d25-8d96-c71708597019" });
+
+export default function CardBook({}) {
   const [board, setBoard] = useState([]);
 
-  const [{isOver}, drop] = useDrop(() => ({
+  const [{ isOver }, drop] = useDrop(() => ({
     accept: "image",
-    drop: (item) => addImageToBoard(item.id),
-  }))
+    drop: (item) => addImageToBoard(item.src),
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  }));
 
-  const addImageToBoard = (key) => {
-
-  }
+  const addImageToBoard = (src) => {
+    console.log(src);
+    const pictureList = src;
+    setBoard((board) => [...board, pictureList]);
+  };
 
   return (
     <div className="cardBook bg-orange-600 mt-8" ref={drop}>
-      {board.map((picture) => {
-        return <DraggablePicture src={picture.src} key={picture.key} />;
-      })}
+      {board.length === 0 ? (
+        <div></div>
+      ) : (
+        board.map((picture) => (
+          <DraggablePicture
+            src={picture}
+            id={picture}
+          />
+        ))
+      )}
     </div>
   );
 }

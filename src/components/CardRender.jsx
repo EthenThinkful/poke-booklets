@@ -47,7 +47,7 @@ export default function CardRender({ poke }) {
             //   key={res.images.small}
             //   className="card zoom rounded-xl"
             // />
-            <DraggablePicture src={res.images.small} key={res.images.small}/>
+            <DraggablePicture src={res.images.small} id={res.images.small}/>
           ))
         )}
       </div>
