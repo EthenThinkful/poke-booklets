@@ -6,6 +6,7 @@ import PageFlip from "./PageFlip";
 import Draggable from "react-draggable";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import DraggablePicture from "./DraggablePicture";
+import CardBook from "./CardBook";
 
 // const { REACT_APP_TCG_API } = process.env;
 
@@ -41,14 +42,16 @@ export default function CardRender({ poke }) {
           <div></div>
         ) : (
           card[0].map((res) => (
-            <img
-              src={res.images.small}
-              key={res.images.small}
-              className="card zoom rounded-xl"
-            />
+            // <img
+            //   src={res.images.small}
+            //   key={res.images.small}
+            //   className="card zoom rounded-xl"
+            // />
+            <DraggablePicture src={res.images.small} key={res.images.small}/>
           ))
         )}
       </div>
+      <CardBook boardCard={card}/>
     </div>
   );
 }
