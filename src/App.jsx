@@ -7,6 +7,7 @@ import CardRender from "./components/CardRender";
 import GetPokemon from "./components/GetPokemon";
 import { DndProvider } from "react-dnd";
 import {HTML5Backend} from "react-dnd-html5-backend";
+import PageFlip from "./components/PageFlip";
 
 function App() {
   return (

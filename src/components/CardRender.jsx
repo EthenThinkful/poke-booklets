@@ -33,7 +33,7 @@ export default function CardRender({ poke }) {
       <button
         onClick={handleSubmit}
         type="submit"
-        className="p-3 bg-orange-300 rounded-md text-xs w-40 h-14 mr-4 "
+        className="p-3 bg-orange-300 rounded-md text-xs w-40 h-14 mr-4 mb-8"
       >
         get card
       </button>
