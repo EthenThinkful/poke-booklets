@@ -1,7 +1,7 @@
 import React from "react";
 import { useDrag } from "react-dnd";
 
-function DraggablePicture({ id, src }) {
+function DraggablePicture({ src, id }) {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "image",
     item: {src: src},
@@ -13,7 +13,7 @@ function DraggablePicture({ id, src }) {
     <img
       ref={drag}
       src={src}
-      id={id}
+      key={id}
       className="card zoom rounded-xl"
       style={{ border: isDragging ? "5px solid red" : "0px" }}
     />

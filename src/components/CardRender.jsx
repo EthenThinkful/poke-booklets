@@ -18,13 +18,13 @@ export default function CardRender({ poke }) {
   function getCard() {
     pokemon.card.where({ q: `name:${poke}` }).then((result) => {
       setCard([...card, result.data]);
-      console.log(card);
+      // console.log(card);
     });
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Why do I love Pokemon so much?");
+    // console.log("Why do I love Pokemon so much?");
     getCard();
   };
 
@@ -42,16 +42,12 @@ export default function CardRender({ poke }) {
           <div></div>
         ) : (
           card[0].map((res) => (
-            // <img
-            //   src={res.images.small}
-            //   key={res.images.small}
-            //   className="card zoom rounded-xl"
-            // />
+            // console.log(res.id),
             <DraggablePicture src={res.images.small} id={res.images.small}/>
           ))
         )}
       </div>
-      <CardBook boardCard={card}/>
+      <CardBook />
     </div>
   );
 }
