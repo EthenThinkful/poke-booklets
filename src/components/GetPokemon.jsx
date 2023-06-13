@@ -27,7 +27,6 @@ export default function GetPokemon() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Why do I love Pokemon so much?");
     getPokemon();
     setLimitReached(!limitReached);
   };
@@ -116,9 +115,6 @@ export default function GetPokemon() {
           onKeyDown={handleKeypress}
           onChange={(event) => {
             setPokemon(event.target.value.toLocaleLowerCase());
-            {
-              // console.log(pokemon);
-            }
           }}
         />
         <button

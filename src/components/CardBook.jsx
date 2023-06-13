@@ -18,34 +18,11 @@ export default function CardBook() {
   }));
 
   const addImageToBoard = (src) => {
-    // console.log(src);
     const pictureList = src;
-    // console.log(board.length);
-    // console.log(board);
     board.length < 6 ? setBoard((current) => [...current, pictureList]) : null;
-    console.log(board);
   };
 
   const boardRef = useRef(1);
-
-  // <Draggable nodeRef={nodeRef}>
-  //           <span
-  //             ref={nodeRef}
-  //             className="cursor-pointer"
-
-  //           >
-  //             <TransformComponent>
-  //               <img src={pokemon1.img} />
-  //               {/* {ability ? (
-  //                 <div className="flex">
-  //                   <div className="bg-stone-700 rounded-xl cursor-pointer p-4 text-xs">
-  //                     Ability: {pokemon1.ability}
-  //                   </div>
-  //                 </div>
-  //               ) : null} */}
-  //             </TransformComponent>
-  //           </span>
-  //         </Draggable>
 
   return (
     <div>
