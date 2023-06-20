@@ -4,6 +4,8 @@ import pokeNames from "../assets/PokeJSON/pokeNames.json";
 import CardRender from "./CardRender";
 import Draggable from "react-draggable";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import PageFlip from "./PageFlip";
+import CardBook from "./CardBook";
 
 export default function GetPokemon() {
   const [pokemon, setPokemon] = useState("");
@@ -25,7 +27,6 @@ export default function GetPokemon() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Why do I love Pokemon so much?");
     getPokemon();
     setLimitReached(!limitReached);
   };
@@ -114,9 +115,6 @@ export default function GetPokemon() {
           onKeyDown={handleKeypress}
           onChange={(event) => {
             setPokemon(event.target.value.toLocaleLowerCase());
-            {
-              // console.log(pokemon);
-            }
           }}
         />
         <button
@@ -290,6 +288,7 @@ export default function GetPokemon() {
         }
         </div>
         </div>
+        {/* <CardBook boardCard={pokemon}/> */}
       </div>
     </div>
   );

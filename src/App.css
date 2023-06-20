@@ -12,14 +12,23 @@
 .card {
   width: 150px;
   height: 209px;
-  margin: 1rem 0rem;
+  margin: 0 1rem 0rem 1rem;
 }
 
 .cardDisplay {
   display: grid;
   grid-template-columns: auto auto auto;
-  column-gap: 10px;
   row-gap: 15px;
+}
+
+.cardBook {
+  width: 600px;
+  height: 500px;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin-bottom: 2rem;
+  /* justify-content: center; */
 }
 
 .zoom {
@@ -42,6 +51,11 @@
   display: grid;
 }
 
+.cardPictures {
+  padding: 2rem;
+  margin: 2rem;
+}
+
 @media screen and (max-width: 576px) {
   .card {
     width: 100px;
@@ -51,6 +65,10 @@
   .iphoneScreen {
     display: flex;
     flex-direction: column-reverse;
+  }
+
+  .cardBook {
+    display: none;
   }
 
   /* .cardRender {
