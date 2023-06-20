@@ -67,6 +67,10 @@
     flex-direction: column-reverse;
   }
 
+  .cardBook {
+    display: none;
+  }
+
   /* .cardRender {
     float: none;
   } */
