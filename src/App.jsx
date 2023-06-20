@@ -5,11 +5,13 @@ import PokemonRender from "./PokemonRender";
 import rivalryPhoto from "./assets/PokePICS/The-Rivalry.jpg";
 import CardRender from "./components/CardRender";
 import GetPokemon from "./components/GetPokemon";
-
+import { DndProvider } from "react-dnd";
+import {HTML5Backend} from "react-dnd-html5-backend";
+import PageFlip from "./components/PageFlip";
 
 function App() {
   return (
-    
+      <DndProvider backend={HTML5Backend}>
       <div className="font-pokeFont">
       
         {/* <PokeRender /> */}
@@ -18,6 +20,7 @@ function App() {
         <GetPokemon />
         
       </div>
+      </DndProvider>
     
   );
 }
