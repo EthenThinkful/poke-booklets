@@ -19,24 +19,20 @@ export default function CardBook() {
 
   const addImageToBoard = (src) => {
     const pictureList = src;
-    board.length < 6 ? setBoard((current) => [...current, pictureList]) : null;
+    board.length < 6 ? setBoard((current) => [...current.slice(-5), pictureList]) : null;
   };
-
-  const boardRef = useRef(1);
 
   return (
     <div>
-      <Draggable ref={boardRef}>
         <div className="cardBook bg-orange-600 mt-8" ref={drop}>
           {board.length === 0 ? (
             <div></div>
           ) : (
-            board.slice(0, 6).map((picture) => (
-              <DraggablePicture src={picture} id={picture}/>
+            board.map((picture) => (
+              <DraggablePicture src={picture} key={Math.random()}/>
             )) 
           )}
         </div>
-      </Draggable>
     </div>
   );
 }

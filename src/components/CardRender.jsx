@@ -36,7 +36,7 @@ export default function CardRender({ poke }) {
           <div></div>
         ) : (
           card[0].map((res) => (
-            <DraggablePicture src={res.images.small} id={res.images.small}/>
+            <DraggablePicture src={res.images.small} key={res.id}/>
           ))
         )}
       </div>
