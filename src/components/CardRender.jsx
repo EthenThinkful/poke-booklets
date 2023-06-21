@@ -40,7 +40,6 @@ export default function CardRender({ poke }) {
           ))
         )}
       </div>
-      <CardBook />
     </div>
   );
 }

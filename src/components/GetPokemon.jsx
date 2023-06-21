@@ -3,6 +3,7 @@ import Axios from "axios";
 import pokeNames from "../assets/PokeJSON/pokeNames.json";
 import CardRender from "./CardRender";
 import Draggable from "react-draggable";
+import CardBook from "./CardBook";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 export default function GetPokemon() {
@@ -146,7 +147,6 @@ export default function GetPokemon() {
               </div>
             ))}
         </div>
-    
     {limitReached && Object.keys(pokemon6).length !== 0
           ? setTimeout(() => setLimitReached(!limitReached), 3000) && (
               <div className="animate-bounce pt-4 text-xs">
@@ -286,7 +286,7 @@ export default function GetPokemon() {
         }
         </div>
         </div>
-        {/* <CardBook boardCard={pokemon}/> */}
+        <CardBook />
       </div>
     </div>
   );
