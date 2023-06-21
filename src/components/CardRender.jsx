@@ -1,10 +1,6 @@
 import React from "react";
 import { useState, useRef } from "react";
-import Axios from "axios";
 import pokemon from "pokemontcgsdk";
-import PageFlip from "./PageFlip";
-import Draggable from "react-draggable";
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import DraggablePicture from "./DraggablePicture";
 import CardBook from "./CardBook";
 

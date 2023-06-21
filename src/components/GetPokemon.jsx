@@ -4,8 +4,6 @@ import pokeNames from "../assets/PokeJSON/pokeNames.json";
 import CardRender from "./CardRender";
 import Draggable from "react-draggable";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import PageFlip from "./PageFlip";
-import CardBook from "./CardBook";
 
 export default function GetPokemon() {
   const [pokemon, setPokemon] = useState("");
