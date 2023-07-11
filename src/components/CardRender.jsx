@@ -23,6 +23,11 @@ export default function CardRender({ poke }) {
     getCard();
   };
 
+  const handleDelete = (e) => {
+    e.preventDefault();
+    setCard([]);
+  }
+
   return (
     <div className="cardRender">
       <button
@@ -31,6 +36,13 @@ export default function CardRender({ poke }) {
         className="p-3 bg-orange-300 rounded-md text-xs w-40 h-14 mr-4 mb-8"
       >
         get card
+      </button>
+      <button
+        onClick={handleDelete}
+        type="submit"
+        className="p-3 bg-orange-300 rounded-md text-xs w-40 h-14 mr-4 mb-8"
+      >
+        clear
       </button>
       <div className="cardDisplay">
         {card.length === 0 ? (
