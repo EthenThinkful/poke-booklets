@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+img {
+  color: black;
+}
+
 .cardRender {
   float: left;
 }
@@ -12,23 +16,37 @@
 .card {
   width: 150px;
   height: 209px;
-  margin: 0 1rem 0rem 1rem;
+  /* margin: 0 1rem 0rem 1rem; */
+}
+
+.cardBook {
+  width: 37rem;
+  height: 34rem;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin-bottom: 2rem;
+  align-items: center;
+  border-radius: 1rem;
+  /* justify-content: center; */
+}
+
+.card__slot {
+  width: 160px;
+  height: 219px;
+  margin: 0 0rem 0rem 1rem;
+  border-radius: 1rem;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cardDisplay {
   display: grid;
   grid-template-columns: auto auto auto;
   row-gap: 15px;
-}
-
-.cardBook {
-  width: 600px;
-  height: 500px;
-  padding: 2rem;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  margin-bottom: 2rem;
-  /* justify-content: center; */
+  column-gap: 15px;
 }
 
 .zoom {
