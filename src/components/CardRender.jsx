@@ -14,11 +14,11 @@ export default function CardRender({ poke }) {
   function getCard() {
     pokemon.card.where({ q: `name:${poke}` }).then((result) => {
       setCard([result.data]);
+      console.log(card);
     });
   }
 
   const handleSubmit = (e) => {
-    console.log(card);
     e.preventDefault();
     getCard();
   };
