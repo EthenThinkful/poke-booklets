@@ -43,14 +43,11 @@ img {
 }
 
 .trash__can {
-  width: 80px;
-  height: 109.5px;
-  margin: 0 0rem 0rem 1rem;
+  width: 107px;
+  height: 107px;
+  margin: 0 0rem 0rem 2rem;
   border-radius: .3rem;
   background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .cardDisplay {

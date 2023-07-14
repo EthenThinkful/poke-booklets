@@ -2,8 +2,6 @@ import React from "react";
 import { useState, useRef } from "react";
 import pokemon from "pokemontcgsdk";
 import DraggablePicture from "./DraggablePicture";
-import CardBook from "./CardBook";
-import TrashCan from '../assets/PokePICS/PokeTrash.jpg';
 // const { REACT_APP_TCG_API } = process.env;
 
 pokemon.configure({ apiKey: "b2c47130-c144-4d25-8d96-c71708597019" });
