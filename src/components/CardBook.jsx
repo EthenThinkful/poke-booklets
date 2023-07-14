@@ -102,7 +102,6 @@ export default function CardBook() {
   }));
 
   function trashCan(src) {
-    console.log(src[0], "slot one: ", slot1[0])
     slot1[0] === src[0] ? setSlot1([]) : null;
     slot2[0] === src[0] ? setSlot2([]) : null;
     slot3[0] === src[0] ? setSlot3([]) : null;
