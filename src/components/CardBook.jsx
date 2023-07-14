@@ -25,7 +25,7 @@ export default function CardBook() {
 
   const addCardToSlot1 = (src) => {
     const picture = src;
-    setSlot1([picture]);
+    setSlot1([...slot1, picture]);
   };
 
   const [{ isOver2 }, drop2] = useDrop(() => ({
@@ -102,6 +102,7 @@ export default function CardBook() {
   }));
 
   function trashCan(src) {
+    console.log(src[0], "slot one: ", slot1[0])
     slot1[0] === src[0] ? setSlot1([]) : null;
     slot2[0] === src[0] ? setSlot2([]) : null;
     slot3[0] === src[0] ? setSlot3([]) : null;
@@ -116,41 +117,21 @@ export default function CardBook() {
         <div className="card__slot" ref={drop}>
           <DraggablePictureTwo src={slot1} key={Math.random()} />
         </div>
-        {slot2.length === null ? (
-          <div className="card__slot"></div>
-        ) : (
           <div className="card__slot" ref={drop2}>
             <DraggablePictureTwo src={slot2} key={Math.random()} />
           </div>
-        )}
-        {slot3.src === 0 ? (
-          <div className="card__slot"></div>
-        ) : (
           <div className="card__slot" ref={drop3}>
             <DraggablePictureTwo src={slot3} key={Math.random()} />
           </div>
-        )}
-        {slot4.src === 0 ? (
-          <div className="card__slot"></div>
-        ) : (
           <div className="card__slot" ref={drop4}>
             <DraggablePictureTwo src={slot4} key={Math.random()} />
           </div>
-        )}
-        {slot5.src === 0 ? (
-          <div className="card__slot"></div>
-        ) : (
           <div className="card__slot" ref={drop5}>
             <DraggablePictureTwo src={slot5} key={Math.random()} />
           </div>
-        )}
-        {slot6.src === 0 ? (
-          <div className="card__slot"></div>
-        ) : (
           <div className="card__slot" ref={drop6}>
             <DraggablePictureTwo src={slot6} key={Math.random()} />
           </div>
-        )}
       </div>
       <div className="trash__can" ref={dropTrash}></div>
     </div>
