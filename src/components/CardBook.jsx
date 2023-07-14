@@ -28,6 +28,12 @@ export default function CardBook() {
     setSlot1([...slot1, picture]);
   };
 
+  const slotOne = useRef("");
+
+  useEffect(() => {
+    slotOne.current = slot1;
+  }, [slot1])
+
   const [{ isOver2 }, drop2] = useDrop(() => ({
     accept: "image",
     drop: (item) => addCardToSlot2(item.src),
@@ -40,6 +46,12 @@ export default function CardBook() {
     const picture = src;
     setSlot2([...slot2, picture]);
   };
+
+  const slotTwo = useRef("");
+
+  useEffect(() => {
+    slotTwo.current = slot2;
+  }, [slot2])
 
   const [{ isOver3 }, drop3] = useDrop(() => ({
     accept: "image",
@@ -54,6 +66,12 @@ export default function CardBook() {
     setSlot3([...slot3, picture]);
   };
 
+  const slotThree = useRef("");
+
+  useEffect(() => {
+    slotThree.current = slot3;
+  }, [slot3])
+
   const [{ isOver4 }, drop4] = useDrop(() => ({
     accept: "image",
     drop: (item) => addCardToSlot4(item.src),
@@ -66,6 +84,12 @@ export default function CardBook() {
     const picture = src;
     setSlot4([...slot4, picture]);
   };
+
+  const slotFour = useRef("");
+
+  useEffect(() => {
+    slotFour.current = slot4;
+  }, [slot4])
 
   const [{ isOver5 }, drop5] = useDrop(() => ({
     accept: "image",
@@ -80,6 +104,12 @@ export default function CardBook() {
     setSlot5([...slot5, picture]);
   };
 
+  const slotFive = useRef("");
+
+  useEffect(() => {
+    slotFive.current = slot5;
+  }, [slot5])
+
   const [{ isOver6 }, drop6] = useDrop(() => ({
     accept: "image",
     drop: (item) => addCardToSlot6(item.src),
@@ -93,6 +123,12 @@ export default function CardBook() {
     setSlot6([...slot6, picture]);
   };
 
+  const slotSix = useRef("");
+
+  useEffect(() => {
+    slotSix.current = slot6;
+  }, [slot6])
+
   const [{ isOverTrash }, dropTrash] = useDrop(() => ({
     accept: "image",
     drop: (item) => trashCan(item.src),
@@ -102,12 +138,12 @@ export default function CardBook() {
   }));
 
   function trashCan(src) {
-    slot1[0] === src[0] ? setSlot1([]) : null;
-    slot2[0] === src[0] ? setSlot2([]) : null;
-    slot3[0] === src[0] ? setSlot3([]) : null;
-    slot4[0] === src[0] ? setSlot4([]) : null;
-    slot5[0] === src[0] ? setSlot5([]) : null;
-    slot6[0] === src[0] ? setSlot6([]) : null;
+    slotOne.current[0] === src[0] ? setSlot1([]) : null;
+    slotTwo.current[0] === src[0] ? setSlot2([]) : null;
+    slotThree.current[0] === src[0] ? setSlot3([]) : null;
+    slotFour.current[0] === src[0] ? setSlot4([]) : null;
+    slotFive.current[0] === src[0] ? setSlot5([]) : null;
+    slotSix.current[0] === src[0] ? setSlot6([]) : null;
   }
 
   return (
