@@ -3,6 +3,7 @@ import DraggablePictureTwo from "./DraggablePictureTwo";
 import { useDrop } from "react-dnd";
 import pokemon from "pokemontcgsdk";
 import Draggable from "react-draggable";
+import TrashCan from '../assets/PokePICS/PokeTrash.jpg';
 
 pokemon.configure({ apiKey: "b2c47130-c144-4d25-8d96-c71708597019" });
 
@@ -168,7 +169,7 @@ export default function CardBook() {
             <DraggablePictureTwo src={slot6} key={Math.random()} />
           </div>
       </div>
-      <div className="trash__can" ref={dropTrash}></div>
+      <img src={TrashCan} className="trash__can zoom" ref={dropTrash}/>
     </div>
   );
 }

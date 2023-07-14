@@ -35,7 +35,18 @@ img {
   width: 160px;
   height: 219px;
   margin: 0 0rem 0rem 1rem;
-  border-radius: 1rem;
+  border-radius: .7rem;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.trash__can {
+  width: 80px;
+  height: 109.5px;
+  margin: 0 0rem 0rem 1rem;
+  border-radius: .3rem;
   background-color: white;
   display: flex;
   justify-content: center;
@@ -72,14 +83,6 @@ img {
 .cardPictures {
   padding: 2rem;
   margin: 2rem;
-}
-
-.trash__can {
-  width: 200px;
-  height: 200px;
-  background-color: rgb(8, 255, 66);
-  border-radius: 1rem;
-  margin-left: 5rem;
 }
 
 @media screen and (max-width: 576px) {
