@@ -97,6 +97,20 @@ img {
     display: none;
   }
 
+  .trash__can {
+    display: none;
+  }
+
+  .bookletTab {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    background-color: aquamarine;
+  }
+
+  .button__view {
+    display: flex;
+  }
   /* .cardRender {
     float: none;
   } */

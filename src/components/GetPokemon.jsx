@@ -245,6 +245,7 @@ export default function GetPokemon() {
       <CardRender poke={pokemon} />
       <div className="PokemonRender">
       <div>
+      <div className="bookletTab float-right ml-4 mt-2"></div>
           <form className="flex">
             <input
               className="p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4"
@@ -302,13 +303,6 @@ export default function GetPokemon() {
               <span ref={nodeRef} className="cursor-pointer">
                 <TransformComponent>
                   <img src={pokemon1.img} />
-                  {/* {ability ? (
-                  <div className="flex">
-                    <div className="bg-stone-700 rounded-xl cursor-pointer p-4 text-xs">
-                      Ability: {pokemon1.ability}
-                    </div>
-                  </div>
-                ) : null} */}
                 </TransformComponent>
               </span>
             </Draggable>
@@ -320,13 +314,6 @@ export default function GetPokemon() {
               <span ref={nodeRef2} className="cursor-pointer ">
                 <TransformComponent>
                   <img src={pokemon2.img} />
-                  {/* {abilityTwo === true ? (
-                  <div className="flex">
-                    <div className="bg-stone-700 rounded-xl cursor-pointer p-4 text-xs">
-                      Ability: {pokemon2.ability}
-                    </div>
-                  </div>
-                ) : null} */}
                 </TransformComponent>
               </span>
             </Draggable>
@@ -338,13 +325,6 @@ export default function GetPokemon() {
               <span ref={nodeRef3} className="cursor-pointer ">
                 <TransformComponent>
                   <img src={pokemon3.img} />
-                  {/* {abilityThree ? (
-                  <div className="flex">
-                    <div className="bg-stone-700 rounded-xl cursor-pointer p-4 text-xs">
-                      Ability: {pokemon3.ability}
-                    </div>
-                  </div>
-                ) : null} */}
                 </TransformComponent>
               </span>
             </Draggable>
@@ -355,13 +335,6 @@ export default function GetPokemon() {
                 <span ref={nodeRef4} className="cursor-pointer">
                   <TransformComponent>
                     <img src={pokemon4.img} />
-                    {/* {ability ? (
-                  <div className="flex">
-                    <div className="bg-stone-700 rounded-xl cursor-pointer p-4 text-xs">
-                      Ability: {pokemon1.ability}
-                    </div>
-                  </div>
-                ) : null} */}
                   </TransformComponent>
                 </span>
               </Draggable>
@@ -373,13 +346,6 @@ export default function GetPokemon() {
                 <span ref={nodeRef5} className="cursor-pointer">
                   <TransformComponent>
                     <img src={pokemon5.img} />
-                    {/* {ability ? (
-                  <div className="flex">
-                    <div className="bg-stone-700 rounded-xl cursor-pointer p-4 text-xs">
-                      Ability: {pokemon1.ability}
-                    </div>
-                  </div>
-                ) : null} */}
                   </TransformComponent>
                 </span>
               </Draggable>
@@ -391,13 +357,6 @@ export default function GetPokemon() {
                 <span ref={nodeRef6} className="cursor-pointer">
                   <TransformComponent>
                     <img src={pokemon6.img} />
-                    {/* {ability ? (
-                  <div className="flex">
-                    <div className="bg-stone-700 rounded-xl cursor-pointer p-4 text-xs">
-                      Ability: {pokemon1.ability}
-                    </div>
-                  </div>
-                ) : null} */}
                   </TransformComponent>
                 </span>
               </Draggable>
