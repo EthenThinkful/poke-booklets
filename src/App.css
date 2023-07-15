@@ -97,6 +97,10 @@ img {
     display: none;
   }
 
+  .trash__can {
+    display: none;
+  }
+
   /* .cardRender {
     float: none;
   } */
