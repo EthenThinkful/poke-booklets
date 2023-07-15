@@ -245,6 +245,7 @@ export default function GetPokemon() {
       <CardRender poke={pokemon} />
       <div className="PokemonRender">
       <div>
+      <div className="bookletTab float-right ml-4 mt-2"></div>
           <form className="flex">
             <input
               className="p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4"

@@ -101,6 +101,16 @@ img {
     display: none;
   }
 
+  .bookletTab {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    background-color: aquamarine;
+  }
+
+  .button__view {
+    display: flex;
+  }
   /* .cardRender {
     float: none;
   } */
