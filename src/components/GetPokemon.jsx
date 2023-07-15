@@ -240,12 +240,18 @@ export default function GetPokemon() {
     slotSix.current[0] === src[0] ? setSlot6([]) : null;
   }
 
+  const [isShown, setIsShown] = useState(false);
+
+  const handleClick = event => {
+    setIsShown(current => !current);
+  }
+
   return (
     <div className="iphoneScreen mt-6">
       <CardRender poke={pokemon} />
       <div className="PokemonRender">
       <div>
-      <div className="bookletTab float-right ml-4 mt-2"></div>
+      <button onClick={handleClick} className="bookletTab float-right ml-4 mt-2"></button>
           <form className="flex">
             <input
               className="p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4"
@@ -364,7 +370,7 @@ export default function GetPokemon() {
           </div>
         </div>
         <div>
-          <div className="cardBook bg-orange-600">
+          <div className={isShown ? "cardBookMobile" : "cardBook"}>
             <div className="card__slot" ref={drop}>
               <DraggablePictureTwo src={slot1} key={Math.random()} />
             </div>
