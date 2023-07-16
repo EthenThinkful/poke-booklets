@@ -121,6 +121,13 @@ img {
     display: none;
   }
 
+  .trash__can__mobile {
+    width: 107px;
+  height: 107px;
+  margin: 0 0rem 1rem 0rem;
+  border-radius: .3rem;
+  }
+
   .bookletTab {
     width: 2rem;
     height: 2rem;
