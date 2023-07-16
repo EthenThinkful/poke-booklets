@@ -9,7 +9,7 @@ function DraggablePicture({ src, id }) {
       isDragging: !!monitor.isDragging(),
     }),
   }));
-  return (
+  return (   
     <img
       ref={drag}
       src={src}
