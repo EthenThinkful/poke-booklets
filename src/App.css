@@ -48,7 +48,6 @@ img {
   height: 107px;
   margin: 0 0rem 0rem 2rem;
   border-radius: .3rem;
-  background-color: white;
 }
 
 .cardDisplay {
@@ -64,10 +63,6 @@ img {
 
 .zoom:hover {
   transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-}
-
-.flexPurpose {
-  
 }
 
 .PokemonRender {
