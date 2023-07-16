@@ -390,7 +390,7 @@ export default function GetPokemon() {
               <DraggablePictureTwo src={slot6} key={Math.random()} />
             </div>
           </div>
-          <img src={MagicEraserTrashCan} className={isShown ? "trash__can__mobile zoom" : "trash__can"} ref={dropTrash}/>
+          <img src={MagicEraserTrashCan} className={isShown ? "trash__can__mobile zoom" : "trash__can__two"} ref={dropTrash}/>
         </div>
       </div>
     </div>

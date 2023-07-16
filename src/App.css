@@ -50,6 +50,10 @@ img {
   border-radius: .3rem;
 }
 
+.trash__can__two {
+  display: none;
+}
+
 .cardDisplay {
   display: grid;
   grid-template-columns: auto auto auto;
