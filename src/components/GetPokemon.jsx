@@ -274,7 +274,7 @@ export default function GetPokemon() {
           </form>
           
         </div>
-        <div className="dropDown text-xs mb-4">
+        <div className="dropDown text-xs mb-4 mt-4 lg:mt-0">
           {pokeNames
             .filter((item) => {
               const searchTerm = pokemon.toLocaleLowerCase();
