@@ -6,7 +6,7 @@ import Draggable from "react-draggable";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import DraggablePictureTwo from "./DraggablePictureTwo";
 import { useDrop } from "react-dnd";
-import TrashCan from "../assets/PokePICS/PokeTrash2.jpg";
+import MagicEraserTrashCan from "../assets/PokePICS/MagicEraserTrashCan.png";
 
 export default function GetPokemon() {
   const [pokemon, setPokemon] = useState("");
@@ -270,7 +270,7 @@ export default function GetPokemon() {
             >
               Add Pokemon!
             </button>
-            <img src={TrashCan} className="trash__can zoom" ref={dropTrash}/>
+            <img src={MagicEraserTrashCan} className="trash__can zoom" ref={dropTrash}/>
           </form>
           
         </div>
