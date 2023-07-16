@@ -50,6 +50,10 @@ img {
   border-radius: .3rem;
 }
 
+.trash__can__two {
+  display: none;
+}
+
 .cardDisplay {
   display: grid;
   grid-template-columns: auto auto auto;
@@ -119,6 +123,13 @@ img {
 
   .trash__can {
     display: none;
+  }
+
+  .trash__can__mobile {
+    width: 107px;
+  height: 107px;
+  margin: 0 0rem 1rem 0rem;
+  border-radius: .3rem;
   }
 
   .bookletTab {
