@@ -26,7 +26,7 @@ export default function CardRender({ poke }) {
   }
 
   return (
-    <div className="cardRender">
+    <div className="card__render">
       <div className="button__view">
       <button
         onClick={handleSubmit}
@@ -43,7 +43,7 @@ export default function CardRender({ poke }) {
         clear
       </button>
       </div>
-      <div className="cardDisplay">
+      <div className="card__display">
         {card.length === 0 ? (
           <div></div>
         ) : (

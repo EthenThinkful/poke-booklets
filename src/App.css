@@ -9,17 +9,17 @@ img {
   color: black;
 }
 
-.cardRender {
+.card__render {
   float: left;
 }
 
 .card {
   width: 150px;
   height: 209px;
-  /* margin: 0 1rem 0rem 1rem; */
+  border-radius: 6px;
 }
 
-.cardBook {
+.card__book {
   width: 37rem;
   height: 34rem;
   padding: 1rem;
@@ -54,7 +54,7 @@ img {
   display: none;
 }
 
-.cardDisplay {
+.card__display {
   display: grid;
   grid-template-columns: auto auto auto;
   row-gap: 15px;
@@ -69,17 +69,12 @@ img {
   transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
-.PokemonRender {
+.pokemon__render {
   float: right;
 }
 
-.dropDown {
+.drop__down {
   display: grid;
-}
-
-.cardPictures {
-  padding: 2rem;
-  margin: 2rem;
 }
 
 @media screen and (max-width: 576px) {
@@ -88,16 +83,16 @@ img {
     height: 125px;
   }
 
-  .iphoneScreen {
+  .iphone__screen {
     display: flex;
     flex-direction: column-reverse;
   }
 
-  .cardBook {
+  .card__book {
     display: none;
   }
 
-  .cardBookMobile {
+  .card__book__mobile {
     width: 22rem;
     height: 20rem;
   display: grid;
@@ -132,7 +127,7 @@ img {
   border-radius: .3rem;
   }
 
-  .bookletTab {
+  .booklet__tab {
     width: 2rem;
     height: 2rem;
     border-radius: 1rem;
@@ -142,14 +137,5 @@ img {
   .button__view {
     display: flex;
   }
-  /* .cardRender {
-    float: none;
-  } */
-
-  
 }
-
-/* .App {
-  font-family: pokeFont;
-} */
 

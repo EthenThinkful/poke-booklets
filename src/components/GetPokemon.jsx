@@ -247,11 +247,11 @@ export default function GetPokemon() {
   }
 
   return (
-    <div className="iphoneScreen mt-6">
+    <div className="iphone__screen mt-6">
       <CardRender poke={pokemon} />
-      <div className="PokemonRender">
+      <div className="pokemon__render">
       <div>
-      <button onClick={handleClick} className="bookletTab float-right ml-4 mt-2"></button>
+      <button onClick={handleClick} className="booklet__tab float-right ml-4 mt-2"></button>
           <form className="flex">
             <input
               className="p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4"
@@ -274,7 +274,7 @@ export default function GetPokemon() {
           </form>
           
         </div>
-        <div className="dropDown text-xs mb-4 mt-4 lg:mt-0">
+        <div className="drop__down text-xs mb-4 mt-4 lg:mt-0">
           {pokeNames
             .filter((item) => {
               const searchTerm = pokemon.toLocaleLowerCase();
@@ -370,7 +370,7 @@ export default function GetPokemon() {
           </div>
         </div>
         <div>
-          <div className={isShown ? "cardBookMobile" : "cardBook"}>
+          <div className={isShown ? "card__book__mobile" : "card__book"}>
             <div className="card__slot" ref={drop}>
               <DraggablePictureTwo src={slot1} key={Math.random()} />
             </div>
