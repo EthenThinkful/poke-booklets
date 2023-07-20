@@ -15,6 +15,13 @@ img {
   border-radius: 6px;
 }
 
+.carousel__card {
+  width: 150px;
+  height: 209px;
+  border-radius: 6px;
+  padding: 0 5px;
+}
+
 .card__book {
   width: 37rem;
   height: 34rem;
@@ -63,10 +70,21 @@ img {
   display: grid;
 }
 
+.carouselPic {
+  width: 100px;
+  height: 130px;
+}
+
 @media screen and (max-width: 576px) {
   .card {
     width: 90px;
     height: 125px;
+  }
+
+  .carousel__card {
+    width: 90px;
+    height: 125px;
+    padding: 0 5px;
   }
 
   .iphone__screen {

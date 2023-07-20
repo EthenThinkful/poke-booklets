@@ -14,7 +14,7 @@ function DraggablePicture({ src, id }) {
       ref={drag}
       src={src}
       key={id}
-      className="card zoom"
+      className="carousel__card zoom"
       style={{ border: isDragging ? "5px solid red" : "0px" }}
     />
   );
