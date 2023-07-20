@@ -6,12 +6,13 @@ import { Carousel } from "react-responsive-carousel";
 import carouselPic from "../assets/PokePICS/PokeTrash.jpg";
 import styles from "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useDrag } from "react-dnd";
+import { TransformComponent } from "react-zoom-pan-pinch";
+import GetPokemon from "./GetPokemon";
 // const { REACT_APP_TCG_API } = process.env;
 
 pokemon.configure({ apiKey: "b2c47130-c144-4d25-8d96-c71708597019" });
 
 export default function CardRender() {
-
   const [poke, setPoke] = useState("");
 
   const pokeRef = useRef("");
@@ -27,6 +28,7 @@ export default function CardRender() {
     pokemon.card.where({ q: `name:${poke}` }).then((result) => {
       setCard([result.data]);
       setCss(!css);
+      console.log(card[0][0].images.small);
     });
   }
 
@@ -42,6 +44,7 @@ export default function CardRender() {
   };
 
   return (
+    <div className="iphone__screen mt-6">
     <div className="float-left">
       <div className="flex">
         <div>
@@ -115,41 +118,70 @@ export default function CardRender() {
       {card.length === 0 ? (
         <div></div>
       ) : (
-          <Carousel
-              autoFocus={true}
-              showThumbs={false}
-              showStatus={false}
-              useKeyboardArrows
-            > 
-              <>
-              <div className="flex mt-2 mb-2">
-            <DraggablePicture src={card[0][0].images.small} key={card[0][0].id}/>
-            <DraggablePicture src={card[0][1].images.small} key={card[0][1].id} />
-            <DraggablePicture src={card[0][2].images.small} key={card[0][2].id} />
+        <Carousel
+          autoFocus={true}
+          showThumbs={false}
+          showStatus={false}
+          useKeyboardArrows
+        >
+          <>
+          
+            <div className="flex mt-2 mb-2">
+              <DraggablePicture
+                src={card[0][0].images.small}
+                key={card[0][0].id}
+              />
+              <DraggablePicture
+                src={card[0][1].images.small}
+                key={card[0][1].id}
+              />
+              <DraggablePicture
+                src={card[0][2].images.small}
+                key={card[0][2].id}
+              />
             </div>
-            </>
-            <>
-              <div className="flex mt-2 mb-2 ">
-            <DraggablePicture src={card[0][3].images.small} key={card[0][3].id} />
-            <DraggablePicture src={card[0][4].images.small} key={card[0][4].id} />
-            <DraggablePicture src={card[0][5].images.small} key={card[0][5].id} />
+          </>
+          <>
+            <div className="flex mt-2 mb-2 ">
+              <DraggablePicture
+                src={card[0][3].images.small}
+                key={card[0][3].id}
+              />
+              <DraggablePicture
+                src={card[0][4].images.small}
+                key={card[0][4].id}
+              />
+              <DraggablePicture
+                src={card[0][5].images.small}
+                key={card[0][5].id}
+              />
             </div>
-            </>
-            <>
-              <div className="flex mt-2 mb-2 ">
-            <DraggablePicture src={card[0][6].images.small} key={card[0][6].id} />
-            <DraggablePicture src={card[0][7].images.small} key={card[0][7].id} />
-            <DraggablePicture src={card[0][8].images.small} key={card[0][8].id} />
+          </>
+          <>
+            <div className="flex mt-2 mb-2 ">
+              <DraggablePicture
+                src={card[0][6].images.small}
+                key={card[0][6].id}
+              />
+              <DraggablePicture
+                src={card[0][7].images.small}
+                key={card[0][7].id}
+              />
+              <DraggablePicture
+                src={card[0][8].images.small}
+                key={card[0][8].id}
+              />
             </div>
-            </>
-            {/* {card[0].map((res) => (
+          </>
+          {/* {card[0].map((res) => (
               <>
               <div className="flex mt-2 card">
             <DraggablePicture src={res.images.small} key={res.id} />
             </div>
-            </>))}</Carousel> */}</Carousel>
+            </>))}</Carousel> */}
+        </Carousel>
       )}
-
+      <GetPokemon />
       <div className="card__display">
         {/* {card.length === 0 ? (
           <div></div>
@@ -159,6 +191,7 @@ export default function CardRender() {
           ))
         )} */}
       </div>
+    </div>
     </div>
   );
 }

@@ -9,14 +9,18 @@ function DraggablePicture({ src, id }) {
       isDragging: !!monitor.isDragging(),
     }),
   }));
-  return (   
+  return (
+    <>
+    <button className="w-6 bg-slate-900 rounded-xl">+</button>
     <img
       ref={drag}
       src={src}
       key={id}
       className="carousel__card zoom"
       style={{ border: isDragging ? "5px solid red" : "0px" }}
+      onClick={() => console.log("HIHIHI")}
     />
+</>
   );
 }
 

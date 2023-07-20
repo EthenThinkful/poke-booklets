@@ -7,98 +7,6 @@ import DraggablePictureTwo from "./DraggablePictureTwo";
 import { useDrop } from "react-dnd";
 
 export default function GetPokemon() {
-  // commented code below was for a lost functionality, however pokemon useState can still be used for input 
-  // const [pokemon1, setPokemon1] = useState({});
-  // const [pokemon2, setPokemon2] = useState({});
-  // const [pokemon3, setPokemon3] = useState({});
-  // const [pokemon4, setPokemon4] = useState({});
-  // const [pokemon5, setPokemon5] = useState({});
-  // const [pokemon6, setPokemon6] = useState({});
-
-  // const [limitReached, setLimitReached] = useState(true);
-
-  // const handleKeypress = (e) => {
-  //   if (e.keyCode === 13) {
-  //     handleSubmit();
-  //   }
-  // };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   getPokemon();
-  //   setLimitReached(!limitReached);
-  // };
-
-  // function getPokemon() {
-  //   Axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).then(
-  //     (response) => {
-  //       Object.keys(pokemon1).length === 0
-  //         ? setPokemon1({
-  //             name: pokemon,
-  //             species: response.data.species.name,
-  //             img: response.data.sprites.front_default,
-  //             hp: response.data.stats[0].base_stat,
-  //             key: pokemon,
-  //             ability: response.data.abilities[0].ability.name,
-  //           })
-  //         : Object.keys(pokemon2).length === 0
-  //         ? setPokemon2({
-  //             name: pokemon,
-  //             species: response.data.species.name,
-  //             img: response.data.sprites.front_default,
-  //             hp: response.data.stats[0].base_stat,
-  //             key: pokemon,
-  //             ability: response.data.abilities[0].ability.name,
-  //           })
-  //         : Object.keys(pokemon3).length === 0
-  //         ? setPokemon3({
-  //             name: pokemon,
-  //             species: response.data.species.name,
-  //             img: response.data.sprites.front_default,
-  //             hp: response.data.stats[0].base_stat,
-  //             key: pokemon,
-  //             ability: response.data.abilities[0].ability.name,
-  //           })
-  //         : Object.keys(pokemon4).length === 0
-  //         ? setPokemon4({
-  //             name: pokemon,
-  //             species: response.data.species.name,
-  //             img: response.data.sprites.front_default,
-  //             hp: response.data.stats[0].base_stat,
-  //             key: pokemon,
-  //             ability: response.data.abilities[0].ability.name,
-  //           })
-  //         : Object.keys(pokemon5).length === 0
-  //         ? setPokemon5({
-  //             name: pokemon,
-  //             species: response.data.species.name,
-  //             img: response.data.sprites.front_default,
-  //             hp: response.data.stats[0].base_stat,
-  //             key: pokemon,
-  //             ability: response.data.abilities[0].ability.name,
-  //           })
-  //         : Object.keys(pokemon6).length === 0
-  //         ? setPokemon6({
-  //             name: pokemon,
-  //             species: response.data.species.name,
-  //             img: response.data.sprites.front_default,
-  //             hp: response.data.stats[0].base_stat,
-  //             key: pokemon,
-  //             ability: response.data.abilities[0].ability.name,
-  //           })
-  //         : null;
-  //     }
-  //   );
-  // }
-
-  // const nodeRef = useRef(1); // to get around strictMode
-  // const nodeRef2 = useRef(2);
-  // const nodeRef3 = useRef(3);
-  // const nodeRef4 = useRef(3);
-  // const nodeRef5 = useRef(3);
-  // const nodeRef6 = useRef(3);
-
-  // beginning of card booklet functionality
   const [slot1, setSlot1] = useState([]);
   const [slot2, setSlot2] = useState([]);
   const [slot3, setSlot3] = useState([]);
@@ -244,83 +152,7 @@ export default function GetPokemon() {
   }
 
   return (
-    <div className="iphone__screen mt-6">
-      <CardRender />
-        {/* more lost functionality below */}
-        {/* {limitReached && Object.keys(pokemon6).length !== 0
-          ? setTimeout(() => setLimitReached(!limitReached), 3000) && (
-              <div className="animate-bounce pt-4 text-xs">
-                Pokemon Limit Reached!
-              </div>
-            )
-          : null} */}
-        {/* <div className="flex justify-center">
-          {
-            <Draggable nodeRef={nodeRef}>
-              <span ref={nodeRef} className="cursor-pointer">
-                <TransformComponent>
-                  <img src={pokemon1.img} />
-                </TransformComponent>
-              </span>
-            </Draggable>
-          }
-        </div>
-        <div className="flex justify-center">
-          {
-            <Draggable nodeRef={nodeRef2}>
-              <span ref={nodeRef2} className="cursor-pointer ">
-                <TransformComponent>
-                  <img src={pokemon2.img} />
-                </TransformComponent>
-              </span>
-            </Draggable>
-          }
-        </div>
-        <div className="flex justify-center">
-          {
-            <Draggable nodeRef={nodeRef3}>
-              <span ref={nodeRef3} className="cursor-pointer ">
-                <TransformComponent>
-                  <img src={pokemon3.img} />
-                </TransformComponent>
-              </span>
-            </Draggable>
-          }
-          <div className="flex justify-center">
-            {
-              <Draggable nodeRef={nodeRef4}>
-                <span ref={nodeRef4} className="cursor-pointer">
-                  <TransformComponent>
-                    <img src={pokemon4.img} />
-                  </TransformComponent>
-                </span>
-              </Draggable>
-            }
-          </div>
-          <div className="flex justify-center">
-            {
-              <Draggable nodeRef={nodeRef5}>
-                <span ref={nodeRef5} className="cursor-pointer">
-                  <TransformComponent>
-                    <img src={pokemon5.img} />
-                  </TransformComponent>
-                </span>
-              </Draggable>
-            }
-          </div>
-          <div className="flex justify-center">
-            {
-              <Draggable nodeRef={nodeRef6}>
-                <span ref={nodeRef6} className="cursor-pointer">
-                  <TransformComponent>
-                    <img src={pokemon6.img} />
-                  </TransformComponent>
-                </span>
-              </Draggable>
-            }
-          </div>
-        </div> */}
-    
+          <>
           <div className="card__book">
             <div className="card__slot" ref={drop}>
               <DraggablePictureTwo src={slot1} key={Math.random()} />
@@ -340,9 +172,9 @@ export default function GetPokemon() {
             <div className="card__slot" ref={drop6}>
               <DraggablePictureTwo src={slot6} key={Math.random()} />
             </div>
-          </div>
+            </div>
           <div className="trash__can bg-slate-600 w-120 h-20 mb-6 rounded-lg flex text-center justify-center pt-5 text-sm mt-2" ref={dropTrash}>drag & drop cards to delete</div>
-        </div>
+          </>
 
   );
 }
