@@ -183,12 +183,6 @@ export default function CardRender() {
     slotSix.current[0] === src[0] ? setSlot6([]) : null;
   }
 
-  const [isShown, setIsShown] = useState(false);
-
-  const handleClick = (event) => {
-    setIsShown((current) => !current);
-  };
-
   return (
     <div className="iphone__screen mt-6">
     <div className="float-left">
@@ -204,18 +198,10 @@ export default function CardRender() {
               placeholder="search"
               type="text"
               value={poke}
-              // onKeyDown={handleKeypress}
               onChange={(event) => {
                 setPoke(event.target.value.toLocaleLowerCase());
               }}
             />
-            {/* <button
-              className="p-3 bg-orange-300 rounded-md text-xs w-40 h-14"
-              type="submit"
-              onClick={handleSubmit}
-            >
-              Add Pokemon!
-            </button> */}
           </form>
         </div>
         <button
@@ -319,12 +305,6 @@ export default function CardRender() {
               />
             </div>
           </>
-          {/* {card[0].map((res) => (
-              <>
-              <div className="flex mt-2 card">
-            <DraggablePicture src={res.images.small} key={res.id} />
-            </div>
-            </>))}</Carousel> */}
         </Carousel>
       )}
       <div className="card__book">
@@ -354,13 +334,6 @@ export default function CardRender() {
         drag & drop cards to delete
       </div>
       <div className="card__display">
-        {/* {card.length === 0 ? (
-          <div></div>
-        ) : (
-          card[0].map((res) => (
-            <DraggablePicture src={res.images.small} key={res.id} />
-          ))
-        )} */}
       </div>
     </div>
     </div>
