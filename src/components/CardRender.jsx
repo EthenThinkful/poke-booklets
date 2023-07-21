@@ -30,6 +30,7 @@ export default function CardRender() {
       setCard([result.data]);
       setCss(!css);
       console.log(card[0][0].images.small);
+      console.log(card[0].slice(0, 3).length);
     });
   }
 
@@ -257,17 +258,139 @@ export default function CardRender() {
           useKeyboardArrows
         >
           <>
-          
             <div className="flex mt-2 mb-2">
-              <DraggablePicture
+            {card[0].slice(0, 3).length < 1 ? null : card[0].slice(0, 3).map((item) => (
+              <img
+              className="carousel__card"
+                src={item.images.small}
+                key={item.id}
+              />
+              ))}
+            </div>
+          </>
+          <>
+            <div className="flex mt-2 mb-2">
+            {card[0].slice(3, 6).length < 1 ? null : card[0].slice(3, 6).map((item) => (
+              <img
+              className="carousel__card"
+                src={item.images.small}
+                key={item.id}
+              />
+              ))}
+            </div>
+          </>
+          <>
+            <div className="flex mt-2 mb-2">
+            {card[0].slice(6, 9).length < 1 ? null : card[0].slice(6, 9).map((item) => (
+              <img
+              className="carousel__card"
+                src={item.images.small}
+                key={item.id}
+              />
+              ))}
+            </div>
+          </>
+          <>
+            <div className="flex mt-2 mb-2">
+            {card[0].slice(9, 12).length < 1 ? null : card[0].slice(9, 12).map((item) => (
+              <img
+              className="carousel__card"
+                src={item.images.small}
+                key={item.id}
+              />
+              ))}
+            </div>
+          </>
+          <>
+            <div className="flex mt-2 mb-2">
+            {card[0].slice(12, 15).length < 1 ? null : card[0].slice(12, 15).map((item) => (
+              <img
+              className="carousel__card"
+                src={item.images.small}
+                key={item.id}
+              />
+              ))}
+            </div>
+          </>
+          <>
+            <div className="flex mt-2 mb-2">
+            {card[0].slice(15, 18).length < 1 ? null : card[0].slice(15, 18).map((item) => (
+              <img
+              className="carousel__card"
+                src={item.images.small}
+                key={item.id}
+              />
+              ))}
+            </div>
+          </>
+          <>
+            <div className="flex mt-2 mb-2">
+            {card[0].slice(18, 21).length < 1 ? null : card[0].slice(18, 21).map((item) => (
+              <img
+              className="carousel__card"
+                src={item.images.small}
+                key={item.id}
+              />
+              ))}
+            </div>
+          </>
+          <>
+            <div className="flex mt-2 mb-2">
+            {card[0].slice(21, 24).length < 1 ? null : card[0].slice(21, 24).map((item) => (
+              <img
+              className="carousel__card"
+                src={item.images.small}
+                key={item.id}
+              />
+              ))}
+            </div>
+          </>
+          <>
+            <div className="flex mt-2 mb-2">
+            {card[0].slice(24, 27).length < 1 ? null : card[0].slice(24, 27).map((item) => (
+              <img
+              className="carousel__card"
+                src={item.images.small}
+                key={item.id}
+              />
+              ))}
+            </div>
+          </>
+          <>
+            <div className="flex mt-2 mb-2">
+            {card[0].slice(27, 31).length < 1 ? null : card[0].slice(27, 31).map((item) => (
+              <img
+              className="carousel__card"
+                src={item.images.small}
+                key={item.id}
+              />
+              ))}
+            </div>
+          </>
+          <>
+            <div className="flex mt-2 mb-2">
+            {card[0].slice(31, 34).length < 1 ? null : card[0].slice(31, 34).map((item) => (
+              <img
+              className="carousel__card"
+                src={item.images.small}
+                key={item.id}
+              />
+              ))}
+            </div>
+          </>
+            {/* <div className="flex mt-2 mb-2">
+              <img
+              className="carousel__card"
                 src={card[0][0].images.small}
                 key={card[0][0].id}
               />
-              <DraggablePicture
+              <img
+              className="carousel__card"
                 src={card[0][1].images.small}
                 key={card[0][1].id}
               />
-              <DraggablePicture
+              <img
+              className="carousel__card"
                 src={card[0][2].images.small}
                 key={card[0][2].id}
               />
@@ -275,15 +398,18 @@ export default function CardRender() {
           </>
           <>
             <div className="flex mt-2 mb-2 ">
-              <DraggablePicture
+              <img
+              className="carousel__card"
                 src={card[0][3].images.small}
                 key={card[0][3].id}
               />
-              <DraggablePicture
+              <img
+              className="carousel__card"
                 src={card[0][4].images.small}
                 key={card[0][4].id}
               />
-              <DraggablePicture
+              <img
+              className="carousel__card"
                 src={card[0][5].images.small}
                 key={card[0][5].id}
               />
@@ -291,20 +417,23 @@ export default function CardRender() {
           </>
           <>
             <div className="flex mt-2 mb-2 ">
-              <DraggablePicture
+              <img
+              className="carousel__card"
                 src={card[0][6].images.small}
                 key={card[0][6].id}
               />
-              <DraggablePicture
+              <img
+              className="carousel__card"
                 src={card[0][7].images.small}
                 key={card[0][7].id}
               />
-              <DraggablePicture
+              <img
+                className="carousel__card"
                 src={card[0][8].images.small}
                 key={card[0][8].id}
               />
             </div>
-          </>
+          </> */}
         </Carousel>
       )}
       <div className="card__book">
