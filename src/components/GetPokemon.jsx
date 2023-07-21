@@ -147,34 +147,38 @@ export default function GetPokemon() {
 
   const [isShown, setIsShown] = useState(false);
 
-  const handleClick = event => {
-    setIsShown(current => !current);
-  }
+  const handleClick = (event) => {
+    setIsShown((current) => !current);
+  };
 
   return (
-          <>
-          <div className="card__book">
-            <div className="card__slot" ref={drop}>
-              <DraggablePictureTwo src={slot1} key={Math.random()} />
-            </div>
-            <div className="card__slot" ref={drop2}>
-              <DraggablePictureTwo src={slot2} key={Math.random()} />
-            </div>
-            <div className="card__slot" ref={drop3}>
-              <DraggablePictureTwo src={slot3} key={Math.random()} />
-            </div>
-            <div className="card__slot" ref={drop4}>
-              <DraggablePictureTwo src={slot4} key={Math.random()} />
-            </div>
-            <div className="card__slot" ref={drop5}>
-              <DraggablePictureTwo src={slot5} key={Math.random()} />
-            </div>
-            <div className="card__slot" ref={drop6}>
-              <DraggablePictureTwo src={slot6} key={Math.random()} />
-            </div>
-            </div>
-          <div className="trash__can bg-slate-600 w-120 h-20 mb-6 rounded-lg flex text-center justify-center pt-5 text-sm mt-2" ref={dropTrash}>drag & drop cards to delete</div>
-          </>
-
+    <>
+      <div className="card__book">
+        <div className="card__slot" ref={drop}>
+          <DraggablePictureTwo src={slot1} key={Math.random()} />
+        </div>
+        <div className="card__slot" ref={drop2}>
+          <DraggablePictureTwo src={slot2} key={Math.random()} />
+        </div>
+        <div className="card__slot" ref={drop3}>
+          <DraggablePictureTwo src={slot3} key={Math.random()} />
+        </div>
+        <div className="card__slot" ref={drop4}>
+          <DraggablePictureTwo src={slot4} key={Math.random()} />
+        </div>
+        <div className="card__slot" ref={drop5}>
+          <DraggablePictureTwo src={slot5} key={Math.random()} />
+        </div>
+        <div className="card__slot" ref={drop6}>
+          <DraggablePictureTwo src={slot6} key={Math.random()} />
+        </div>
+      </div>
+      <div
+        className="trash__can bg-slate-600 w-120 h-20 mb-6 rounded-lg flex text-center justify-center pt-5 text-sm mt-2"
+        ref={dropTrash}
+      >
+        drag & drop cards to delete
+      </div>
+    </>
   );
 }
