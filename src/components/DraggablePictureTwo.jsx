@@ -10,7 +10,7 @@ function DraggablePictureTwo({ src, id }) {
     }),
   }));
   return (
-    <>
+    <div>
     <img
       ref={drag}
       src={src}
@@ -18,7 +18,7 @@ function DraggablePictureTwo({ src, id }) {
       className="card zoom rounded-xl"
       style={{ border: isDragging ? "5px solid red" : "0px" }}
     />
-    </>
+    </div>
   );
 }
 

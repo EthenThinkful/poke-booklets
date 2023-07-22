@@ -51,13 +51,11 @@ export default function CardRender() {
 
   useEffect(() => {
     bookRef.current = book;
+    console.log(book);
   }, [book])
 
   function handleRemoveItem (src) {
-    console.log(src)
-    console.log(book.indexOf(src))
-    console.log(book)
-    setBook(book => [...book, book.splice(book.indexOf(src), 1)]);
+    setBook((current) => current.filter((img) => img.src !== src));
   }
 
   const [{ isOverTrash }, dropTrash] = useDrop(() => ({
@@ -158,21 +156,21 @@ export default function CardRender() {
                                 115,
                                 document.querySelector('.btn').closest('div').innerHTML
                                   .length - 2
-                              ).charCodeAt[0] === 72 ? document
+                              ).charCodeAt[0] === 72 ? {src: document
                               .querySelector('.btn')
                               .closest('div')
                               .innerHTML.substring(
                                 115,
                                 document.querySelector('.btn').closest('div').innerHTML
                                   .length - 2
-                              ).slice(2) : document
+                              ).slice(2), id: 1} : {src: document
                               .querySelector('.btn')
                               .closest('div')
                               .innerHTML.substring(
                                 115,
                                 document.querySelector('.btn').closest('div').innerHTML
                                   .length - 2
-                              )]  
+                              ), id: 1}]  
                           )
                         }
                       >
@@ -199,21 +197,21 @@ export default function CardRender() {
                                 115,
                                 document.querySelector('.jewel').closest('div').innerHTML
                                   .length - 2
-                              ).charCodeAt[0] !== 72 ? document
+                              ).charCodeAt[0] !== 72 ? {src: document
                               .querySelector('.jewel')
                               .closest('div')
                               .innerHTML.substring(
                                 115,
                                 document.querySelector('.jewel').closest('div').innerHTML
                                   .length - 2
-                              ).slice(2) : document
+                              ).slice(2), id: 2} : {src: document
                               .querySelector('.jewel')
                               .closest('div')
                               .innerHTML.substring(
                                 115,
                                 document.querySelector('.jewel').closest('div').innerHTML
                                   .length - 2
-                              )]  
+                              ), id: 2}]  
                           )
                         }
                       >
@@ -271,22 +269,22 @@ export default function CardRender() {
         )}
         <div className="card__book">
             <div className="card__slot">
-            <DraggablePictureTwo src={book[0]} key={Math.random()} />
+            <DraggablePictureTwo src={book.length > 0 ? book[0].src : null} key={book.length > 0 ? book[0].id : null} />
           </div>
           <div className="card__slot" >
-            <DraggablePictureTwo src={book[1]} key={Math.random()} />
+            <DraggablePictureTwo src={book.length > 1 ? book[1].src : null} key={book.length > 1 ? book[1].id : null} />
           </div>
           <div className="card__slot" >
-            <DraggablePictureTwo src={book[2]} key={Math.random()} />
+            <DraggablePictureTwo src={book.length > 2 ? book[2].src : null} key={book.length > 2 ? book[2].id : null} />
           </div>
           <div className="card__slot">
-            <DraggablePictureTwo src={book[3]} key={Math.random()} />
+            <DraggablePictureTwo src={book.length > 3 ? book[3].src : null} key={book.length > 3 ? book[3].id : null} />
           </div>
           <div className="card__slot" >
-            <DraggablePictureTwo src={book[4]} key={Math.random()} />
+            <DraggablePictureTwo src={book.length > 4 ? book[4].src : null} key={book.length > 4 ? book[4].id : null} />
           </div>
           <div className="card__slot" >
-            <DraggablePictureTwo src={book[5]} key={Math.random()} />
+            <DraggablePictureTwo src={book.length > 5 ? book[5].src : null} key={book.length > 5 ? book[5].id : null} />
           </div>
         </div>
         <div
