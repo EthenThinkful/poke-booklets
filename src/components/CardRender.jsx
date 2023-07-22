@@ -30,7 +30,7 @@ export default function CardRender() {
       setCard([result.data]);
       setCss(!css);
       console.log(card[0][0].images.small);
-      console.log(card[0].slice(0, 3).length);
+      console.log(card[0].slice(0, 1)[0].images.small);
     });
   }
 
@@ -79,7 +79,6 @@ export default function CardRender() {
       isOver: !!monitor.isOver(),
     }),
   }));
-
   const addCardToSlot2 = (src) => {
     const picture = src;
     setSlot2([...slot2, picture]);
@@ -169,14 +168,14 @@ export default function CardRender() {
 
   const [{ isOverTrash }, dropTrash] = useDrop(() => ({
     accept: "image",
-    drop: (item) => trashCan(item.src),
+    drop: (item) => trashCan(item),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
   }));
 
   function trashCan(src) {
-    slotOne.current[0] === src[0] ? setSlot1([]) : null;
+    book[0] === src ? setBook[0](null) : null;
     slotTwo.current[0] === src[0] ? setSlot2([]) : null;
     slotThree.current[0] === src[0] ? setSlot3([]) : null;
     slotFour.current[0] === src[0] ? setSlot4([]) : null;
@@ -184,287 +183,249 @@ export default function CardRender() {
     slotSix.current[0] === src[0] ? setSlot6([]) : null;
   }
 
+  const [book, setBook] = useState([]);
+
+  useEffect(() => {
+    console.log(book)
+    let sentence = 'h am the man'
+    console.log(sentence.charAt[0])
+  }, [book])
+
+  function logCard() {
+    let subSrc = el.substring(34);
+    subSrc = subSrc.substring(0, subSrc.length - 2);
+    console.log(subSrc);
+  }
+
   return (
     <div className="iphone__screen mt-6">
-    <div className="float-left">
-      <div className="flex">
-        <div>
-          <form className="flex">
-            <input
-              className={
-                css
-                  ? "p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4 mb-2"
-                  : "p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4"
-              }
-              placeholder="search"
-              type="text"
-              value={poke}
-              onChange={(event) => {
-                setPoke(event.target.value.toLocaleLowerCase());
-              }}
-            />
-          </form>
+      <div className="float-left">
+        <div className="flex">
+          <div>
+            <form className="flex">
+              <input
+                className={
+                  css
+                    ? "p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4 mb-2"
+                    : "p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4"
+                }
+                placeholder="search"
+                type="text"
+                value={poke}
+                onChange={(event) => {
+                  setPoke(event.target.value.toLocaleLowerCase());
+                }}
+              />
+            </form>
+          </div>
+          <button
+            onClick={handleSubmit}
+            type="submit"
+            className="p-3 bg-orange-300 rounded-md text-xs w-40 h-14 mr-4"
+          >
+            get card
+          </button>
+          <button
+            onClick={handleDelete}
+            type="submit"
+            className="p-3 bg-orange-300 rounded-md text-xs w-40 h-14 mr-4"
+          >
+            clear
+          </button>
         </div>
-        <button
-          onClick={handleSubmit}
-          type="submit"
-          className="p-3 bg-orange-300 rounded-md text-xs w-40 h-14 mr-4"
+        <div
+          className={
+            pokeRef === ""
+              ? "drop__down text-xs mb-2 text-zinc-700"
+              : "drop__down text-xs mb-0 mt-4 text-zinc-700"
+          }
         >
-          get card
-        </button>
-        <button
-          onClick={handleDelete}
-          type="submit"
-          className="p-3 bg-orange-300 rounded-md text-xs w-40 h-14 mr-4"
+          {pokeNames
+            .filter((item) => {
+              const searchTerm = poke.toLocaleLowerCase();
+              const fullName = item.toLocaleLowerCase();
+              return (
+                searchTerm &&
+                fullName.startsWith(searchTerm) &&
+                fullName !== searchTerm
+              );
+            })
+            .slice(0, 6)
+            .map((item) => (
+              <div
+                onClick={() => setPoke(item.toLocaleLowerCase())}
+                key={item}
+                className="cursor-pointer p-2"
+              >
+                {item}
+              </div>
+            ))}
+        </div>
+        {card.length === 0 ? (
+          <div></div>
+        ) : (
+          <Carousel
+            autoFocus={true}
+            showThumbs={false}
+            showStatus={false}
+            useKeyboardArrows
+          >
+            {card[0].length > 0 ? (
+              <>
+                <div className="flex mt-2 mb-2">
+                  {card[0].slice(0, 1).map((item) => (
+                    <div key={Math.floor(Math.random() * 10)}>
+                      <button
+                        className="btn w-16 h-8 bg-slate-600 rounded-xl text-center"
+                        id={Math.floor(Math.random() * 10)}
+                        onClick={() =>
+                          setBook(book =>
+                            [...book, document
+                              .querySelector('.btn')
+                              .closest('div')
+                              .innerHTML.substring(
+                                115,
+                                document.querySelector('.btn').closest('div').innerHTML
+                                  .length - 2
+                              ).charCodeAt[0] === 72 ? document
+                              .querySelector('.btn')
+                              .closest('div')
+                              .innerHTML.substring(
+                                115,
+                                document.querySelector('.btn').closest('div').innerHTML
+                                  .length - 2
+                              ).slice(2) : document
+                              .querySelector('.btn')
+                              .closest('div')
+                              .innerHTML.substring(
+                                115,
+                                document.querySelector('.btn').closest('div').innerHTML
+                                  .length - 2
+                              )]  
+                          )
+                        }
+                      >
+                        +
+                        </button>
+                        <img
+                          className="carousel__card"
+                          src={item.images.small}
+                          key={Math.floor(Math.random() * 10)}
+                        />
+                    </div>
+                  ))}
+                  {card[0].slice(1, 2).map((item) => (
+                    <div key={Math.floor(Math.random() * 10)}>
+                      <button
+                        className="jewel w-16 h-8 bg-slate-600 rounded-xl text-center"
+                        id={Math.floor(Math.random() * 10)}
+                        onClick={() =>
+                          setBook(book =>
+                            [...book, document
+                              .querySelector('.jewel')
+                              .closest('div')
+                              .innerHTML.substring(
+                                115,
+                                document.querySelector('.jewel').closest('div').innerHTML
+                                  .length - 2
+                              ).charCodeAt[0] !== 72 ? document
+                              .querySelector('.jewel')
+                              .closest('div')
+                              .innerHTML.substring(
+                                115,
+                                document.querySelector('.jewel').closest('div').innerHTML
+                                  .length - 2
+                              ).slice(2) : document
+                              .querySelector('.jewel')
+                              .closest('div')
+                              .innerHTML.substring(
+                                115,
+                                document.querySelector('.jewel').closest('div').innerHTML
+                                  .length - 2
+                              )]  
+                          )
+                        }
+                      >
+                        +
+                        </button>
+                        <img
+                          className="carousel__card"
+                          src={item.images.small}
+                          key={Math.floor(Math.random() * 10)}
+                        />
+                    </div>
+                  ))}
+                </div>
+              </>
+            ) : null}
+            {card[0].length > 2 ? (
+              <>
+                <div className="flex mt-2 mb-2">
+                  {card[0].slice(2, 4).map((item) => (
+                    <>
+                      <button className="w-16 h-8 bg-slate-600 rounded-xl text-center">
+                        +
+                      </button>
+                      <img
+                        className="carousel__card"
+                        src={item.images.small}
+                        key={item.id}
+                        id={item.id}
+                      />
+                    </>
+                  ))}
+                </div>
+              </>
+            ) : null}
+            {card[0].length > 4 ? (
+              <>
+                <div className="flex mt-2 mb-2">
+                  {card[0].slice(4, 6).map((item) => (
+                    <>
+                      <button className="w-16 h-8 bg-slate-600 rounded-xl text-center">
+                        +
+                      </button>
+                      <img
+                        className="carousel__card"
+                        src={item.images.small}
+                        key={item.id}
+                        id={item.id}
+                      />
+                    </>
+                  ))}
+                </div>
+              </>
+            ) : null}
+          </Carousel>
+        )}
+        <div className="card__book">
+            <div className="card__slot" ref={drop}>
+            <DraggablePictureTwo src={book[0]} key={Math.random()} />
+          </div>
+          <div className="card__slot" >
+            <DraggablePictureTwo src={book[1]} key={Math.random()} />
+          </div>
+          <div className="card__slot" >
+            <DraggablePictureTwo src={book[2]} key={Math.random()} />
+          </div>
+          <div className="card__slot">
+            <DraggablePictureTwo src={book[3]} key={Math.random()} />
+          </div>
+          <div className="card__slot" >
+            <DraggablePictureTwo src={book[4]} key={Math.random()} />
+          </div>
+          <div className="card__slot" >
+            <DraggablePictureTwo src={book[5]} key={Math.random()} />
+          </div>
+        </div>
+        <div
+          className="trash__can bg-slate-600 w-120 h-20 mb-6 rounded-lg flex text-center justify-center pt-8 text-xs lg:text-sm mt-2"
+          ref={dropTrash}
         >
-          clear
-        </button>
+          drag & drop cards to delete
+        </div>
+        <div className="card__display"></div>
       </div>
-      <div
-        className={
-          pokeRef === ""
-            ? "drop__down text-xs mb-2 text-zinc-700"
-            : "drop__down text-xs mb-0 mt-4 text-zinc-700"
-        }
-      >
-        {pokeNames
-          .filter((item) => {
-            const searchTerm = poke.toLocaleLowerCase();
-            const fullName = item.toLocaleLowerCase();
-            return (
-              searchTerm &&
-              fullName.startsWith(searchTerm) &&
-              fullName !== searchTerm
-            );
-          })
-          .slice(0, 6)
-          .map((item) => (
-            <div
-              onClick={() => setPoke(item.toLocaleLowerCase())}
-              key={item}
-              className="cursor-pointer p-2"
-            >
-              {item}
-            </div>
-          ))}
-      </div>
-      {card.length === 0 ? (
-        <div></div>
-      ) : (
-        <Carousel
-          autoFocus={true}
-          showThumbs={false}
-          showStatus={false}
-          useKeyboardArrows
-        >
-          <>
-            <div className="flex mt-2 mb-2">
-            {card[0].slice(0, 3).length < 1 ? null : card[0].slice(0, 3).map((item) => (
-              <img
-              className="carousel__card"
-                src={item.images.small}
-                key={item.id}
-              />
-              ))}
-            </div>
-          </>
-          <>
-            <div className="flex mt-2 mb-2">
-            {card[0].slice(3, 6).length < 1 ? null : card[0].slice(3, 6).map((item) => (
-              <img
-              className="carousel__card"
-                src={item.images.small}
-                key={item.id}
-              />
-              ))}
-            </div>
-          </>
-          <>
-            <div className="flex mt-2 mb-2">
-            {card[0].slice(6, 9).length < 1 ? null : card[0].slice(6, 9).map((item) => (
-              <img
-              className="carousel__card"
-                src={item.images.small}
-                key={item.id}
-              />
-              ))}
-            </div>
-          </>
-          <>
-            <div className="flex mt-2 mb-2">
-            {card[0].slice(9, 12).length < 1 ? null : card[0].slice(9, 12).map((item) => (
-              <img
-              className="carousel__card"
-                src={item.images.small}
-                key={item.id}
-              />
-              ))}
-            </div>
-          </>
-          <>
-            <div className="flex mt-2 mb-2">
-            {card[0].slice(12, 15).length < 1 ? null : card[0].slice(12, 15).map((item) => (
-              <img
-              className="carousel__card"
-                src={item.images.small}
-                key={item.id}
-              />
-              ))}
-            </div>
-          </>
-          <>
-            <div className="flex mt-2 mb-2">
-            {card[0].slice(15, 18).length < 1 ? null : card[0].slice(15, 18).map((item) => (
-              <img
-              className="carousel__card"
-                src={item.images.small}
-                key={item.id}
-              />
-              ))}
-            </div>
-          </>
-          <>
-            <div className="flex mt-2 mb-2">
-            {card[0].slice(18, 21).length < 1 ? null : card[0].slice(18, 21).map((item) => (
-              <img
-              className="carousel__card"
-                src={item.images.small}
-                key={item.id}
-              />
-              ))}
-            </div>
-          </>
-          <>
-            <div className="flex mt-2 mb-2">
-            {card[0].slice(21, 24).length < 1 ? null : card[0].slice(21, 24).map((item) => (
-              <img
-              className="carousel__card"
-                src={item.images.small}
-                key={item.id}
-              />
-              ))}
-            </div>
-          </>
-          <>
-            <div className="flex mt-2 mb-2">
-            {card[0].slice(24, 27).length < 1 ? null : card[0].slice(24, 27).map((item) => (
-              <img
-              className="carousel__card"
-                src={item.images.small}
-                key={item.id}
-              />
-              ))}
-            </div>
-          </>
-          <>
-            <div className="flex mt-2 mb-2">
-            {card[0].slice(27, 31).length < 1 ? null : card[0].slice(27, 31).map((item) => (
-              <img
-              className="carousel__card"
-                src={item.images.small}
-                key={item.id}
-              />
-              ))}
-            </div>
-          </>
-          <>
-            <div className="flex mt-2 mb-2">
-            {card[0].slice(31, 34).length < 1 ? null : card[0].slice(31, 34).map((item) => (
-              <img
-              className="carousel__card"
-                src={item.images.small}
-                key={item.id}
-              />
-              ))}
-            </div>
-          </>
-            {/* <div className="flex mt-2 mb-2">
-              <img
-              className="carousel__card"
-                src={card[0][0].images.small}
-                key={card[0][0].id}
-              />
-              <img
-              className="carousel__card"
-                src={card[0][1].images.small}
-                key={card[0][1].id}
-              />
-              <img
-              className="carousel__card"
-                src={card[0][2].images.small}
-                key={card[0][2].id}
-              />
-            </div>
-          </>
-          <>
-            <div className="flex mt-2 mb-2 ">
-              <img
-              className="carousel__card"
-                src={card[0][3].images.small}
-                key={card[0][3].id}
-              />
-              <img
-              className="carousel__card"
-                src={card[0][4].images.small}
-                key={card[0][4].id}
-              />
-              <img
-              className="carousel__card"
-                src={card[0][5].images.small}
-                key={card[0][5].id}
-              />
-            </div>
-          </>
-          <>
-            <div className="flex mt-2 mb-2 ">
-              <img
-              className="carousel__card"
-                src={card[0][6].images.small}
-                key={card[0][6].id}
-              />
-              <img
-              className="carousel__card"
-                src={card[0][7].images.small}
-                key={card[0][7].id}
-              />
-              <img
-                className="carousel__card"
-                src={card[0][8].images.small}
-                key={card[0][8].id}
-              />
-            </div>
-          </> */}
-        </Carousel>
-      )}
-      <div className="card__book">
-        <div className="card__slot" ref={drop}>
-          <DraggablePictureTwo src={slot1} key={Math.random()} />
-        </div>
-        <div className="card__slot" ref={drop2}>
-          <DraggablePictureTwo src={slot2} key={Math.random()} />
-        </div>
-        <div className="card__slot" ref={drop3}>
-          <DraggablePictureTwo src={slot3} key={Math.random()} />
-        </div>
-        <div className="card__slot" ref={drop4}>
-          <DraggablePictureTwo src={slot4} key={Math.random()} />
-        </div>
-        <div className="card__slot" ref={drop5}>
-          <DraggablePictureTwo src={slot5} key={Math.random()} />
-        </div>
-        <div className="card__slot" ref={drop6}>
-          <DraggablePictureTwo src={slot6} key={Math.random()} />
-        </div>
-      </div>
-      <div
-        className="trash__can bg-slate-600 w-120 h-20 mb-6 rounded-lg flex text-center justify-center pt-8 text-xs lg:text-sm mt-2"
-        ref={dropTrash}
-      >
-        drag & drop cards to delete
-      </div>
-      <div className="card__display">
-      </div>
-    </div>
     </div>
   );
 }
