@@ -47,18 +47,22 @@ export default function CardRender() {
 
   //booklet
   const [book, setBook] = useState([]);
+  const bookRef = useRef([]);
 
-  const handleRemoveItem = src => {
-    setBook(book.filter(item => item.src !== src))
-  }
+  useEffect(() => {
+    bookRef.current = book;
+  }, [book])
 
-  function trashCan(item) {
-    handleRemoveItem(item.src);
+  function handleRemoveItem (src) {
+    console.log(src)
+    console.log(book.indexOf(src))
+    console.log(book)
+    setBook(book => [...book, book.splice(1, 1)]);
   }
 
   const [{ isOverTrash }, dropTrash] = useDrop(() => ({
     accept: "image",
-    drop: (item) => trashCan(item),
+    drop: (item) => handleRemoveItem(item.src),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
