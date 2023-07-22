@@ -29,8 +29,8 @@ export default function CardRender() {
     pokemon.card.where({ q: `name:${poke}` }).then((result) => {
       setCard([result.data]);
       setCss(!css);
-      console.log(card[0][0].images.small);
-      console.log(card[0].slice(0, 1)[0].images.small);
+      // console.log(card[0][0].images.small);
+      // console.log(card[0].slice(0, 1)[0].images.small);
     });
   }
 
@@ -46,125 +46,15 @@ export default function CardRender() {
   };
 
   //booklet
-  const [slot1, setSlot1] = useState([]);
-  const [slot2, setSlot2] = useState([]);
-  const [slot3, setSlot3] = useState([]);
-  const [slot4, setSlot4] = useState([]);
-  const [slot5, setSlot5] = useState([]);
-  const [slot6, setSlot6] = useState([]);
+  const [book, setBook] = useState([]);
 
-  const [{ isOver }, drop] = useDrop(() => ({
-    accept: "image",
-    drop: (item) => addCardToSlot1(item.src),
-    collect: (monitor) => ({
-      isOver: !!monitor.isOver(),
-    }),
-  }));
+  const handleRemoveItem = src => {
+    setBook(book.filter(item => item.src !== src))
+  }
 
-  const addCardToSlot1 = (src) => {
-    const picture = src;
-    setSlot1([...slot1, picture]);
-  };
-
-  const slotOne = useRef("");
-
-  useEffect(() => {
-    slotOne.current = slot1;
-  }, [slot1]);
-
-  const [{ isOver2 }, drop2] = useDrop(() => ({
-    accept: "image",
-    drop: (item) => addCardToSlot2(item.src),
-    collect: (monitor) => ({
-      isOver: !!monitor.isOver(),
-    }),
-  }));
-  const addCardToSlot2 = (src) => {
-    const picture = src;
-    setSlot2([...slot2, picture]);
-  };
-
-  const slotTwo = useRef("");
-
-  useEffect(() => {
-    slotTwo.current = slot2;
-  }, [slot2]);
-
-  const [{ isOver3 }, drop3] = useDrop(() => ({
-    accept: "image",
-    drop: (item) => addCardToSlot3(item.src),
-    collect: (monitor) => ({
-      isOver: !!monitor.isOver(),
-    }),
-  }));
-
-  const addCardToSlot3 = (src) => {
-    const picture = src;
-    setSlot3([...slot3, picture]);
-  };
-
-  const slotThree = useRef("");
-
-  useEffect(() => {
-    slotThree.current = slot3;
-  }, [slot3]);
-
-  const [{ isOver4 }, drop4] = useDrop(() => ({
-    accept: "image",
-    drop: (item) => addCardToSlot4(item.src),
-    collect: (monitor) => ({
-      isOver: !!monitor.isOver(),
-    }),
-  }));
-
-  const addCardToSlot4 = (src) => {
-    const picture = src;
-    setSlot4([...slot4, picture]);
-  };
-
-  const slotFour = useRef("");
-
-  useEffect(() => {
-    slotFour.current = slot4;
-  }, [slot4]);
-
-  const [{ isOver5 }, drop5] = useDrop(() => ({
-    accept: "image",
-    drop: (item) => addCardToSlot5(item.src),
-    collect: (monitor) => ({
-      isOver: !!monitor.isOver(),
-    }),
-  }));
-
-  const addCardToSlot5 = (src) => {
-    const picture = src;
-    setSlot5([...slot5, picture]);
-  };
-
-  const slotFive = useRef("");
-
-  useEffect(() => {
-    slotFive.current = slot5;
-  }, [slot5]);
-
-  const [{ isOver6 }, drop6] = useDrop(() => ({
-    accept: "image",
-    drop: (item) => addCardToSlot6(item.src),
-    collect: (monitor) => ({
-      isOver: !!monitor.isOver(),
-    }),
-  }));
-
-  const addCardToSlot6 = (src) => {
-    const picture = src;
-    setSlot6([...slot6, picture]);
-  };
-
-  const slotSix = useRef("");
-
-  useEffect(() => {
-    slotSix.current = slot6;
-  }, [slot6]);
+  function trashCan(item) {
+    handleRemoveItem(item.src);
+  }
 
   const [{ isOverTrash }, dropTrash] = useDrop(() => ({
     accept: "image",
@@ -173,29 +63,6 @@ export default function CardRender() {
       isOver: !!monitor.isOver(),
     }),
   }));
-
-  function trashCan(src) {
-    book[0] === src ? setBook[0](null) : null;
-    slotTwo.current[0] === src[0] ? setSlot2([]) : null;
-    slotThree.current[0] === src[0] ? setSlot3([]) : null;
-    slotFour.current[0] === src[0] ? setSlot4([]) : null;
-    slotFive.current[0] === src[0] ? setSlot5([]) : null;
-    slotSix.current[0] === src[0] ? setSlot6([]) : null;
-  }
-
-  const [book, setBook] = useState([]);
-
-  useEffect(() => {
-    console.log(book)
-    let sentence = 'h am the man'
-    console.log(sentence.charAt[0])
-  }, [book])
-
-  function logCard() {
-    let subSrc = el.substring(34);
-    subSrc = subSrc.substring(0, subSrc.length - 2);
-    console.log(subSrc);
-  }
 
   return (
     <div className="iphone__screen mt-6">
@@ -399,7 +266,7 @@ export default function CardRender() {
           </Carousel>
         )}
         <div className="card__book">
-            <div className="card__slot" ref={drop}>
+            <div className="card__slot">
             <DraggablePictureTwo src={book[0]} key={Math.random()} />
           </div>
           <div className="card__slot" >
