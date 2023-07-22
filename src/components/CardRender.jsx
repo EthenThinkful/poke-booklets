@@ -57,7 +57,7 @@ export default function CardRender() {
     console.log(src)
     console.log(book.indexOf(src))
     console.log(book)
-    setBook(book => [...book, book.splice(1, 1)]);
+    setBook(book => [...book, book.splice(book.indexOf(src), 1)]);
   }
 
   const [{ isOverTrash }, dropTrash] = useDrop(() => ({
