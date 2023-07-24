@@ -28,6 +28,7 @@ export default function CardRender() {
   function getCard() {
     pokemon.card.where({ q: `name:${poke}` }).then((result) => {
       setCard([result.data]);
+      card[0].map((item, index) => console.log('current card: ', item.images.small, 'current index: ', index));
       setCss(!css);
       // console.log(card[0][0].images.small);
       // console.log(card[0].slice(0, 1)[0].images.small);
@@ -51,7 +52,7 @@ export default function CardRender() {
 
   useEffect(() => {
     bookRef.current = book;
-    console.log(book);
+    // console.log(book);
   }, [book])
 
   function handleRemoveItem (src) {
@@ -142,14 +143,15 @@ export default function CardRender() {
             {card[0].length > 0 ? (
               <>
                 <div className="flex mt-2 mb-2">
-                  {card[0].slice(0, 1).map((item) => (
-                    <div key={Math.floor(Math.random() * 10)}>
+                  {card[0].slice(0, 2).map((item, index) => (console.log(index),
+                    <div key={index < 10 ? index : null}>
                       <button
-                        className="btn w-16 h-8 bg-slate-600 rounded-xl text-center"
-                        id={Math.floor(Math.random() * 10)}
+                        className={index === 0 ? "btn w-16 h-8 bg-slate-600 rounded-xl text-center" : "jewel w-16 h-8 bg-slate-600 rounded-xl text-center"}
+                        id={index < 10 ? index : null}
                         onClick={() =>
                           setBook(book =>
-                            [...book, document
+                            [...book, document.querySelector('.btn').closest('div').innerHTML.substring(15, document.querySelector('.btn').closest('div').innerHTML
+                            .length - 138).includes('btn') && document
                               .querySelector('.btn')
                               .closest('div')
                               .innerHTML.substring(
@@ -170,7 +172,30 @@ export default function CardRender() {
                                 115,
                                 document.querySelector('.btn').closest('div').innerHTML
                                   .length - 2
-                              ), id: 1}]  
+                              ), id: 1},console.log(document.querySelector('.jewel').closest('div').innerHTML.substring(15, document.querySelector('.jewel').closest('div').innerHTML
+                              .length - 138).includes('jewel')), document.querySelector('.jewel').closest('div').innerHTML.substring(15, document.querySelector('.jewel').closest('div').innerHTML
+                              .length - 138).includes('jewel') && document
+                              .querySelector('.jewel')
+                              .closest('div')
+                              .innerHTML.substring(
+                                115,
+                                document.querySelector('.jewel').closest('div').innerHTML
+                                  .length - 2
+                              ).charCodeAt[0] !== 72 ? {src: document
+                              .querySelector('.jewel')
+                              .closest('div')
+                              .innerHTML.substring(
+                                115,
+                                document.querySelector('.jewel').closest('div').innerHTML
+                                  .length - 2
+                              ).slice(2), id: 2} : {src: document
+                              .querySelector('.jewel')
+                              .closest('div')
+                              .innerHTML.substring(
+                                115,
+                                document.querySelector('.jewel').closest('div').innerHTML
+                                  .length - 2
+                              ), id: 2}]  
                           )
                         }
                       >
@@ -179,11 +204,13 @@ export default function CardRender() {
                         <img
                           className="carousel__card"
                           src={item.images.small}
-                          key={Math.floor(Math.random() * 10)}
+                          key={index < 10 ? index : null}
                         />
                     </div>
                   ))}
-                  {card[0].slice(1, 2).map((item) => (
+
+
+                  {/* {card[0].slice(1, 2).map((item) => (
                     <div key={Math.floor(Math.random() * 10)}>
                       <button
                         className="jewel w-16 h-8 bg-slate-600 rounded-xl text-center"
@@ -223,7 +250,7 @@ export default function CardRender() {
                           key={Math.floor(Math.random() * 10)}
                         />
                     </div>
-                  ))}
+                  ))} */}
                 </div>
               </>
             ) : null}
