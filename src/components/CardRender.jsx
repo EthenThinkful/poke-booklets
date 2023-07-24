@@ -262,22 +262,125 @@ export default function CardRender() {
                 </div>
               </>
             ) : null}
-            {card[0].length > 2 ? (
+            {card[0].length > 0 ? (
               <>
                 <div className="flex mt-2 mb-2">
-                  {card[0].slice(2, 4).map((item) => (
-                    <>
-                      <button className="w-16 h-8 bg-slate-600 rounded-xl text-center">
-                        +
-                      </button>
-                      <img
-                        className="carousel__card"
-                        src={item.images.small}
-                        key={item.id}
-                        id={item.id}
-                      />
-                    </>
-                  ))}
+                  {card[0].slice(2, 4).map(
+                    (item, index) => (
+                      (
+                        <div key={index < 10 ? index : null}>
+                          <button
+                            className={
+                              index === 0
+                                ? "btn w-16 h-8 bg-slate-600 rounded-xl text-center"
+                                : "jewel w-16 h-8 bg-slate-600 rounded-xl text-center"
+                            }
+                            id={index < 10 ? index : null}
+                            onClick={() => {
+                              if (document
+                                  .querySelector(".btn")
+                                  .closest("div")
+                                  .innerHTML.substring(
+                                    15,
+                                    document
+                                      .querySelector(".btn")
+                                      .closest("div").innerHTML.length - 138
+                                  )
+                                  .includes("btn")) {
+                              setBook((book) => [
+                                ...book,
+                                document
+                                  .querySelector(".btn")
+                                  .closest("div")
+                                  .innerHTML.substring(
+                                    115,
+                                    document
+                                      .querySelector(".btn")
+                                      .closest("div").innerHTML.length - 2
+                                  ).charCodeAt[0] === 72
+                                  ? {
+                                      src: document
+                                        .querySelector(".btn")
+                                        .closest("div")
+                                        .innerHTML.substring(
+                                          115,
+                                          document
+                                            .querySelector(".btn")
+                                            .closest("div").innerHTML.length - 2
+                                        )
+                                        .slice(2),
+                                      id: 1,
+                                    }
+                                  : {
+                                      src: document
+                                        .querySelector(".btn")
+                                        .closest("div")
+                                        .innerHTML.substring(
+                                          115,
+                                          document
+                                            .querySelector(".btn")
+                                            .closest("div").innerHTML.length - 2
+                                        ),
+                                      id: 1,
+                            }])} else if (document
+                              .querySelector(".jewel")
+                              .closest("div")
+                              .innerHTML.substring(
+                                15,
+                                document
+                                  .querySelector(".jewel")
+                                  .closest("div").innerHTML.length - 138
+                              )
+                              .includes("jewel")) { setBook((book) => [
+                                ...book,
+                                document
+                                  .querySelector(".jewel")
+                                  .closest("div")
+                                  .innerHTML.substring(
+                                    115,
+                                    document
+                                      .querySelector(".jewel")
+                                      .closest("div").innerHTML.length - 2
+                                  ).charCodeAt[0] !== 72
+                                  ? {
+                                      src: document
+                                        .querySelector(".jewel")
+                                        .closest("div")
+                                        .innerHTML.substring(
+                                          115,
+                                          document
+                                            .querySelector(".jewel")
+                                            .closest("div").innerHTML.length - 2
+                                        )
+                                        .slice(2),
+                                      id: 2,
+                                    }
+                                  : {
+                                      src: document
+                                        .querySelector(".jewel")
+                                        .closest("div")
+                                        .innerHTML.substring(
+                                          115,
+                                          document
+                                            .querySelector(".jewel")
+                                            .closest("div").innerHTML.length - 2
+                                        ),
+                                      id: 2,
+                                    },
+                              ])}
+                            }}
+                          >
+                            +
+                          </button>
+                          <img
+                            className="carousel__card"
+                            src={item.images.small}
+                            key={index < 10 ? index : null}
+                          />
+                        </div>
+                      )
+                    )
+                  )}
                 </div>
               </>
             ) : null}
