@@ -30,9 +30,6 @@ export default function CardRender() {
     pokemon.card.where({ q: `name:${poke}` }).then((result) => {
       setCard([result.data]);
       setCss(!css);
-      // card[0].map((item, index) => console.log('current card: ', item.images.small, 'current index: ', index));
-      // console.log(card[0][0].images.small);
-      // console.log(card[0].slice(0, 1)[0].images.small);
     });
   }
 
@@ -135,211 +132,26 @@ export default function CardRender() {
         {card.length === 0 ? (
           <div></div>
         ) : (
-          <Carousel
-            autoFocus={true}
-            showThumbs={false}
-            showStatus={false}
-            useKeyboardArrows
-          >
-            {card[0].length > 0 ? (
-              <>
-                {/* <RenderCarousel carouselImg={card[0]}/> */}
-                <div className="flex mt-2 mb-2">
-                  {card[0].slice(0, 2).map((item, index) => (
-                    <div key={index < 10 ? index : null}>
-                      <button
-                        className={
-                          "btn w-16 h-8 bg-slate-600 rounded-xl text-center"
-                        }
-                        id={index < 10 ? index : null}
-                        onClick={() => setBook(thing => [...thing, document.querySelector('.btn').innerHTML.slice(2)])}
-                      >
-                        + {item.images.small}
-                      </button>
-                      <img
-                        className="carousel__card"
-                        src={item.images.small}
-                        key={index < 10 ? index : null}
-                      />
-                    </div>
-                  ))}
-                </div>
-              </>
-            ) : null}
-            {/* {card[0].length > 0 ? (
-              <>
-                <div className="flex mt-2 mb-2">
-                  {card[0].slice(2, 4).map((item, index) => (
-                    <div key={index < 10 ? index : null}>
-                      <button
-                        className={
-                          index === 0
-                            ? "btn w-16 h-8 bg-slate-600 rounded-xl text-center"
-                            : "jewel w-16 h-8 bg-slate-600 rounded-xl text-center"
-                        }
-                        id={index < 10 ? index : null}
-                        onClick={() => {
-                          if (
-                            document
-                              .querySelector(".btn")
-                              .closest("div")
-                              .innerHTML.substring(
-                                15,
-                                document.querySelector(".btn").closest("div")
-                                  .innerHTML.length - 138
-                              )
-                              .includes("btn")
-                          ) {
-                            setBook((book) => [
-                              ...book,
-                              document
-                                .querySelector(".btn")
-                                .closest("div")
-                                .innerHTML.substring(
-                                  115,
-                                  document.querySelector(".btn").closest("div")
-                                    .innerHTML.length - 2
-                                ).charCodeAt[0] === 72
-                                ? {
-                                    src: document
-                                      .querySelector(".btn")
-                                      .closest("div")
-                                      .innerHTML.substring(
-                                        115,
-                                        document
-                                          .querySelector(".btn")
-                                          .closest("div").innerHTML.length - 2
-                                      )
-                                      .slice(2),
-                                    id: 1,
-                                  }
-                                : {
-                                    src: document
-                                      .querySelector(".btn")
-                                      .closest("div")
-                                      .innerHTML.substring(
-                                        115,
-                                        document
-                                          .querySelector(".btn")
-                                          .closest("div").innerHTML.length - 2
-                                      ),
-                                    id: 1,
-                                  },
-                            ]);
-                          } else if (
-                            document
-                              .querySelector(".jewel")
-                              .closest("div")
-                              .innerHTML.substring(
-                                15,
-                                document.querySelector(".jewel").closest("div")
-                                  .innerHTML.length - 138
-                              )
-                              .includes("jewel")
-                          ) {
-                            setBook((book) => [
-                              ...book,
-                              document
-                                .querySelector(".jewel")
-                                .closest("div")
-                                .innerHTML.substring(
-                                  115,
-                                  document
-                                    .querySelector(".jewel")
-                                    .closest("div").innerHTML.length - 2
-                                ).charCodeAt[0] !== 72
-                                ? {
-                                    src: document
-                                      .querySelector(".jewel")
-                                      .closest("div")
-                                      .innerHTML.substring(
-                                        115,
-                                        document
-                                          .querySelector(".jewel")
-                                          .closest("div").innerHTML.length - 2
-                                      )
-                                      .slice(2),
-                                    id: 2,
-                                  }
-                                : {
-                                    src: document
-                                      .querySelector(".jewel")
-                                      .closest("div")
-                                      .innerHTML.substring(
-                                        115,
-                                        document
-                                          .querySelector(".jewel")
-                                          .closest("div").innerHTML.length - 2
-                                      ),
-                                    id: 2,
-                                  },
-                            ]);
-                          }
-                        }}
-                      >
-                        +
-                      </button>
-                      <img
-                        className="carousel__card"
-                        src={item.images.small}
-                        key={index < 10 ? index : null}
-                      />
-                    </div>
-                  ))}
-                </div>
-              </>
-            ) : null}
-            {card[0].length > 4 ? (
-              <>
-                <div className="flex mt-2 mb-2">
-                  {card[0].slice(4, 6).map((item) => (
-                    <>
-                      <button className="w-16 h-8 bg-slate-600 rounded-xl text-center">
-                        +
-                      </button>
-                      <img
-                        className="carousel__card"
-                        src={item.images.small}
-                        key={item.id}
-                        id={item.id}
-                      />
-                    </>
-                  ))}
-                </div>
-              </>
-            ) : null} */}
-          </Carousel>
+            <RenderCarousel carouselImg={card[0]} setBook={setBook} />
         )}
         <div className="card__book">
           <div className="card__slot">
-            <DraggablePictureTwo
-              src={book.length > 0 ? book[0] : null}
-            />
+            <DraggablePictureTwo src={book.length > 0 ? book[0] : null} />
           </div>
           <div className="card__slot">
-            <DraggablePictureTwo
-              src={book.length > 1 ? book[1] : null}
-            />
+            <DraggablePictureTwo src={book.length > 1 ? book[1] : null} />
           </div>
           <div className="card__slot">
-            <DraggablePictureTwo
-              src={book.length > 2 ? book[2] : null}
-            />
+            <DraggablePictureTwo src={book.length > 2 ? book[2] : null} />
           </div>
           <div className="card__slot">
-            <DraggablePictureTwo
-              src={book.length > 3 ? book[3] : null}
-            />
+            <DraggablePictureTwo src={book.length > 3 ? book[3] : null} />
           </div>
           <div className="card__slot">
-            <DraggablePictureTwo
-              src={book.length > 4 ? book[4] : null}
-            />
+            <DraggablePictureTwo src={book.length > 4 ? book[4] : null} />
           </div>
           <div className="card__slot">
-            <DraggablePictureTwo
-              src={book.length > 5 ? book[5] : null}
-            />
+            <DraggablePictureTwo src={book.length > 5 ? book[5] : null} />
           </div>
         </div>
         <div
