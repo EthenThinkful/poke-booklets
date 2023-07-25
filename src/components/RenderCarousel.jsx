@@ -2,7 +2,7 @@ import { Carousel } from "react-responsive-carousel";
 
 export default function RenderCarousel({ carouselImg, setBook }) {
   let temp = [];
-
+  if (carouselImg.length > 0) 
   for (let i = 0; i < carouselImg.length; i += 2) {
     let twoPack = carouselImg.slice(i, i + 2);
     temp.push(
