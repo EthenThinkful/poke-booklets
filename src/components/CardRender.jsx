@@ -1,4 +1,5 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
+import {useDropzone} from 'react-dropzone'
 import pokemon from "pokemontcgsdk";
 import DraggablePicture from "./DraggablePicture";
 import DraggablePictureTwo from "./DraggablePictureTwo";
@@ -54,17 +55,23 @@ export default function CardRender() {
   }, [book]);
 
   function handleRemoveItem(src) {
-    setBook((current) => current.filter((img) => img !== src));
+    console.log(src);
+    setBook((current) => current.filter((x) => x !== src.src));
   }
 
-  const [{ isOverTrash }, dropTrash] = useDrop(() => ({
-    accept: "image",
-    drop: (item) => handleRemoveItem(item),
-    collect: (monitor) => ({
-      isOver: !!monitor.isOver(),
-    }),
-  }));
+  const onDrop = useCallback(acceptedFiles => {
+    // Do something with the files
+  }, [])
+  const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
 
+  // const [{ isOverTrash }, dropTrash] = useDrop(() => ({
+  //   accept: "image",
+  //   drop: (item) => handleRemoveItem(item), 
+  //   collect: (monitor) => ({
+  //     isOver: !!monitor.isOver(),
+  //   }),
+  // }));
+ 
   return (
     <div className="iphone__screen mt-6">
       <div className="float-left">
@@ -137,28 +144,28 @@ export default function CardRender() {
           : null
         )}
         <div className="card__book">
-          <div className="card__slot">
-            <DraggablePictureTwo src={book.length > 0 ? book[0] : null} />
+          <div className="card__slot" >
+            {/* <DraggablePictureTwo src={book[0]} /> */}
           </div>
           <div className="card__slot">
-            <DraggablePictureTwo src={book.length > 1 ? book[1] : null} />
+           
           </div>
           <div className="card__slot">
-            <DraggablePictureTwo src={book.length > 2 ? book[2] : null} />
+            
           </div>
           <div className="card__slot">
-            <DraggablePictureTwo src={book.length > 3 ? book[3] : null} />
+            
           </div>
           <div className="card__slot">
-            <DraggablePictureTwo src={book.length > 4 ? book[4] : null} />
+            
           </div>
           <div className="card__slot">
-            <DraggablePictureTwo src={book.length > 5 ? book[5] : null} />
+            
           </div>
         </div>
         <div
           className="trash__can bg-slate-600 w-120 h-20 mb-6 rounded-lg flex text-center justify-center pt-8 text-xs lg:text-sm mt-2"
-          ref={dropTrash}
+          // ref={dropTrash}
         >
           drag & drop cards to delete
         </div>
