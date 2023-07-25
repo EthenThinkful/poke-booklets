@@ -9,23 +9,26 @@ img {
   color: black;
 }
 
-.cardRender {
-  float: left;
-}
-
 .card {
   width: 150px;
   height: 209px;
-  /* margin: 0 1rem 0rem 1rem; */
+  border-radius: 6px;
 }
 
-.cardBook {
+.carousel__card {
+  width: 150px;
+  height: 209px;
+  border-radius: 6px;
+  padding: 0 5px;
+}
+
+.card__book {
   width: 37rem;
   height: 34rem;
   padding: 1rem;
   display: grid;
   grid-template-columns: auto auto auto;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   align-items: center;
   border-radius: 1rem;
   background-color: aquamarine;
@@ -35,7 +38,7 @@ img {
 .card__slot {
   width: 160px;
   height: 219px;
-  margin: 0 0rem 0rem 1rem;
+  margin: 0 .3rem;
   border-radius: .7rem;
   background-color: white;
   display: flex;
@@ -43,22 +46,12 @@ img {
   align-items: center;
 }
 
-.trash__can {
-  width: 107px;
-  height: 107px;
-  margin: 0 0rem 0rem 2rem;
-  border-radius: .3rem;
-}
-
-.trash__can__two {
-  display: none;
-}
-
-.cardDisplay {
+.card__display {
   display: grid;
   grid-template-columns: auto auto auto;
   row-gap: 15px;
   column-gap: 15px;
+  margin-bottom: 1rem;
 }
 
 .zoom {
@@ -69,17 +62,17 @@ img {
   transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
-.PokemonRender {
+.pokemon__render {
   float: right;
 }
 
-.dropDown {
+.drop__down {
   display: grid;
 }
 
-.cardPictures {
-  padding: 2rem;
-  margin: 2rem;
+.carouselPic {
+  width: 100px;
+  height: 130px;
 }
 
 @media screen and (max-width: 576px) {
@@ -88,68 +81,39 @@ img {
     height: 125px;
   }
 
-  .iphoneScreen {
+  .carousel__card {
+    width: 122.5px;
+    height: 171px;
+    padding: 0 5px;
+  }
+
+  .iphone__screen {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
 
-  .cardBook {
-    display: none;
-  }
-
-  .cardBookMobile {
+  .card__book {
     width: 22rem;
     height: 20rem;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  margin-bottom: 1rem;
-  padding-right: 1rem;
-  align-items: center;
   justify-content: center;
   border-radius: 1rem;
   background-color: aquamarine;
   }
 
-  .card__slot {
-    width: 100px;
-    height: 130px;
+  /* .card__slot {
+    width: 160px;
+    height: 219px;
     margin: 0 0rem 0rem 1rem;
     border-radius: .7rem;
     background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-
-  .trash__can {
-    display: none;
-  }
-
-  .trash__can__mobile {
-    width: 107px;
-  height: 107px;
-  margin: 0 0rem 1rem 0rem;
-  border-radius: .3rem;
-  }
-
-  .bookletTab {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 1rem;
-    background-color: aquamarine;
-  }
-
-  .button__view {
-    display: flex;
-  }
-  /* .cardRender {
-    float: none;
   } */
 
-  
+  .card__slot {
+    width: 100px;
+    height: 130px;
+  }
 }
-
-/* .App {
-  font-family: pokeFont;
-} */
 

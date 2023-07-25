@@ -20,6 +20,7 @@
     "react-dnd-multi-backend": "^8.0.1",
     "react-dom": "^18.2.0",
     "react-draggable": "^4.4.5",
+    "react-responsive-carousel": "^3.2.23",
     "react-zoom-pan-pinch": "^2.3.2",
     "styled-components": "^5.3.6"
   },
