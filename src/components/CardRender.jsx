@@ -132,7 +132,9 @@ export default function CardRender() {
         {card.length === 0 ? (
           <div></div>
         ) : (
+          card[0].length > 0 ?
             <RenderCarousel carouselImg={card[0]} setBook={setBook} />
+          : null
         )}
         <div className="card__book">
           <div className="card__slot">
