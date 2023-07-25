@@ -10,8 +10,6 @@ function App() {
   return (
       <DndProvider backend={MultiBackend} options={HTML5toTouch}>
       <div className="font-pokeFont">
-        {/* <PokeRender /> */}
-        {/* no way to render cards here because of prop passing */}
         <CardRender />
       </div>
       </DndProvider>
