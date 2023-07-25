@@ -5,6 +5,7 @@ export default function RenderCarousel({ carouselImg, setBook }) {
   if (carouselImg.length > 0) 
   for (let i = 0; i < carouselImg.length; i += 2) {
     let twoPack = carouselImg.slice(i, i + 2);
+    if (twoPack.length > 1) {
     temp.push(
       <div className="flex mt-2 mb-2">
         <div>
@@ -32,9 +33,10 @@ export default function RenderCarousel({ carouselImg, setBook }) {
       </div>
     );
   }
+}
 
   function renderImgs(val) {
-    console.log(val);
+    // console.log(val);
     return temp.map((item) => {
       return item;
     });

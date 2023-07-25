@@ -50,16 +50,16 @@ export default function CardRender() {
 
   useEffect(() => {
     bookRef.current = book;
-    console.log(book);
+    // console.log(book);
   }, [book]);
 
   function handleRemoveItem(src) {
-    setBook((current) => current.filter((img) => img.src !== src));
+    setBook((current) => current.filter((img) => img !== src));
   }
 
   const [{ isOverTrash }, dropTrash] = useDrop(() => ({
     accept: "image",
-    drop: (item) => handleRemoveItem(item.src),
+    drop: (item) => handleRemoveItem(item),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
