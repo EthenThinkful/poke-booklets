@@ -26,9 +26,9 @@ export default function CardRender() {
   const [card, setCard] = useState([]);
   const [css, setCss] = useState(false);
 
-  useEffect(() => {
-    console.log(card)
-  }, [card])
+  // useEffect(() => {
+  //   console.log(card)
+  // }, [card])
 
   let newArray = new Array();
 
@@ -37,9 +37,9 @@ export default function CardRender() {
     newArray.push({src: item.images.small, id: index})
   })
 
-  useEffect(() => {
-    console.log(newArray);
-  }, [newArray])
+  // useEffect(() => {
+  //   console.log(newArray);
+  // }, [newArray])
 
   function getCard() {
     pokemon.card.where({ q: `name:${poke}` }).then((result) => {

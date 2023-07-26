@@ -18,7 +18,6 @@ function DraggablePictureTwo({ src, id }) {
 
   return (
     <>
-    {console.log(id)}
       <img
       ref={drag}
       src={src}
