@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import pokemon from "pokemontcgsdk";
 import DraggablePicture from "./DraggablePicture";
 import DraggablePictureTwo from "./DraggablePictureTwo";
@@ -26,6 +26,21 @@ export default function CardRender() {
   const [card, setCard] = useState([]);
   const [css, setCss] = useState(false);
 
+  useEffect(() => {
+    console.log(card)
+  }, [card])
+
+  let newArray = new Array();
+
+  if (card.length > 0)
+  card[0].map((item, index) => {
+    newArray.push({src: item.images.small, id: index})
+  })
+
+  useEffect(() => {
+    console.log(newArray);
+  }, [newArray])
+
   function getCard() {
     pokemon.card.where({ q: `name:${poke}` }).then((result) => {
       setCard([result.data]);
@@ -50,21 +65,22 @@ export default function CardRender() {
 
   useEffect(() => {
     bookRef.current = book;
-    // console.log(book);
+    console.log(book);
   }, [book]);
 
-  function handleRemoveItem(src) {
-    setBook((current) => current.filter((img) => img !== src));
+  function handleRemoveItem(item) {
+    console.log(item.id.current);
+    setBook((current) => current.filter((x) => x.id !== item.id.current));
   }
 
   const [{ isOverTrash }, dropTrash] = useDrop(() => ({
     accept: "image",
-    drop: (item) => handleRemoveItem(item),
+    drop: (item) => handleRemoveItem(item), 
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
   }));
-
+ 
   return (
     <div className="iphone__screen mt-6">
       <div className="float-left">
@@ -129,31 +145,28 @@ export default function CardRender() {
               </div>
             ))}
         </div>
-        {card.length === 0 ? (
-          <div></div>
-        ) : (
-          card[0].length > 0 ?
-            <RenderCarousel carouselImg={card[0]} setBook={setBook} />
-          : null
-        )}
+        <RenderCarousel carouselImg={newArray} setBook={setBook} />
         <div className="card__book">
+          {/* {newArray.map((item) => {
+            return <DraggablePictureTwo src={item.src} id={item.id}/>
+          })} */}
           <div className="card__slot">
-            <DraggablePictureTwo src={book.length > 0 ? book[0] : null} />
+            <DraggablePictureTwo src={book.length > 0 ? book[0].src : null} id={book.length > 0 ? book[0].id: null}/>
           </div>
           <div className="card__slot">
-            <DraggablePictureTwo src={book.length > 1 ? book[1] : null} />
+            <DraggablePictureTwo src={book.length > 1 ? book[1].src : null} id={book.length > 1 ? book[1].id: null}/>
           </div>
           <div className="card__slot">
-            <DraggablePictureTwo src={book.length > 2 ? book[2] : null} />
+            <DraggablePictureTwo src={book.length > 2 ? book[2].src : null} id={book.length > 2 ? book[2].id: null}/>
           </div>
           <div className="card__slot">
-            <DraggablePictureTwo src={book.length > 3 ? book[3] : null} />
+            <DraggablePictureTwo src={book.length > 3 ? book[3].src : null} id={book.length > 3 ? book[3].id: null}/>
           </div>
           <div className="card__slot">
-            <DraggablePictureTwo src={book.length > 4 ? book[4] : null} />
+            <DraggablePictureTwo src={book.length > 4 ? book[4].src : null} id={book.length > 4 ? book[4].id: null}/>
           </div>
           <div className="card__slot">
-            <DraggablePictureTwo src={book.length > 5 ? book[5] : null} />
+            <DraggablePictureTwo src={book.length > 5 ? book[5].src : null} id={book.length > 5 ? book[5].id: null}/>
           </div>
         </div>
         <div
