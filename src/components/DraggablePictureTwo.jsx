@@ -1,12 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { useDrag } from "react-dnd";
 
-function DraggablePictureTwo({ src }) {
-  
+function DraggablePictureTwo({ src, id }) {
 
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "image",
-    item: {src: src},
+    item: {id: id}, 
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
@@ -19,7 +18,7 @@ function DraggablePictureTwo({ src }) {
       src={src}
       className="card zoom rounded-xl"
       style={{ border: isDragging ? "5px solid red" : "0px" }}
-    />
+      />
     </>
   );
 }

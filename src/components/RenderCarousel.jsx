@@ -12,7 +12,7 @@ export default function RenderCarousel({ carouselImg, setBook }) {
           <button
             className="btn w-16 h-8 bg-slate-600 rounded-xl text-center"
             onClick={() =>
-              setBook((book) => [...book, twoPack[0].images.small])
+              setBook((book) => [...book, {src: twoPack[0].images.small, id: twoPack[0].id}])
             }
           >
             +
@@ -23,7 +23,7 @@ export default function RenderCarousel({ carouselImg, setBook }) {
           <button
             className="btn w-16 h-8 bg-slate-600 rounded-xl text-center"
             onClick={() =>
-              setBook((book) => [...book, twoPack[1].images.small])
+              setBook((book) => [...book, {src: twoPack[1].images.small, id: twoPack[1].id}])
             }
           >
             +
