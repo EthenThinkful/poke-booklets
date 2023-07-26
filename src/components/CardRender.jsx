@@ -1,14 +1,10 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import pokemon from "pokemontcgsdk";
-import DraggablePicture from "./DraggablePicture";
 import DraggablePictureTwo from "./DraggablePictureTwo";
 import pokeNames from "../assets/PokeJSON/pokeNames.json";
 import { Carousel } from "react-responsive-carousel";
-import carouselPic from "../assets/PokePICS/PokeTrash.jpg";
 import styles from "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useDrag, useDrop } from "react-dnd";
-import { TransformComponent } from "react-zoom-pan-pinch";
-import GetPokemon from "./GetPokemon";
 import RenderCarousel from "./RenderCarousel";
 // const { REACT_APP_TCG_API } = process.env;
 
@@ -147,9 +143,6 @@ export default function CardRender() {
         </div>
         <RenderCarousel carouselImg={newArray} setBook={setBook} />
         <div className="card__book">
-          {/* {newArray.map((item) => {
-            return <DraggablePictureTwo src={item.src} id={item.id}/>
-          })} */}
           <div className="card__slot">
             <DraggablePictureTwo src={book.length > 0 ? book[0].src : null} id={book.length > 0 ? book[0].id: null}/>
           </div>

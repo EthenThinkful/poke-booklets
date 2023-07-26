@@ -13,7 +13,6 @@ function App() {
         <CardRender />
       </div>
       </DndProvider>
-    
   );
 }
 

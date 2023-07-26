@@ -4,6 +4,7 @@ import { useDrag } from "react-dnd";
 function DraggablePictureTwo({ src, id }) {
 
   const idRef = useRef(null);
+  
   useEffect(() => {
     idRef.current = id;
   }, [id])
