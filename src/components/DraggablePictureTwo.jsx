@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useDrag } from "react-dnd";
 
 function DraggablePictureTwo({ src, id }) {
 
+  const idRef = useRef(null);
+  useEffect(() => {
+    idRef.current = id;
+  }, [id])
+
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "image",
-    item: {id: id}, 
+    item: ({id: idRef}), 
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
@@ -13,6 +18,7 @@ function DraggablePictureTwo({ src, id }) {
 
   return (
     <>
+    {console.log(id)}
       <img
       ref={drag}
       src={src}
