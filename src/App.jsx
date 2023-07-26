@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import GetPokemon from "./components/GetPokemon";
 import CardRender from "./components/CardRender";
 import { DndProvider } from "react-dnd";
 import { MultiBackend } from 'react-dnd-multi-backend'
@@ -13,7 +12,6 @@ function App() {
         <CardRender />
       </div>
       </DndProvider>
-    
   );
 }
 
