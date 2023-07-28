@@ -6,6 +6,7 @@ import { Carousel } from "react-responsive-carousel";
 import styles from "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useDrag, useDrop } from "react-dnd";
 import RenderCarousel from "./RenderCarousel";
+import axios from "axios";
 // const { REACT_APP_TCG_API } = process.env;
 
 pokemon.configure({ apiKey: "b2c47130-c144-4d25-8d96-c71708597019" });
@@ -21,6 +22,15 @@ export default function CardRender() {
 
   const [card, setCard] = useState([]);
   const [css, setCss] = useState(false);
+  const [bookletData, setBookletData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    axios.get('http:localhost:8080/poke/api/booklet').then(res=> {
+      setBookletData(res.data);
+      setIsLoading(false);
+    })
+  }, [])
 
   // useEffect(() => {
   //   console.log(card)
