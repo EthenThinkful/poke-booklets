@@ -8,6 +8,9 @@ import { useDrag, useDrop } from "react-dnd";
 import RenderCarousel from "./RenderCarousel";
 import axios from "axios";
 import GetBooklets from "./GetBooklets";
+import Users from "./Users";
+import CreateUser from "./CreateUser";
+
 // const { REACT_APP_TCG_API } = process.env;
 
 pokemon.configure({ apiKey: "b2c47130-c144-4d25-8d96-c71708597019" });
@@ -92,6 +95,12 @@ export default function CardRender() {
   return (
     <div className="iphone__screen mt-6">
       <div className="float-left">
+        <div className="flex justify-between mb-4">
+        <div className="text-neutral-700 mt-8">
+        Preview / Test 
+        </div>
+        <CreateUser />
+        </div>
         <div className="flex">
           <div>
             <form className="flex">

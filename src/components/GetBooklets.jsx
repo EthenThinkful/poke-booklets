@@ -10,12 +10,15 @@ export default function GetBooklets() {
     axios.get("http://localhost:8080/poke/api/booklet").then((res) => {
       setBookletData(res.data);
       setIsLoading(false);
+      console.log(res.data);
     });
   }, []);
 
   return (
     <>
       {bookletData.map((item) => (
+        <div className="text-neutral-700">
+        {item.user.userName}'s party
         <div className="card__book">
           <div className="card__slot">
             <DraggablePictureTwo src={item.cardOne} id={item.id}/>
@@ -35,6 +38,7 @@ export default function GetBooklets() {
           <div className="card__slot">
             <DraggablePictureTwo src={item.cardSix} id={item.id}/>
           </div>
+        </div>
         </div>
       ))}
     </>
