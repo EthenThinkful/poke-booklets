@@ -60,7 +60,7 @@ export default function Users() {
         <div className="mb-5">Users:</div>
         <ul>
           {userData.map((user) => (
-            <li className="m-2 animate-bounce">{user.userName}</li>
+            <li className="m-2">{user.userName}</li>
           ))}
         </ul>
       </div>
