@@ -100,6 +100,11 @@ img {
   background-color: aquamarine;
   }
 
+  .create__user__btn {
+    width: 6rem;
+    height: 4rem;
+  }
+
   /* .card__slot {
     width: 160px;
     height: 219px;
