@@ -7,7 +7,7 @@ export default function GetBooklets() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/poke/api/booklet").then((res) => {
+    axios.get("https://pokeapijectbackend.onrender.com/api/booklet").then((res) => {
       setBookletData(res.data);
       setIsLoading(false);
       console.log(res.data);

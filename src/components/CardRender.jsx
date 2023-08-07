@@ -30,7 +30,7 @@ export default function CardRender() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/poke/api/booklet').then(res=> {
+    axios.get('https://pokeapijectbackend.onrender.com/api/users').then(res=> {
       setBookletData(res.data);
       setIsLoading(false);
       console.log(res.data);

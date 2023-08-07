@@ -10,7 +10,7 @@ export default function Users() {
   const [userName, setUserName] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:8080/poke/api/users").then((res) => {
+    axios.get("https://pokeapijectbackend.onrender.com/api/users").then((res) => {
       setUserData(res.data);
       setIsLoading(false);
       console.log(res.data);
@@ -21,7 +21,7 @@ export default function Users() {
     const data = {
       userName: userName,
     };
-    axios.post("http://localhost:8080/poke/api/users", data).then((res) => {
+    axios.post("https://pokeapijectbackend.onrender.com/api/users", data).then((res) => {
       toast("User added successfully!");
       
     });
