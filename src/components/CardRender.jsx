@@ -22,10 +22,21 @@ export default function CardRender() {
   const [css, setCss] = useState(false);
   //post request states
   const [userName, setUserName] = useState("");
-  const [cardOne, setCardOne] = useState("");
+
+
+
+  const [bookletData, setBookletData] = useState([]);
+
+  useEffect(() => {
+    axios.get("https://pokeapijectbackend.onrender.com/api/booklet").then((res) => {
+      setBookletData(res.data);
+      console.log(res.data);
+    });
+  }, []);
+
+
 
   let newArray = new Array();
-  let bookletArray = new Array();
 
   if (card.length > 0)
     card[0].map((item, index) => {
@@ -216,7 +227,7 @@ export default function CardRender() {
             submit booklet
           </button>
         </div>
-        <GetBooklets />
+        <GetBooklets bookletData={bookletData} />
       </div>
     </div>
   );

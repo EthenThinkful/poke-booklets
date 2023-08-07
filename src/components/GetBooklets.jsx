@@ -1,56 +1,58 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import DraggablePictureTwo from "./DraggablePictureTwo";
+import { ToastContainer, toast } from "react-toastify";
 
-export default function GetBooklets() {
-  const [bookletData, setBookletData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    axios.get("https://pokeapijectbackend.onrender.com/api/booklet").then((res) => {
-      setBookletData(res.data);
-      setIsLoading(false);
-      console.log(res.data);
-    });
-  }, []);
-
-  const handleDelete = (e) =>{
-    const data = {
-      userName: userName,
-    };
-    axios.delete("https://pokeapijectbackend.onrender.com/api/booklet", data)
+export default function GetBooklets({ bookletData }) {
+  let temp = [];
+  for (let i = 0; i < bookletData.length; i++) {
+    let booklet = bookletData[i];
+    temp.push(
+      <div className="text-neutral-700">
+        <div className="flex justify-between">
+          {booklet.userName}'s party
+          <button
+            onClick={() =>
+              axios.delete(
+                `https://pokeapijectbackend.onrender.com/api/booklet/${booklet.id}`
+              ).then((res) => {
+                toast("Booklet deleted successfully!");
+              })
+            }
+          >
+            Delete
+          </button>
+        </div>
+        <div className="card__book mt-2">
+          <div className="card__slot">
+            <DraggablePictureTwo src={booklet.cardOne} id={booklet.id} />
+          </div>
+          <div className="card__slot">
+            <DraggablePictureTwo src={booklet.cardTwo} id={booklet.id} />
+          </div>
+          <div className="card__slot">
+            <DraggablePictureTwo src={booklet.cardThree} id={booklet.id} />
+          </div>
+          <div className="card__slot">
+            <DraggablePictureTwo src={booklet.cardFour} id={booklet.id} />
+          </div>
+          <div className="card__slot">
+            <DraggablePictureTwo src={booklet.cardFive} id={booklet.id} />
+          </div>
+          <div className="card__slot">
+            <DraggablePictureTwo src={booklet.cardSix} id={booklet.id} />
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (
     <>
-      {bookletData.map((item) => (
-        <div className="text-neutral-700">
-        <div className="flex justify-between">
-        {item.userName}'s party
-        <button onClick={handleDelete}>delete</button>
-        </div>
-        <div className="card__book mt-2">
-          <div className="card__slot">
-            <DraggablePictureTwo src={item.cardOne} id={item.id}/>
-          </div>
-          <div className="card__slot">
-            <DraggablePictureTwo src={item.cardTwo} id={item.id}/>
-          </div>
-          <div className="card__slot">
-            <DraggablePictureTwo src={item.cardThree} id={item.id}/>
-          </div>
-          <div className="card__slot">
-            <DraggablePictureTwo src={item.cardFour} id={item.id}/>
-          </div>
-          <div className="card__slot">
-            <DraggablePictureTwo src={item.cardFive} id={item.id}/>
-          </div>
-          <div className="card__slot">
-            <DraggablePictureTwo src={item.cardSix} id={item.id}/>
-          </div>
-        </div>
-        </div>
-      ))}
+      {temp.map((item) => {
+        console.log(item);
+        return item;
+      })}
     </>
   );
 }
