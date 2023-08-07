@@ -93,13 +93,10 @@ export default function CardRender() {
   }));
  
   return (
-    <div className="iphone__screen mt-6">
+    <div className="iphone__screen">
       <div className="float-left">
-        <div className="flex justify-between mb-4">
-        <div className="text-neutral-700 mt-8">
-        Preview / Test 
-        </div>
-        <CreateUser />
+        <div className="text-neutral-700 mb-6">
+        Poke Party 
         </div>
         <div className="flex">
           <div>
@@ -184,10 +181,36 @@ export default function CardRender() {
           </div>
         </div>
         <div
-          className="trash__can bg-slate-600 w-120 h-20 mb-6 rounded-lg flex text-center justify-center pt-8 text-xs lg:text-sm mt-2"
+          className="trash__can bg-slate-600 w-120 h-20 mb-4 rounded-lg flex text-center justify-center pt-8 text-xs lg:text-sm mt-2"
           ref={dropTrash}
         >
           drag & drop cards to delete
+        </div>
+        <div className="flex mb-8">
+         
+            <form className="flex">
+              <input
+                className={
+                  css
+                    ? "p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4 mb-2"
+                    : "p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4"
+                }
+                placeholder="your name"
+                type="text"
+                value={poke}
+                onChange={(event) => {
+                  setPoke(event.target.value.toLocaleLowerCase());
+                }}
+              />
+            </form>
+    
+          <button
+            onClick={handleSubmit}
+            type="submit"
+            className="p-3 bg-orange-300 rounded-md text-xs w-40 h-14 mr-4"
+          >
+            submit booklet
+          </button>
         </div>
         <GetBooklets />
       </div>
