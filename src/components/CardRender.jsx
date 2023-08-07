@@ -19,18 +19,6 @@ export default function CardRender() {
   const [poke, setPoke] = useState("");
   const [card, setCard] = useState([]);
   const [css, setCss] = useState(false);
-  const [bookletData, setBookletData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    axios
-      .get("https://pokeapijectbackend.onrender.com/api/users")
-      .then((res) => {
-        setBookletData(res.data);
-        setIsLoading(false);
-        console.log(res.data);
-      });
-  }, []);
 
   let newArray = new Array();
 

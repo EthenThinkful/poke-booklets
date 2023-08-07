@@ -18,7 +18,7 @@ export default function GetBooklets() {
     <>
       {bookletData.map((item) => (
         <div className="text-neutral-700">
-        {item.user.userName}'s party
+        {item.userName}'s party
         <div className="card__book mt-2">
           <div className="card__slot">
             <DraggablePictureTwo src={item.cardOne} id={item.id}/>
