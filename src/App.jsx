@@ -18,7 +18,7 @@ function App() {
         <Route  path="/addPatient" element={<AddPatient/>}/>
         <Route  path="/analyze/:patientId" element={<AnalyzeData/>}/> */}
         <Route path="/" element={<CardRender />} />
-        <Route path="/users" element={<Users />} />
+        {/* <Route path="/users" element={<Users />} /> */}
         </Routes>
       </div>
       </DndProvider>
