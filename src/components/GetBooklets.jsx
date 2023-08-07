@@ -14,11 +14,21 @@ export default function GetBooklets() {
     });
   }, []);
 
+  const handleDelete = (e) =>{
+    const data = {
+      userName: userName,
+    };
+    axios.delete("https://pokeapijectbackend.onrender.com/api/booklet", data)
+  }
+
   return (
     <>
       {bookletData.map((item) => (
         <div className="text-neutral-700">
+        <div className="flex justify-between">
         {item.userName}'s party
+        <button onClick={handleDelete}>delete</button>
+        </div>
         <div className="card__book mt-2">
           <div className="card__slot">
             <DraggablePictureTwo src={item.cardOne} id={item.id}/>

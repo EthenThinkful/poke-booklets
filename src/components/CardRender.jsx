@@ -10,6 +10,7 @@ import axios from "axios";
 import GetBooklets from "./GetBooklets";
 import Users from "./Users";
 import CreateUser from "./CreateUser";
+import { ToastContainer, toast } from "react-toastify";
 
 // const { REACT_APP_TCG_API } = process.env;
 
@@ -19,8 +20,12 @@ export default function CardRender() {
   const [poke, setPoke] = useState("");
   const [card, setCard] = useState([]);
   const [css, setCss] = useState(false);
+  //post request states
+  const [userName, setUserName] = useState("");
+  const [cardOne, setCardOne] = useState("");
 
   let newArray = new Array();
+  let bookletArray = new Array();
 
   if (card.length > 0)
     card[0].map((item, index) => {
@@ -46,6 +51,23 @@ export default function CardRender() {
   };
 
   //booklet
+  const handleBooklet = (e) => {
+    const data = {
+      userName: userName,
+      cardOne: book.length > 0 ? book[0].src : null,
+      cardTwo: book.length > 1 ? book[1].src : null,
+      cardThree: book.length > 2 ? book[2].src : null,
+      cardFour: book.length > 3 ? book[3].src : null,
+      cardFive: book.length > 4 ? book[4].src : null,
+      cardSix: book.length > 5 ? book[5].src : null,
+    };
+    axios
+      .post("https://pokeapijectbackend.onrender.com/api/booklet", data)
+      .then((res) => {
+        toast("Booklet added successfully!");
+      });
+  };
+
   const [book, setBook] = useState([]);
   const bookRef = useRef([]);
 
@@ -179,17 +201,15 @@ export default function CardRender() {
                   ? "p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4 mb-2"
                   : "p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4"
               }
-              placeholder="your name"
               type="text"
-              value={poke}
-              onChange={(event) => {
-                setPoke(event.target.value.toLocaleLowerCase());
-              }}
+              name="userName"
+              placeholder="your name"
+              onChange={(e) => setUserName(e.target.value)}
+              align="left"
             />
           </form>
-
           <button
-            onClick={handleSubmit}
+            onClick={handleBooklet}
             type="submit"
             className="p-3 bg-orange-300 rounded-md text-xs w-40 h-14 mr-4"
           >
