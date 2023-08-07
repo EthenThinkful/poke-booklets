@@ -17,40 +17,27 @@ pokemon.configure({ apiKey: "b2c47130-c144-4d25-8d96-c71708597019" });
 
 export default function CardRender() {
   const [poke, setPoke] = useState("");
-
-  const pokeRef = useRef("");
-
-  useEffect(() => {
-    pokeRef.current = poke;
-  }, [poke]);
-
   const [card, setCard] = useState([]);
   const [css, setCss] = useState(false);
   const [bookletData, setBookletData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('https://pokeapijectbackend.onrender.com/api/users').then(res=> {
-      setBookletData(res.data);
-      setIsLoading(false);
-      console.log(res.data);
-    })
-  }, [])
-
-  // useEffect(() => {
-  //   console.log(card)
-  // }, [card])
+    axios
+      .get("https://pokeapijectbackend.onrender.com/api/users")
+      .then((res) => {
+        setBookletData(res.data);
+        setIsLoading(false);
+        console.log(res.data);
+      });
+  }, []);
 
   let newArray = new Array();
 
   if (card.length > 0)
-  card[0].map((item, index) => {
-    newArray.push({src: item.images.small, id: index})
-  })
-
-  // useEffect(() => {
-  //   console.log(newArray);
-  // }, [newArray])
+    card[0].map((item, index) => {
+      newArray.push({ src: item.images.small, id: index });
+    });
 
   function getCard() {
     pokemon.card.where({ q: `name:${poke}` }).then((result) => {
@@ -86,18 +73,16 @@ export default function CardRender() {
 
   const [{ isOverTrash }, dropTrash] = useDrop(() => ({
     accept: "image",
-    drop: (item) => handleRemoveItem(item), 
+    drop: (item) => handleRemoveItem(item),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
   }));
- 
+
   return (
     <div className="iphone__screen">
       <div className="float-left">
-        <div className="text-neutral-700 mb-6">
-        Poke Party 
-        </div>
+        <div className="text-neutral-700 mb-6">Poke Party</div>
         <div className="flex">
           <div>
             <form className="flex">
@@ -131,13 +116,7 @@ export default function CardRender() {
             clear
           </button>
         </div>
-        <div
-          className={
-            pokeRef === ""
-              ? "drop__down text-xs mb-2 text-zinc-700"
-              : "drop__down text-xs mb-0 mt-4 text-zinc-700"
-          }
-        >
+        <div className="drop__down text-xs mb-2 mt-3 text-zinc-700">
           {pokeNames
             .filter((item) => {
               const searchTerm = poke.toLocaleLowerCase();
@@ -162,22 +141,40 @@ export default function CardRender() {
         <RenderCarousel carouselImg={newArray} setBook={setBook} />
         <div className="card__book">
           <div className="card__slot">
-            <DraggablePictureTwo src={book.length > 0 ? book[0].src : null} id={book.length > 0 ? book[0].id: null}/>
+            <DraggablePictureTwo
+              src={book.length > 0 ? book[0].src : null}
+              id={book.length > 0 ? book[0].id : null}
+            />
           </div>
           <div className="card__slot">
-            <DraggablePictureTwo src={book.length > 1 ? book[1].src : null} id={book.length > 1 ? book[1].id: null}/>
+            <DraggablePictureTwo
+              src={book.length > 1 ? book[1].src : null}
+              id={book.length > 1 ? book[1].id : null}
+            />
           </div>
           <div className="card__slot">
-            <DraggablePictureTwo src={book.length > 2 ? book[2].src : null} id={book.length > 2 ? book[2].id: null}/>
+            <DraggablePictureTwo
+              src={book.length > 2 ? book[2].src : null}
+              id={book.length > 2 ? book[2].id : null}
+            />
           </div>
           <div className="card__slot">
-            <DraggablePictureTwo src={book.length > 3 ? book[3].src : null} id={book.length > 3 ? book[3].id: null}/>
+            <DraggablePictureTwo
+              src={book.length > 3 ? book[3].src : null}
+              id={book.length > 3 ? book[3].id : null}
+            />
           </div>
           <div className="card__slot">
-            <DraggablePictureTwo src={book.length > 4 ? book[4].src : null} id={book.length > 4 ? book[4].id: null}/>
+            <DraggablePictureTwo
+              src={book.length > 4 ? book[4].src : null}
+              id={book.length > 4 ? book[4].id : null}
+            />
           </div>
           <div className="card__slot">
-            <DraggablePictureTwo src={book.length > 5 ? book[5].src : null} id={book.length > 5 ? book[5].id: null}/>
+            <DraggablePictureTwo
+              src={book.length > 5 ? book[5].src : null}
+              id={book.length > 5 ? book[5].id : null}
+            />
           </div>
         </div>
         <div
@@ -187,23 +184,22 @@ export default function CardRender() {
           drag & drop cards to delete
         </div>
         <div className="flex mb-8">
-         
-            <form className="flex">
-              <input
-                className={
-                  css
-                    ? "p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4 mb-2"
-                    : "p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4"
-                }
-                placeholder="your name"
-                type="text"
-                value={poke}
-                onChange={(event) => {
-                  setPoke(event.target.value.toLocaleLowerCase());
-                }}
-              />
-            </form>
-    
+          <form className="flex">
+            <input
+              className={
+                css
+                  ? "p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4 mb-2"
+                  : "p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4"
+              }
+              placeholder="your name"
+              type="text"
+              value={poke}
+              onChange={(event) => {
+                setPoke(event.target.value.toLocaleLowerCase());
+              }}
+            />
+          </form>
+
           <button
             onClick={handleSubmit}
             type="submit"
