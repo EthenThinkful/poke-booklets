@@ -17,6 +17,7 @@ export default function GetBooklets({ bookletData }) {
                 `https://pokeapijectbackend.onrender.com/api/booklet/${booklet.id}`
               ).then((res) => {
                 toast("Booklet deleted successfully!");
+                e.preventDefault();
               })
             }
           >

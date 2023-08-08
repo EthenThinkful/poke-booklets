@@ -3,6 +3,7 @@ import { useDrag } from "react-dnd";
 
 function DraggablePictureTwo({ src, id }) {
 
+  // for retaining draggable images src & id properties while dragging
   const idRef = useRef(null);
   
   useEffect(() => {

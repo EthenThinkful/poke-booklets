@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
 import pokemon from "pokemontcgsdk";
 import DraggablePictureTwo from "./DraggablePictureTwo";
 import pokeNames from "../assets/PokeJSON/pokeNames.json";
@@ -8,11 +8,8 @@ import { useDrag, useDrop } from "react-dnd";
 import RenderCarousel from "./RenderCarousel";
 import axios from "axios";
 import GetBooklets from "./GetBooklets";
-import Users from "./Users";
-import CreateUser from "./CreateUser";
 import { ToastContainer, toast } from "react-toastify";
-
-// const { REACT_APP_TCG_API } = process.env;
+// toast not working ^
 
 pokemon.configure({ apiKey: "b2c47130-c144-4d25-8d96-c71708597019" });
 
@@ -61,7 +58,7 @@ export default function CardRender() {
     setCss(!css);
   };
 
-  //booklet
+  //POST request for a booklet to api
   const handleBooklet = (e) => {
     const data = {
       userName: userName,
@@ -76,6 +73,7 @@ export default function CardRender() {
       .post("https://pokeapijectbackend.onrender.com/api/booklet", data)
       .then((res) => {
         toast("Booklet added successfully!");
+        e.preventDefault();
       });
   };
 
