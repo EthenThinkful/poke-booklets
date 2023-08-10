@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import DraggablePictureTwo from "./DraggablePictureTwo";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function GetBooklets({ bookletData }) {
+  const [isDeleted, setIsDeleted] = useState(false);
   let temp = [];
   for (let i = 0; i < bookletData.length; i++) {
     let booklet = bookletData[i];
@@ -14,10 +16,13 @@ export default function GetBooklets({ bookletData }) {
           <button
             onClick={() =>
               axios.delete(
-                `${import.meta.env.VITE_PROD_URL}/api/booklet/${booklet.id}`
+                `${import.meta.env.VITE_DEV_URL}/api/booklet/${booklet.id}`
               ).then((res) => {
                 toast("Booklet deleted successfully!");
-                e.preventDefault();
+                console.log(temp);
+                setIsDeleted(true);
+                // temp.filter((item) => item.props.children[1].owner.pendingProps.bookletData)
+                // bookletData.filter((item) => item.id !== bookletData.id);
               })
             }
           >
@@ -51,7 +56,7 @@ export default function GetBooklets({ bookletData }) {
   return (
     <>
       {temp.map((item) => {
-        console.log(item);
+        // console.log(item);
         return item;
       })}
     </>

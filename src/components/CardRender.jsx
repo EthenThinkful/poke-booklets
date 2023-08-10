@@ -9,6 +9,7 @@ import RenderCarousel from "./RenderCarousel";
 import axios from "axios";
 import GetBooklets from "./GetBooklets";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // toast not working ^
 
 pokemon.configure({ apiKey: import.meta.env.VITE_TCG_API });
@@ -20,18 +21,14 @@ export default function CardRender() {
   //post request states
   const [userName, setUserName] = useState("");
 
-
-
   const [bookletData, setBookletData] = useState([]);
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_PROD_URL}/api/booklet`).then((res) => {
+    axios.get(`${import.meta.env.VITE_DEV_URL}/api/booklet`).then((res) => {
       setBookletData(res.data);
-      console.log(res.data);
+      // console.log(res.data);
     });
-  }, []);
-
-
+  }, [bookletData]);
 
   let newArray = new Array();
 
@@ -70,10 +67,11 @@ export default function CardRender() {
       cardSix: book.length > 5 ? book[5].src : null,
     };
     axios
-      .post(`${import.meta.env.VITE_PROD_URL}/api/booklet`, data)
+      .post(`${import.meta.env.VITE_DEV_URL}/api/booklet`, data)
       .then((res) => {
         toast("Booklet added successfully!");
-        e.preventDefault();
+        setBook([]);
+        setUserName("");
       });
   };
 
@@ -82,11 +80,11 @@ export default function CardRender() {
 
   useEffect(() => {
     bookRef.current = book;
-    console.log(book);
+    // console.log(book);
   }, [book]);
 
   function handleRemoveItem(item) {
-    console.log(item.id.current);
+    // console.log(item.id.current);
     setBook((current) => current.filter((x) => x.id !== item.id.current));
   }
 
@@ -197,10 +195,10 @@ export default function CardRender() {
           </div>
         </div>
         <div
-          className="trash__can bg-slate-600 w-120 h-20 mb-4 rounded-lg flex text-center justify-center pt-8 text-xs lg:text-sm mt-2"
+          className="trash__can bg-slate-600 w-120 h-20 mb-4 rounded-lg flex text-center justify-center pt-6 text-xs lg:text-sm mt-2"
           ref={dropTrash}
         >
-          drag & drop cards to delete
+          drag & drop cards here to delete
         </div>
         <div className="flex mb-8">
           <form className="flex">
@@ -215,6 +213,7 @@ export default function CardRender() {
               placeholder="your name"
               onChange={(e) => setUserName(e.target.value)}
               align="left"
+              value={userName}
             />
           </form>
           <button
