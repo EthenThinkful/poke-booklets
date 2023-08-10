@@ -10,9 +10,10 @@ export default function GetBooklets({ bookletData }) {
   for (let i = 0; i < bookletData.length; i++) {
     let booklet = bookletData[i];
     temp.push(
-      <div className="text-neutral-700">
+      <div className="text-neutral-700 text-sm">
         <div className="flex justify-between">
           {booklet.userName}'s party
+          <button Link>Edit</button>
           <button
             onClick={() =>
               axios.delete(
@@ -21,8 +22,6 @@ export default function GetBooklets({ bookletData }) {
                 toast("Booklet deleted successfully!");
                 console.log(temp);
                 setIsDeleted(true);
-                // temp.filter((item) => item.props.children[1].owner.pendingProps.bookletData)
-                // bookletData.filter((item) => item.id !== bookletData.id);
               })
             }
           >
