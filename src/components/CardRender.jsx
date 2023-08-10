@@ -24,7 +24,7 @@ export default function CardRender() {
   const [bookletData, setBookletData] = useState([]);
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_DEV_URL}/api/booklet`).then((res) => {
+    axios.get(`${import.meta.env.VITE_PROD_URL}/api/booklet`).then((res) => {
       setBookletData(res.data);
       // console.log(res.data);
     });
@@ -67,7 +67,7 @@ export default function CardRender() {
       cardSix: book.length > 5 ? book[5].src : null,
     };
     axios
-      .post(`${import.meta.env.VITE_DEV_URL}/api/booklet`, data)
+      .post(`${import.meta.env.VITE_PROD_URL}/api/booklet`, data)
       .then((res) => {
         toast("Booklet added successfully!");
         setBook([]);
@@ -158,40 +158,46 @@ export default function CardRender() {
         <RenderCarousel carouselImg={newArray} setBook={setBook} />
         <div className="card__book">
           <div className="card__slot">
+          {book.length > 0 ?
             <DraggablePictureTwo
-              src={book.length > 0 ? book[0].src : null}
-              id={book.length > 0 ? book[0].id : null}
-            />
+              src={book[0].src}
+              id={book[0].id}
+            />: null}
           </div>
           <div className="card__slot">
+          {book.length > 1 ?
             <DraggablePictureTwo
-              src={book.length > 1 ? book[1].src : null}
-              id={book.length > 1 ? book[1].id : null}
-            />
+              src={book[1].src}
+              id={book[1].id}
+            />: null}
           </div>
           <div className="card__slot">
+          {book.length > 2 ?
             <DraggablePictureTwo
-              src={book.length > 2 ? book[2].src : null}
-              id={book.length > 2 ? book[2].id : null}
-            />
+              src={book[2].src}
+              id={book[2].id}
+            />:null}
           </div>
           <div className="card__slot">
+          {book.length > 3 ?
             <DraggablePictureTwo
-              src={book.length > 3 ? book[3].src : null}
-              id={book.length > 3 ? book[3].id : null}
-            />
+              src={book[3].src}
+              id={book[3].id}
+            />:null}
           </div>
           <div className="card__slot">
+          {book.length > 4 ?
             <DraggablePictureTwo
-              src={book.length > 4 ? book[4].src : null}
-              id={book.length > 4 ? book[4].id : null}
-            />
+              src={book[4].src}
+              id={book[4].id}
+            />:null}
           </div>
           <div className="card__slot">
+          {book.length > 5 ?
             <DraggablePictureTwo
-              src={book.length > 5 ? book[5].src : null}
-              id={book.length > 5 ? book[5].id : null}
-            />
+              src={book[5].src}
+              id={book[5].id}
+            />:null}
           </div>
         </div>
         <div
