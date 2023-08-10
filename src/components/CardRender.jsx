@@ -11,7 +11,7 @@ import GetBooklets from "./GetBooklets";
 import { ToastContainer, toast } from "react-toastify";
 // toast not working ^
 
-pokemon.configure({ apiKey: "b2c47130-c144-4d25-8d96-c71708597019" });
+pokemon.configure({ apiKey: import.meta.env.VITE_TCG_API });
 
 export default function CardRender() {
   const [poke, setPoke] = useState("");
@@ -25,7 +25,7 @@ export default function CardRender() {
   const [bookletData, setBookletData] = useState([]);
 
   useEffect(() => {
-    axios.get("https://pokeapijectbackend.onrender.com/api/booklet").then((res) => {
+    axios.get(`${import.meta.env.VITE_PROD_URL}/api/booklet`).then((res) => {
       setBookletData(res.data);
       console.log(res.data);
     });
@@ -70,7 +70,7 @@ export default function CardRender() {
       cardSix: book.length > 5 ? book[5].src : null,
     };
     axios
-      .post("https://pokeapijectbackend.onrender.com/api/booklet", data)
+      .post(`${import.meta.env.VITE_PROD_URL}/api/booklet`, data)
       .then((res) => {
         toast("Booklet added successfully!");
         e.preventDefault();

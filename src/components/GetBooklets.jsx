@@ -14,7 +14,7 @@ export default function GetBooklets({ bookletData }) {
           <button
             onClick={() =>
               axios.delete(
-                `https://pokeapijectbackend.onrender.com/api/booklet/${booklet.id}`
+                `${import.meta.env.VITE_PROD_URL}/api/booklet/${booklet.id}`
               ).then((res) => {
                 toast("Booklet deleted successfully!");
                 e.preventDefault();
