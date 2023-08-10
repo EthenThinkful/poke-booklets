@@ -13,7 +13,7 @@ export default function GetBooklets({ bookletData }) {
       <div className="text-neutral-700 text-sm">
         <div className="flex justify-between">
           {booklet.userName}'s party
-          <button Link>Edit</button>
+          {/* <button Link>Edit</button> */}
           <button
             onClick={() =>
               axios.delete(
