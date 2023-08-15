@@ -20,7 +20,7 @@ export default function RenderCarousel({ carouselImg, setBook }) {
   }
 
   let temp = [];
-  let chunkSize = windowWidth < 992 ? 2 : 4;
+  let chunkSize = windowWidth < 992 ? 2 : 5;
 
   for (let i = 0; i < carouselImg.length; i += chunkSize) {
     let chunk = carouselImg.slice(i, i + chunkSize);
@@ -36,7 +36,7 @@ export default function RenderCarousel({ carouselImg, setBook }) {
               +
             </button>
             <img
-              className="carousel__card"
+              className="carousel__card lg:pl-5"
               src={item.src}
               alt={`Book ${item.id}`}
             />
@@ -54,7 +54,7 @@ export default function RenderCarousel({ carouselImg, setBook }) {
   }
 
   return (
-    <div className="slider-container">
+    <div className="slider-container lg:justify-center lg:items-center">
       <Carousel
         showArrows={true}
         showStatus={false}

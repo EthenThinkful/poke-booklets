@@ -26,7 +26,7 @@ export default function CardRender() {
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_PROD_URL}/api/booklet`).then((res) => {
       setBookletData(res.data);
-      // console.log(res.data);
+      // console.log(bookletData);
     });
   }, [bookletData]);
 
@@ -98,10 +98,10 @@ export default function CardRender() {
 
   return (
     <div className="iphone__screen">
-      <div className="float-left">
+      <div className="float-left lg:float-none">
         <div className="text-neutral-700 mb-6">Poke Party</div>
-        <div className="flex">
-          <form className="flex lg:justify-center">
+        <div className="flex items-center lg:justify-center lg:items-center">
+          <form className="flex">
             <input
               className="p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4"
               placeholder="search"
@@ -150,7 +150,7 @@ export default function CardRender() {
             ))}
         </div>
         <RenderCarousel carouselImg={newArray} setBook={setBook} />
-        <div className="lg:flex">
+        <div className="lg:flex lg:justify-center lg:items-center">
           <div className="card__book">
             <div className="card__slot">
               {book.length > 0 ? (
@@ -190,7 +190,7 @@ export default function CardRender() {
             drag & drop cards here to delete
           </div>
         </div>
-        <div className="flex mb-8">
+        <div className="flex mb-8 lg:justify-center lg:items-center">
           <form className="flex">
             <input
               className="p-3 text-xs rounded-md w-160 h-14 bg-stone-600 mr-4"

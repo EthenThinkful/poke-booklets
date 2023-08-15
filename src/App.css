@@ -38,7 +38,7 @@ img {
 .card__slot {
   width: 160px;
   height: 219px;
-  margin: 0 .3rem;
+  margin: 0 .8rem;
   border-radius: .7rem;
   background-color: white;
   display: flex;
@@ -78,7 +78,6 @@ img {
 .slider-container {
   width: 100%; /* Adjust this value to your desired width */
   margin: 0 auto; /* Center the carousel horizontally */
-  
 }
 
 @media screen and (max-width: 576px) {
@@ -115,6 +114,11 @@ img {
   .card__slot {
     width: 100px;
     height: 130px;
+    margin: 0 .3rem;
+  }
+
+  .carousel-root { 
+    margin-bottom: 0rem;
   }
 }
 
