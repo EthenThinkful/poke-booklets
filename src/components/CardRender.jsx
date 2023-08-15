@@ -101,37 +101,31 @@ export default function CardRender() {
       <div className="float-left">
         <div className="text-neutral-700 mb-6">Poke Party</div>
         <div className="flex">
-          <div>
-            <form className="flex">
-              <input
-                className={
-                  css
-                    ? "p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4 mb-2"
-                    : "p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4"
-                }
-                placeholder="search"
-                type="text"
-                value={poke}
-                onChange={(event) => {
-                  setPoke(event.target.value.toLocaleLowerCase());
-                }}
-              />
-            </form>
-          </div>
-          <button
-            onClick={handleSubmit}
-            type="submit"
-            className="p-3 bg-orange-300 rounded-md text-xs w-40 h-14 mr-4"
-          >
-            get card
-          </button>
-          <button
-            onClick={handleDelete}
-            type="submit"
-            className="p-3 bg-orange-300 rounded-md text-xs w-40 h-14 mr-4"
-          >
-            clear
-          </button>
+          <form className="flex lg:justify-center">
+            <input
+              className="p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4"
+              placeholder="search"
+              type="text"
+              value={poke}
+              onChange={(event) => {
+                setPoke(event.target.value.toLocaleLowerCase());
+              }}
+            />
+            <button
+              onClick={handleSubmit}
+              type="submit"
+              className="p-3 bg-orange-300 rounded-md text-xs w-20 h-14 mr-4"
+            >
+              get card
+            </button>
+            <button
+              onClick={handleDelete}
+              type="submit"
+              className="p-3 bg-orange-300 rounded-md text-xs w-20 h-14 mr-4"
+            >
+              clear
+            </button>
+          </form>
         </div>
         <div className="drop__down text-xs mb-2 mt-3 text-zinc-700">
           {pokeNames
@@ -156,64 +150,50 @@ export default function CardRender() {
             ))}
         </div>
         <RenderCarousel carouselImg={newArray} setBook={setBook} />
-        <div className="card__book">
-          <div className="card__slot">
-          {book.length > 0 ?
-            <DraggablePictureTwo
-              src={book[0].src}
-              id={book[0].id}
-            />: null}
+        <div className="lg:flex">
+          <div className="card__book">
+            <div className="card__slot">
+              {book.length > 0 ? (
+                <DraggablePictureTwo src={book[0].src} id={book[0].id} />
+              ) : null}
+            </div>
+            <div className="card__slot">
+              {book.length > 1 ? (
+                <DraggablePictureTwo src={book[1].src} id={book[1].id} />
+              ) : null}
+            </div>
+            <div className="card__slot">
+              {book.length > 2 ? (
+                <DraggablePictureTwo src={book[2].src} id={book[2].id} />
+              ) : null}
+            </div>
+            <div className="card__slot">
+              {book.length > 3 ? (
+                <DraggablePictureTwo src={book[3].src} id={book[3].id} />
+              ) : null}
+            </div>
+            <div className="card__slot">
+              {book.length > 4 ? (
+                <DraggablePictureTwo src={book[4].src} id={book[4].id} />
+              ) : null}
+            </div>
+            <div className="card__slot">
+              {book.length > 5 ? (
+                <DraggablePictureTwo src={book[5].src} id={book[5].id} />
+              ) : null}
+            </div>
           </div>
-          <div className="card__slot">
-          {book.length > 1 ?
-            <DraggablePictureTwo
-              src={book[1].src}
-              id={book[1].id}
-            />: null}
+          <div
+            className="trash__can bg-slate-600 w-120 h-20 mb-4 m-0 rounded-lg flex text-center justify-center p-10 pt-6 pb-6 text-xs lg:text-sm mt-2 lg:h-219 lg:w-160 lg:p-12 lg:pt-10 lg:m-10"
+            ref={dropTrash}
+          >
+            drag & drop cards here to delete
           </div>
-          <div className="card__slot">
-          {book.length > 2 ?
-            <DraggablePictureTwo
-              src={book[2].src}
-              id={book[2].id}
-            />:null}
-          </div>
-          <div className="card__slot">
-          {book.length > 3 ?
-            <DraggablePictureTwo
-              src={book[3].src}
-              id={book[3].id}
-            />:null}
-          </div>
-          <div className="card__slot">
-          {book.length > 4 ?
-            <DraggablePictureTwo
-              src={book[4].src}
-              id={book[4].id}
-            />:null}
-          </div>
-          <div className="card__slot">
-          {book.length > 5 ?
-            <DraggablePictureTwo
-              src={book[5].src}
-              id={book[5].id}
-            />:null}
-          </div>
-        </div>
-        <div
-          className="trash__can bg-slate-600 w-120 h-20 mb-4 rounded-lg flex text-center justify-center pt-6 text-xs lg:text-sm mt-2"
-          ref={dropTrash}
-        >
-          drag & drop cards here to delete
         </div>
         <div className="flex mb-8">
           <form className="flex">
             <input
-              className={
-                css
-                  ? "p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4 mb-2"
-                  : "p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4"
-              }
+              className="p-3 text-xs rounded-md w-160 h-14 bg-stone-600 mr-4"
               type="text"
               name="userName"
               placeholder="your name"

@@ -7,7 +7,15 @@ module.exports = {
   theme: {
     fontFamily: {
       'pokeFont': ['pokeFont']
+    },
+    extend: {
+    width: {
+      '160': '160px',
+      '37': '37rem'
+    },
+    height: {
+      '219': '219px'
     }
-  },
+  }},
   plugins: [],
 }

@@ -20,22 +20,26 @@ export default function RenderCarousel({ carouselImg, setBook }) {
   }
 
   let temp = [];
-  let chunkSize = windowWidth < 992 ? 2 : 6;
+  let chunkSize = windowWidth < 992 ? 2 : 4;
 
   for (let i = 0; i < carouselImg.length; i += chunkSize) {
     let chunk = carouselImg.slice(i, i + chunkSize);
 
     temp.push(
-      <div className="flex mt-2 mb-2" key={i}>
+      <div className="flex mt-2 mb-0" key={i}>
         {chunk.map((item) => (
           <div key={item.id}>
             <button
-              className="btn w-16 h-8 bg-slate-600 rounded-xl text-center"
+              className="btn w-16 h-8 bg-slate-600 rounded-xl text-center mb-2"
               onClick={() => handleAddBookClick(item.src, item.id)}
             >
               +
             </button>
-            <img className="carousel__card" src={item.src} alt={`Book ${item.id}`} />
+            <img
+              className="carousel__card"
+              src={item.src}
+              alt={`Book ${item.id}`}
+            />
           </div>
         ))}
       </div>
@@ -50,10 +54,15 @@ export default function RenderCarousel({ carouselImg, setBook }) {
   }
 
   return (
-    <>
-      <Carousel autoFocus={true} showThumbs={false} showStatus={false} useKeyboardArrows>
+    <div className="slider-container">
+      <Carousel
+        showArrows={true}
+        showStatus={false}
+        useKeyboardArrows
+        emulateTouch={true}
+      >
         {renderImgs(temp)}
       </Carousel>
-    </>
+    </div>
   );
 }

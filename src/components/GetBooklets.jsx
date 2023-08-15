@@ -11,7 +11,7 @@ export default function GetBooklets({ bookletData }) {
     let booklet = bookletData[i];
     temp.push(
       <div className="text-neutral-700 text-sm">
-        <div className="flex justify-between">
+        <div className="flex justify-between lg:w-37">
           {booklet.userName}'s party
           {/* <button Link>Edit</button> */}
           <button

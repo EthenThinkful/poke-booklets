@@ -75,7 +75,14 @@ img {
   height: 130px;
 }
 
+.slider-container {
+  width: 100%; /* Adjust this value to your desired width */
+  margin: 0 auto; /* Center the carousel horizontally */
+  
+}
+
 @media screen and (max-width: 576px) {
+
   .card {
     width: 90px;
     height: 125px;
