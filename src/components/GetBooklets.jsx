@@ -1,54 +1,81 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import DraggablePictureTwo from "./DraggablePictureTwo";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function GetBooklets({ bookletData }) {
   const [isDeleted, setIsDeleted] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  function handleAddBookClick(src, id) {
+    setBook((book) => [...book, { src, id }]);
+  }
+
+  let chunkSize = windowWidth < 992 ? 1 : 2;
+
   let temp = [];
-  for (let i = 0; i < bookletData.length; i++) {
-    let booklet = bookletData[i];
+  for (let i = 0; i < bookletData.length; i += chunkSize) {
+    let chunk = bookletData.slice(i, i + chunkSize);
     temp.push(
-      <div className="text-neutral-700 text-sm">
-        <div className="flex justify-between lg:w-37">
-          {booklet.userName}'s party
+      <div className="lg:flex">
+        {chunk.map((item) => (
+      <div className="text-neutral-700 text-sm lg:flex lg:justify-center lg:items-center lg: mx-2">
+        <div>
+          <div className="flex justify-between lg:px-8">
+          {item.userName}'s party
           {/* <button Link>Edit</button> */}
           <button
             onClick={() =>
-              axios.delete(
-                `${import.meta.env.VITE_PROD_URL}/api/booklet/${booklet.id}`
-              ).then((res) => {
-                toast("Booklet deleted successfully!");
-                console.log(temp);
-                setIsDeleted(true);
-              })
+              axios
+                .delete(
+                  `${import.meta.env.VITE_PROD_URL}/api/booklet/${item.id}`
+                )
+                .then((res) => {
+                  toast("Booklet deleted successfully!");
+                  console.log(temp);
+                  setIsDeleted(true);
+                })
             }
           >
             Delete
           </button>
-        </div>
-        <div className="card__book mt-2">
-          <div className="card__slot">
-            <DraggablePictureTwo src={booklet.cardOne} id={booklet.id} />
           </div>
-          <div className="card__slot">
-            <DraggablePictureTwo src={booklet.cardTwo} id={booklet.id} />
-          </div>
-          <div className="card__slot">
-            <DraggablePictureTwo src={booklet.cardThree} id={booklet.id} />
-          </div>
-          <div className="card__slot">
-            <DraggablePictureTwo src={booklet.cardFour} id={booklet.id} />
-          </div>
-          <div className="card__slot">
-            <DraggablePictureTwo src={booklet.cardFive} id={booklet.id} />
-          </div>
-          <div className="card__slot">
-            <DraggablePictureTwo src={booklet.cardSix} id={booklet.id} />
+          <div className="card__book mt-2">
+            <div className="card__slot">
+              <DraggablePictureTwo src={item.cardOne} id={item.id} />
+            </div>
+            <div className="card__slot">
+              <DraggablePictureTwo src={item.cardTwo} id={item.id} />
+            </div>
+            <div className="card__slot">
+              <DraggablePictureTwo src={item.cardThree} id={item.id} />
+            </div>
+            <div className="card__slot">
+              <DraggablePictureTwo src={item.cardFour} id={item.id} />
+            </div>
+            <div className="card__slot">
+              <DraggablePictureTwo src={item.cardFive} id={item.id} />
+            </div>
+            <div className="card__slot">
+              <DraggablePictureTwo src={item.cardSix} id={item.id} />
+            </div>
           </div>
         </div>
       </div>
+      ))}
+    </div>
     );
   }
 
