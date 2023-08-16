@@ -10,7 +10,7 @@ This project was primarily created to engage in a full-stack development project
 3.) Incorporate better error handling
 2.) Brainstorm ideas for evolving the site 
 
-### Tech
+## Tech
 This project primarily uses Vite, React, and Tailwind CSS.
 
 ## Visit the backend
