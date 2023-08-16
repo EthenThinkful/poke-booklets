@@ -1,17 +1,25 @@
 # PokemonAPIject
-## Goal at Hand
-Incorporate different Pokemon APIs centered around the idea to help a person create a personalized Poke card booklet to store cards.
+This project was primarily created to engage in a full-stack development project with the intention of creating something without tutorials, resourcing documentation for the sake of academic growth. Also, the API is so lovely and I love Pokemon cards.
+
+## What exists
+- Retrieve any card that exists and every version of it.
+- Add 6 cards to a personalized booklet page to create your own party and check out what others have created in the meantime.
 
 ## Plan
-1.) Build a RESTful API & database for the user <br />
-2.) Clean up functionality of the Poke card booklet (e.g. animation for page flips, using the PokeAPI for design on the front and back of card booklet) <br />
-3.) Be C R E A T I V E... & fun
+1.) Expand on backend functionality 
+3.) Incorporate better error handling
+2.) Brainstorm ideas for evolving the site 
 
 ### Tech
-This project uses Vite, React, NPM, Draggable, Tailwind CSS (& CSS3), Axios, & the Pokemon TCG API SDK.
+This project primarily uses Vite, React, and Tailwind CSS.
+
+## Visit the backend
+https://github.com/EthenThinkful/PokemonAPIjectBackend
 
 ### Demo
 https://candid-tiramisu-895796.netlify.app/
 
-https://github.com/EthenThinkful/PokemonAPIject/assets/104235709/088bec16-63ae-476c-8f5e-fd3b557f7169
+https://github.com/EthenThinkful/PokemonAPIject/assets/104235709/5ccd3f7c-e477-4777-b2f0-6bbbe441620b
+
+
 
