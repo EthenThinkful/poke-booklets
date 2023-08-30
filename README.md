@@ -1,4 +1,4 @@
-# PokemonAPIject
+# Poke Booklets
 This project was primarily created to engage in a full-stack development project with the intention of creating something without tutorials, resourcing documentation for the sake of academic growth. Also, the API is so lovely and I love Pokemon cards.
 
 ## What exists
