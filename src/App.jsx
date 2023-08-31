@@ -14,14 +14,12 @@ import EnterPage from "./components/EnterPage";
 function App() {
   return (
       <DndProvider backend={MultiBackend} options={HTML5toTouch}>
-      <div className="font-pokeFont">
       <ToastContainer autoClose={2000} 
         position = {toast.POSITION.BOTTOM_CENTER}/>
         <Routes>
         <Route path="/" element={<EnterPage />} />
         <Route path="/home" element={<CardRender />} />
         </Routes>
-      </div>
       </DndProvider>
   );
 }

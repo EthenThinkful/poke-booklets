@@ -80,17 +80,19 @@ img {
   margin: 0 auto; /* Center the carousel horizontally */
 }
 
-.background {
-  background-color: none;
-  background-image: url("./assets/PokePICS/EnterBg.jpg");
-  margin: 0;
-  padding: 0;
-  background-size: cover; /* Adjust as needed */
-  background-repeat: no-repeat;
-  background-attachment: fixed; /* Helps in keeping the background fixed while scrolling */
+.pikachuCard {
+  max-width: 100%; /* ensures image doesn't overflow */
+  width: 15rem; 
+  height: 20.625rem;
+  caret-color: transparent;
+  margin: 4rem auto;
 }
 
 @media screen and (max-width: 576px) {
+  .pikachuCard {
+    width: 10.5rem; /* multiply original width and height by .7 to get these numbers */
+    height: 14.4375rem;
+  }
 
   .card {
     width: 90px;

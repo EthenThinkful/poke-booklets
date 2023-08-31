@@ -10,7 +10,6 @@ import axios from "axios";
 import GetBooklets from "./GetBooklets";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// toast not working ^
 
 pokemon.configure({ apiKey: import.meta.env.VITE_TCG_API });
 
