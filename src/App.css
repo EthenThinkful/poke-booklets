@@ -80,6 +80,16 @@ img {
   margin: 0 auto; /* Center the carousel horizontally */
 }
 
+.background {
+  background-color: none;
+  background-image: url("./assets/PokePICS/EnterBg.jpg");
+  margin: 0;
+  padding: 0;
+  background-size: cover; /* Adjust as needed */
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Helps in keeping the background fixed while scrolling */
+}
+
 @media screen and (max-width: 576px) {
 
   .card {
