@@ -1,26 +1,33 @@
 import { useState, useRef, useEffect } from "react";
-import pokemon from "pokemontcgsdk";
-import DraggablePictureTwo from "./DraggablePictureTwo";
-import pokeNames from "../assets/PokeJSON/pokeNames.json";
+// import pokemon from "pokemontcgsdk";
+import DraggablePictureTwo from "../DraggablePictureTwo/DraggablePictureTwo";
+// import pokeNames from "../../assets/PokeJSON/pokeNames.json";
 import { Carousel } from "react-responsive-carousel";
 import styles from "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useDrag, useDrop } from "react-dnd";
-import RenderCarousel from "./RenderCarousel";
+// import RenderCarousel from "../RenderCarousel/RenderCarousel";
 import axios from "axios";
-import GetBooklets from "./GetBooklets";
+import GetBooklets from "../GetBooklets/GetBooklets";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import SearchCard from "../SearchCard/SearchCard";
+import CreateBooklet from "../CreateBooklet/CreateBooklet";
 
-pokemon.configure({ apiKey: import.meta.env.VITE_TCG_API });
+//const serverAddress = import.meta.env.VITE_PROD_URL
+const serverAddress = import.meta.env.VITE_DEV_URL
+
+
+// pokemon.configure({ apiKey: import.meta.env.VITE_TCG_API });
 
 export default function CardRender() {
-  const [poke, setPoke] = useState("");
-  const [card, setCard] = useState([]);
-  const [css, setCss] = useState(false);
+  // const [poke, setPoke] = useState("");
+  // const [card, setCard] = useState([]);
+  // const [css, setCss] = useState(false);
   //post request states
   const [userName, setUserName] = useState("");
-
   const [bookletData, setBookletData] = useState([]);
+  const [book, setBook] = useState([]);
+  const bookRef = useRef([]);
 
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_PROD_URL}/api/booklet`).then((res) => {
@@ -29,30 +36,30 @@ export default function CardRender() {
     });
   }, [bookletData]);
 
-  let newArray = new Array();
+  // let newArray = new Array();
 
-  if (card.length > 0)
-    card[0].map((item, index) => {
-      newArray.push({ src: item.images.small, id: index });
-    });
+  // if (card.length > 0)
+  //   card[0].map((item, index) => {
+  //     newArray.push({ src: item.images.small, id: index });
+  //   });
 
-  function getCard() {
-    pokemon.card.where({ q: `name:${poke}` }).then((result) => {
-      setCard([result.data]);
-      setCss(!css);
-    });
-  }
+  // function getCard() {
+  //   pokemon.card.where({ q: `name:${poke}` }).then((result) => {
+  //     setCard([result.data]);
+  //     setCss(!css);
+  //   });
+  // }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    getCard();
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   getCard();
+  // };
 
-  const handleDelete = (e) => {
-    e.preventDefault();
-    setCard([]);
-    setCss(!css);
-  };
+  // const handleDelete = (e) => {
+  //   e.preventDefault();
+  //   setCard([]);
+  //   setCss(!css);
+  // };
 
   //POST request for a booklet to api
   const handleBooklet = (e) => {
@@ -74,8 +81,7 @@ export default function CardRender() {
       });
   };
 
-  const [book, setBook] = useState([]);
-  const bookRef = useRef([]);
+
 
   useEffect(() => {
     bookRef.current = book;
@@ -96,10 +102,13 @@ export default function CardRender() {
   }));
 
   return (
+    <>
+
     <div className="iphone__screen">
       <div className="float-left lg:float-none">
         <div className="text-neutral-700 mb-6">Poke Party</div>
-        <div className="flex items-center lg:justify-center lg:items-center">
+        <SearchCard setBook={setBook}/>
+        {/* <div className="flex items-center lg:justify-center lg:items-center">
           <form className="flex">
             <input
               className="p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4"
@@ -147,8 +156,8 @@ export default function CardRender() {
                 {item}
               </div>
             ))}
-        </div>
-        <RenderCarousel carouselImg={newArray} setBook={setBook} />
+        </div> */}
+        <CreateBooklet />
         <div className="lg:flex lg:justify-center lg:items-center">
           <div className="card__book">
             <div className="card__slot">
@@ -212,5 +221,6 @@ export default function CardRender() {
         <GetBooklets bookletData={bookletData} />
       </div>
     </div>
+    </>
   );
 }
