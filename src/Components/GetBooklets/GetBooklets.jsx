@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import DraggablePictureTwo from "./DraggablePictureTwo";
+import DraggablePictureTwo from "../DraggablePictureTwo/DraggablePictureTwo";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

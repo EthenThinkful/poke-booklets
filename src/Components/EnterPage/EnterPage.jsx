@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import pikachuCard from "../assets/pikachuCard.gif"
+import pikachuCard from "../../assets/pikachuCard.gif"
 
 export default function EnterPage() {
     return (

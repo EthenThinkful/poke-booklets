@@ -1,13 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 import pokemon from "pokemontcgsdk";
-import DraggablePictureTwo from "./DraggablePictureTwo";
-import pokeNames from "../assets/PokeJSON/pokeNames.json";
+import DraggablePictureTwo from "../DraggablePictureTwo/DraggablePictureTwo";
+import pokeNames from "../../assets/PokeJSON/pokeNames.json";
 import { Carousel } from "react-responsive-carousel";
 import styles from "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useDrag, useDrop } from "react-dnd";
-import RenderCarousel from "./RenderCarousel";
+import RenderCarousel from "../RenderCarousel/RenderCarousel";
 import axios from "axios";
-import GetBooklets from "./GetBooklets";
+import GetBooklets from "../GetBooklets/GetBooklets";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
