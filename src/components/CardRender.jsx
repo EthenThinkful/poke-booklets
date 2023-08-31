@@ -11,6 +11,12 @@ import GetBooklets from "./GetBooklets";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+//const serverAddress = import.meta.env.VITE_PROD_URL
+const serverAddress = import.meta.env.VITE_DEV_URL
+
+
+
+
 pokemon.configure({ apiKey: import.meta.env.VITE_TCG_API });
 
 export default function CardRender() {
