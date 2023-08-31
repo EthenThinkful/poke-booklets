@@ -6,9 +6,8 @@ import { HTML5toTouch } from 'rdndmb-html5-to-touch' // or any other pipeline
 import {Route,Routes} from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import CardRender from "./components/CardRender";
-import EnterPage from "./components/EnterPage";
-
+import EnterPage from "../EnterPage/EnterPage";
+import Home from "../Home/Home";
 
 
 function App() {
@@ -17,8 +16,8 @@ function App() {
       <ToastContainer autoClose={2000} 
         position = {toast.POSITION.BOTTOM_CENTER}/>
         <Routes>
-        <Route path="/" element={<EnterPage />} />
-        <Route path="/home" element={<CardRender />} />
+          <Route path="/" element={<EnterPage />} />
+          <Route path="/home" element={<Home />} />
         </Routes>
       </DndProvider>
   );

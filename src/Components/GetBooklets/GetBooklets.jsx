@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import DraggablePictureTwo from "./DraggablePictureTwo";
+import DraggablePictureTwo from "../DraggablePictureTwo/DraggablePictureTwo";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+//const serverAddress = import.meta.env.VITE_PROD_URL
+const serverAddress = import.meta.env.VITE_DEV_URL
 
 export default function GetBooklets({ bookletData }) {
   const [isDeleted, setIsDeleted] = useState(false);
