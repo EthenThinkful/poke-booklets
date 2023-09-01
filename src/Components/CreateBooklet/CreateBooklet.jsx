@@ -1,10 +1,62 @@
 import React from 'react'
+import DraggablePictureTwo from "../DraggablePictureTwo/DraggablePictureTwo";
+import { useDrag, useDrop } from "react-dnd";
 
-export default function CreateBooklet() {
+export default function CreateBooklet({book, setBook}) {
+
+  const [{ isOverTrash }, dropTrash] = useDrop(() => ({
+    accept: "image",
+    drop: (item) => handleRemoveItem(item),
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  }));
+
+  function handleRemoveItem(item) {
+    // console.log(item.id.current);
+    setBook((current) => current.filter((x) => x.id !== item.id.current));
+  }
+
   return (
-    <>
-    
-    
-    </>
+    <div className="lg:flex lg:justify-center lg:items-center">
+            <div className="card__book">
+              <div className="card__slot">
+                {book.length > 0 ? (
+                  <DraggablePictureTwo src={book[0].src} id={book[0].id} />
+                ) : null}
+              </div>
+              <div className="card__slot">
+                {book.length > 1 ? (
+                  <DraggablePictureTwo src={book[1].src} id={book[1].id} />
+                ) : null}
+              </div>
+              <div className="card__slot">
+                {book.length > 2 ? (
+                  <DraggablePictureTwo src={book[2].src} id={book[2].id} />
+                ) : null}
+              </div>
+              <div className="card__slot">
+                {book.length > 3 ? (
+                  <DraggablePictureTwo src={book[3].src} id={book[3].id} />
+                ) : null}
+              </div>
+              <div className="card__slot">
+                {book.length > 4 ? (
+                  <DraggablePictureTwo src={book[4].src} id={book[4].id} />
+                ) : null}
+              </div>
+              <div className="card__slot">
+                {book.length > 5 ? (
+                  <DraggablePictureTwo src={book[5].src} id={book[5].id} />
+                ) : null}
+              </div>
+            </div>
+            <div
+              className="trash__can bg-slate-600 w-120 h-20 mb-4 m-0 rounded-lg flex text-center justify-center p-10 pt-6 pb-6 text-xs lg:text-sm mt-2 lg:h-219 lg:w-160 lg:p-12 lg:pt-10 lg:m-10"
+              ref={dropTrash}
+            >
+              drag & drop cards here to delete
+            </div>
+          </div>
   )
 }
