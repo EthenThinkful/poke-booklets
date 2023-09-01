@@ -1,26 +1,28 @@
 import { Carousel } from "react-responsive-carousel";
+import styles from "react-responsive-carousel/lib/styles/carousel.min.css";
 import React, { useState, useEffect } from "react";
 
 export default function RenderCarousel({ carouselImg, setBook }) {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const windowLimitSm = 992
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    window.addEventListener("resize", handleResize);
+    useEffect(() => {
+        const handleResize = () => {
+          setWindowWidth(window.innerWidth);
+        };
+        window.addEventListener("resize", handleResize);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+        return () => {
+          window.removeEventListener("resize", handleResize);
+        };
+    }, []);
 
-  function handleAddBookClick(src, id) {
-    setBook((book) => [...book, { src, id }]);
-  }
+    function handleAddBookClick(src, id) {
+        setBook((book) => [...book, { src, id }]);
+    }
 
   let temp = [];
-  let chunkSize = windowWidth < 992 ? 2 : 5;
+  let chunkSize = windowWidth < windowLimitSm ? 2 : 5;
 
   for (let i = 0; i < carouselImg.length; i += chunkSize) {
     let chunk = carouselImg.slice(i, i + chunkSize);
@@ -36,7 +38,7 @@ export default function RenderCarousel({ carouselImg, setBook }) {
               +
             </button>
             <img
-              className="carousel__card lg:pl-5"
+              className="carousel__card lg:pl-5 object-scale-down"
               src={item.src}
               alt={`Book ${item.id}`}
             />
@@ -60,6 +62,7 @@ export default function RenderCarousel({ carouselImg, setBook }) {
         showStatus={false}
         useKeyboardArrows
         emulateTouch={true}
+        showThumbs={false}
       >
         {renderImgs(temp)}
       </Carousel>

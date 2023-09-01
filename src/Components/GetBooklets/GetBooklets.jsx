@@ -1,12 +1,23 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import DraggablePictureTwo from "./DraggablePictureTwo";
+import DraggablePictureTwo from "../DraggablePictureTwo/DraggablePictureTwo";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function GetBooklets({ bookletData }) {
+const serverAddress = import.meta.env.VITE_PROD_URL
+// const serverAddress = import.meta.env.VITE_DEV_URL
+
+export default function GetBooklets() {
   const [isDeleted, setIsDeleted] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [bookletData, setBookletData] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${serverAddress}/api/booklet`).then((res) => {
+      setBookletData(res.data);
+      // console.log(bookletData);
+    });
+  }, [bookletData]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -40,11 +51,11 @@ export default function GetBooklets({ bookletData }) {
             onClick={() =>
               axios
                 .delete(
-                  `${import.meta.env.VITE_PROD_URL}/api/booklet/${item.id}`
+                  `${serverAddress}/api/booklet/${item.id}`
                 )
                 .then((res) => {
                   toast("Booklet deleted successfully!");
-                  console.log(temp);
+                  // console.log(temp);
                   setIsDeleted(true);
                 })
             }
