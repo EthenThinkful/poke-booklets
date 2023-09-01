@@ -19,6 +19,7 @@ export default function SearchCard({setBook}) {
 
     function getCard() {
         pokemon.card.where({ q: `name:${poke}` }).then((result) => {
+          console.log("HERE MIGHT BE THE ERROR")
           setCard([result.data]);
         });
       }

@@ -61,6 +61,7 @@ export default function RenderCarousel({ carouselImg, setBook }) {
         showStatus={false}
         useKeyboardArrows
         emulateTouch={true}
+        showThumbs={false}
       >
         {renderImgs(temp)}
       </Carousel>
