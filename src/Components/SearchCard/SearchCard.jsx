@@ -12,10 +12,10 @@ export default function SearchCard({setBook}) {
 
     let newArray = new Array();
 
-  if (card.length > 0)
-    card[0].map((item, index) => {
-      newArray.push({ src: item.images.small, id: index });
-    });
+    if (card.length > 0)
+        card[0].map((item, index) => {
+        newArray.push({ src: item.images.small, id: index });
+        });
 
     function getCard() {
         pokemon.card.where({ q: `name:${poke}` }).then((result) => {
