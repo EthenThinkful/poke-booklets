@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-export default function UserForm({setUserName, setBook, book, userName, toast}) {
+export default function UserForm({setUserName, setBook, book, userName, toast, setCard, setPoke}) {
   const serverAddress = import.meta.env.VITE_PROD_URL;
   // const serverAddress = import.meta.env.VITE_DEV_URL;
 
@@ -19,13 +19,14 @@ export default function UserForm({setUserName, setBook, book, userName, toast}) 
     axios.post(`${serverAddress}/api/booklet`, data).then((res) => {
       toast("Booklet added successfully!");
       setBook([]);
+      setCard([]);
       setUserName("");
-      setBook([]);
+      setPoke("");
     });
   };
 
   return (
-    <div className="flex mb-8 lg:justify-center lg:items-center">
+    <div className="flex mb-8 lg:justify-center lg:items-center lg:pl-10">
       <form className="flex">
         <input
           className="p-3 text-xs rounded-md w-160 h-14 bg-stone-600 mr-4"
