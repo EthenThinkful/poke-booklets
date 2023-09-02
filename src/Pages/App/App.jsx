@@ -8,6 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import EnterPage from "../EnterPage/EnterPage";
 import Home from "../Home/Home";
+import Create from "../Create/Create";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<EnterPage />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/create" element={<Create />} />
         </Routes>
       </DndProvider>
   );

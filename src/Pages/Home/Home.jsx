@@ -1,14 +1,12 @@
 import React from 'react'
 import NavBar from '../../Components/NavBar/NavBar'
-import CardRender from '../../Components/CardRender/CardRender'
+import GetBooklets from "../../Components/GetBooklets/GetBooklets";
 
 export default function Home() {
   return (
     <>
-    
         <NavBar />
-        <CardRender />
-    
+        <GetBooklets />
     </>
   )
 }
