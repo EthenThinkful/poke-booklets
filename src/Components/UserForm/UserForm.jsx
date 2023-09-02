@@ -26,7 +26,7 @@ export default function UserForm({setUserName, setBook, book, userName, toast, s
   };
 
   return (
-    <div className="flex mb-8 lg:justify-center lg:items-center">
+    <div className="flex mb-8 lg:justify-center lg:items-center lg:pl-10">
       <form className="flex">
         <input
           className="p-3 text-xs rounded-md w-160 h-14 bg-stone-600 mr-4"

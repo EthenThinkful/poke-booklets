@@ -7,8 +7,7 @@ import UserForm from "../UserForm/UserForm";
 
 pokemon.configure({ apiKey: import.meta.env.VITE_TCG_API });
 
-export default function SearchCard({setBook, book, setUserName, userName, toast, setCard, card, newArray}) {
-    const [poke, setPoke] = useState("");
+export default function SearchCard({setBook, book, setUserName, userName, toast, setCard, card, newArray, poke, setPoke}) {
 
     function getCard() {
         pokemon.card.where({ q: `name:${poke}` }).then((result) => {
@@ -46,7 +45,7 @@ export default function SearchCard({setBook, book, setUserName, userName, toast,
             ))}
         </div>
         <RenderCarousel carouselImg={newArray} setBook={setBook} />
-        <UserForm setBook={setBook} book={book} setUserName={setUserName} userName={userName} toast={toast} setCard={setCard} setPoke={setPoke}/>
+        {/* <UserForm setBook={setBook} book={book} setUserName={setUserName} userName={userName} toast={toast} setCard={setCard} setPoke={setPoke}/> */}
     </>
   )
 }

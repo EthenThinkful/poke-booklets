@@ -1,8 +1,9 @@
 import React from 'react'
 import DraggablePictureTwo from "../DraggablePictureTwo/DraggablePictureTwo";
 import { useDrag, useDrop } from "react-dnd";
+import UserForm from '../UserForm/UserForm';
 
-export default function CreateBooklet({book, setBook}) {
+export default function CreateBooklet({setBook, book, setUserName, userName, toast, setCard, card, newArray, poke, setPoke}) {
 
   const [{ isOverTrash }, dropTrash] = useDrop(() => ({
     accept: "image",
@@ -18,7 +19,7 @@ export default function CreateBooklet({book, setBook}) {
   }
 
   return (
-    <div className="lg:flex lg:justify-center lg:items-center">
+    <div className="lg:flex lg:justify-center lg:items-center lg:mb-6">
             <div className="card__book">
               <div className="card__slot">
                 {book.length > 0 ? (
@@ -51,11 +52,14 @@ export default function CreateBooklet({book, setBook}) {
                 ) : null}
               </div>
             </div>
+            <div>
+            <UserForm setBook={setBook} book={book} setUserName={setUserName} userName={userName} toast={toast} setCard={setCard} setPoke={setPoke}/>
             <div
               className="trash__can bg-slate-600 w-120 h-20 mb-4 m-0 rounded-lg flex text-center justify-center p-10 pt-6 pb-6 text-xs lg:text-sm mt-2 lg:h-219 lg:w-160 lg:p-12 lg:pt-10 lg:m-10"
               ref={dropTrash}
             >
               drag & drop cards here to delete
+            </div>
             </div>
           </div>
   )
