@@ -3,19 +3,12 @@ import pokeNames from "../../assets/PokeJSON/pokeNames.json";
 import pokemon from "pokemontcgsdk";
 import SearchForm from '../SearchForm/SearchForm';
 import RenderCarousel from '../RenderCarousel/RenderCarousel';
+import UserForm from "../UserForm/UserForm";
 
 pokemon.configure({ apiKey: import.meta.env.VITE_TCG_API });
 
-export default function SearchCard({setBook}) {
+export default function SearchCard({setBook, book, setUserName, userName, toast, setCard, card, newArray}) {
     const [poke, setPoke] = useState("");
-    const [card, setCard] = useState([]);
-
-    let newArray = new Array();
-
-    if (card.length > 0)
-        card[0].map((item, index) => {
-        newArray.push({ src: item.images.small, id: index });
-        });
 
     function getCard() {
         pokemon.card.where({ q: `name:${poke}` }).then((result) => {
@@ -53,6 +46,7 @@ export default function SearchCard({setBook}) {
             ))}
         </div>
         <RenderCarousel carouselImg={newArray} setBook={setBook} />
+        <UserForm setBook={setBook} book={book} setUserName={setUserName} userName={userName} toast={toast} setCard={setCard} setPoke={setPoke}/>
     </>
   )
 }
