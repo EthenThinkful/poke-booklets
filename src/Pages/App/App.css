@@ -81,6 +81,28 @@ img {
   
 }
 
+.carousel-root .carousel .control-dots {
+  position: absolute;
+  bottom: 0;
+  top: 17rem;
+  visibility: visible;
+  margin: 10px 0 0 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+  opacity: 0.2;
+  border-radius: 1rem;
+}
+
+.carousel-root .carousel.carousel-slider {
+  position: relative;
+  width: 100%;
+  height: 19.5rem;
+  margin: 0;
+  overflow: hidden;
+}
+
 .pikachuCard {
   max-width: 100%; /* ensures image doesn't overflow */
   width: 15rem; 
@@ -120,6 +142,25 @@ img {
 }
 
 @media screen and (max-width: 576px) {
+  .slider-container {
+    width: 100%; /* Adjust this value to your desired width */
+    margin: 0rem auto 2rem; /* Center the carousel horizontally */
+  }
+
+  .carousel-root .carousel.carousel-slider {
+    height: 16.5rem;
+    overflow: visible;
+  }
+
+  .carousel-root .carousel .control-dots {
+    top: 13.5rem;
+    margin: 20px 0 0 0;
+    padding: 0;
+    overflow: visible;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
   .pikachuCard {
     width: 10.5rem; /* multiply original width and height by .7 to get these numbers */
     height: 14.4375rem;

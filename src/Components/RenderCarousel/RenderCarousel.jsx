@@ -63,7 +63,28 @@ export default function RenderCarousel({ carouselImg, setBook }) {
         useKeyboardArrows
         emulateTouch={true}
         showThumbs={false}
+        renderIndicator={(onClickHandler, isSelected, index, label) => {
+          const defStyle = { marginLeft: 20, color: "black", cursor: "pointer"};
+          const style = isSelected
+            ? { ...defStyle, color: "red" }
+            : { ...defStyle };
+          return (
+            <span
+              style={style}
+              onClick={onClickHandler}
+              onKeyDown={onClickHandler}
+              value={index}
+              key={index}
+              role="button"
+              tabIndex={0}
+              aria-label={`${label} ${index + 1}`}
+            >
+              {index}
+            </span>
+          );
+        }}
       >
+        
         {renderImgs(temp)}
       </Carousel>
     </div>
