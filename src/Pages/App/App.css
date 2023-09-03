@@ -23,6 +23,7 @@ img {
 }
 
 .card__book {
+  position: relative;
   width: 37rem;
   height: 34rem;
   padding: 1rem;
@@ -78,7 +79,36 @@ img {
 .slider-container {
   width: 100%; /* Adjust this value to your desired width */
   margin: 2rem auto; /* Center the carousel horizontally */
-  
+}
+
+.carousel-root .carousel .control-dots {
+  position: absolute;
+  bottom: 0;
+  top: 14rem;
+  visibility: visible;
+  margin: 10px 0 0 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+  opacity: 0.2;
+  display: flex;
+  justify-content: center;
+  display: none;
+}
+
+.carousel-root .carousel.carousel-slider {
+  position: relative;
+  width: 100%;
+  height: 18rem;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.container-control-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pikachuCard {
@@ -114,12 +144,55 @@ img {
   animation: spinner 4s linear infinite;
 }
 
+.arrow {
+  position: absolute;
+  z-index: 2;
+  top: calc(50% - 15px);
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin-left: 0rem;
+  margin-right: 0rem;
+}
+
 @keyframes spinner {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
 @media screen and (max-width: 576px) {
+  .arrow {
+    position: absolute;
+    z-index: 2;
+    top: calc(50% - 15px);
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin-left: -2rem;
+    margin-right: -2rem;
+  }
+
+  .slider-container {
+    width: 100%; /* Adjust this value to your desired width */
+    margin: 0rem auto 0rem; /* Center the carousel horizontally */
+  }
+
+  .carousel-root .carousel.carousel-slider {
+    position: relative;
+    overflow: visible;
+    height: 16rem;
+    margin: 0 auto 0rem 0;
+    z-index: 0;
+  }
+
+  .carousel-root .carousel .control-dots {
+    /* top: 13rem; */
+    margin: 0px 0 0 0;
+    padding: 0;
+    flex-wrap: wrap;
+    z-index: 0;
+  }
+  
   .pikachuCard {
     width: 10.5rem; /* multiply original width and height by .7 to get these numbers */
     height: 14.4375rem;
