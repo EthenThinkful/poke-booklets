@@ -1,5 +1,7 @@
 import React from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
 
 export default function UserForm({setUserName, setBook, book, userName, toast, setCard, setPoke}) {
   const serverAddress = import.meta.env.VITE_PROD_URL;
@@ -27,7 +29,7 @@ export default function UserForm({setUserName, setBook, book, userName, toast, s
 
   return (
     <div className="flex mb-8 lg:justify-center lg:items-center lg:pl-10">
-      <form className="flex">
+      <form className="flex" onSubmit={handleBooklet}>
         <input
           className="p-3 text-xs rounded-md w-160 h-14 bg-stone-600 mr-4"
           type="text"
@@ -43,7 +45,7 @@ export default function UserForm({setUserName, setBook, book, userName, toast, s
         type="submit"
         className="p-3 bg-orange-300 rounded-md text-xs w-40 h-14 mr-4"
       >
-        submit booklet
+        <Link to={'/home'}>submit booklet</Link>
       </button>
     </div>
   );

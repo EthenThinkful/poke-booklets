@@ -4,17 +4,18 @@ export default function SearchForm( {setPoke, poke, getCard, setCard} ) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        getCard();
+        getCard(poke);
       };
 
     const handleDelete = (e) => {
       e.preventDefault();
       setCard([]);
+      setPoke("");
     };
 
   return (
     <>
-        <form className="flex">
+        <form className="flex" onSubmit={handleSubmit}>
             <input
               className="p-3 text-xs rounded-md w-40 h-14 bg-stone-600 mr-4"
               placeholder="search"
@@ -25,7 +26,6 @@ export default function SearchForm( {setPoke, poke, getCard, setCard} ) {
               }}
               />
             <button
-              onClick={handleSubmit}
               type="submit"
               className="p-3 bg-orange-300 rounded-md text-xs w-20 h-14 mr-4"
               >
@@ -33,7 +33,7 @@ export default function SearchForm( {setPoke, poke, getCard, setCard} ) {
               </button>
             <button
               onClick={handleDelete}
-              type="submit"
+              type="button" // Use type="button" to prevent this button from submitting the form
               className="p-3 bg-orange-300 rounded-md text-xs w-20 h-14 mr-4"
               >
               clear
