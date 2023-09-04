@@ -13,7 +13,6 @@ export default function SearchCard({setBook, book, setUserName, userName, toast,
 
     function getCard(test) {
         pokemon.card.where({ q: `name:${test}` }).then((result) => {
-          console.log("HERE MIGHT BE THE ERROR")
           setCard([result.data]);
         });
       }
@@ -74,7 +73,7 @@ export default function SearchCard({setBook, book, setUserName, userName, toast,
     <>
     {/* added a border (border-2 and border-red-200) to see where the component is laid out. Delete afterwards */}
     <div className="flex items-center lg:justify-center lg:items-center">
-    <SearchForm setPoke={setPoke} poke={poke} setCard={setCard} getCard={getCard}/>
+    <SearchForm setPoke={setPoke} poke={poke} setCard={setCard} getCard={getCard} />
         </div>
         <div className="drop__down text-xs mb-2 mt-3 text-zinc-700">
           {currPokemons}
