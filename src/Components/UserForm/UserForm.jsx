@@ -43,7 +43,7 @@ export default function UserForm({setUserName, setBook, book, userName, toast, s
       <button
         onClick={handleBooklet}
         type="submit"
-        className="p-3 bg-orange-300 rounded-md text-xs w-40 h-14 mr-4"
+        className="p-3 bg-orange-300 rounded-md text-xs w-40 h-14 mr-4 caret-transparent"
       >
         <Link to={'/home'}>submit booklet</Link>
       </button>

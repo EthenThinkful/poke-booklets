@@ -17,7 +17,7 @@ export default function EnterPage() {
   return (
     <>
       <div style={style.body}>
-        <div className="enterPage">
+        <div className="enterPage caret-transparent">
           <h1 className="flex justify-center text-center">
             Continue as existing user: Josh?
           </h1>

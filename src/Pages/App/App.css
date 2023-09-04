@@ -1,10 +1,3 @@
-/* #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-} */
-
 img {
   color: black;
 }
@@ -76,41 +69,6 @@ img {
   height: 130px;
 }
 
-.slider-container {
-  width: 100%; /* Adjust this value to your desired width */
-  margin: 2rem auto; /* Center the carousel horizontally */
-}
-
-.carousel-root .carousel .control-dots {
-  position: absolute;
-  bottom: 0;
-  top: 14rem;
-  visibility: visible;
-  margin: 10px 0 0 0;
-  padding: 0;
-  text-align: center;
-  width: 100%;
-  z-index: 1;
-  opacity: 0.2;
-  display: flex;
-  justify-content: center;
-  display: none;
-}
-
-.carousel-root .carousel.carousel-slider {
-  position: relative;
-  width: 100%;
-  height: 18rem;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-.container-control-dots {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .pikachuCard {
   max-width: 100%; /* ensures image doesn't overflow */
   width: 15rem; 
@@ -144,6 +102,26 @@ img {
   animation: spinner 4s linear infinite;
 }
 
+/* CAROUSEL STYLING */
+.slider-container {
+  width: 100%; /* Adjust this value to your desired width */
+  margin: 2rem auto; /* Center the carousel horizontally */
+}
+
+.carousel-root .carousel .control-dots {
+  display: none;
+}
+
+.carousel-root .carousel .carousel-status {
+  position: relative;
+    top: 0;
+    right: 0;
+    padding: .7rem;
+    font-size: 10px;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
+    color: #fff;
+}
+
 .arrow {
   position: absolute;
   z-index: 2;
@@ -154,6 +132,7 @@ img {
   margin-left: 0rem;
   margin-right: 0rem;
 }
+/* END OF CAROUSEL STYLING */
 
 @keyframes spinner {
   0% { transform: rotate(0deg); }
@@ -161,6 +140,18 @@ img {
 }
 
 @media screen and (max-width: 576px) {
+
+  /* CAROUSEL STYLING */
+  .carousel-root .carousel .carousel-status {
+    position: relative;
+      top: 0;
+      right: 0;
+      padding: .4rem;
+      font-size: 10px;
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
+      color: #fff;
+  }
+
   .arrow {
     position: absolute;
     z-index: 2;
@@ -178,20 +169,10 @@ img {
   }
 
   .carousel-root .carousel.carousel-slider {
-    position: relative;
     overflow: visible;
-    height: 16rem;
-    margin: 0 auto 0rem 0;
-    z-index: 0;
+    
   }
-
-  .carousel-root .carousel .control-dots {
-    /* top: 13rem; */
-    margin: 0px 0 0 0;
-    padding: 0;
-    flex-wrap: wrap;
-    z-index: 0;
-  }
+  /* END OF CAROUSEL STYLING */
   
   .pikachuCard {
     width: 10.5rem; /* multiply original width and height by .7 to get these numbers */

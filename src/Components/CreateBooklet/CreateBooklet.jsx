@@ -55,7 +55,7 @@ export default function CreateBooklet({setBook, book, setUserName, userName, toa
             <div>
             <UserForm setBook={setBook} book={book} setUserName={setUserName} userName={userName} toast={toast} setCard={setCard} setPoke={setPoke}/>
             <div
-              className="trash__can bg-slate-600 w-120 h-20 mb-4 m-0 rounded-lg flex text-center justify-center p-10 pt-6 pb-6 text-xs lg:text-sm mt-2 lg:h-219 lg:w-160 lg:p-12 lg:pt-10 lg:m-10"
+              className="trash__can bg-slate-600 w-120 h-20 mb-4 m-0 rounded-lg flex text-center justify-center p-10 pt-6 pb-6 text-xs lg:text-sm mt-2 lg:h-219 lg:w-160 lg:p-12 lg:pt-10 lg:m-10 caret-transparent"
               ref={dropTrash}
             >
               drag & drop cards here to delete

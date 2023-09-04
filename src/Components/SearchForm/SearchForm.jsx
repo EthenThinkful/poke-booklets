@@ -27,14 +27,14 @@ export default function SearchForm( {setPoke, poke, getCard, setCard} ) {
               />
             <button
               type="submit"
-              className="p-3 bg-orange-300 rounded-md text-xs w-20 h-14 mr-4"
+              className="p-3 bg-orange-300 rounded-md text-xs w-20 h-14 mr-4 caret-transparent"
               >
               get card
               </button>
             <button
               onClick={handleDelete}
               type="button" // Use type="button" to prevent this button from submitting the form
-              className="p-3 bg-orange-300 rounded-md text-xs w-20 h-14 mr-4"
+              className="p-3 bg-orange-300 rounded-md text-xs w-20 h-14 mr-4 caret-transparent"
               >
               clear
               </button>
