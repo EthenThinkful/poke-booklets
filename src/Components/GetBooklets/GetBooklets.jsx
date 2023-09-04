@@ -41,7 +41,7 @@ export default function GetBooklets() {
   for (let i = 0; i < bookletData.length; i += chunkSize) {
     let chunk = bookletData.slice(i, i + chunkSize);
     temp.push(
-      <div className="lg:flex">
+      <div className="lg:flex caret-transparent">
         {chunk.map((item) => (
           <div className="text-neutral-700 text-sm lg:flex lg:justify-center lg:items-center lg: mx-2">
             <div>
@@ -95,7 +95,7 @@ export default function GetBooklets() {
   }
 
   return (
-    <div className="iphone__screen">
+    <div className="iphone__screen caret-transparent">
       <div className="flex justify-between items-center">
         <div className="text-neutral-700 flex items-center">Poke Booklets</div>
         <div className="text-neutral-700 flex justify-center items-center bg-red-200 rounded-xl text-xs h-10 lg:w-1/12">
