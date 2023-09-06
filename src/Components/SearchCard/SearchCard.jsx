@@ -11,74 +11,73 @@ export default function SearchCard({setBook, book, setUserName, userName, toast,
   const [focusedIndex, setFocusedIndex] = useState(-1);
   const dropdownRef = useRef(null);
 
-    function getCard(test) {
-        pokemon.card.where({ q: `name:${test}` }).then((result) => {
-          setCard([result.data]);
+  function getCard(test) {
+      pokemon.card.where({ q: `name:${test}` }).then((result) => {
+        setCard([result.data]);
+      });
+    }
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "ArrowDown") {
+        event.preventDefault();
+        setFocusedIndex((prevIndex) => {
+          const nextIndex = prevIndex + 1;
+          return nextIndex;
         });
+      } else if (event.key === "ArrowUp") {
+        event.preventDefault();
+        setFocusedIndex((prevIndex) => {
+          const nextIndex = prevIndex - 1;
+          return nextIndex;
+        });
+      } else if (event.key === "Enter") {
+        event.preventDefault();
+        if (currPokemons[focusedIndex]) {
+          let testVar = currPokemons[focusedIndex].props.children.toLocaleLowerCase();
+          setPoke(currPokemons[focusedIndex].props.children.toLocaleLowerCase());
+          getCard(testVar);
+        }
+        setFocusedIndex(-1);
       }
+    };
 
-      useEffect(() => {
-        const handleKeyDown = (event) => {
-          if (event.key === "ArrowDown") {
-            event.preventDefault();
-            setFocusedIndex((prevIndex) => {
-              const nextIndex = prevIndex + 1;
-              return nextIndex;
-            });
-          } else if (event.key === "ArrowUp") {
-            event.preventDefault();
-            setFocusedIndex((prevIndex) => {
-              const nextIndex = prevIndex - 1;
-              return nextIndex;
-            });
-          } else if (event.key === "Enter") {
-            event.preventDefault();
-            if (currPokemons[focusedIndex]) {
-              let testVar = currPokemons[focusedIndex].props.children.toLocaleLowerCase();
-              setPoke(currPokemons[focusedIndex].props.children.toLocaleLowerCase());
-              getCard(testVar);
-            }
-            setFocusedIndex(-1);
-          }
-        };
-    
-        document.addEventListener("keydown", handleKeyDown);
-        return () => {
-          document.removeEventListener("keydown", handleKeyDown);
-        };
-      }, [focusedIndex, setPoke]);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [focusedIndex, setPoke]);
 
-      let currPokemons = pokeNames
+  let currPokemons = pokeNames
       .filter((item) => {
-        const searchTerm = poke.toLocaleLowerCase();
-        const fullName = item.toLocaleLowerCase();
-        return (
-          searchTerm &&
-          fullName.startsWith(searchTerm) &&
-          fullName !== searchTerm
-        );
+          const searchTerm = poke.toLocaleLowerCase();
+          const fullName = item.toLocaleLowerCase();
+          return (
+            searchTerm &&
+            fullName.startsWith(searchTerm) &&
+            fullName !== searchTerm
+          );
       })
       .slice(0, 6)
       .map((item, index) => (
         <div
-          onClick={() => setPoke(item.toLocaleLowerCase())}
-          key={item}
-          className={`cursor-pointer p-2 ${index === focusedIndex ? 'bg-gray-200' : ''}`}
-        >
-          {item}
+            onClick={() => setPoke(item.toLocaleLowerCase())}
+            key={item}
+            className={`cursor-pointer p-2 ${index === focusedIndex ? 'bg-gray-200' : ''}`}
+          >
+            {item}
         </div>
       ))
 
   return (
     <>
-    {/* added a border (border-2 and border-red-200) to see where the component is laid out. Delete afterwards */}
-    <div className="flex items-center lg:justify-center lg:items-center">
-    <SearchForm setPoke={setPoke} poke={poke} setCard={setCard} getCard={getCard} />
-        </div>
-        <div className="drop__down text-xs mb-2 mt-3 text-zinc-700">
-          {currPokemons}
-        </div>
-        <RenderCarousel carouselImg={newArray} setBook={setBook} />
+      <div className="flex items-center lg:justify-center lg:items-center">
+        <SearchForm setPoke={setPoke} poke={poke} setCard={setCard} getCard={getCard} />
+      </div>
+      <div className="drop__down text-xs mb-2 mt-3 text-zinc-700">
+        {currPokemons}
+      </div>
+      <RenderCarousel carouselImg={newArray} setBook={setBook} />
     </>
   )
 }

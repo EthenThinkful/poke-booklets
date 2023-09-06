@@ -19,7 +19,8 @@ https://github.com/EthenThinkful/PokemonAPIjectBackend
 ### Demo
 https://candid-tiramisu-895796.netlify.app/
 
-https://github.com/EthenThinkful/PokemonAPIject/assets/104235709/5ccd3f7c-e477-4777-b2f0-6bbbe441620b
+https://github.com/EthenThinkful/poke-booklets/assets/104235709/0fbef656-b6fe-46d2-a499-a29f30842ae4
+
 
 
 

@@ -28,20 +28,20 @@ export default function RenderCarousel({ carouselImg, setBook}) {
     let chunk = carouselImg.slice(i, i + chunkSize);
 
     temp.push(
-      <div className="flex mt-2 mb-0" key={i}>
+      <div className="flex mb-0 here " key={i}>
         {chunk.map((item) => (
-          <div key={item.id}>
-            <button
-              className="btn w-16 h-8 bg-slate-600 rounded-xl text-center mb-2"
+          <div className="flex flex-col justify-center items-center w-full" key={item.id}>
+            <img
+              className="carousel__card  object-scale-down "
+              src={item.src}
+              alt={`Card ${item.id}`}
+            />
+                        <button
+              className="btn m-2 w-16 h-8 bg-slate-600 rounded-xl  mb-2 flex items-center justify-center"
               onClick={() => handleAddBookClick(item.src, item.id)}
             >
               +
             </button>
-            <img
-              className="carousel__card lg:pl-5 object-scale-down"
-              src={item.src}
-              alt={`Card ${item.id}`}
-            />
           </div>
         ))}
       </div>
