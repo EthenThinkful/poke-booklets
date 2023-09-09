@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import pikachuCard from "../../assets/pikachuCard.gif";
 import bgimage from "../../assets/PokePICS/EnterBg.jpg";
+import Form from "./Form";
 
-export default function EnterPage() {
+// const serverAddress = import.meta.env.VITE_PROD_URL
+const serverAddress = import.meta.env.VITE_DEV_URL;
+
+export default function Login() {
   const style = {
     body: {
       backgroundImage: `url(${bgimage})`,
@@ -17,7 +21,8 @@ export default function EnterPage() {
   return (
     <>
       <div style={style.body}>
-        <div className="enterPage caret-transparent">
+        <Form serverAddress={serverAddress}/>
+        {/* <div className="login caret-transparent">
           <h1 className="flex justify-center text-center">
             Continue as existing user: Josh?
           </h1>
@@ -32,7 +37,7 @@ export default function EnterPage() {
               className="pikachuCard zoom"
             />
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
