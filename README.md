@@ -1,5 +1,5 @@
 # Poke Booklets
-This project was primarily created to engage in something I'm passionate about to help me stay engaged with Java development (Backend repository below).
+Full stack project primarily created to engage in something I'm passionate about to help me stay engaged with Java development (Backend repository below).
 
 ## What exists
 - Retrieve any card that exists and every version of it.
