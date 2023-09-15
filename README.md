@@ -1,5 +1,5 @@
 # Poke Booklets
-This project was primarily created to engage in a full-stack development project with the intention of creating something without tutorials, resourcing documentation for the sake of academic growth. Also, the API is so lovely and I love Pokemon cards.
+This project was primarily created to engage in a full-stack development project utilizing Java on the backend while making something I'm passionate about.
 
 ## What exists
 - Retrieve any card that exists and every version of it.
