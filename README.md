@@ -13,7 +13,7 @@ Full stack project primarily created to engage in something I'm passionate about
 ## Tech
 Vite, React, and Tailwind CSS.
 
-## Visit the backend
+## Backend Repository
 https://github.com/EthenThinkful/PokemonAPIjectBackend
 
 ### Demo
