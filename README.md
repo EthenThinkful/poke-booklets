@@ -11,7 +11,7 @@ This project was primarily created to engage in something I'm passionate about t
 2.) Brainstorm ideas for evolving the site 
 
 ## Tech
-This project primarily uses Vite, React, and Tailwind CSS.
+Vite, React, and Tailwind CSS.
 
 ## Visit the backend
 https://github.com/EthenThinkful/PokemonAPIjectBackend
