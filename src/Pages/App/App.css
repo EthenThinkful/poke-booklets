@@ -32,8 +32,8 @@ img {
 .card__slot {
   width: 160px;
   height: 219px;
-  margin: 0 .8rem;
-  border-radius: .7rem;
+  margin: 0 0.8rem;
+  border-radius: 0.7rem;
   background-color: white;
   display: flex;
   justify-content: center;
@@ -49,11 +49,13 @@ img {
 }
 
 .zoom {
-  transition: transform .2s; /* Animation */
+  transition: transform 0.2s; /* Animation */
 }
 
 .zoom:hover {
-  transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  transform: scale(
+    1.5
+  ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
 .pokemon__render {
@@ -71,7 +73,7 @@ img {
 
 .pikachuCard {
   max-width: 100%; /* ensures image doesn't overflow */
-  width: 15rem; 
+  width: 15rem;
   height: 20.625rem;
   caret-color: transparent;
   margin: 4rem auto;
@@ -94,7 +96,7 @@ img {
 .loader {
   margin: auto;
   margin-top: 2.5rem;
-  border: 10px solid #EAF0F6;
+  border: 10px solid #eaf0f6;
   border-radius: 50%;
   border-top: 10px solid rgb(143, 143, 143);
   width: 75px;
@@ -114,12 +116,12 @@ img {
 
 .carousel-root .carousel .carousel-status {
   position: relative;
-    top: 0;
-    right: 0;
-    padding: .7rem;
-    font-size: 10px;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
-    color: #fff;
+  top: 0;
+  right: 0;
+  padding: 0.7rem;
+  font-size: 10px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9);
+  color: #fff;
 }
 
 .arrow {
@@ -135,21 +137,24 @@ img {
 /* END OF CAROUSEL STYLING */
 
 @keyframes spinner {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @media screen and (max-width: 576px) {
-
   /* CAROUSEL STYLING */
   .carousel-root .carousel .carousel-status {
     position: relative;
-      top: 0;
-      right: 0;
-      padding: .4rem;
-      font-size: 10px;
-      text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
-      color: #fff;
+    top: 0;
+    right: 0;
+    padding: 0.4rem;
+    font-size: 10px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.9);
+    color: #fff;
   }
 
   .arrow {
@@ -170,10 +175,9 @@ img {
 
   .carousel-root .carousel.carousel-slider {
     overflow: visible;
-    
   }
   /* END OF CAROUSEL STYLING */
-  
+
   .pikachuCard {
     width: 10.5rem; /* multiply original width and height by .7 to get these numbers */
     height: 14.4375rem;
@@ -196,11 +200,11 @@ img {
   }
 
   .card__book {
-    width: 22rem;
+    width: 100%;
     height: 20rem;
-  justify-content: center;
-  border-radius: 1rem;
-  background-color: aquamarine;
+    justify-content: center;
+    border-radius: 1rem;
+    background-color: aquamarine;
   }
 
   .create__user__btn {
@@ -211,11 +215,10 @@ img {
   .card__slot {
     width: 100px;
     height: 130px;
-    margin: 0 .3rem;
+    margin: 0 0.3rem;
   }
 
-  .carousel-root { 
+  .carousel-root {
     margin-bottom: 0rem;
   }
 }
-
