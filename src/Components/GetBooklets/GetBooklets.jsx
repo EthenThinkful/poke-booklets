@@ -41,10 +41,10 @@ export default function GetBooklets() {
   for (let i = 0; i < bookletData.length; i += chunkSize) {
     let chunk = bookletData.slice(i, i + chunkSize);
     temp.push(
-      <div className="lg:flex caret-transparent">
+      <div className="lg:flex caret-transparent lg:justify-between">
         {chunk.map((item) => (
-          <div className="text-neutral-700 text-sm lg:flex lg:justify-center lg:items-center lg: mx-2">
-            <div>
+          <div className="text-neutral-700 text-sm w-full max-w-[325px] mx-auto lg:flex lg:justify-center lg:items-center lg:mx-2 custom-sm:max-w-[450px] custom-lg:max-w-[550px]">
+            <div className="w-full">
               <div className="flex justify-between lg:px-8">
                 {item.userName}'s party
                 {/* <button Link>Edit</button> */}
@@ -67,23 +67,23 @@ export default function GetBooklets() {
                   Delete
                 </button>
               </div>
-              <div className="card__book mt-2">
-                <div className="card__slot">
+              <div className="card__book mt-2 gap-y-5">
+                <div className="card__slot w-[85px] h-[110.5px] custom-sm:w-[126.225px] custom-sm:h-[175.3125px] lg:w-[160px] lg:h-[219px]">
                   <DraggablePictureTwo src={item.cardOne} id={item.id} />
                 </div>
-                <div className="card__slot">
+                <div className="card__slot w-[85px] h-[110.5px] custom-sm:w-[126.225px] custom-sm:h-[175.3125px] lg:w-[160px] lg:h-[219px]">
                   <DraggablePictureTwo src={item.cardTwo} id={item.id} />
                 </div>
-                <div className="card__slot">
+                <div className="card__slot w-[85px] h-[110.5px] custom-sm:w-[126.225px] custom-sm:h-[175.3125px] lg:w-[160px] lg:h-[219px]">
                   <DraggablePictureTwo src={item.cardThree} id={item.id} />
                 </div>
-                <div className="card__slot">
+                <div className="card__slot w-[85px] h-[110.5px] custom-sm:w-[126.225px] custom-sm:h-[175.3125px] lg:w-[160px] lg:h-[219px]">
                   <DraggablePictureTwo src={item.cardFour} id={item.id} />
                 </div>
-                <div className="card__slot">
+                <div className="card__slot w-[85px] h-[110.5px] custom-sm:w-[126.225px] custom-sm:h-[175.3125px] lg:w-[160px] lg:h-[219px]">
                   <DraggablePictureTwo src={item.cardFive} id={item.id} />
                 </div>
-                <div className="card__slot">
+                <div className="card__slot w-[85px] h-[110.5px] custom-sm:w-[126.225px] custom-sm:h-[175.3125px] lg:w-[160px] lg:h-[219px]">
                   <DraggablePictureTwo src={item.cardSix} id={item.id} />
                 </div>
               </div>

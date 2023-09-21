@@ -19,7 +19,7 @@ export default function EnterPage() {
       <div style={style.body}>
         <div className="enterPage caret-transparent">
           <h1 className="flex justify-center text-center">
-            Continue as existing user: Josh?
+            Continue as existing user?
           </h1>
           <Link to={"/home"} className="m-6">
             Yes
