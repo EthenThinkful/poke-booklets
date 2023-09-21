@@ -15,6 +15,11 @@ module.exports = {
     },
     height: {
       '219': '219px'
+    },
+    screens: {
+      'custom-xs': '392px',
+      'custom-sm': '576px',
+      'custom-lg': '1024px'
     }
   }},
   plugins: [],
