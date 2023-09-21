@@ -19,34 +19,34 @@ export default function CreateBooklet({setBook, book, setUserName, userName, toa
   }
 
   return (
-    <div className="lg:flex lg:justify-center lg:items-center lg:mb-6">
-            <div className="card__book">
-              <div className="card__slot">
+    <div className="w-full max-w-[325px] mx-auto lg:flex lg:justify-center lg:items-center lg:mb-6 custom-sm:max-w-[450px] custom-lg:max-w-[550px]">
+            <div className="card__book mt-2 gap-y-5 lg:gap-x-5">
+              <div className="card__slot w-[85px] h-[110.5px] custom-sm:w-[126.225px] custom-sm:h-[175.3125px] lg:w-[160px] lg:h-[219px]">
                 {book.length > 0 ? (
                   <DraggablePictureTwo src={book[0].src} id={book[0].id} />
                 ) : null}
               </div>
-              <div className="card__slot">
+              <div className="card__slot w-[85px] h-[110.5px] custom-sm:w-[126.225px] custom-sm:h-[175.3125px] lg:w-[160px] lg:h-[219px]">
                 {book.length > 1 ? (
                   <DraggablePictureTwo src={book[1].src} id={book[1].id} />
                 ) : null}
               </div>
-              <div className="card__slot">
+              <div className="card__slot w-[85px] h-[110.5px] custom-sm:w-[126.225px] custom-sm:h-[175.3125px] lg:w-[160px] lg:h-[219px]">
                 {book.length > 2 ? (
                   <DraggablePictureTwo src={book[2].src} id={book[2].id} />
                 ) : null}
               </div>
-              <div className="card__slot">
+              <div className="card__slot w-[85px] h-[110.5px] custom-sm:w-[126.225px] custom-sm:h-[175.3125px] lg:w-[160px] lg:h-[219px]">
                 {book.length > 3 ? (
                   <DraggablePictureTwo src={book[3].src} id={book[3].id} />
                 ) : null}
               </div>
-              <div className="card__slot">
+              <div className="card__slot w-[85px] h-[110.5px] custom-sm:w-[126.225px] custom-sm:h-[175.3125px] lg:w-[160px] lg:h-[219px]">
                 {book.length > 4 ? (
                   <DraggablePictureTwo src={book[4].src} id={book[4].id} />
                 ) : null}
               </div>
-              <div className="card__slot">
+              <div className="card__slot w-[85px] h-[110.5px] custom-sm:w-[126.225px] custom-sm:h-[175.3125px] lg:w-[160px] lg:h-[219px]">
                 {book.length > 5 ? (
                   <DraggablePictureTwo src={book[5].src} id={book[5].id} />
                 ) : null}
