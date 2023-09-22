@@ -2,11 +2,14 @@ import { Link } from "react-router-dom";
 import pikachuCard from "../../assets/pikachuCard.gif";
 import bgimage from "../../assets/PokePICS/EnterBg.jpg";
 import Form from "./Form";
+import Enter from "./Enter";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // const serverAddress = import.meta.env.VITE_PROD_URL
 const serverAddress = import.meta.env.VITE_DEV_URL;
 
-export default function Login() {
+export default function Login({toast}) {
   const style = {
     body: {
       backgroundImage: `url(${bgimage})`,
@@ -20,8 +23,21 @@ export default function Login() {
   };
   return (
     <>
-      <div style={style.body}>
-        <Form serverAddress={serverAddress}/>
+      <div style={style.body} className="flex flex-col">
+      <div className="login caret-transparent  flex flex-col max-w-[300px] sm:max-w-[500px]">
+          <h1 className="flex justify-center text-center">
+            Continue as existing user: Josh?
+          </h1> 
+          <div className="h-10 flex justify-center w-full">
+          <Link to={"/home"} className="p-3  bg-orange-300 mx-1 rounded-md text-xs w-auto h-10 caret-transparent w-[60px] text-center">
+            Yes
+          </Link>
+          <Link to={"/"} className="p-3 bg-orange-300 mx-1 rounded-md text-xs w-[60px] text-center h-10 caret-transparent">No</Link>
+          </div>
+          
+        </div>
+        <Form serverAddress={serverAddress} toast={toast}/>
+        <Enter serverAddress={serverAddress} toast={toast}/>
         {/* <div className="login caret-transparent">
           <h1 className="flex justify-center text-center">
             Continue as existing user: Josh?

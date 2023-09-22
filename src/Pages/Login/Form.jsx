@@ -1,25 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
-  //POST request for a booklet to api
-//   const handleBooklet = (e) => {
-//     const data = {
-//       userName: userName,
-//       cardOne: book.length > 0 ? book[0].src : null,
-//       cardTwo: book.length > 1 ? book[1].src : null,
-//       cardThree: book.length > 2 ? book[2].src : null,
-//       cardFour: book.length > 3 ? book[3].src : null,
-//       cardFive: book.length > 4 ? book[4].src : null,
-//       cardSix: book.length > 5 ? book[5].src : null,
-//     };
-//     axios.post(`${serverAddress}/api/booklet`, data).then((res) => {
-//       toast("Booklet added successfully!");
-//       setBook([]);
-//       setCard([]);
-//       setUserName("");
-//       setPoke("");
-//     });
-//   };
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Form({serverAddress}) {
   const [user, setUser] = useState('');
@@ -34,35 +16,41 @@ export default function Form({serverAddress}) {
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     const data = {userName: user, password: password};
     axios.post(`${serverAddress}/api/users`, data).then((res) => {
         toast("User added successfully!");
+        console.log("User added successfully!");
         setUser('');
         setPassword('');
     });
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="user">User Name:</label>
+    <form onSubmit={handleSubmit} className='my-2'>
+      <div className='mx-auto max-w-[300px]'>
+        <h1 className='my-4 text-center'>Create New User:</h1>
+        <label htmlFor="user" className='text-white'>User Name:</label>
         <input
           type="text"
           id="user"
           value={user}
           onChange={handleUserChange}
+          className='bg-zinc-700 w-full max-w-full'
         />
       </div>
-      <div>
-        <label htmlFor="password">Password:</label>
-        <textarea
+      <div className='mx-auto max-w-[300px]'>
+        <label htmlFor="password" className='text-white'>Password:</label>
+        <input
           id="password"
+          type='password'
           value={password}
           onChange={handlePasswordChange}
+          className='bg-zinc-700 w-full max-w-full'
         />
       </div>
-      <div>
-        <button type="submit">Submit</button>
+      <div className='mx-auto max-w-[80%] flex justify-center'>
+        <button type="submit" className="p-3 m-2 bg-orange-300 rounded-md text-xs w-auto h-10 caret-transparent">Create</button>
       </div>
     </form>
   );
