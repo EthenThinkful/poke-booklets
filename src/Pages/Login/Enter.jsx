@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 export default function Enter({ serverAddress }) {
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMsg, setErrorMsg] = useState(null);
 
     const params = {
         user: user,
@@ -42,7 +43,8 @@ export default function Enter({ serverAddress }) {
         })
             .catch(error => {
                 // Handle any errors here
-                console.log("User not found");
+                console.log(error.code);
+                setErrorMsg(error.code);
             })
     };
     //---------------------------------end new implement---------------------------------
@@ -71,6 +73,7 @@ export default function Enter({ serverAddress }) {
             </div>
             <div>
                 <button type="submit" className="p-3 m-2 bg-orange-300 rounded-md text-xs w-auto h-10 caret-transparent">Login</button>
+                {errorMsg ? <div className='bg-red-600'>{errorMsg}</div> : null}
             </div>
         </form>
     );
