@@ -27,7 +27,7 @@ export default function Login({toast}) {
       <div style={style.body} className="flex flex-col">
       <div className="login caret-transparent  flex flex-col max-w-[300px] sm:max-w-[500px]">
           <h1 className="flex justify-center text-center">
-            Continue as existing user: Josh?
+            Continue as existing user: Felipe?
           </h1> 
           <div className="h-10 flex justify-center w-full">
           <Link to={"/home"} className="p-3  bg-orange-300 mx-1 rounded-md text-xs w-auto h-10 caret-transparent w-[60px] text-center">
