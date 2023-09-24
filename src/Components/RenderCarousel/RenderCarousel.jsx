@@ -18,6 +18,8 @@ export default function RenderCarousel({ carouselImg, setBook}) {
   }, []);
 
   function handleAddBookClick(src, id) {
+    //post request here for individual additions to a mon's booklet 
+    //how would the id be detectable for a user that has logged in?!
     setBook((book) => [...book, { src, id }]);
   }
 

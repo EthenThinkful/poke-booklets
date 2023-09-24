@@ -38,7 +38,10 @@ export default function Enter({ serverAddress }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.get(`${serverAddress}/api/userss`, { params }).then((res) => {
-            console.log('result: ', res.data);
+            // console.log('result: ', res.data);
+            // console.log('ID OF 3t!: ', res.data.id);
+            localStorage.setItem("ID", res.data.id);
+            console.log("SILLY DOODS ID IN LOCAL STORAGE: ", localStorage.ID);
             navigate('./home');
         })
             .catch(error => {
@@ -50,7 +53,7 @@ export default function Enter({ serverAddress }) {
     //---------------------------------end new implement---------------------------------
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='absolute top-0 pt-72'>
             <div className='m-4'>
                 <h1 className='m-4'>Log In:</h1>
                 <label htmlFor="user" className='text-white'>User Name:</label>

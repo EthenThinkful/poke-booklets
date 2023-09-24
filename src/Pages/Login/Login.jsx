@@ -7,8 +7,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // const serverAddress = import.meta.env.VITE_PROD_URL
-// const serverAddress = import.meta.env.VITE_DEV_URL;
-const serverAddress = import.meta.env.VITE_DEV_PROD_URL;
+const serverAddress = import.meta.env.VITE_DEV_URL;
+// const serverAddress = import.meta.env.VITE_DEV_PROD_URL;
 
 export default function Login({toast}) {
   const style = {
@@ -25,7 +25,7 @@ export default function Login({toast}) {
   return (
     <>
       <div style={style.body} className="flex flex-col">
-      <div className="login caret-transparent  flex flex-col max-w-[300px] sm:max-w-[500px]">
+      {/* <div className="login caret-transparent  flex flex-col max-w-[300px] sm:max-w-[500px]">
           <h1 className="flex justify-center text-center">
             Continue as existing user: Felipe?
           </h1> 
@@ -36,7 +36,8 @@ export default function Login({toast}) {
           <Link to={"/"} className="p-3 bg-orange-300 mx-1 rounded-md text-xs w-[60px] text-center h-10 caret-transparent">No</Link>
           </div>
           
-        </div>
+        </div> */}
+        <div className="absolute top-0 mt-4">POKE BOOKLETS </div>
         <Form serverAddress={serverAddress} toast={toast}/>
         <Enter serverAddress={serverAddress} toast={toast}/>
         {/* <div className="login caret-transparent">

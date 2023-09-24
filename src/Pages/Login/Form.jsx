@@ -27,7 +27,7 @@ export default function Form({serverAddress}) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='my-2'>
+    <form onSubmit={handleSubmit} className='absolute top-0 pt-12 my-2'>
       <div className='mx-auto max-w-[300px]'>
         <h1 className='my-4 text-center'>Create New User:</h1>
         <label htmlFor="user" className='text-white'>User Name:</label>
