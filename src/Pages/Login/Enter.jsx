@@ -53,7 +53,7 @@ export default function Enter({ serverAddress }) {
     //---------------------------------end new implement---------------------------------
 
     return (
-        <form onSubmit={handleSubmit} className='absolute top-0 pt-72'>
+        <form onSubmit={handleSubmit} className='absolute top-0 pt-52'>
             <div className='m-4'>
                 <h1 className='m-4'>Log In:</h1>
                 <label htmlFor="user" className='text-white'>User Name:</label>

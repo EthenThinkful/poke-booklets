@@ -1,10 +1,15 @@
 import { Carousel } from "react-responsive-carousel";
 import styles from "react-responsive-carousel/lib/styles/carousel.min.css";
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-export default function RenderCarousel({ carouselImg, setBook}) {
+export default function RenderCarousel({ carouselImg, setBook, serverAddress, reload, setReload }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const windowLimitSm = 992;
+  //---------------------------------------new implement---------------------------------------
+  // const [card, setCard] = useState(null);
+  // const [userId, setUserId] = useState(null);
+  //---------------------------------------end new implement---------------------------------------
 
   useEffect(() => {
     const handleResize = () => {
@@ -17,17 +22,24 @@ export default function RenderCarousel({ carouselImg, setBook}) {
     };
   }, []);
 
-  function handleAddBookClick(src, id) {
-    //post request here for individual additions to a mon's booklet 
-    //how would the id be detectable for a user that has logged in?!
-    setBook((book) => [...book, { src, id }]);
-  }
+  //---------------------------------------new implement---------------------------------------
+  // function handleAddBookClick(src, id) {
+  //   post request here for individual additions to a mon's booklet 
+  //   setCard(`${src}`);
+  //   setUserId(`${id}`);
+  //   setBook((book) => [...book, { src, id }]);
+  // }
+  //---------------------------------------end new implement---------------------------------------
 
   let temp = [];
   let chunkSize = windowWidth < windowLimitSm ? 2 : 5;
 
   for (let i = 0; i < carouselImg.length; i += chunkSize) {
     let chunk = carouselImg.slice(i, i + chunkSize);
+
+    //---------------------------------------new implement---------------------------------------
+    // const data = { "userDataId": userId, "pokemonCard": card }
+    //---------------------------------------end new implement---------------------------------------
 
     temp.push(
       <div className="flex mb-0 here " key={i}>
@@ -38,9 +50,22 @@ export default function RenderCarousel({ carouselImg, setBook}) {
               src={item.src}
               alt={`Card ${item.id}`}
             />
-                        <button
+            <button
               className="btn m-2 w-16 h-8 bg-slate-600 rounded-xl  mb-2 flex items-center justify-center"
-              onClick={() => handleAddBookClick(item.src, item.id)}
+              onClick={() => {
+                //---------------------------------------new implement---------------------------------------
+                // handleAddBookClick(item.src, item.id);
+                //---------------------------------------end new implement---------------------------------------
+                axios.post(`${serverAddress}/api/cards`, { "userDataId": localStorage.ID, "pokemonCard": item.src })
+                  .then((res) => {
+                    setReload(!reload);
+                    console.log(res.data);
+                    //---------------------------------------new implement---------------------------------------
+                    // setCard(null);
+                    // setUserId(null);
+                    //---------------------------------------end new implement---------------------------------------
+                  });
+              }}
             >
               +
             </button>
@@ -74,9 +99,9 @@ export default function RenderCarousel({ carouselImg, setBook}) {
         emulateTouch={true}
         showThumbs={false}
         statusFormatter={(current, total) => (
-          <span className="text-neutral-700 mb-6"> 
+          <span className="text-neutral-700 mb-6">
             Page: {current} / {total}
-            </span>
+          </span>
         )}
         renderArrowPrev={(onClickHandler, hasPrev, label) =>
           hasPrev && (
