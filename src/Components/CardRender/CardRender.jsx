@@ -17,9 +17,9 @@ export default function CardRender() {
   const [reload, setReload] = useState(false);
 //---------------------------------------end new implement---------------------------------------
 
-  useEffect(() => {
-    console.log("THE INFO HAS PERSISTED OMG: ", localStorage.ID)
-  })
+  // useEffect(() => {
+  //   console.log("THE INFO HAS PERSISTED OMG: ", localStorage.ID)
+  // })
 
   // contains cards from get request
   let newArray = new Array();

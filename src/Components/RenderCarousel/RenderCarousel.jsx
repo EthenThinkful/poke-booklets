@@ -59,7 +59,7 @@ export default function RenderCarousel({ carouselImg, setBook, serverAddress, re
                 axios.post(`${serverAddress}/api/cards`, { "userDataId": localStorage.ID, "pokemonCard": item.src })
                   .then((res) => {
                     setReload(!reload);
-                    console.log(res.data);
+                    // console.log(res.data);
                     //---------------------------------------new implement---------------------------------------
                     // setCard(null);
                     // setUserId(null);
