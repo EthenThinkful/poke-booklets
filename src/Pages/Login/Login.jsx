@@ -5,12 +5,15 @@ import Form from "./Form";
 import Enter from "./Enter";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useState } from "react";
 
 // const serverAddress = import.meta.env.VITE_PROD_URL
 const serverAddress = import.meta.env.VITE_DEV_URL;
 // const serverAddress = import.meta.env.VITE_DEV_PROD_URL;
 
 export default function Login({toast}) {
+  const [newUser, setNewUser] = useState(true)
+  console.log(newUser)
   const style = {
     body: {
       backgroundImage: `url(${bgimage})`,
@@ -38,8 +41,10 @@ export default function Login({toast}) {
           
         </div> */}
         <div className="absolute top-0 mt-4">POKE BOOKLETS </div>
-        <Form serverAddress={serverAddress} toast={toast}/>
-        <Enter serverAddress={serverAddress} toast={toast}/>
+        {newUser ?  (<Form serverAddress={serverAddress} toast={toast} setNewUser={setNewUser}/>) : (<Enter serverAddress={serverAddress} toast={toast} setNewUser={setNewUser}/>)}
+      
+       
+     
         {/* <div className="login caret-transparent">
           <h1 className="flex justify-center text-center">
             Continue as existing user: Josh?
