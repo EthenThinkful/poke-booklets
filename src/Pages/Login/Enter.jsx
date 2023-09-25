@@ -59,6 +59,7 @@ export default function Enter({ serverAddress, setNewUser }) {
         <form onSubmit={handleSubmit} className='absolute top-0 pt-12'>
             <div className='mx-auto max-w-[300px]'>
                 <h1 className='m-4 text-center'>Log In:</h1>
+
                 <label htmlFor="user" className='text-white'>User Name:</label>
                 <input
                     type="text"
