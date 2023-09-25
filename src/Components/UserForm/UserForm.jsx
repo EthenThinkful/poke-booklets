@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 
 export default function UserForm({setUserName, setBook, book, userName, toast, setCard, setPoke}) {
   // const serverAddress = import.meta.env.VITE_PROD_URL;
-  const serverAddress = import.meta.env.VITE_DEV_URL;
-  // const serverAddress = import.meta.env.VITE_DEV_PROD_URL;
+  // const serverAddress = import.meta.env.VITE_DEV_URL;
+  const serverAddress = import.meta.env.VITE_DEV_PROD_URL;
 
   //POST request for a booklet to api
   const handleBooklet = (e) => {
