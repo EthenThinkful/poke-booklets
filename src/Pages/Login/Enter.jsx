@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from 'react-router-dom';
 
-export default function Enter({ serverAddress }) {
+export default function Enter({ serverAddress, setNewUser }) {
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
     const [errorMsg, setErrorMsg] = useState(null);
@@ -22,6 +22,9 @@ export default function Enter({ serverAddress }) {
         setPassword(e.target.value);
     };
 
+    const handleNewUser = () => {
+        setNewUser(true)
+      }
     //   const handleSubmit = (e) => {
     //     e.preventDefault();
     //     const data = {userName: user, password: password};
@@ -53,31 +56,34 @@ export default function Enter({ serverAddress }) {
     //---------------------------------end new implement---------------------------------
 
     return (
-        <form onSubmit={handleSubmit} className='absolute top-0 pt-52'>
-            <div className='m-4'>
-                <h1 className='m-4'>Log In:</h1>
+        <form onSubmit={handleSubmit} className='absolute top-0 pt-12'>
+            <div className='mx-auto max-w-[300px]'>
+                <h1 className='m-4 text-center'>Log In:</h1>
+
                 <label htmlFor="user" className='text-white'>User Name:</label>
                 <input
                     type="text"
                     id="user"
                     value={user}
                     onChange={handleUserChange}
-                    className='bg-zinc-700'
+                    className='bg-zinc-700 w-full max-w-full'
                 />
             </div>
-            <div className='m-4'>
+            <div className='mx-auto max-w-[300px]'>
                 <label htmlFor="password" className='text-white'>Password:</label>
-                <textarea
+                <input
                     id="password"
+                    type='password'
                     value={password}
                     onChange={handlePasswordChange}
-                    className='bg-zinc-700'
+                    className='bg-zinc-700 w-full max-w-full'
                 />
             </div>
-            <div>
-                <button type="submit" className="p-3 m-2 bg-orange-300 rounded-md text-xs w-auto h-10 caret-transparent">Login</button>
+            <div className='mx-auto max-w-[80%] flex justify-center'>
+                <button type="submit" className="p-3 m-2 bg-orange-300 rounded-md text-xs w-[96px]  h-10 caret-transparent">Login</button>
                 {errorMsg ? <div className='bg-red-600'>{errorMsg}</div> : null}
             </div>
+            <button className="transition-colors duration-1500 hover:text-black" onClick={handleNewUser}>Dont have an Account? Create One.</button>
         </form>
     );
 }
