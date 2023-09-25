@@ -3,7 +3,7 @@ import axios from 'axios';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function Form({serverAddress}) {
+export default function Form({serverAddress, newUser, setNewUser}) {
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
 
@@ -14,7 +14,9 @@ export default function Form({serverAddress}) {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-
+const handleNewUser = () => {
+  setNewUser(false)
+}
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {userName: user, password: password};
@@ -27,7 +29,7 @@ export default function Form({serverAddress}) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='absolute top-0 pt-12 my-2'>
+    <form onSubmit={handleSubmit} className='absolute top-0 pt-12'>
       <div className='mx-auto max-w-[300px]'>
         <h1 className='my-4 text-center'>Create New User:</h1>
         <label htmlFor="user" className='text-white'>User Name:</label>
@@ -50,8 +52,9 @@ export default function Form({serverAddress}) {
         />
       </div>
       <div className='mx-auto max-w-[80%] flex justify-center'>
-        <button type="submit" className="p-3 m-2 bg-orange-300 rounded-md text-xs w-auto h-10 caret-transparent">Create</button>
+        <button type="submit" className="p-3 m-2 bg-orange-300 rounded-md text-xs w-[96px] h-10 caret-transparent">Create</button>
       </div>
+      <button className="transition-colors duration-1500 hover:text-black" onClick={handleNewUser}>Already have an account? Log In.</button>
     </form>
   );
 }
