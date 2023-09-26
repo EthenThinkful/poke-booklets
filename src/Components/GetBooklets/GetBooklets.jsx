@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 const serverAddress = import.meta.env.VITE_PROD_URL;
 // const serverAddress = import.meta.env.VITE_DEV_URL
+// const serverAddress = import.meta.env.VITE_DEV_PROD_URL;
 
 export default function GetBooklets() {
   const [isDeleted, setIsDeleted] = useState(false);
@@ -14,11 +15,11 @@ export default function GetBooklets() {
   const [bookletData, setBookletData] = useState([]);
 
   useEffect(() => {
-    axios.get(`${serverAddress}/api/booklet`).then((res) => {
+    axios.get(`${serverAddress}/api/users`).then((res) => {
+      // console.log(res.data);
       setBookletData(res.data);
-      // console.log(bookletData);
     });
-  }, [bookletData]);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -43,12 +44,12 @@ export default function GetBooklets() {
     temp.push(
       <div className="lg:flex caret-transparent lg:justify-between">
         {chunk.map((item) => (
-          <div className="text-neutral-700 text-sm w-full max-w-[325px] mx-auto lg:flex lg:justify-center lg:items-center lg:mx-2 custom-sm:max-w-[450px] custom-lg:max-w-[550px]">
-            <div className="w-full">
-              <div className="flex justify-between lg:px-8">
+          <div className="text-neutral-700 text-sm lg:flex lg:justify-center lg:items-center lg: mx-2">
+            <div>
+              <div className="flex justify-center lg:px-8">
                 {item.userName}'s party
                 {/* <button Link>Edit</button> */}
-                <button
+                {/* <button
                   onClick={() => {
                     const shouldDelete = window.confirm(
                       "Are you sure you want to delete this booklet?"
@@ -65,26 +66,32 @@ export default function GetBooklets() {
                   }}
                 >
                   Delete
-                </button>
+                </button> */}
               </div>
-              <div className="card__book mt-2 gap-y-5">
-                <div className="card__slot w-[85px] h-[110.5px] custom-sm:w-[126.225px] custom-sm:h-[175.3125px] lg:w-[160px] lg:h-[219px]">
-                  <DraggablePictureTwo src={item.cardOne} id={item.id} />
+              <div className="card__book mt-2">
+                <div className="card__slot">
+                  {item.cardData[0] != null ? 
+                  <DraggablePictureTwo src={item.cardData[0].pokemonCard} id={item.cardData[0].id} /> : null}
                 </div>
-                <div className="card__slot w-[85px] h-[110.5px] custom-sm:w-[126.225px] custom-sm:h-[175.3125px] lg:w-[160px] lg:h-[219px]">
-                  <DraggablePictureTwo src={item.cardTwo} id={item.id} />
+                <div className="card__slot">
+                {item.cardData[1] != null ? 
+                  <DraggablePictureTwo src={item.cardData[1].pokemonCard} id={item.cardData[1].id} /> : null}
                 </div>
-                <div className="card__slot w-[85px] h-[110.5px] custom-sm:w-[126.225px] custom-sm:h-[175.3125px] lg:w-[160px] lg:h-[219px]">
-                  <DraggablePictureTwo src={item.cardThree} id={item.id} />
+                <div className="card__slot">
+                {item.cardData[2] != null ? 
+                  <DraggablePictureTwo src={item.cardData[2].pokemonCard} id={item.cardData[2].id} /> : null}
                 </div>
-                <div className="card__slot w-[85px] h-[110.5px] custom-sm:w-[126.225px] custom-sm:h-[175.3125px] lg:w-[160px] lg:h-[219px]">
-                  <DraggablePictureTwo src={item.cardFour} id={item.id} />
+                <div className="card__slot">
+                {item.cardData[3] != null ? 
+                  <DraggablePictureTwo src={item.cardData[3].pokemonCard} id={item.cardData[3].id} /> : null}
                 </div>
-                <div className="card__slot w-[85px] h-[110.5px] custom-sm:w-[126.225px] custom-sm:h-[175.3125px] lg:w-[160px] lg:h-[219px]">
-                  <DraggablePictureTwo src={item.cardFive} id={item.id} />
+                <div className="card__slot">
+                {item.cardData[4] != null ? 
+                  <DraggablePictureTwo src={item.cardData[4].pokemonCard} id={item.cardData[4].id} /> : null}
                 </div>
-                <div className="card__slot w-[85px] h-[110.5px] custom-sm:w-[126.225px] custom-sm:h-[175.3125px] lg:w-[160px] lg:h-[219px]">
-                  <DraggablePictureTwo src={item.cardSix} id={item.id} />
+                <div className="card__slot">
+                {item.cardData[5] != null ? 
+                  <DraggablePictureTwo src={item.cardData[5].pokemonCard} id={item.cardData[5].id} /> : null}
                 </div>
               </div>
             </div>

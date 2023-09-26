@@ -30,10 +30,10 @@ img {
 }
 
 .card__slot {
-  /* width: 160px;
-  height: 219px; */
-  margin: 0 auto;
-  border-radius: 0.7rem;
+  width: 160px;
+  height: 219px;
+  /* margin: 0 .8rem; */
+  border-radius: .7rem;
   background-color: white;
   display: flex;
   justify-content: center;
@@ -86,7 +86,7 @@ img {
   text-align: center;
 }
 
-.enterPage {
+.login {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -213,9 +213,9 @@ img {
   }
 
   .card__slot {
-    /* width: 100px;
-    height: 130px; */
-    margin: 0 0.3rem;
+    width: 100px;
+    height: 130px;
+    /* margin: 0 .3rem; */
   }
 
   .carousel-root {

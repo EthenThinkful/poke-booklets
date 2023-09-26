@@ -6,12 +6,20 @@ import CreateBooklet from "../CreateBooklet/CreateBooklet";
 
 const serverAddress = import.meta.env.VITE_PROD_URL
 // const serverAddress = import.meta.env.VITE_DEV_URL;
+// const serverAddress = import.meta.env.VITE_DEV_PROD_URL;
 
 export default function CardRender() {
   const [userName, setUserName] = useState("");
   const [book, setBook] = useState([]);
   const [card, setCard] = useState([]);
   const [poke, setPoke] = useState("");
+//---------------------------------------new implement---------------------------------------
+  const [reload, setReload] = useState(false);
+//---------------------------------------end new implement---------------------------------------
+
+  // useEffect(() => {
+  //   console.log("THE INFO HAS PERSISTED OMG: ", localStorage.ID)
+  // })
 
   // contains cards from get request
   let newArray = new Array();
@@ -23,10 +31,13 @@ export default function CardRender() {
   return (
     <>
       <div className="iphone__screen">
-        <div className="float-left lg:float-none">
-          <div className="text-neutral-700 mb-6 text-sm lg:text-md caret-transparent">Create Booklet!</div>
-          <SearchCard setBook={setBook} book={book} setUserName={setUserName} userName={userName} toast={toast} newArray={newArray} setCard={setCard} poke={poke} setPoke={setPoke}/>
-          <CreateBooklet setBook={setBook} book={book} setUserName={setUserName} userName={userName} toast={toast} newArray={newArray} setCard={setCard} poke={poke} setPoke={setPoke}/>
+        <div className="">
+          <div className="flex justify-around text-center mb-4">
+          <div className="text-neutral-700 text-sm p-2 lg:text-md caret-transparent">Create Booklet!</div>
+          {/* <button className="bg-orange-300 rounded-xl p-2 text-xs caret-transparent">Save</button> */}
+          </div>
+          <SearchCard serverAddress={serverAddress} setBook={setBook} book={book} setUserName={setUserName} userName={userName} toast={toast} newArray={newArray} setCard={setCard} poke={poke} setPoke={setPoke} reload={reload} setReload={setReload}/>
+          <CreateBooklet setBook={setBook} book={book} setUserName={setUserName} userName={userName} toast={toast} newArray={newArray} setCard={setCard} poke={poke} setPoke={setPoke} serverAddress={serverAddress} reload={reload} setReload={setReload}/>
         </div>
       </div>
     </>

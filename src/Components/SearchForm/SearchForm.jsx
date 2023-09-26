@@ -13,7 +13,7 @@ export default function SearchForm( {setPoke, poke, getCard, setCard} ) {
       setPoke("");
     };
 
-    console.log(poke)
+    // console.log(poke)
   return (
     <>
       <div className="flex justify-center items-center w-screen"> 
