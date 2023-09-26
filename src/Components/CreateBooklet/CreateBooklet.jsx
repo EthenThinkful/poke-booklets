@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import DraggablePictureTwo from "../DraggablePictureTwo/DraggablePictureTwo";
 import { useDrag, useDrop } from "react-dnd";
 import UserForm from '../UserForm/UserForm';
 import { Droppable } from 'react-beautiful-dnd';
+import axios from 'axios';
 
-export default function CreateBooklet({setBook, book, setUserName, userName, toast, setCard, card, newArray, poke, setPoke}) {
+export default function CreateBooklet({ setBook, book, setUserName, userName, toast, setCard, card, newArray, poke, setPoke, serverAddress, reload, setReload }) {
 
   const [{ isOverTrash }, dropTrash] = useDrop(() => ({
     accept: "image",
@@ -15,9 +16,23 @@ export default function CreateBooklet({setBook, book, setUserName, userName, toa
   }));
 
   function handleRemoveItem(item) {
-    // console.log(item.id.current);
-    setBook((current) => current.filter((x) => x.id !== item.id.current));
+    console.log(item.id.current);
+    axios.delete(`${serverAddress}/api/cards/${item.id.current}`).then((res) => {
+      setReload(!reload);
+      console.log(res);
+    })
+    // setBook((current) => current.filter((x) => x.id !== item.id.current));
   }
+
+  //----------------------------------new implement----------------------------------
+  useEffect(() => {
+    axios.get(`${serverAddress}/api/users/${localStorage.ID}`).then((res) => {
+      // console.log(res.data.cardData);
+      setBook(res.data.cardData);
+      // console.log("USESTATE: ", book);
+    });
+  }, [reload]);
+  //----------------------------------end new implement----------------------------------
 
   return (
     <div className="lg:flex lg:justify-center lg:items-center lg:mb-6">

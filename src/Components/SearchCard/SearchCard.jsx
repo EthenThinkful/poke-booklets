@@ -7,7 +7,7 @@ import UserForm from "../UserForm/UserForm";
 
 pokemon.configure({ apiKey: import.meta.env.VITE_TCG_API });
 
-export default function SearchCard({setBook, book, setUserName, userName, toast, setCard, card, newArray, poke, setPoke}) {
+export default function SearchCard({setBook, book, setUserName, userName, toast, setCard, card, newArray, poke, setPoke, serverAddress, reload, setReload}) {
   const [focusedIndex, setFocusedIndex] = useState(-1);
   const dropdownRef = useRef(null);
 
@@ -77,7 +77,7 @@ export default function SearchCard({setBook, book, setUserName, userName, toast,
       <div className="drop__down text-xs mb-2 mt-3 text-zinc-700">
         {currPokemons}
       </div>
-      <RenderCarousel carouselImg={newArray} setBook={setBook} />
+      <RenderCarousel carouselImg={newArray} setBook={setBook} serverAddress={serverAddress} reload={reload} setReload={setReload}/>
     </>
   )
 }

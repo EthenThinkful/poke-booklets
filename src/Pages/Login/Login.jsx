@@ -12,7 +12,9 @@ import { useState } from "react";
 const serverAddress = import.meta.env.VITE_DEV_PROD_URL;
 
 export default function Login({toast}) {
-  const [newUser, setNewUser] = useState(true)
+  const [newUser, setNewUser] = useState(true);
+  const [errorMsg, setErrorMsg] = useState(null);
+  
   console.log(newUser)
   const style = {
     body: {
@@ -41,7 +43,7 @@ export default function Login({toast}) {
           
         </div> */}
         <div className="absolute top-0 mt-4">POKE BOOKLETS </div>
-        {newUser ?  (<Form serverAddress={serverAddress} toast={toast} setNewUser={setNewUser}/>) : (<Enter serverAddress={serverAddress} toast={toast} setNewUser={setNewUser}/>)}
+        {newUser ?  (<Form serverAddress={serverAddress} toast={toast} setNewUser={setNewUser} errorMsg={errorMsg} setErrorMsg={setErrorMsg}/>) : (<Enter serverAddress={serverAddress} toast={toast} setNewUser={setNewUser} errorMsg={errorMsg} setErrorMsg={setErrorMsg}/>)}
       
        
      

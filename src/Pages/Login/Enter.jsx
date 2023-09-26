@@ -4,11 +4,12 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from 'react-router-dom';
 
-export default function Enter({ serverAddress, setNewUser }) {
+export default function Enter({ serverAddress, setNewUser, errorMsg, setErrorMsg }) {
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
     const [errorMsg, setErrorMsg] = useState(null);
-    const [err, setErr] = useState(null)
+
+
 
     const params = {
         user: user,
@@ -62,6 +63,7 @@ export default function Enter({ serverAddress, setNewUser }) {
         <form onSubmit={handleSubmit} className='absolute top-0 pt-12'>
             <div className='mx-auto max-w-[300px]'>
                 <h1 className='m-4 text-center'>Log In:</h1>
+
                 <label htmlFor="user" className='text-white'>User Name:</label>
                 <input
                     type="text"
@@ -83,8 +85,10 @@ export default function Enter({ serverAddress, setNewUser }) {
             </div>
             <div className='mx-auto max-w-[80%] flex justify-center'>
                 <button type="submit" className="p-3 m-2 bg-orange-300 rounded-md text-xs w-[96px]  h-10 caret-transparent">Login</button>
+
+              
             </div>
-            {errorMsg ? <div className='bg-red-600'>{err}</div> : null}
+            {errorMsg ? <p className='bg-red-600'>Couldn't log in: {errorMsg}</p> : null}
             <button className="transition-colors duration-1500 hover:text-black" onClick={handleNewUser}>Dont have an Account? Create One.</button>
         </form>
     );

@@ -15,11 +15,11 @@ export default function GetBooklets() {
   const [bookletData, setBookletData] = useState([]);
 
   useEffect(() => {
-    axios.get(`${serverAddress}/api/booklet`).then((res) => {
+    axios.get(`${serverAddress}/api/users`).then((res) => {
+      console.log(res.data);
       setBookletData(res.data);
-      // console.log(bookletData);
     });
-  }, [bookletData]);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -46,10 +46,10 @@ export default function GetBooklets() {
         {chunk.map((item) => (
           <div className="text-neutral-700 text-sm lg:flex lg:justify-center lg:items-center lg: mx-2">
             <div>
-              <div className="flex justify-between lg:px-8">
+              <div className="flex justify-center lg:px-8">
                 {item.userName}'s party
                 {/* <button Link>Edit</button> */}
-                <button
+                {/* <button
                   onClick={() => {
                     const shouldDelete = window.confirm(
                       "Are you sure you want to delete this booklet?"
@@ -66,26 +66,32 @@ export default function GetBooklets() {
                   }}
                 >
                   Delete
-                </button>
+                </button> */}
               </div>
               <div className="card__book mt-2">
                 <div className="card__slot">
-                  <DraggablePictureTwo src={item.cardOne} id={item.id} />
+                  {item.cardData[0] != null ? 
+                  <DraggablePictureTwo src={item.cardData[0].pokemonCard} id={item.cardData[0].id} /> : null}
                 </div>
                 <div className="card__slot">
-                  <DraggablePictureTwo src={item.cardTwo} id={item.id} />
+                {item.cardData[1] != null ? 
+                  <DraggablePictureTwo src={item.cardData[1].pokemonCard} id={item.cardData[1].id} /> : null}
                 </div>
                 <div className="card__slot">
-                  <DraggablePictureTwo src={item.cardThree} id={item.id} />
+                {item.cardData[2] != null ? 
+                  <DraggablePictureTwo src={item.cardData[2].pokemonCard} id={item.cardData[2].id} /> : null}
                 </div>
                 <div className="card__slot">
-                  <DraggablePictureTwo src={item.cardFour} id={item.id} />
+                {item.cardData[3] != null ? 
+                  <DraggablePictureTwo src={item.cardData[3].pokemonCard} id={item.cardData[3].id} /> : null}
                 </div>
                 <div className="card__slot">
-                  <DraggablePictureTwo src={item.cardFive} id={item.id} />
+                {item.cardData[4] != null ? 
+                  <DraggablePictureTwo src={item.cardData[4].pokemonCard} id={item.cardData[4].id} /> : null}
                 </div>
                 <div className="card__slot">
-                  <DraggablePictureTwo src={item.cardSix} id={item.id} />
+                {item.cardData[5] != null ? 
+                  <DraggablePictureTwo src={item.cardData[5].pokemonCard} id={item.cardData[5].id} /> : null}
                 </div>
               </div>
             </div>
