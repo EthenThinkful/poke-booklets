@@ -7,6 +7,9 @@ import { useNavigate } from 'react-router-dom';
 export default function Enter({ serverAddress, setNewUser, errorMsg, setErrorMsg }) {
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMsg, setErrorMsg] = useState(null);
+
+
 
     const params = {
         user: user,
@@ -50,6 +53,8 @@ export default function Enter({ serverAddress, setNewUser, errorMsg, setErrorMsg
                 // Handle any errors here
                 console.log(error.code);
                 setErrorMsg(error.code);
+                setErr(error.message)
+                console.log(err)
             })
     };
     //---------------------------------end new implement---------------------------------
@@ -80,6 +85,7 @@ export default function Enter({ serverAddress, setNewUser, errorMsg, setErrorMsg
             </div>
             <div className='mx-auto max-w-[80%] flex justify-center'>
                 <button type="submit" className="p-3 m-2 bg-orange-300 rounded-md text-xs w-[96px]  h-10 caret-transparent">Login</button>
+
               
             </div>
             {errorMsg ? <p className='bg-red-600'>Couldn't log in: {errorMsg}</p> : null}

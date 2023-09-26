@@ -31,7 +31,7 @@ export default function CardRender() {
   return (
     <>
       <div className="iphone__screen">
-        <div className="float-left lg:float-none">
+        <div className="">
           <div className="flex justify-around text-center mb-4">
           <div className="text-neutral-700 text-sm p-2 lg:text-md caret-transparent">Create Booklet!</div>
           {/* <button className="bg-orange-300 rounded-xl p-2 text-xs caret-transparent">Save</button> */}
