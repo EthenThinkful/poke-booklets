@@ -40,29 +40,29 @@ export default function CreateBooklet({ setBook, book, setUserName, userName, to
                   <DraggablePictureTwo src={book[0].pokemonCard} id={book[0].id} />
                 ) : null}
               </div>
-              <div className="m-0 card__slot">
+              <div className="card__slot">
                 {book.length > 1 ? (
                  
                   <DraggablePictureTwo src={book[1].pokemonCard} id={book[1].id} />
                   
                 ) : null}
               </div>
-              <div className="card__slot w-[85px] h-[110.5px] custom-sm:w-[126.225px] custom-sm:h-[175.3125px] lg:w-[160px] lg:h-[219px]">
+              <div className="card__slot">
                 {book.length > 2 ? (
                   <DraggablePictureTwo src={book[2].pokemonCard} id={book[2].id} />
                 ) : null}
               </div>
-              <div className="card__slot w-[85px] h-[110.5px] custom-sm:w-[126.225px] custom-sm:h-[175.3125px] lg:w-[160px] lg:h-[219px]">
+              <div className="card__slot">
                 {book.length > 3 ? (
                   <DraggablePictureTwo src={book[3].pokemonCard} id={book[3].id} />
                 ) : null}
               </div>
-              <div className="card__slot w-[85px] h-[110.5px] custom-sm:w-[126.225px] custom-sm:h-[175.3125px] lg:w-[160px] lg:h-[219px]">
+              <div className="card__slot">
                 {book.length > 4 ? (
                   <DraggablePictureTwo src={book[4].pokemonCard} id={book[4].id} />
                 ) : null}
               </div>
-              <div className="card__slot w-[85px] h-[110.5px] custom-sm:w-[126.225px] custom-sm:h-[175.3125px] lg:w-[160px] lg:h-[219px]">
+              <div className="card__slot">
                 {book.length > 5 ? (
                   <DraggablePictureTwo src={book[5].pokemonCard} id={book[5].id} />
                 ) : null}
