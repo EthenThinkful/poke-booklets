@@ -8,6 +8,7 @@ export default function Enter({ serverAddress, setNewUser }) {
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
     const [errorMsg, setErrorMsg] = useState(null);
+    const [err, setErr] = useState(null)
 
     const params = {
         user: user,
@@ -51,6 +52,8 @@ export default function Enter({ serverAddress, setNewUser }) {
                 // Handle any errors here
                 console.log(error.code);
                 setErrorMsg(error.code);
+                setErr(error.message)
+                console.log(err)
             })
     };
     //---------------------------------end new implement---------------------------------
@@ -80,8 +83,8 @@ export default function Enter({ serverAddress, setNewUser }) {
             </div>
             <div className='mx-auto max-w-[80%] flex justify-center'>
                 <button type="submit" className="p-3 m-2 bg-orange-300 rounded-md text-xs w-[96px]  h-10 caret-transparent">Login</button>
-                {errorMsg ? <div className='bg-red-600'>{errorMsg}</div> : null}
             </div>
+            {errorMsg ? <div className='bg-red-600'>{err}</div> : null}
             <button className="transition-colors duration-1500 hover:text-black" onClick={handleNewUser}>Dont have an Account? Create One.</button>
         </form>
     );

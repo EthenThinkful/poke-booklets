@@ -2,6 +2,7 @@ import React from 'react'
 import DraggablePictureTwo from "../DraggablePictureTwo/DraggablePictureTwo";
 import { useDrag, useDrop } from "react-dnd";
 import UserForm from '../UserForm/UserForm';
+import { Droppable } from 'react-beautiful-dnd';
 
 export default function CreateBooklet({setBook, book, setUserName, userName, toast, setCard, card, newArray, poke, setPoke}) {
 
@@ -20,13 +21,13 @@ export default function CreateBooklet({setBook, book, setUserName, userName, toa
 
   return (
     <div className="lg:flex lg:justify-center lg:items-center lg:mb-6">
-            <div className="card__book">
+            <div className="card__book h-[280px] sm:h-[500px] mx-auto max-w-full p-0 justify-evenly">
               <div className="card__slot">
                 {book.length > 0 ? (
                   <DraggablePictureTwo src={book[0].src} id={book[0].id} />
                 ) : null}
               </div>
-              <div className="card__slot">
+              <div className="m-0 card__slot">
                 {book.length > 1 ? (
                   <DraggablePictureTwo src={book[1].src} id={book[1].id} />
                 ) : null}
@@ -52,15 +53,15 @@ export default function CreateBooklet({setBook, book, setUserName, userName, toa
                 ) : null}
               </div>
             </div>
-            <div>
+           
             {/* <UserForm setBook={setBook} book={book} setUserName={setUserName} userName={userName} toast={toast} setCard={setCard} setPoke={setPoke}/> */}
             <div
-              className="trash__can bg-slate-600 w-120 h-20 mb-4 m-0 rounded-lg flex text-center justify-center p-10 pt-6 pb-6 text-xs lg:text-sm mt-2 lg:h-219 lg:w-160 lg:p-12 lg:pt-10 lg:m-10 caret-transparent"
+              className="trash__can bg-slate-600 w-[90px] h-[125px] sm:w-[150px] sm:h-[209px] mx-auto mb-4 m-0 rounded-lg flex text-center justify-center p-10 pt-6 pb-6 text-xs lg:text-sm mt-2 lg:p-12 lg:pt-10 lg:m-10 caret-transparent"
               ref={dropTrash}
             >
               drag & drop cards here to delete
             </div>
-            </div>
+        
           </div>
   )
 }

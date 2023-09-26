@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useDrag } from "react-dnd";
-
+import { DragDropContext, Draggable } from 'react-beautiful-dnd';
 function DraggablePictureTwo({ src, id }) {
 
   // for retaining draggable images src & id properties while dragging
