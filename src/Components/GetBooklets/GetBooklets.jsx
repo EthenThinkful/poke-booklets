@@ -16,7 +16,7 @@ export default function GetBooklets() {
 
   useEffect(() => {
     axios.get(`${serverAddress}/api/users`).then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       setBookletData(res.data);
     });
   }, []);

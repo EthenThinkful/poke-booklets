@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 export default function Enter({ serverAddress, setNewUser, errorMsg, setErrorMsg }) {
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
-    const [errorMsg, setErrorMsg] = useState(null);
+    // const [errorMsg, setErrorMsg] = useState(null);
 
 
 
