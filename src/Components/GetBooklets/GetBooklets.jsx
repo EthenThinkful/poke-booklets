@@ -5,9 +5,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 
-// const serverAddress = import.meta.env.VITE_PROD_URL;
+const serverAddress = import.meta.env.VITE_PROD_URL;
 // const serverAddress = import.meta.env.VITE_DEV_URL
-const serverAddress = import.meta.env.VITE_DEV_PROD_URL;
+// const serverAddress = import.meta.env.VITE_DEV_PROD_URL;
 
 export default function GetBooklets() {
   const [isDeleted, setIsDeleted] = useState(false);
@@ -16,7 +16,7 @@ export default function GetBooklets() {
 
   useEffect(() => {
     axios.get(`${serverAddress}/api/users`).then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       setBookletData(res.data);
     });
   }, []);
@@ -42,7 +42,7 @@ export default function GetBooklets() {
   for (let i = 0; i < bookletData.length; i += chunkSize) {
     let chunk = bookletData.slice(i, i + chunkSize);
     temp.push(
-      <div className="lg:flex caret-transparent">
+      <div className="lg:flex caret-transparent lg:justify-between">
         {chunk.map((item) => (
           <div className="text-neutral-700 text-sm lg:flex lg:justify-center lg:items-center lg: mx-2">
             <div>

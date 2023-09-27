@@ -15,10 +15,10 @@
     "pokemontcgsdk": "^2.0.0",
     "rdndmb-html5-to-touch": "^8.0.1",
     "react": "^18.2.0",
-    "react-beautiful-dnd": "^13.1.1",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "react-dnd-multi-backend": "^8.0.1",
+    "react-dnd-preview": "^8.0.3",
     "react-dom": "^18.2.0",
     "react-draggable": "^4.4.5",
     "react-dropzone": "^14.2.3",
@@ -36,6 +36,6 @@
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.4",
-    "vite": "^4.0.0"
+    "vite": "^4.4.9"
   }
 }

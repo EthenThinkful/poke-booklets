@@ -6,11 +6,6 @@ import axios from "axios";
 export default function RenderCarousel({ carouselImg, setBook, serverAddress, reload, setReload }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const windowLimitSm = 992;
-  //---------------------------------------new implement---------------------------------------
-  // const [card, setCard] = useState(null);
-  // const [userId, setUserId] = useState(null);
-  //---------------------------------------end new implement---------------------------------------
-
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);

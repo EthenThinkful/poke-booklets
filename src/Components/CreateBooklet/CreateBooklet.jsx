@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import DraggablePictureTwo from "../DraggablePictureTwo/DraggablePictureTwo";
 import { useDrag, useDrop } from "react-dnd";
 import UserForm from '../UserForm/UserForm';
-import { Droppable } from 'react-beautiful-dnd';
 import axios from 'axios';
 
 export default function CreateBooklet({ setBook, book, setUserName, userName, toast, setCard, card, newArray, poke, setPoke, serverAddress, reload, setReload }) {
@@ -17,54 +16,55 @@ export default function CreateBooklet({ setBook, book, setUserName, userName, to
 
   function handleRemoveItem(item) {
     console.log(item.id.current);
-    axios.delete(`${serverAddress}/api/cards/${item.id.current}`).then((res) => {
+    axios.delete(`${serverAddress}/api/cards/${item.id.current}`).then((res) => { 
       setReload(!reload);
       console.log(res);
     })
     // setBook((current) => current.filter((x) => x.id !== item.id.current));
   }
 
-  //----------------------------------new implement----------------------------------
+
   useEffect(() => {
     axios.get(`${serverAddress}/api/users/${localStorage.ID}`).then((res) => {
-      // console.log(res.data.cardData);
+      console.log(res.data.cardData);
       setBook(res.data.cardData);
       // console.log("USESTATE: ", book);
     });
   }, [reload]);
-  //----------------------------------end new implement----------------------------------
 
   return (
     <div className="lg:flex lg:justify-center lg:items-center lg:mb-6">
             <div className="card__book h-[280px] sm:h-[500px] mx-auto max-w-full p-0 justify-evenly">
               <div className="card__slot">
                 {book.length > 0 ? (
-                  <DraggablePictureTwo src={book[0].src} id={book[0].id} />
+                  <DraggablePictureTwo src={book[0].pokemonCard} id={book[0].id} />
                 ) : null}
               </div>
-              <div className="m-0 card__slot">
+              <div className="card__slot">
                 {book.length > 1 ? (
-                  <DraggablePictureTwo src={book[1].src} id={book[1].id} />
+                 
+                  <DraggablePictureTwo src={book[1].pokemonCard} id={book[1].id} />
+                  
                 ) : null}
               </div>
               <div className="card__slot">
                 {book.length > 2 ? (
-                  <DraggablePictureTwo src={book[2].src} id={book[2].id} />
+                  <DraggablePictureTwo src={book[2].pokemonCard} id={book[2].id} />
                 ) : null}
               </div>
               <div className="card__slot">
                 {book.length > 3 ? (
-                  <DraggablePictureTwo src={book[3].src} id={book[3].id} />
+                  <DraggablePictureTwo src={book[3].pokemonCard} id={book[3].id} />
                 ) : null}
               </div>
               <div className="card__slot">
                 {book.length > 4 ? (
-                  <DraggablePictureTwo src={book[4].src} id={book[4].id} />
+                  <DraggablePictureTwo src={book[4].pokemonCard} id={book[4].id} />
                 ) : null}
               </div>
               <div className="card__slot">
                 {book.length > 5 ? (
-                  <DraggablePictureTwo src={book[5].src} id={book[5].id} />
+                  <DraggablePictureTwo src={book[5].pokemonCard} id={book[5].id} />
                 ) : null}
               </div>
             </div>
