@@ -106,7 +106,7 @@ export default function GetBooklets() {
       <div className="flex justify-between items-center flex-col mt-4">
         <div className="text-neutral-700 flex items-center">Poke Booklets</div>
         <div className="text-neutral-700 flex justify-center items-center bg-red-200 rounded-xl text-xs h-10 lg:w-1/12">
-          <Link to={"/create"}>Create Yours!</Link>
+          <Link to={"/create"} className="px-4">Create Yours!</Link>
         </div>
       </div>
       {/* <div className="text-neutral-700 text-xs rounded-lg flex text-left items-center w-6/12 mb-12 lg:items-center lg:justify-center lg:text-center mx-auto"></div> */}
