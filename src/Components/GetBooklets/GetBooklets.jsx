@@ -110,9 +110,9 @@ export default function GetBooklets() {
         </div>
       </div>
       {/* <div className="text-neutral-700 text-xs rounded-lg flex text-left items-center w-6/12 mb-12 lg:items-center lg:justify-center lg:text-center mx-auto"></div> */}
-      <div className="text-neutral-700 text-xs rounded-lg flex mt-4 mb-8 lg:mb-12  w-10/12 lg:w-6/12 lg:items-center lg:justify-center text-left mx-auto">
+      <div className="text-neutral-700 text-xs rounded-lg flex mt-6 mb-8 lg:mb-12  w-10/12 lg:w-6/12 lg:items-center lg:justify-center text-left mx-auto">
         Poke Booklets is for people who want to interact with others over their
-        Pokemon card collectibles through their digital booklets.
+        Pokemon card collectibles through their digital booklets!
       </div>
       {temp.length > 0 ? (
         temp.map((item) => {
