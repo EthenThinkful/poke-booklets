@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import pokeLogo from "../../assets/pokebooklet.svg"
-
+import { UilCheckCircle } from '@iconscout/react-unicons'
 
 export default function NavBar() {
   return (
@@ -11,6 +11,7 @@ export default function NavBar() {
         <Link to={'/home'}><div className="ml-4 lg:ml-8">Home</div></Link>
         <Link to={'/create'}><div className="ml-4 lg:ml-8">Create</div></Link>
         <Link to={'/'}><div className="ml-4 lg:ml-8">Login</div></Link>
+        <UilCheckCircle/>
       </div>
     </div>
   );
