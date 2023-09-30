@@ -17,24 +17,11 @@ export default function RenderCarousel({ carouselImg, setBook, serverAddress, re
     };
   }, []);
 
-  //---------------------------------------new implement---------------------------------------
-  // function handleAddBookClick(src, id) {
-  //   post request here for individual additions to a mon's booklet 
-  //   setCard(`${src}`);
-  //   setUserId(`${id}`);
-  //   setBook((book) => [...book, { src, id }]);
-  // }
-  //---------------------------------------end new implement---------------------------------------
-
   let temp = [];
   let chunkSize = windowWidth < windowLimitSm ? 2 : 5;
 
   for (let i = 0; i < carouselImg.length; i += chunkSize) {
     let chunk = carouselImg.slice(i, i + chunkSize);
-
-    //---------------------------------------new implement---------------------------------------
-    // const data = { "userDataId": userId, "pokemonCard": card }
-    //---------------------------------------end new implement---------------------------------------
 
     temp.push(
       <div className="flex mb-0 here " key={i}>
@@ -48,17 +35,9 @@ export default function RenderCarousel({ carouselImg, setBook, serverAddress, re
             <button
               className="btn m-2 w-16 h-8 bg-slate-600 rounded-xl  mb-2 flex items-center justify-center"
               onClick={() => {
-                //---------------------------------------new implement---------------------------------------
-                // handleAddBookClick(item.src, item.id);
-                //---------------------------------------end new implement---------------------------------------
                 axios.post(`${serverAddress}/api/cards`, { "userDataId": localStorage.ID, "pokemonCard": item.src })
                   .then((res) => {
                     setReload(!reload);
-                    // console.log(res.data);
-                    //---------------------------------------new implement---------------------------------------
-                    // setCard(null);
-                    // setUserId(null);
-                    //---------------------------------------end new implement---------------------------------------
                   });
               }}
             >

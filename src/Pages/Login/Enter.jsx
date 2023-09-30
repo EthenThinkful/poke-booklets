@@ -53,8 +53,8 @@ export default function Enter({ serverAddress, setNewUser, errorMsg, setErrorMsg
                 // Handle any errors here
                 console.log(error.code);
                 setErrorMsg(error.code);
-                setErr(error.message)
-                console.log(err)
+                // setErr(error.message)
+                // console.log(err)
             })
     };
     //---------------------------------end new implement---------------------------------
