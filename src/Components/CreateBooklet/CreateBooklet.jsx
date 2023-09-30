@@ -6,7 +6,7 @@ import WebcamCapture from './WebcamCampture';
 import { UilCheckCircle } from '@iconscout/react-unicons'
 import blah from '../../../images/blah.png'
 
-export default function CreateBooklet({ setBook, book, setUserName, userName, toast, setCard, card, newArray, poke, setPoke, serverAddress, reload, setReload }) {
+export default function CreateBooklet({ setBook, book, setUserName, userName, toast, setCard, card, newArray, poke, setPoke, serverAddress, reload, setReload, cardInfo, setCardInfo }) {
 
   const [{ isOverTrash }, dropTrash] = useDrop(() => ({
     accept: "image",
@@ -27,14 +27,14 @@ export default function CreateBooklet({ setBook, book, setUserName, userName, to
 
 
   useEffect(() => {
-    axios.get(`${serverAddress}/api/users/${localStorage.ID}`)
+    axios.get(`${serverAddress}/api/cards/${localStorage.ID}`)
       .then((res) => {
         // console.log(res.data.cardData);
 
         // Use Array.sort() to sort the data by id in ascending order
-        const sortedData = res.data.cardData.sort((a, b) => a.id - b.id);
+        const sortedData = res.data.sort((a, b) => a.id - b.id);
         // console.log(sortedData);
-        setBook(sortedData);
+        setCardInfo(sortedData);
         // console.log("USESTATE: ", book);
       });
   }, [reload]);
@@ -47,44 +47,44 @@ export default function CreateBooklet({ setBook, book, setUserName, userName, to
       <div className="lg:flex lg:justify-center lg:items-center lg:mb-6">
         <div className="card__book h-[280px] sm:h-[500px] mx-auto max-w-full p-0 justify-evenly">
           <div className="card__slot">
-            {book.length > 0 && book[0].verified === true ? (
+            {cardInfo.length > 0 && cardInfo[0].verified === true ? (
               <>
-                <DraggablePictureTwo src={book[0].pokemonCard} id={book[0].id} />
+                <DraggablePictureTwo src={cardInfo[0].pokemonCard} id={cardInfo[0].id} />
                 <div className='z-10 bg-zinc-600 absolute mt-52 ml-36 rounded-xl'>
                   <UilCheckCircle />
                 </div>
               </>
-            ) : book.length > 0 ?
+            ) : cardInfo.length > 0 ?
               <>
-                <DraggablePictureTwo src={book[0].pokemonCard} id={book[0].id} />
+                <DraggablePictureTwo src={cardInfo[0].pokemonCard} id={cardInfo[0].id} />
               </>
               : null}
           </div>
           <div className="m-0 card__slot">
-            {book.length > 1 && book[1].verified === true ? (
+            {cardInfo.length > 1 && cardInfo[1].verified === true ? (
               <>
-                <DraggablePictureTwo src={book[1].pokemonCard} id={book[1].id} />
+                <DraggablePictureTwo src={cardInfo[1].pokemonCard} id={cardInfo[1].id} />
                 <div className='z-10 bg-zinc-600 absolute mt-52 ml-36 rounded-xl'>
                   <UilCheckCircle />
                 </div>
               </>
-            ) : book.length > 1 ?
+            ) : cardInfo.length > 1 ?
               <>
-                <DraggablePictureTwo src={book[1].pokemonCard} id={book[1].id} />
+                <DraggablePictureTwo src={cardInfo[1].pokemonCard} id={cardInfo[1].id} />
               </>
               : null}
           </div>
           <div className="card__slot">
-            {book.length > 2 && book[2].verified === true ? (
+            {cardInfo.length > 2 && cardInfo[2].verified === true ? (
               <>
-                <DraggablePictureTwo src={book[2].pokemonCard} id={book[2].id} />
+                <DraggablePictureTwo src={cardInfo[2].pokemonCard} id={cardInfo[2].id} />
                 <div className='z-10 bg-zinc-600 absolute mt-52 ml-36 rounded-xl'>
                   <UilCheckCircle />
                 </div>
               </>
-            ) : book.length > 2 ?
+            ) : cardInfo.length > 2 ?
               <>
-                <DraggablePictureTwo src={book[2].pokemonCard} id={book[2].id} />
+                <DraggablePictureTwo src={cardInfo[2].pokemonCard} id={cardInfo[2].id} />
               </>
               : null}
           </div>
@@ -139,12 +139,12 @@ export default function CreateBooklet({ setBook, book, setUserName, userName, to
         </div>
         <WebcamCapture serverAddress={serverAddress} reload={reload} setReload={setReload} />
       </div>
-      {book.length > 0 ?
-        <img src={book[0].luhthang} /> : null}
-      {book.length > 1 ?
-        <img src={book[1].luhthang} /> : null}
-      {book.length > 2 ?
-        <img src={book[2].luhthang} /> : null}
+      {cardInfo.length > 0 ?
+        <img src={cardInfo[0].luhthang} /> : null}
+      {cardInfo.length > 1 ?
+        <img src={cardInfo[1].luhthang} /> : null}
+      {cardInfo.length > 2 ?
+        <img src={cardInfo[2].luhthang} /> : null}
     </>
   )
 }
