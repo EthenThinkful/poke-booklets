@@ -13,9 +13,9 @@ export default function CardRender() {
   const [book, setBook] = useState([]);
   const [card, setCard] = useState([]);
   const [poke, setPoke] = useState("");
-  //---------------------------------------new implement---------------------------------------
+//cardInfo = cardData
 const [cardInfo, setCardInfo] = useState([]);
-//---------------------------------------end new implement---------------------------------------
+
 const [reload, setReload] = useState(false);
   // useEffect(() => {
   //   console.log("THE INFO HAS PERSISTED OMG: ", localStorage.ID)
