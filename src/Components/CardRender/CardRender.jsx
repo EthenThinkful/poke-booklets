@@ -4,8 +4,8 @@ import "react-toastify/dist/ReactToastify.css";
 import SearchCard from "../SearchCard/SearchCard";
 import CreateBooklet from "../CreateBooklet/CreateBooklet";
 
-const serverAddress = import.meta.env.VITE_PROD_URL
-// const serverAddress = import.meta.env.VITE_DEV_URL;
+// const serverAddress = import.meta.env.VITE_PROD_URL
+const serverAddress = import.meta.env.VITE_DEV_URL;
 // const serverAddress = import.meta.env.VITE_DEV_PROD_URL;
 
 export default function CardRender() {
@@ -13,9 +13,9 @@ export default function CardRender() {
   const [book, setBook] = useState([]);
   const [card, setCard] = useState([]);
   const [poke, setPoke] = useState("");
-  //---------------------------------------new implement---------------------------------------
+//cardInfo = cardData
 const [cardInfo, setCardInfo] = useState([]);
-//---------------------------------------end new implement---------------------------------------
+
 const [reload, setReload] = useState(false);
   // useEffect(() => {
   //   console.log("THE INFO HAS PERSISTED OMG: ", localStorage.ID)

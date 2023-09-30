@@ -25,7 +25,7 @@ function UserIcon() {
           dragProps}) =>
           
   {
-console.log(imageList.length)
+// console.log(imageList.length)
   return ( 
     <div>
     <button onClick={()=> onImageRemoveAll()}>Remove Image</button>
