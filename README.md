@@ -1,5 +1,5 @@
 # Poke Booklets
-This project was primarily created to engage in a full-stack development project with the intention of creating something without tutorials, resourcing documentation for the sake of academic growth. Also, the API is so lovely and I love Pokemon cards.
+Full stack project primarily created to engage in something I'm passionate about to help me stay engaged with Java development (Backend repository below).
 
 ## What exists
 - Retrieve any card that exists and every version of it.
@@ -11,9 +11,9 @@ This project was primarily created to engage in a full-stack development project
 2.) Brainstorm ideas for evolving the site 
 
 ## Tech
-This project primarily uses Vite, React, and Tailwind CSS.
+Vite, React, and Tailwind CSS.
 
-## Visit the backend
+## Backend Repository
 https://github.com/EthenThinkful/PokemonAPIjectBackend
 
 ### Demo
