@@ -68,7 +68,7 @@ export default function GetBooklets() {
                   Delete
                 </button> */}
               </div>
-              <div className="card__book mt-2">
+              <div className="card__book card__book__width mt-2 max-w-[320px] lg:max-w-[510px] mx-auto">
                 <div className="card__slot">
                   {item.cardData[0] != null ? 
                   <DraggablePictureTwo src={item.cardData[0].pokemonCard} id={item.cardData[0].id} /> : null}
@@ -103,16 +103,16 @@ export default function GetBooklets() {
 
   return (
     <div className="iphone__screen caret-transparent">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center flex-col mt-4">
         <div className="text-neutral-700 flex items-center">Poke Booklets</div>
         <div className="text-neutral-700 flex justify-center items-center bg-red-200 rounded-xl text-xs h-10 lg:w-1/12">
-          <Link to={"/create"}>Create Yours!</Link>
+          <Link to={"/create"} className="px-4">Create Yours!</Link>
         </div>
       </div>
       {/* <div className="text-neutral-700 text-xs rounded-lg flex text-left items-center w-6/12 mb-12 lg:items-center lg:justify-center lg:text-center mx-auto"></div> */}
-      <div className="text-neutral-700 text-xs rounded-lg flex mt-4 mb-8 lg:mb-12 lg:mt-0 w-10/12 lg:w-6/12 lg:items-center lg:justify-center text-left lg:mx-0">
+      <div className="text-neutral-700 text-xs rounded-lg flex mt-6 mb-8 lg:mb-12  w-10/12 lg:w-6/12 lg:items-center lg:justify-center text-left mx-auto">
         Poke Booklets is for people who want to interact with others over their
-        Pokemon card collectibles through their digital booklets.
+        Pokemon card collectibles through their digital booklets!
       </div>
       {temp.length > 0 ? (
         temp.map((item) => {

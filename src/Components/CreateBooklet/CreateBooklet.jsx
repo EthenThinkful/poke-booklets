@@ -33,8 +33,8 @@ export default function CreateBooklet({ setBook, book, setUserName, userName, to
   }, [reload]);
 
   return (
-    <div className="lg:flex lg:justify-center lg:items-center lg:mb-6">
-            <div className="card__book h-[280px] sm:h-[500px] mx-auto max-w-full p-0 justify-evenly">
+    <div className="lg:flex lg:justify-center lg:items-center lg:mb-6 max-w-[340px] mx-auto card__book__width lg:w-full lg:max-w-full">
+            <div className="card__book mt-2 w-full max-w-full mx-auto lg:max-w-[520px]">
               <div className="card__slot">
                 {book.length > 0 ? (
                   <DraggablePictureTwo src={book[0].pokemonCard} id={book[0].id} />
@@ -71,7 +71,7 @@ export default function CreateBooklet({ setBook, book, setUserName, userName, to
            
             {/* <UserForm setBook={setBook} book={book} setUserName={setUserName} userName={userName} toast={toast} setCard={setCard} setPoke={setPoke}/> */}
             <div
-              className="trash__can bg-slate-600 w-[90px] h-[125px] sm:w-[150px] sm:h-[209px] mx-auto mb-4 m-0 rounded-lg flex text-center justify-center p-10 pt-6 pb-6 text-xs lg:text-sm mt-2 lg:p-12 lg:pt-10 lg:m-10 caret-transparent"
+              className="trash__can bg-slate-600 w-[90px] h-[125px] sm:w-[150px] sm:h-[209px] mx-auto mb-4 m-0 rounded-lg flex text-center justify-center py-0 pt-6 pb-6 text-xs lg:text-sm mt-2 lg:m-10 caret-transparent"
               ref={dropTrash}
             >
               drag & drop cards here to delete
