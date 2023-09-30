@@ -53,16 +53,19 @@ export default function CreateBooklet({
     <>
       <div className="lg:flex lg:justify-center lg:items-center lg:mb-6 max-w-[340px] mx-auto card__book__width lg:w-full lg:max-w-full">
         <div className="card__book mt-2 w-full max-w-full mx-auto lg:max-w-[520px]">
-          {cardInfo.slice(0, 6).map((card, index) => (
+          {[...Array(6)].map((_, index) => (
             <div className="card__slot" key={index}>
               {cardInfo.length > index && (
                 <>
-                  <DraggablePictureTwo src={card.pokemonCard} id={card.id} />
-                  {card.verified === true && (
+                  <DraggablePictureTwo
+                    src={cardInfo[index].pokemonCard}
+                    id={cardInfo[index].id}
+                  />
+                  {cardInfo[index].verified === true ? (
                     <div className="z-10 bg-zinc-600 absolute mt-52 ml-36 rounded-xl">
                       <UilCheckCircle />
                     </div>
-                  )}
+                  ) : null}
                 </>
               )}
             </div>
@@ -81,11 +84,10 @@ export default function CreateBooklet({
         />
       </div>
       <div className="flex flex-row flex-wrap">
-        {cardInfo.slice(0, 6).map((card, index) => (
+        {cardInfo.map((card, index) => (
+          card.verified &&
           <div className="w-1/3 p-2" key={index}>
-            {cardInfo.length > index ? (
               <img src={card.luhthang} alt={`Image ${index}`} />
-            ) : null}
           </div>
         ))}
       </div>
