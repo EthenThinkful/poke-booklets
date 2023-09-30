@@ -89,7 +89,7 @@ export default function Enter({ serverAddress, setNewUser, errorMsg, setErrorMsg
               
             </div>
             {errorMsg ? <p className='bg-red-600'>Couldn't log in: {errorMsg}</p> : null}
-            <button className="transition-colors duration-1500 hover:text-black" onClick={handleNewUser}>Dont have an Account? Create One.</button>
+            <span  >Need to create an account? <button className="transition-colors duration-1500 hover:text-black bg-orange-300 rounded-md text-xs w-[96px] h-10" onClick={handleNewUser}>Create.</button></span>
         </form>
     );
 }

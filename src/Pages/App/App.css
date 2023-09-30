@@ -16,10 +16,11 @@ img {
 }
 
 .card__book {
+  max-width:600px;
   position: relative;
   width: 37rem;
   height: 34rem;
-  padding: 1rem;
+  /* padding: 1rem; */
   display: grid;
   grid-template-columns: auto auto auto;
   margin-bottom: 1rem;
@@ -28,11 +29,15 @@ img {
   background-color: aquamarine;
   /* justify-content: center; */
 }
-
+@media (min-width: 577px) and (max-width: 1023px){
+.card__book__width {
+  max-width:520px !important;
+}}
 .card__slot {
   width: 160px;
   height: 219px;
   /* margin: 0 .8rem; */
+  margin: 0 auto;
   border-radius: .7rem;
   background-color: white;
   display: flex;
@@ -80,7 +85,7 @@ img {
 .iphone__screen {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
   text-align: center;
 }
 
@@ -196,13 +201,14 @@ img {
   }
 
   .card__book {
-    width: 22rem;
+    max-width: 380px;
+    /* width: 22rem; */
     height: 20rem;
-  justify-content: center;
+  /* justify-content: center; */
   border-radius: 1rem;
   background-color: aquamarine;
   }
-
+ 
   .create__user__btn {
     width: 6rem;
     height: 4rem;
@@ -212,10 +218,10 @@ img {
     width: 100px;
     height: 130px;
     /* margin: 0 .3rem; */
+    margin: 0 auto;
   }
 
   .carousel-root { 
     margin-bottom: 0rem;
   }
 }
-

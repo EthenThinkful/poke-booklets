@@ -29,10 +29,10 @@ export default function UserForm({setUserName, setBook, book, userName, toast, s
   };
 
   return (
-    <div className="flex mb-8 lg:justify-center lg:items-center lg:pl-10">
+    <div className="flex mb-4 justify-between items-center lg:pl-10">
       <form className="flex" onSubmit={handleBooklet}>
         <input
-          className="p-3 text-xs rounded-md w-160 h-14 bg-stone-600 mr-4"
+          className="p-3 text-xs rounded-md w-160 h-14 bg-stone-600 lg:mr-4"
           type="text"
           name="userName"
           placeholder="your name"
@@ -44,7 +44,7 @@ export default function UserForm({setUserName, setBook, book, userName, toast, s
       <button
         onClick={handleBooklet}
         type="submit"
-        className="p-3 bg-orange-300 rounded-md text-xs w-40 h-14 mr-4 caret-transparent"
+        className="p-3 bg-orange-300 rounded-md text-xs w-40 h-14 caret-transparent"
       >
         <Link to={'/home'}>submit booklet</Link>
       </button>
