@@ -4,8 +4,8 @@ import "react-toastify/dist/ReactToastify.css";
 import SearchCard from "../SearchCard/SearchCard";
 import CreateBooklet from "../CreateBooklet/CreateBooklet";
 
-const serverAddress = import.meta.env.VITE_PROD_URL
-// const serverAddress = import.meta.env.VITE_DEV_URL;
+// const serverAddress = import.meta.env.VITE_PROD_URL
+const serverAddress = import.meta.env.VITE_DEV_URL;
 // const serverAddress = import.meta.env.VITE_DEV_PROD_URL;
 
 export default function CardRender() {
