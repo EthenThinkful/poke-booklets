@@ -58,15 +58,17 @@ export default function GetBooklets() {
                   <div className="card__slot" key={index}>
                     {item.cardData.length > index && (
                       <>
-                        <DraggablePictureTwo
-                          src={item.cardData[index].pokemonCard}
-                          id={item.cardData[index].id}
-                        />
-                        {item.cardData[index].verified === true ? (
-                          <div className="z-10 bg-blue-500 absolute mt-[7.5rem] ml-[5.5rem] lg:mt-52 lg:ml-36 rounded-xl zoom text-white">
-                            <UilCheckCircle />
-                          </div>
-                        ) : null}
+                        <div className="group relative">
+                          <DraggablePictureTwo
+                            src={item.cardData[index].pokemonCard}
+                            id={item.cardData[index].id}
+                          />
+                          {item.cardData[index].verified === true ? (
+                            <div className="bg-blue-500 absolute ml-[5rem] top-[7rem] lg:ml-36 lg:top-[12.5rem] lg:left-[-5px] rounded-xl transform scale-100 group-hover:scale-150 group-hover:translate-x-[1rem] lg:group-hover:translate-x-[2rem] group-hover:translate-y-6 lg:group-hover:translate-y-10 transition-transform duration-300 text-white">
+                              <UilCheckCircle />
+                            </div>
+                          ) : null}
+                        </div>
                       </>
                     )}
                   </div>
