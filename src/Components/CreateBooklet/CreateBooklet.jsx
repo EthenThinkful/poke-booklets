@@ -4,7 +4,6 @@ import { useDrag, useDrop } from "react-dnd";
 import axios from "axios";
 import WebcamCapture from "./WebcamCampture";
 import { UilCheckCircle } from '@iconscout/react-unicons'
-import blah from "../../../images/blah.png";
 
 export default function CreateBooklet({
   setBook,
