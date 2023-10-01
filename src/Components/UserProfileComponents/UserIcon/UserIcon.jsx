@@ -28,11 +28,11 @@ function UserIcon() {
 // console.log(imageList.length)
   return ( 
     <div>
-    <button onClick={()=> onImageRemoveAll()}>Remove Image</button>
+    
     <div
       onClick={()=> onImageUpload()}
       style={isDragging ? { transform: "scale(1.1)" } : null}
-      className="w-[90px] h-[125px] rounded-lg mr-2 overflow-hidden"
+      className="w-[90px] h-[125px] sm:w-[160px] sm:h-[219px] rounded-lg mr-2 overflow-hidden sm:mx-auto"
       {...dragProps}
     >
 {
@@ -44,6 +44,7 @@ imageList.map((image, index)=> (
 
       
     </div>
+    <button onClick={()=> onImageRemoveAll()} className=' p-2 mt-2 bg-orange-300 rounded-lg sm:p-4'>Remove Image</button>
   </div>
 
   )}}
