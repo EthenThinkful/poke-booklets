@@ -126,17 +126,6 @@ img {
     text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
     color: #fff;
 }
-
-.arrow {
-  position: absolute;
-  z-index: 2;
-  top: calc(50% - 15px);
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  margin-left: 0rem;
-  margin-right: 0rem;
-}
 /* END OF CAROUSEL STYLING */
 
 @keyframes spinner {
@@ -155,17 +144,6 @@ img {
       font-size: 10px;
       text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
       color: #fff;
-  }
-
-  .arrow {
-    position: absolute;
-    z-index: 2;
-    top: calc(50% - 15px);
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    margin-left: -2rem;
-    margin-right: -2rem;
   }
 
   .slider-container {

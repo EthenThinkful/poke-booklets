@@ -83,8 +83,7 @@ export default function RenderCarousel({ carouselImg, setBook, serverAddress, re
               type="button"
               onClick={onClickHandler}
               title={label}
-              style={{ left: 15 }}
-              className="arrow"
+              className="absolute top-[calc(50%-15px)] cursor-pointer z-2 w-[30px] h-[30px] ml-[-12.5rem] mt-[-2.5rem] lg:ml-[-40rem] lg:mt-[-3rem]"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -105,8 +104,7 @@ export default function RenderCarousel({ carouselImg, setBook, serverAddress, re
               type="button"
               onClick={onClickHandler}
               title={label}
-              style={{ right: 15 }}
-              className="arrow"
+              className="absolute top-[calc(50%-15px)] cursor-pointer z-2 w-[30px] h-[30px] ml-[10.5rem] mt-[-2.5rem] lg:ml-[38rem] lg:mt-[-3rem]"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
