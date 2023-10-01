@@ -3,7 +3,7 @@ import DraggablePictureTwo from "../DraggablePictureTwo/DraggablePictureTwo";
 import { useDrag, useDrop } from "react-dnd";
 import axios from "axios";
 import WebcamCapture from "./WebcamCampture";
-import { UilCheckCircle } from "@iconscout/react-unicons";
+import { UilCheckCircle } from '@iconscout/react-unicons'
 import blah from "../../../images/blah.png";
 
 export default function CreateBooklet({
@@ -62,7 +62,7 @@ export default function CreateBooklet({
                     id={cardInfo[index].id}
                   />
                   {cardInfo[index].verified === true ? (
-                    <div className="z-10 bg-zinc-600 absolute mt-52 ml-36 rounded-xl">
+                    <div className="z-10 bg-blue-500 absolute mt-[7.5rem] ml-[5.5rem] lg:mt-52 lg:ml-36 rounded-xl zoom">
                       <UilCheckCircle />
                     </div>
                   ) : null}
