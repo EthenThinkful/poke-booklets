@@ -53,29 +53,32 @@ const WebcamCapture: React.FC<MyComponentProps> = ({
     }, []);
 
     return (
-        <>
+        <div>
             <Webcam
                 audio={false}
                 ref={webcamRef}
                 screenshotFormat="image/jpeg"
                 videoConstraints={videoConstraints}
                 screenshotQuality={1}
+                className="mx-auto rounded-lg object-cover w-[160px] h-[220px] sm:w-[220px] sm:h-[360px]"
             />
              <div className="flex flex-col justify-center items-center align-center">
             <p className="text-zinc-600">Slot # you want to verify:</p>
                 <input
-                    className="p-3 text-xs rounded-md w-160 h-14 bg-stone-600 mr-4"
+                    className="p-3 text-xs rounded-md w-160 h-14 bg-stone-600"
                     type="text"
                     name="cardSlot"
                     placeholder="Slot #"
                     onChange={(e) => setCardSlot(e.target.value)}
                     value={cardSlot}
                 />
+                <div className="mt-2">
             <button onClick={capture} className="bg-slate-600 mx-4 p-2 rounded-xl">Verify Photo</button>
             <button onClick={handleClick} className="bg-slate-600 p-2 rounded-xl">Switch camera</button>
             {/* {imgSrc && <img src={imgSrc} alt="Captured" />} */}
             </div>
-        </>
+            </div>
+        </div>
     );
 };
 
