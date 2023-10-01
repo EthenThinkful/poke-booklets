@@ -56,6 +56,7 @@ export default function CreateBooklet({
             <div className="card__slot" key={index}>
               {cardInfo.length > index && (
                 <>
+                <div className="group relative">
                   <DraggablePictureTwo
                     src={cardInfo[index].pokemonCard}
                     id={cardInfo[index].id}
@@ -65,6 +66,7 @@ export default function CreateBooklet({
                       <UilCheckCircle />
                     </div>
                   ) : null}
+                  </div>
                 </>
               )}
             </div>
