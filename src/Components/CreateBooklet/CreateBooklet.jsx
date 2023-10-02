@@ -50,7 +50,7 @@ export default function CreateBooklet({
 
   return (
     <>
-      <div className="lg:flex lg:justify-center lg:items-center lg:mb-6 max-w-[340px] mx-auto card__book__width lg:w-full lg:max-w-full">
+      <div className="lg:flex lg:justify-center lg:items-center lg:mb-6 max-w-[340px] mx-auto card__book__width lg:w-full lg:max-w-full lg:mx-4">
         <div className="card__book mt-2 w-full max-w-full mx-auto lg:max-w-[520px]">
           {[...Array(6)].map((_, index) => (
             <div className="card__slot" key={index}>

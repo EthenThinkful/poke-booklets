@@ -4,7 +4,7 @@ import UserDetails from '../UserDetails/UserDetails'
 
 function UserDashboard() {
   return (
-    <div className='flex pt-4 pb-2 px-2 '>
+    <div className='flex pt-4 pb-2 px-2 justify-center'>
     <UserIcon/>
     <UserDetails/>
     </div>
