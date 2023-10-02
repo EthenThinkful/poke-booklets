@@ -8,9 +8,6 @@ export default function Enter({ serverAddress, setNewUser, errorMsg, setErrorMsg
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
     // const [errorMsg, setErrorMsg] = useState(null);
-
-
-
     const params = {
         user: user,
         password: password

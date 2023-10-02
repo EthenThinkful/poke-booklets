@@ -17,6 +17,7 @@ export default function Form({serverAddress, newUser, setNewUser, errorMsg, setE
 const handleNewUser = () => {
   setNewUser(false)
 }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {userName: user, password: password};
