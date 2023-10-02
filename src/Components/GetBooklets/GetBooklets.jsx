@@ -20,7 +20,7 @@ export default function GetBooklets() {
 
   useEffect(() => {
     axios.get(`${serverAddress}/api/users`).then((res) => {
-      // console.log(res.data);
+      console.log(res.data);
       setBookletData(res.data);
     });
   }, []);
@@ -48,6 +48,7 @@ export default function GetBooklets() {
     temp.push(
       <div className="lg:flex caret-transparent lg:justify-between" key={i}>
         {chunk.map((item, index) => (
+          item.cardData.length > 0 ?
           <div className="text-neutral-700 text-sm lg:flex lg:justify-center lg:items-center lg: mx-2" key={index}>
             <div>
               <div className="flex lg:px-8 max-w max-w-[320px] lg:max-w-[510px] mx-auto">
@@ -76,7 +77,7 @@ export default function GetBooklets() {
               </div>
             </div>
           </div>
-        ))}
+        : null ))}
       </div>
     );
   }
