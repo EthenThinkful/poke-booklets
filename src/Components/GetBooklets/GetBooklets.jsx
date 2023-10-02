@@ -6,13 +6,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 import { UilCheckCircle } from '@iconscout/react-unicons'
 
-// Define the server address based on your environment
-// For development:
-// const serverAddress = import.meta.env.VITE_DEV_URL;
-// For production:
-const serverAddress = import.meta.env.VITE_PROD_URL;
 const defaultImg = 'https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=';
-export default function GetBooklets() {
+export default function GetBooklets({serverAddress}) {
   const [isDeleted, setIsDeleted] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [bookletData, setBookletData] = useState([]);

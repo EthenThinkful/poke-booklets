@@ -3,7 +3,6 @@ import pokeNames from "../../assets/PokeJSON/pokeNames.json";
 import pokemon from "pokemontcgsdk";
 import SearchForm from '../SearchForm/SearchForm';
 import RenderCarousel from '../RenderCarousel/RenderCarousel';
-import UserForm from "../UserForm/UserForm";
 
 pokemon.configure({ apiKey: import.meta.env.VITE_TCG_API });
 

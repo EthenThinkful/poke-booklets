@@ -7,11 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 
-const serverAddress = import.meta.env.VITE_PROD_URL;
-// const serverAddress = import.meta.env.VITE_DEV_URL;
-// const serverAddress = import.meta.env.VITE_DEV_PROD_URL;
-
-export default function Login({ toast }) {
+export default function Login({ toast, serverAddress }) {
   const [newUser, setNewUser] = useState(true);
   const [errorMsg, setErrorMsg] = useState(null);
 

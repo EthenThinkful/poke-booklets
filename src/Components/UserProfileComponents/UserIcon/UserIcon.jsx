@@ -2,13 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ImageUploading from "react-images-uploading";
 import axios from 'axios';
 
-// Define the server address based on your environment
-// For development:
-// const serverAddress = import.meta.env.VITE_DEV_URL;
-// For production:
-const serverAddress = import.meta.env.VITE_PROD_URL;
-
-function UserIcon() {
+function UserIcon({serverAddress}) {
   const [profilePic, setProfilePic] = useState(null)
   const [render, setRender] = useState(false)
 

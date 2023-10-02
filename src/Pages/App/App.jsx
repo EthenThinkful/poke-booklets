@@ -10,6 +10,10 @@ import Login from "../Login/Login";
 import Home from "../Home/Home";
 import Create from "../Create/Create";
 
+const serverAddress = import.meta.env.VITE_PROD_URL;
+// const serverAddress = import.meta.env.VITE_DEV_URL;
+// const serverAddress = import.meta.env.VITE_DEV_PROD_URL;
+
 
 function App() {
   return (
@@ -17,9 +21,9 @@ function App() {
       <ToastContainer autoClose={2000} 
         position = {toast.POSITION.BOTTOM_CENTER}/>
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/create" element={<Create />} />
+          <Route path="/" element={<Login serverAddress={serverAddress}/>} />
+          <Route path="/home" element={<Home serverAddress={serverAddress}/>} />
+          <Route path="/create" element={<Create serverAddress={serverAddress}/>} />
         </Routes>
       </DndProvider>
   );

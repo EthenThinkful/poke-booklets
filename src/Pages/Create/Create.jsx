@@ -4,12 +4,12 @@ import NavBar from "../../Components/NavBar/NavBar";
 
 import UserDashboard from "../../Components/UserProfileComponents/UserDashboard/UserDashboard";
 
-export default function Create() {
+export default function Create({serverAddress}) {
   return (
     <>
       <NavBar />
-      <UserDashboard/>
-      <CardRender />
+      <UserDashboard serverAddress={serverAddress}/>
+      <CardRender serverAddress={serverAddress}/>
     </>
   );
 }
