@@ -11,7 +11,7 @@ import { UilCheckCircle } from '@iconscout/react-unicons'
 // const serverAddress = import.meta.env.VITE_DEV_URL;
 // For production:
 const serverAddress = import.meta.env.VITE_PROD_URL;
-
+const defaultImg = 'https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=';
 export default function GetBooklets() {
   const [isDeleted, setIsDeleted] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -50,8 +50,8 @@ export default function GetBooklets() {
         {chunk.map((item, index) => (
           <div className="text-neutral-700 text-sm lg:flex lg:justify-center lg:items-center lg: mx-2" key={index}>
             <div>
-              <div className="flex justify-center lg:px-8">
-                {item.userName}'s party
+              <div className="flex lg:px-8 max-w max-w-[320px] lg:max-w-[510px] mx-auto">
+                <img src={item.profilePic != null ? item.profilePic : defaultImg} className="w-[30px] h-[30px] rounded-md mr-4"></img>{item.userName}'s party
               </div>
               <div className="card__book card__book__width mt-2 max-w-[320px] lg:max-w-[510px] mx-auto">
                 {[...Array(6)].map((_, index) => (
