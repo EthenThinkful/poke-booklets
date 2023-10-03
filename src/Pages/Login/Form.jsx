@@ -61,7 +61,8 @@ const handleNewUser = () => {
         <button type="submit" className="p-3 m-2 bg-orange-300 rounded-md text-xs w-[96px] h-10 caret-transparent">Create</button>
       </div>
       {errorMsg ? <p className='bg-red-600'>Couldn't log in: {errorMsg}</p> : null}
-      <span  >Already have an account? <button className="transition-colors duration-1500 hover:text-black bg-orange-300 rounded-md text-xs w-[96px] h-10" onClick={handleNewUser}>Log In.</button></span>
+      <button onClick={handleNewUser} className='flex flex-col justify-center text-center border-solid border-t-2 border-gray-700 mt-4 pt-4 transition-colors duration-1500 hover:text-black text-xs sm:text-base mx-auto'>
+                Already have an account? </button>
     </form>
   );
 }
