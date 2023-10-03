@@ -86,7 +86,8 @@ export default function Enter({ serverAddress, setNewUser, errorMsg, setErrorMsg
               
             </div>
             {errorMsg ? <p className='bg-red-600'>Couldn't log in: {errorMsg}</p> : null}
-            <span  >Need to create an account? <button className="transition-colors duration-1500 hover:text-black bg-orange-300 rounded-md text-xs w-[96px] h-10" onClick={handleNewUser}>Create.</button></span>
+            <span className='flex flex-col justify-center text-center border-solid border-t-2 border-gray-700 mt-4 pt-4 text-xs sm:text-base'>
+                <span className='mb-2'>or</span>Need to create an account? <button className="transition-colors duration-1500 hover:text-black bg-orange-300 rounded-md max-w-[240px] mx-auto text-xs p-2 mt-4 h-10" onClick={handleNewUser}>Create new account</button></span>
         </form>
     );
 }
