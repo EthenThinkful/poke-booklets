@@ -5,7 +5,7 @@ function SignIn() {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider);
   };
-  return <button onClick={signInWithGoogle}>Sign In</button>;
+  return <button className="bg-zinc-600 rounded-lg text-xs p-3 m-3" onClick={signInWithGoogle}>Sign in with google to chat with the community</button>;
 }
 
 export default SignIn;

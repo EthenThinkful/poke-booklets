@@ -11,7 +11,7 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import ChatMessage from "./ChatMessage";
 import { getAuth } from "firebase/auth";
 
-function ChatRoom({ setShowChatRoom, showChatRoom }) {
+function ChatRoom({ setShowSignIn, showSignIn}) {
   const auth = getAuth();
   const db = getFirestore();
   const messagesRef = collection(db, "messages");
@@ -36,16 +36,9 @@ function ChatRoom({ setShowChatRoom, showChatRoom }) {
     dummy.current.scrollIntoView({ behavior: "smooth" });
   };
   const [messages] = useCollectionData(queryWithOrderBy, { idField: "id" });
-  console.log([messages]);
   return (
     <>
       <main className="max-w-[400px] bg-white">
-        <button
-          className="text-black"
-          onClick={() => setShowChatRoom(!showChatRoom)}
-        >
-          X
-        </button>
         {messages &&
           messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
         <div ref={dummy}></div>

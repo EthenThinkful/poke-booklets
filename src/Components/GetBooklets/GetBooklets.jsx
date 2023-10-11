@@ -81,8 +81,8 @@ export default function GetBooklets({serverAddress}) {
     <div className="iphone__screen caret-transparent">
       <div className="flex justify-between items-center flex-col mt-4">
         <div className="text-neutral-700 flex items-center">Poke Booklets</div>
-        <div className="text-neutral-700 flex justify-center items-center bg-red-200 rounded-xl text-xs h-10 lg:w-1/12">
-          <Link to={"/create"} className="px-4">Create Yours!</Link>
+        <div className="flex justify-center items-center bg-red-200 rounded-xl lg:w-1/12 mt-2">
+          <Link to={"/create"} className="p-3 text-xs">edit profile</Link>
         </div>
       </div>
       <div className="text-neutral-700 text-xs rounded-lg flex mt-6 mb-8 lg:mb-12 w-10/12 lg:w-6/12 lg:items-center lg:justify-center text-left mx-auto">
