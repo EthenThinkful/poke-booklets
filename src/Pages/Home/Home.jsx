@@ -13,6 +13,7 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import SignOut from "../../Components/ChatComponents/SignOUt";
 import SignIn from "../../Components/ChatComponents/SignIn";
+const defaultImg = 'https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=';
 
 const app = initializeApp({
   apiKey: "AIzaSyAsjtRzxguc7WqYseNbWrVMVK2JbovFDhg",
@@ -46,10 +47,10 @@ export default function Home({ serverAddress }) {
       )}
 
       {showChatRoom ? (
-        <ChatRoom />
+        <ChatRoom defaultImg={defaultImg}/>
       ) : null}
       <UserDashboard serverAddress={serverAddress} />
-      <GetBooklets serverAddress={serverAddress} />
+      <GetBooklets serverAddress={serverAddress} defaultImg={defaultImg}/>
     </>
   );
 }

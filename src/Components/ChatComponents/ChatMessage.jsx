@@ -1,29 +1,29 @@
 import { getAuth } from "firebase/auth";
 import React from "react";
 
-function ChatMessage(props) {
+function ChatMessage(props, defaultImg) {
   const auth = getAuth();
   const { text, uid, photoURL } = props.message;
   const currUser = uid === auth.currentUser.uid ? true : false;
   return (
-    <div className="bg-white pb-2">
+    <div className="bg-neutral-500 pb-2 rounded-lg text-xs text-white">
       {currUser ? (
-        <div className="flex justify-end">
-          <p className={currUser ? `bg-orange-300` : `bg-red-200`}>{text}</p>
+        <div className="flex justify-end mr-2 ">
+          <p className={currUser ? `bg-orange-300 rounded-lg p-2 mx-2 text-xs` : `bg-red-200 rounded-lg p-2 mx-2 text-xs`}>{text}</p>
           <img
             src={photoURL}
-            alt="Picture"
-            className="w-[45px] h-[45px] object-cover"
+            alt="pfp"
+            className="w-[45px] h-[45px] object-cover rounded-full text-white"
           />
         </div>
       ) : (
-        <div className="flex justify-start">
+        <div className="flex justify-start ml-2 ">
           <img
             src={photoURL}
-            alt="Picture"
-            className="w-[45px] h-[45px] object-cover"
+            alt="pfp"
+            className="w-[45px] h-[45px] object-cover rounded-full text-white"
           />
-          <p className={currUser ? `bg-orange-300` : `bg-red-200 `}>{text}</p>
+          <p className={currUser ? `bg-orange-300 rounded-lg p-2 mx-2 text-xs` : `bg-red-200 rounded-lg p-2 mx-2 text-xs`}>{text}</p>
         </div>
       )}
     </div>
