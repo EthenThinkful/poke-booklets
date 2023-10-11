@@ -37,9 +37,11 @@ export default function GetBooklets({serverAddress}) {
 
   let chunkSize = windowWidth < 992 ? 1 : 2;
 
+  let removedBooklets = bookletData.filter((item) => item.cardData.length > 0);
+
   let temp = [];
-  for (let i = 0; i < bookletData.length; i += chunkSize) {
-    let chunk = bookletData.slice(i, i + chunkSize);
+  for (let i = 0; i < removedBooklets.length; i += chunkSize) {
+    let chunk = removedBooklets.slice(i, i + chunkSize);
     temp.push(
       <div className="lg:flex caret-transparent lg:justify-between" key={i}>
         {chunk.map((item, index) => (
