@@ -6,8 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 import { UilCheckCircle } from '@iconscout/react-unicons'
 
-const defaultImg = 'https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=';
-export default function GetBooklets({serverAddress}) {
+export default function GetBooklets({serverAddress, defaultImg}) {
   const [isDeleted, setIsDeleted] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [bookletData, setBookletData] = useState([]);
@@ -37,9 +36,11 @@ export default function GetBooklets({serverAddress}) {
 
   let chunkSize = windowWidth < 992 ? 1 : 2;
 
+  let removedBooklets = bookletData.filter((item) => item.cardData.length > 0);
+
   let temp = [];
-  for (let i = 0; i < bookletData.length; i += chunkSize) {
-    let chunk = bookletData.slice(i, i + chunkSize);
+  for (let i = 0; i < removedBooklets.length; i += chunkSize) {
+    let chunk = removedBooklets.slice(i, i + chunkSize);
     temp.push(
       <div className="lg:flex caret-transparent lg:justify-between" key={i}>
         {chunk.map((item, index) => (

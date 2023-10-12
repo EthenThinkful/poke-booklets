@@ -11,7 +11,7 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import ChatMessage from "./ChatMessage";
 import { getAuth } from "firebase/auth";
 
-function ChatRoom({ setShowSignIn, showSignIn}) {
+function ChatRoom({ setShowSignIn, showSignIn, defaultImg}) {
   const auth = getAuth();
   const db = getFirestore();
   const messagesRef = collection(db, "messages");
@@ -38,21 +38,21 @@ function ChatRoom({ setShowSignIn, showSignIn}) {
   const [messages] = useCollectionData(queryWithOrderBy, { idField: "id" });
   return (
     <>
-      <main className="max-w-[400px] bg-white">
+      <main className="max-w-[400px] h-[400px] overflow-auto bg-neutral-500 pt-2 mt-2 rounded-t-xl rounded-b-lg">
         {messages &&
-          messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
+          messages.map((msg) => <ChatMessage key={msg.id} message={msg} defaultImg={defaultImg}/>)}
         <div ref={dummy}></div>
         <form
           onSubmit={sendMessage}
-          className="w-full bg-white text-black border-solid border-t-2 border-slate-100"
+          className="w-full bg-neutral-500 text-black border-solid border-t-2 border-slate-100"
         >
           <input
             value={formValue}
             onChange={(e) => setFormValue(e.target.value)}
-            className="bg-white px-2 w-[80%]"
+            className="bg-neutral-500 w-[80%] h-10 text-white mb-[2px] rounded-xl"
           />
 
-          <button type="submit" className="text-green-300">
+          <button type="submit" className="text-green-300 roundex-xl text-xs ml-3">
             Send
           </button>
         </form>
