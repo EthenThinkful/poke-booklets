@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import NavBar from "../../Components/NavBar/NavBar";
 import GetBooklets from "../../Components/GetBooklets/GetBooklets";
 import UserDashboard from "../../Components/UserProfileComponents/UserDashboard/UserDashboard";
@@ -13,7 +14,8 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import SignOut from "../../Components/ChatComponents/SignOUt";
 import SignIn from "../../Components/ChatComponents/SignIn";
-const defaultImg = 'https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=';
+const defaultImg =
+  "https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=";
 
 const app = initializeApp({
   apiKey: "AIzaSyAsjtRzxguc7WqYseNbWrVMVK2JbovFDhg",
@@ -27,6 +29,14 @@ const auth = getAuth();
 const firestore = getFirestore(app);
 
 export default function Home({ serverAddress }) {
+  const [profilePic, setProfilePic] = useState(null);
+  useEffect(() => {
+    axios.get(`${serverAddress}/api/userss/${localStorage.ID}`).then((res) => {
+      setProfilePic(res.data.profilePic);
+      // console.log(profilePic)
+    });
+  }, []);
+
   const [user] = useAuthState(auth);
   const [showChatRoom, setShowChatRoom] = useState(false);
   return (
@@ -40,17 +50,17 @@ export default function Home({ serverAddress }) {
           >
             chat
           </button>
-          <SignOut/>
+          <SignOut />
         </div>
       ) : (
         <SignIn />
       )}
 
       {showChatRoom ? (
-        <ChatRoom defaultImg={defaultImg}/>
+        <ChatRoom defaultImg={defaultImg} serverAddress={serverAddress} profilePic={profilePic}/>
       ) : null}
       <UserDashboard serverAddress={serverAddress} />
-      <GetBooklets serverAddress={serverAddress} defaultImg={defaultImg}/>
+      <GetBooklets serverAddress={serverAddress} defaultImg={defaultImg} />
     </>
   );
 }
