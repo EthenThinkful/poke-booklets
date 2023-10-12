@@ -3,7 +3,7 @@ import DraggablePictureTwo from "../DraggablePictureTwo/DraggablePictureTwo";
 import { useDrag, useDrop } from "react-dnd";
 import axios from "axios";
 import WebcamCapture from "./WebcamCampture";
-import { UilCheckCircle } from '@iconscout/react-unicons'
+import { UilCheckCircle } from "@iconscout/react-unicons";
 
 export default function CreateBooklet({
   setBook,
@@ -56,16 +56,16 @@ export default function CreateBooklet({
             <div className="card__slot" key={index}>
               {cardInfo.length > index && (
                 <>
-                <div className="group relative">
-                  <DraggablePictureTwo
-                    src={cardInfo[index].pokemonCard}
-                    id={cardInfo[index].id}
-                  />
-                  {cardInfo[index].verified === true ? (
-                    <div className="bg-blue-500 absolute ml-[5rem] top-[7rem] lg:ml-36 lg:top-[12.5rem] lg:left-[-5px] rounded-xl transform scale-100 group-hover:scale-150 group-hover:translate-x-[1rem] lg:group-hover:translate-x-[2rem] group-hover:translate-y-6 lg:group-hover:translate-y-10 transition-transform duration-300 text-white">
-                      <UilCheckCircle />
-                    </div>
-                  ) : null}
+                  <div className="group relative">
+                    <DraggablePictureTwo
+                      src={cardInfo[index].pokemonCard}
+                      id={cardInfo[index].id}
+                    />
+                    {cardInfo[index].verified === true ? (
+                      <div className="bg-blue-500 absolute ml-[5rem] top-[7rem] lg:ml-36 lg:top-[12.5rem] lg:left-[-5px] rounded-xl transform scale-100 group-hover:scale-150 group-hover:translate-x-[1rem] lg:group-hover:translate-x-[2rem] group-hover:translate-y-6 lg:group-hover:translate-y-10 transition-transform duration-300 text-white">
+                        <UilCheckCircle />
+                      </div>
+                    ) : null}
                   </div>
                 </>
               )}
@@ -85,12 +85,14 @@ export default function CreateBooklet({
         />
       </div>
       <div className="flex flex-row flex-wrap">
-        {cardInfo.map((card, index) => (
-          card.verified &&
-          <div className="w-1/3 p-2" key={index}>
-              <img src={card.luhthang} alt={`Image ${index}`} />
-          </div>
-        ))}
+        {cardInfo.map(
+          (card, index) =>
+            card.verified && (
+              <div className="w-1/3 p-2" key={index}>
+                <img src={card.luhthang} alt={`Image ${index}`} />
+              </div>
+            )
+        )}
       </div>
     </>
   );

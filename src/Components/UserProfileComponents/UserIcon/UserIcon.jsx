@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import ImageUploading from "react-images-uploading";
-import axios from 'axios';
+import axios from "axios";
 
-function UserIcon({serverAddress}) {
-  const [profilePic, setProfilePic] = useState(null)
-  const [render, setRender] = useState(false)
+function UserIcon({ serverAddress }) {
+  const [profilePic, setProfilePic] = useState(null);
+  const [render, setRender] = useState(false);
+  let trainerID;
+  let trainerName;
+  let totalCards;
+  let notablePokemon;
 
   useEffect(() => {
     axios.get(`${serverAddress}/api/userss/${localStorage.ID}`).then((res) => {
@@ -13,48 +17,47 @@ function UserIcon({serverAddress}) {
       // console.log(profilePic)
     });
   }, [render]);
-  
-  
- 
+
+  useEffect(() => {
+    axios.get(`${serverAddress}/api/userss/${localStorage.ID}`).then((res) => {
+      // console.log(res.data);
+      setProfilePic(res.data.profilePic);
+      // console.log(profilePic)
+    });
+  }, []);
+
   const [img, setImg] = useState([]);
   const maxNumImgs = 1;
-  const defaultImg = 'https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=';
+  const defaultImg =
+    "https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=";
   const onChange = (imageList, addUpdateIndex) => {
-    const uploadedImg = imageList[0]?.dataURL
-    setImg(imageList)
+    const uploadedImg = imageList[0]?.dataURL;
+    setImg(imageList);
   };
 
   return (
-
-    <ImageUploading
-      value={img}
-      onChange={onChange}
-      maxNumber={maxNumImgs}>
-      {({ imageList,
-        onImageUpload,
-        onImageRemoveAll,
-        onImageUpdate,
-        onImageRemove,
-        isDragging,
-        dragProps }) => {
+    <ImageUploading value={img} onChange={onChange} maxNumber={maxNumImgs}>
+      {({ onImageUpload, onImageRemoveAll, isDragging, dragProps }) => {
         // console.log(imageList.length)
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~new implement~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         useEffect(() => {
           const data = { id: localStorage.ID, profilePic: img[0]?.dataURL };
-          
-         if(img.length !== 0 ) {
-          onImageRemoveAll()
-          console.log(img)
-            axios.put(`${serverAddress}/api/users`, data).then((res) => {
-            console.log("Profile pic added successfully!");
-            // console.log(res.data)
-            setRender(!render)
-            }
 
-          ).catch(error => {
-            console.error(error);
-          });
-        }}, [img])
+          if (img.length !== 0) {
+            onImageRemoveAll();
+            console.log(img);
+            axios
+              .put(`${serverAddress}/api/users`, data)
+              .then((res) => {
+                console.log("Profile pic added successfully!");
+                // console.log(res.data)
+                setRender(!render);
+              })
+              .catch((error) => {
+                console.error(error);
+              });
+          }
+        }, [img]);
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~end new implement~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         return (
           <div>
@@ -64,19 +67,25 @@ function UserIcon({serverAddress}) {
               className="w-[90px] h-[125px] sm:w-[160px] sm:h-[219px] rounded-lg mr-2 overflow-hidden sm:mx-auto"
               {...dragProps}
             >
-              {
-                profilePic === null ? <img src={defaultImg} alt="Example image" className="object-cover w-full h-full" /> : <img  src={profilePic} alt="PFP" className="object-cover w-full h-full" />   
-              }
+              {profilePic === null ? (
+                <img
+                  src={defaultImg}
+                  alt="Example image"
+                  className="object-cover w-full h-full"
+                />
+              ) : (
+                <img
+                  src={profilePic}
+                  alt="PFP"
+                  className="object-cover w-full h-full"
+                />
+              )}
             </div>
-
           </div>
-
-        )
+        );
       }}
-
     </ImageUploading>
-
-  )
+  );
 }
 
-export default UserIcon
+export default UserIcon;

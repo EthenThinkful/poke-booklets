@@ -40,11 +40,16 @@ export default function Home({ serverAddress }) {
           >
             chat
           </button>
-          <SignOut/>
+          <SignOut />
         </div>
       ) : (
         <SignIn />
       )}
+
+
+      {showChatRoom ? <ChatRoom /> : null}
+
+      <GetBooklets serverAddress={serverAddress} />
 
       {showChatRoom ? (
         <ChatRoom defaultImg={defaultImg}/>
