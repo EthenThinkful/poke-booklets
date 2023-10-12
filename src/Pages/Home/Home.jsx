@@ -39,16 +39,14 @@ export default function Home({ serverAddress }) {
           >
             chat
           </button>
-          <SignOut/>
+          <SignOut />
         </div>
       ) : (
         <SignIn />
       )}
 
-      {showChatRoom ? (
-        <ChatRoom />
-      ) : null}
-      <UserDashboard serverAddress={serverAddress} />
+      {showChatRoom ? <ChatRoom /> : null}
+
       <GetBooklets serverAddress={serverAddress} />
     </>
   );
