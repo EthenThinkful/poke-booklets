@@ -6,12 +6,13 @@ import {
   orderBy,
   addDoc,
 } from "firebase/firestore";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import ChatMessage from "./ChatMessage";
 import { getAuth } from "firebase/auth";
+import axios from "axios";
 
-function ChatRoom({ setShowSignIn, showSignIn, defaultImg}) {
+function ChatRoom({ setShowSignIn, showSignIn, defaultImg, serverAddress, profilePic}) {
   const auth = getAuth();
   const db = getFirestore();
   const messagesRef = collection(db, "messages");
@@ -23,9 +24,7 @@ function ChatRoom({ setShowSignIn, showSignIn, defaultImg}) {
 
   const sendMessage = async (e) => {
     e.preventDefault();
-
     const { uid, photoURL } = auth.currentUser;
-
     await addDoc(messagesRef, {
       text: formValue,
       createdAt: serverTimestamp(),
@@ -35,12 +34,13 @@ function ChatRoom({ setShowSignIn, showSignIn, defaultImg}) {
     setFormValue("");
     dummy.current.scrollIntoView({ behavior: "smooth" });
   };
+
   const [messages] = useCollectionData(queryWithOrderBy, { idField: "id" });
   return (
     <>
       <main className="max-w-[400px] h-[400px] overflow-auto bg-neutral-500 pt-2 mt-2 rounded-t-xl rounded-b-lg">
         {messages &&
-          messages.map((msg) => <ChatMessage key={msg.id} message={msg} defaultImg={defaultImg}/>)}
+          messages.map((msg) => <ChatMessage key={msg.id} message={msg} profilePic={profilePic}/>)}
         <div ref={dummy}></div>
         <form
           onSubmit={sendMessage}

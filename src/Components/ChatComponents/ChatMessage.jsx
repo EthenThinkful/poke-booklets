@@ -1,10 +1,23 @@
-import { getAuth } from "firebase/auth";
-import React from "react";
+import { getAuth, updateProfile } from "firebase/auth";
+import React, { useEffect } from "react";
 
-function ChatMessage(props, defaultImg) {
+function ChatMessage(props) {
   const auth = getAuth();
   const { text, uid, photoURL } = props.message;
   const currUser = uid === auth.currentUser.uid ? true : false;
+  //set photoURL to database profile picture instead
+//   useEffect(() => { 
+  
+//   updateProfile(auth.currentUser, {
+//     photoURL: "https://i1.sndcdn.com/avatars-000508491087-32hktm-t500x500.jpg"
+//   }).then(() => {
+//     // Profile updated successfully
+//   }).catch((error) => {
+//     // Handle error
+  
+//     console.error('Error updating profile:', error);
+//   });
+// }, [])
   return (
     <div className="bg-neutral-500 pb-2 rounded-lg text-xs text-white">
       {currUser ? (
