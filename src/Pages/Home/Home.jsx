@@ -59,13 +59,11 @@ export default function Home({ serverAddress }) {
 
       {showChatRoom ? <ChatRoom /> : null}
 
-      <GetBooklets serverAddress={serverAddress} />
+      <GetBooklets serverAddress={serverAddress} defaultImg={defaultImg}/>
 
       {showChatRoom ? (
         <ChatRoom defaultImg={defaultImg} serverAddress={serverAddress} profilePic={profilePic}/>
       ) : null}
-      <UserDashboard serverAddress={serverAddress} />
-      <GetBooklets serverAddress={serverAddress} defaultImg={defaultImg} />
     </>
   );
 }
