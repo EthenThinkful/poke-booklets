@@ -12,7 +12,7 @@ import ChatMessage from "./ChatMessage";
 import { getAuth } from "firebase/auth";
 import axios from "axios";
 
-function ChatRoom({ setShowSignIn, showSignIn, defaultImg, serverAddress, profilePic}) {
+function ChatRoom({ profilePic, setProfilePic }) {
   const auth = getAuth();
   const db = getFirestore();
   const messagesRef = collection(db, "messages");
@@ -24,12 +24,12 @@ function ChatRoom({ setShowSignIn, showSignIn, defaultImg, serverAddress, profil
 
   const sendMessage = async (e) => {
     e.preventDefault();
-    const { uid, photoURL } = auth.currentUser;
+    const { uid } = auth.currentUser;
     await addDoc(messagesRef, {
       text: formValue,
       createdAt: serverTimestamp(),
       uid,
-      photoURL,
+      photoURL:profilePic,
     });
     setFormValue("");
     dummy.current.scrollIntoView({ behavior: "smooth" });
@@ -38,7 +38,7 @@ function ChatRoom({ setShowSignIn, showSignIn, defaultImg, serverAddress, profil
   const [messages] = useCollectionData(queryWithOrderBy, { idField: "id" });
   return (
     <>
-      <main className="max-w-[400px] h-[400px] overflow-auto bg-neutral-500 pt-2 mt-2 rounded-t-xl rounded-b-lg">
+      <main className="max-w-[400px] h-[400px] overflow-auto bg-neutral-500 pt-2 mt-2 rounded-t-xl rounded-b-lg lg:ml-2">
         {messages &&
           messages.map((msg) => <ChatMessage key={msg.id} message={msg} profilePic={profilePic}/>)}
         <div ref={dummy}></div>

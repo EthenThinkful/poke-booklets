@@ -23,7 +23,7 @@ export default function Enter({ serverAddress, setNewUser, errorMsg, setErrorMsg
 
     const handleNewUser = () => {
         setNewUser(true)
-      }
+    }
     //   const handleSubmit = (e) => {
     //     e.preventDefault();
     //     const data = {userName: user, password: password};
