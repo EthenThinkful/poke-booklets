@@ -41,8 +41,7 @@ export default function Login({ toast, serverAddress }) {
           </div>
           
         </div> */}
-      <div className="absolute top-0 mt-4 text-lg lg:text-xl"> POKE BOOKLETS
-      <img src={pokeLogo} className="animate-bounce mx-auto mt-28 sm:mt-60 w-[35%] h-[35%] sm:w-[45%] sm:h-[45%]"/></div>
+      <div className="absolute top-0 mt-4 text-lg lg:text-xl flex justify-center"><img src={pokeLogo} className="w-[15%] h-[15%] sm:w-[45%] sm:h-[45%] mr-4"/>POKE BOOKLETS</div>
      
           <SignIn serverAddress={serverAddress} errorMsg={errorMsg} setErrorMsg={setErrorMsg} toast={toast}/>
         {/* <div className="login caret-transparent">
