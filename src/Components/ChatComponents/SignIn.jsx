@@ -96,7 +96,7 @@ function SignIn({ setErrorMsg, serverAddress, errorMsg, toast }) {
     <>
       {errorMsg ? <p className='bg-red-600 rounded-xl text-xs w-[300px] p-2'>{errorMsg}</p> : null}
       {succesfullSignUp ? <p className='bg-blue-600 rounded-xl text-xs w-[300px] p-2'>Signed up Succesfully</p> : null}
-      <button className="bg-zinc-600 rounded-lg text-xs p-3 w-[260px] mb-2 bg-pink-300" onClick={signUpWithGoogle}>Sign up with google</button>
+      <button className="rounded-lg text-xs p-3 w-[260px] mb-2 bg-pink-300" onClick={signUpWithGoogle}>Sign up with google</button>
       <button className="rounded-lg text-xs p-3 w-[260px] bg-orange-300" onClick={Login}>Log in with google</button>
     </>
   )
