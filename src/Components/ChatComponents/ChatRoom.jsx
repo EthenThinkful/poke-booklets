@@ -63,26 +63,26 @@ function ChatRoom({ profilePic, setProfilePic, userUid}) {
   };
 
 const [messages] = useCollectionData(queryWithOrderBy, { idField: "id" });
-const [modifeidMessages, setModifiedMessages] = useState(null);
+// const [modifeidMessages, setModifiedMessages] = useState(null);
 
-  useEffect(() => {
-    if (messages) {
-       const updatedMessages = messages.map((msg) => {
-        if (msg.uid === userUid) {
-          msg.photoURL = profilePic;
-          // console.log(msg);
-        }
-        return msg;
-      });
-      setModifiedMessages(updatedMessages); 
-    }
-  }, [messages]);
+//   useEffect(() => {
+//     if (messages) {
+//        const updatedMessages = messages.map((msg) => {
+//         if (msg.uid === userUid) {
+//           msg.photoURL = profilePic;
+//           // console.log(msg);
+//         }
+//         return msg;
+//       });
+//       setModifiedMessages(updatedMessages); 
+//     }
+//   }, [messages]);
 
   return (
     <>
       <main className="max-w-[400px] h-[400px] overflow-auto bg-neutral-500 pt-2 mt-2 rounded-t-xl rounded-b-lg lg:ml-2">
-        {modifeidMessages &&
-          modifeidMessages.map((msg) => <ChatMessage key={msg.id} message={msg} profilePic={profilePic}/>)}
+        {messages &&
+          messages.map((msg) => <ChatMessage key={msg.id} message={msg} profilePic={profilePic}/>)}
         <div ref={dummy}></div>
         <form
           onSubmit={sendMessage}

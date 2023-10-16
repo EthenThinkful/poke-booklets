@@ -8,7 +8,8 @@ import {
   addDoc,
   doc,
   where,
-  updateDoc
+  updateDoc,
+  getDocs
 } from "firebase/firestore";
 import React, { useRef, useState, useEffect } from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
@@ -33,7 +34,7 @@ function UserIcon({ serverAddress }) {
       const newProfilePic = res.data.profilePic || defaultImg;
       setProfilePic(newProfilePic);
       setUserUid(res.data.userName);
-      console.log(res.data.userName)
+      // console.log(res.data.userName)
       // console.log("profilePic: ", newProfilePic); 
     });
   }, []);
@@ -46,9 +47,10 @@ function UserIcon({ serverAddress }) {
   const queryWithOrderBy = query(messagesRef, orderBy("createdAt"));
 
   const q = query(messagesRef, where('uid', '==', `${userUid}`))
+
   const [documents] = useCollectionData(q, { idField: "id" })
   
-  console.log(`This is a query:`, documents)
+  // console.log(`Line 51, the query for current user:`, documents)
   //Delete if things go wrong
 
   const updatePhotoURL = async (docId) => {
@@ -64,21 +66,46 @@ function UserIcon({ serverAddress }) {
     }
   };
 
-  const handleUpdate = () => {
-    if (documents) {
-      documents.forEach(async (message) => {
-        console.log("Line 68: ", message.id)
-        await updatePhotoURL(message);
-      });
-    }
+  const handleUpdate = (pfp) => {
+    //uh ohhhhh
+  getDocs(q)
+  .then((querySnapshot) => {
+    querySnapshot.forEach((docu) => {
+      console.log("Document ID: ", docu.id);
+
+      // Update the specific field within each document
+      const updatedData = {
+        photoURL: pfp, // Replace "New Value" with the actual value
+        // Include other fields as needed
+      };
+
+      // Reference the document to be updated
+      const documentRef = doc(db, "messages", docu.id);
+
+      // Use the updateDoc function to update the document
+      updateDoc(documentRef, updatedData)
+        .then(() => {
+          console.log("Document updated successfully.");
+        })
+        .catch((error) => {
+          console.error("Error updating document: ", error);
+        });
+    });
+  })
+  .catch((error) => {
+    console.error("Error retrieving documents: ", error);
+  });
+  //uh ohhhhh
   };
 //Delete if things go wrong
 
   useEffect(() => {
     axios.get(`${serverAddress}/api/userss/${localStorage.ID}`).then((res) => {
-      // console.log(res.data);
       setProfilePic(res.data.profilePic);
-      // console.log(profilePic)
+      // do here
+      // the call of all calls
+      handleUpdate(res.data.profilePic);
+      
     });
   }, [render]);
 
@@ -102,28 +129,21 @@ function UserIcon({ serverAddress }) {
   return (
     <ImageUploading value={img} onChange={onChange} maxNumber={maxNumImgs}>
       {({ onImageUpload, onImageRemoveAll, isDragging, dragProps }) => {
-        // console.log(imageList.length)
-        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~new implement~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         useEffect(() => {
           const data = { id: localStorage.ID, profilePic: img[0]?.dataURL };
 
           if (img.length !== 0) {
             onImageRemoveAll();
-            console.log(img);
             axios
               .put(`${serverAddress}/api/users`, data)
               .then((res) => {
-                console.log("Profile pic added successfully!");
-                // console.log(res.data)
                 setRender(!render);
-                handleUpdate();
               })
               .catch((error) => {
                 console.error(error);
               });
           }
         }, [img]);
-        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~end new implement~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         return (
           <div>
             <div

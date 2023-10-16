@@ -37,7 +37,7 @@ export default function Home({ serverAddress }) {
       const newProfilePic = res.data.profilePic || defaultImg;
       setProfilePic(newProfilePic);
       setUserUid(res.data.userName);
-      console.log(res.data.userName)
+      // console.log(res.data.userName)
       // console.log("profilePic: ", newProfilePic); 
     });
   }, []);
