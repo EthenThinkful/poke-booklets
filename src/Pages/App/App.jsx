@@ -11,9 +11,11 @@ import Home from "../Home/Home";
 import Create from "../Create/Create";
 
 
-const serverAddress = import.meta.env.VITE_PROD_URL;
+// const serverAddress = import.meta.env.VITE_PROD_URL;
 // const serverAddress = import.meta.env.VITE_DEV_URL;
-// const serverAddress = import.meta.env.VITE_DEV_PROD_URL;
+
+// ignore this one
+const serverAddress = import.meta.env.VITE_DEV_PROD_URL;
 
 
 function App() {

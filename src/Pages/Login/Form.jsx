@@ -27,8 +27,6 @@ const handleNewUser = () => {
         setUser('');
         setPassword('');
     }).catch(error => {
-      // Handle any errors here
-      // console.log(error.response.data);
       setErrorMsg(error.response.data);
   });
   };

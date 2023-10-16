@@ -30,19 +30,26 @@ const firestore = getFirestore(app);
 
 export default function Home({ serverAddress }) {
   const [profilePic, setProfilePic] = useState(null);
+  const [userUid, setUserUid] = useState(null);
   useEffect(() => {
     axios.get(`${serverAddress}/api/userss/${localStorage.ID}`).then((res) => {
-      setProfilePic(res.data.profilePic);
-      // console.log(profilePic)
+      // Check if res.data.profilePic is null, and if so, set it to a default value
+      const newProfilePic = res.data.profilePic || defaultImg;
+      setProfilePic(newProfilePic);
+      setUserUid(res.data.userName);
+      // console.log(res.data.userName)
+      // console.log("profilePic: ", newProfilePic); 
     });
   }, []);
 
   const [user] = useAuthState(auth);
   const [showChatRoom, setShowChatRoom] = useState(false);
   return (
+    
+    <>
+    {user ?
     <>
       <NavBar />
-      {user ? (
         <div className="flex justify-between bg-neutral-500 rounded-b-lg">
           <button
             className=" bg-red-200 rounded-xl p-2 m-2 text-xs"
@@ -50,20 +57,11 @@ export default function Home({ serverAddress }) {
           >
             chat
           </button>
-          <SignOut />
         </div>
-      ) : (
-        <SignIn />
-      )}
-
-
-      {showChatRoom ? <ChatRoom /> : null}
-
+        </>
+        :null}
+      {showChatRoom ? <ChatRoom profilePic={profilePic} userUid={userUid}/> : null}
       <GetBooklets serverAddress={serverAddress} defaultImg={defaultImg}/>
-
-      {showChatRoom ? (
-        <ChatRoom defaultImg={defaultImg} serverAddress={serverAddress} profilePic={profilePic}/>
-      ) : null}
     </>
   );
 }

@@ -6,6 +6,8 @@ import Enter from "./Enter";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
+import SignIn from "../../Components/ChatComponents/SignIn";
+import pokeLogo from "../../assets/pokebooklet.svg";
 
 export default function Login({ toast, serverAddress }) {
   const [newUser, setNewUser] = useState(true);
@@ -25,6 +27,7 @@ export default function Login({ toast, serverAddress }) {
   };
   return (
     <>
+    
       <div style={style.body} className="flex flex-col">
         {/* <div className="login caret-transparent  flex flex-col max-w-[300px] sm:max-w-[500px]">
           <h1 className="flex justify-center text-center">
@@ -38,25 +41,9 @@ export default function Login({ toast, serverAddress }) {
           </div>
           
         </div> */}
-        <div className="absolute top-0 mt-4">POKE BOOKLETS </div>
-        {newUser ? (
-          <Form
-            serverAddress={serverAddress}
-            toast={toast}
-            setNewUser={setNewUser}
-            errorMsg={errorMsg}
-            setErrorMsg={setErrorMsg}
-          />
-        ) : (
-          <Enter
-            serverAddress={serverAddress}
-            toast={toast}
-            setNewUser={setNewUser}
-            errorMsg={errorMsg}
-            setErrorMsg={setErrorMsg}
-          />
-        )}
-
+      <div className="absolute top-0 mt-4 text-lg lg:text-xl flex justify-center"><img src={pokeLogo} className="w-[15%] h-[15%] sm:w-[45%] sm:h-[45%] mr-4"/>POKE BOOKLETS</div>
+     
+          <SignIn serverAddress={serverAddress} errorMsg={errorMsg} setErrorMsg={setErrorMsg} toast={toast}/>
         {/* <div className="login caret-transparent">
           <h1 className="flex justify-center text-center">
             Continue as existing user: Josh?

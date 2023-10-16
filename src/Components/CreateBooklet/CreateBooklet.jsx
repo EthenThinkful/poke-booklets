@@ -31,19 +31,19 @@ export default function CreateBooklet({
   }));
 
   function handleRemoveItem(item) {
-    console.log(item.id.current);
+    // console.log(item.id.current);
     axios
       .delete(`${serverAddress}/api/cards/${item.id.current}`)
       .then((res) => {
         setReload(!reload);
-        console.log(res);
+        // console.log(res);
       });
   }
 
   useEffect(() => {
     axios.get(`${serverAddress}/api/cards/${localStorage.ID}`).then((res) => {
       const sortedData = res.data.sort((a, b) => a.id - b.id);
-      console.log(sortedData);
+      // console.log(sortedData);
       setCardInfo(sortedData);
     });
   }, [reload]);

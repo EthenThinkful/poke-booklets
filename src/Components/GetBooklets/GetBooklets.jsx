@@ -14,7 +14,7 @@ export default function GetBooklets({serverAddress, defaultImg}) {
 
   useEffect(() => {
     axios.get(`${serverAddress}/api/users`).then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       setBookletData(res.data);
     });
   }, []);
