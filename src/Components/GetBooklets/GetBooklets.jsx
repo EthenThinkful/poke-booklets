@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 import { UilCheckCircle } from '@iconscout/react-unicons'
 
-export default function GetBooklets({serverAddress, defaultImg}) {
+export default function GetBooklets({ serverAddress, defaultImg }) {
   const [isDeleted, setIsDeleted] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [bookletData, setBookletData] = useState([]);
@@ -45,35 +45,40 @@ export default function GetBooklets({serverAddress, defaultImg}) {
       <div className="lg:flex caret-transparent lg:justify-between" key={i}>
         {chunk.map((item, index) => (
           item.cardData.length > 0 ?
-          <div className="text-neutral-700 text-sm lg:flex lg:justify-center lg:items-center lg: mx-2" key={index}>
-            <div>
-              <div className="flex lg:px-8 max-w max-w-[320px] lg:max-w-[510px] mx-auto">
-                <img src={item.profilePic != null ? item.profilePic : defaultImg} className="w-[30px] h-[30px] rounded-md mr-4"></img>{item.userName}'s party
-              </div>
-              <div className="card__book card__book__width mt-2 max-w-[320px] lg:max-w-[510px] mx-auto">
-                {[...Array(6)].map((_, index) => (
-                  <div className="card__slot" key={index}>
-                    {item.cardData.length > index && (
-                      <>
-                        <div className="group relative">
-                          <DraggablePictureTwo
-                            src={item.cardData[index].pokemonCard}
-                            id={item.cardData[index].id}
-                          />
-                          {item.cardData[index].verified === true ? (
-                            <div className="bg-blue-500 absolute ml-[5rem] top-[7rem] lg:ml-36 lg:top-[12.5rem] lg:left-[-5px] rounded-xl transform scale-100 group-hover:scale-150 group-hover:translate-x-[1rem] lg:group-hover:translate-x-[2rem] group-hover:translate-y-6 lg:group-hover:translate-y-10 transition-transform duration-300 text-white">
-                              <UilCheckCircle />
-                            </div>
-                          ) : null}
-                        </div>
-                      </>
-                    )}
-                  </div>
-                ))}
+            <div className="text-neutral-700 text-sm lg:flex lg:justify-center lg:items-center lg: mx-2" key={index}>
+              <div>
+                <div className="flex lg:px-8 max-w max-w-[320px] lg:max-w-[510px] mx-auto justify-center items-center">
+                  <img src={item.profilePic != null ? item.profilePic : defaultImg} className="w-[30px] h-[30px] rounded-md mr-4" />
+                  {item.nickName != null ? (
+                    <div>
+                      <div className="text-center">{item.nickName}'s Booklet</div>
+                    </div>
+                  ) : null}
+                </div>
+                <div className="card__book card__book__width mt-2 max-w-[320px] lg:max-w-[510px] mx-auto">
+                  {[...Array(6)].map((_, index) => (
+                    <div className="card__slot" key={index}>
+                      {item.cardData.length > index && (
+                        <>
+                          <div className="group relative">
+                            <DraggablePictureTwo
+                              src={item.cardData[index].pokemonCard}
+                              id={item.cardData[index].id}
+                            />
+                            {item.cardData[index].verified === true ? (
+                              <div className="bg-blue-500 absolute ml-[5rem] top-[7rem] lg:ml-36 lg:top-[12.5rem] lg:left-[-5px] rounded-xl transform scale-100 group-hover:scale-150 group-hover:translate-x-[1rem] lg:group-hover:translate-x-[2rem] group-hover:translate-y-6 lg:group-hover:translate-y-10 transition-transform duration-300 text-white">
+                                <UilCheckCircle />
+                              </div>
+                            ) : null}
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        : null ))}
+            : null))}
       </div>
     );
   }
