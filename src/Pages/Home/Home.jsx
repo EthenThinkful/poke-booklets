@@ -30,12 +30,15 @@ const firestore = getFirestore(app);
 
 export default function Home({ serverAddress }) {
   const [profilePic, setProfilePic] = useState(null);
+  const [userUid, setUserUid] = useState(null);
   useEffect(() => {
     axios.get(`${serverAddress}/api/userss/${localStorage.ID}`).then((res) => {
       // Check if res.data.profilePic is null, and if so, set it to a default value
       const newProfilePic = res.data.profilePic || defaultImg;
       setProfilePic(newProfilePic);
-      console.log("profilePic: ", newProfilePic); // Log the new value
+      setUserUid(res.data.userName);
+      console.log(res.data.userName)
+      // console.log("profilePic: ", newProfilePic); 
     });
   }, []);
 
@@ -57,7 +60,7 @@ export default function Home({ serverAddress }) {
         </div>
         </>
         :null}
-      {showChatRoom ? <ChatRoom profilePic={profilePic}/> : null}
+      {showChatRoom ? <ChatRoom profilePic={profilePic} userUid={userUid}/> : null}
       <GetBooklets serverAddress={serverAddress} defaultImg={defaultImg}/>
     </>
   );

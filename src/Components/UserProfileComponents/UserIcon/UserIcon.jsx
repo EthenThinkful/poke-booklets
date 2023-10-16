@@ -1,14 +1,78 @@
-import React, { useEffect, useState } from "react";
 import ImageUploading from "react-images-uploading";
+import {
+  collection,
+  getFirestore,
+  query,
+  serverTimestamp,
+  orderBy,
+  addDoc,
+  doc,
+  where,
+  updateDoc
+} from "firebase/firestore";
+import React, { useRef, useState, useEffect } from "react";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import { getAuth } from "firebase/auth";
 import axios from "axios";
 
 function UserIcon({ serverAddress }) {
+  // not new 
   const [profilePic, setProfilePic] = useState(null);
   const [render, setRender] = useState(false);
   let trainerID;
   let trainerName;
   let totalCards;
   let notablePokemon;
+  // not new end
+
+  const [userUid, setUserUid] = useState(null);
+
+  useEffect(() => {
+    axios.get(`${serverAddress}/api/userss/${localStorage.ID}`).then((res) => {
+      // Check if res.data.profilePic is null, and if so, set it to a default value
+      const newProfilePic = res.data.profilePic || defaultImg;
+      setProfilePic(newProfilePic);
+      setUserUid(res.data.userName);
+      console.log(res.data.userName)
+      // console.log("profilePic: ", newProfilePic); 
+    });
+  }, []);
+
+  const auth = getAuth();
+  const db = getFirestore();
+  //here
+  const messagesRef = collection(db, "messages");
+  const dummy = useRef();
+  const queryWithOrderBy = query(messagesRef, orderBy("createdAt"));
+
+  const q = query(messagesRef, where('uid', '==', `${userUid}`))
+  const [documents] = useCollectionData(q, { idField: "id" })
+  
+  console.log(`This is a query:`, documents)
+  //Delete if things go wrong
+
+  const updatePhotoURL = async (docId) => {
+    try {
+      const docRef = doc(messagesRef, docId.uid); 
+      console.log("Line 57: ", docRef);
+      // Replace with your document ID
+      await updateDoc(docRef, {
+        photoURL: profilePic, // Replace with the new URL
+      });
+    } catch (error) {
+      console.error("Error updating document:", error);
+    }
+  };
+
+  const handleUpdate = () => {
+    if (documents) {
+      documents.forEach(async (message) => {
+        console.log("Line 68: ", message.id)
+        await updatePhotoURL(message);
+      });
+    }
+  };
+//Delete if things go wrong
 
   useEffect(() => {
     axios.get(`${serverAddress}/api/userss/${localStorage.ID}`).then((res) => {
@@ -52,6 +116,7 @@ function UserIcon({ serverAddress }) {
                 console.log("Profile pic added successfully!");
                 // console.log(res.data)
                 setRender(!render);
+                handleUpdate();
               })
               .catch((error) => {
                 console.error(error);

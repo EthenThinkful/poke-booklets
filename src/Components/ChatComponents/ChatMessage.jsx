@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 
 function ChatMessage(props) {
   const auth = getAuth();
-  const { text, uid, photoURL } = props.message;
+  const { text, uid, photoURL} = props.message;
   const currUser = uid === auth.currentUser.uid ? true : false;
   //set photoURL to database profile picture instead
 //   useEffect(() => { 
