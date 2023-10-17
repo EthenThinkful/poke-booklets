@@ -38,11 +38,12 @@ export default function Home({ serverAddress }) {
       setUserUid(res.data.userName);
     });
   }, []);
+
   // useEffect(() => {
   //   axios.get(`${serverAddress}/api/usersss/${localStorage.ID}`).then((res) => {
   //     const newProfilePic = res.data || defaultImg;
   //     setProfilePic(newProfilePic);
-  //     setUserUid(res.data.userName);
+  //     // setUserUid(res.data.userName);
   //   });
   // }, []);
 

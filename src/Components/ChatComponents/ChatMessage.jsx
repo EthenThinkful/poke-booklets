@@ -1,56 +1,27 @@
 import { getAuth, updateProfile } from "firebase/auth";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+// const fs = require('fs');
+// const { Base64 } = require('js-base64');
 
 function ChatMessage(props) {
   const auth = getAuth();
-  const { text, uid, photoURL} = props.message;
+  const { text, uid, photoURL } = props.message;
   const currUser = uid === auth.currentUser.uid ? true : false;
-  //set photoURL to database profile picture instead
-//   useEffect(() => { 
-//   updateProfile(auth.currentUser, {
-//     photoURL: "https://i1.sndcdn.com/avatars-000508491087-32hktm-t500x500.jpg"
-//   }).then(() => {
-//     // Profile updated successfully
-//   }).catch((error) => {
-//     // Handle error
-//     console.error('Error updating profile:', error);
-//   });
-// }, [])
+  // const [userUids, setUserUids] = useState([]);
+  // useEffect(() => {
+  //   setUserUids((prev) => [...prev, uid]);
+  //   console.log(userUids)
+  // }, []);
 
-// const uint8Array = new Uint8Array(props.profilePic);
-// const base64String = btoa(String.fromCharCode.apply(null, uint8Array));
-// const mimeType = "data:image/jpeg;base64,";
-// const dataUrl = `${mimeType}${base64String}`;
-// console.log(dataUrl)
 
-// Assuming imageBytes is a Uint8Array
-// function convertBytesToBase64(imageBytes) {
-//   const blob = new Blob([imageBytes], { type: 'application/octet-stream' });
-//   const reader = new FileReader();
-
-//   return new Promise((resolve, reject) => {
-//     reader.onload = () => {
-//       resolve(reader.result.split(',')[1]);
-//     };
-
-//     reader.onerror = (error) => {
-//       reject(error);
-//     };
-
-//     reader.readAsDataURL(blob);
-//   });
-// }
-
-// Usage
-// const imageBytes = props.profilePic;
-// const uint8Array = new Uint8Array(imageBytes);
-// const dataUrl = convertBytesToBase64(uint8Array)
-//   .then((base64String) => {
-//     console.log(base64String);
-//   })
-//   .catch((error) => {
-//     console.error(error);
-//   });
+  // const [base64Image, setBase64Image] = useState("");
+  // useEffect(() => {
+  //   const textEncoder = new TextEncoder();
+  //   const binaryData = textEncoder.encode(photoURL);
+  //   const base64 = btoa(binaryData);
+  //   console.log(base64);
+  //   setBase64Image(base64);
+  // }, [photoURL]);
 
   return (
     <div className="bg-neutral-500 pb-2 rounded-lg text-xs text-white">
@@ -58,7 +29,7 @@ function ChatMessage(props) {
         <div className="flex justify-end mr-2 ">
           <p className={currUser ? `bg-orange-300 rounded-lg p-2 mx-2 text-xs` : `bg-red-200 rounded-lg p-2 mx-2 text-xs`}>{text}</p>
           <img
-            src={dataUrl}
+            src={props.profilePic}
             alt="pfp"
             className="w-[45px] h-[45px] object-cover rounded-full text-white"
           />
@@ -66,7 +37,7 @@ function ChatMessage(props) {
       ) : (
         <div className="flex justify-start ml-2 ">
           <img
-            src={dataUrl}
+            src={photoURL}
             alt="pfp"
             className="w-[45px] h-[45px] object-cover rounded-full text-white"
           />

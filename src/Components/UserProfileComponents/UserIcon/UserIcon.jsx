@@ -15,6 +15,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { getAuth } from "firebase/auth";
 import axios from "axios";
+import pako from 'pako';
 
 function UserIcon({ serverAddress }) {
   // not new 
@@ -34,8 +35,6 @@ function UserIcon({ serverAddress }) {
       const newProfilePic = res.data.profilePic || defaultImg;
       setProfilePic(newProfilePic);
       setUserUid(res.data.userName);
-      // console.log(res.data.userName)
-      // console.log("profilePic: ", newProfilePic); 
     });
   }, []);
 
@@ -49,13 +48,13 @@ function UserIcon({ serverAddress }) {
   const q = query(messagesRef, where('uid', '==', `${userUid}`))
 
   const [documents] = useCollectionData(q, { idField: "id" })
-  
+
   // console.log(`Line 51, the query for current user:`, documents)
   //Delete if things go wrong
 
   const updatePhotoURL = async (docId) => {
     try {
-      const docRef = doc(messagesRef, docId.uid); 
+      const docRef = doc(messagesRef, docId.uid);
       console.log("Line 57: ", docRef);
       // Replace with your document ID
       await updateDoc(docRef, {
@@ -66,48 +65,86 @@ function UserIcon({ serverAddress }) {
     }
   };
 
+  //with passing pfp as a value to use 
   const handleUpdate = (pfp) => {
-    //uh ohhhhh
-  getDocs(q)
-  .then((querySnapshot) => {
-    querySnapshot.forEach((docu) => {
-      console.log("Document ID: ", docu.id);
-
-      // Update the specific field within each document
-      const updatedData = {
-        photoURL: pfp, // Replace "New Value" with the actual value
-        // Include other fields as needed
-      };
-
-      // Reference the document to be updated
-      const documentRef = doc(db, "messages", docu.id);
-
-      // Use the updateDoc function to update the document
-      updateDoc(documentRef, updatedData)
-        .then(() => {
-          console.log("Document updated successfully.");
+    getDocs(q)
+      .then((querySnapshot) => {
+        querySnapshot.forEach((docu) => {
+          console.log("Document ID: ", docu.id);
+          const updatedData = {
+            photoURL: pfp, 
+          };
+          const documentRef = doc(db, "messages", docu.id);
+            updateDoc(documentRef, updatedData)
+              .then(() => {
+                console.log("Document updated successfully.");
+              })
+              .catch((error) => {
+                console.error("Error updating document: ", error);
+              });
         })
-        .catch((error) => {
-          console.error("Error updating document: ", error);
-        });
-    });
-  })
-  .catch((error) => {
-    console.error("Error retrieving documents: ", error);
-  });
-  //uh ohhhhh
+          .catch((error) => {
+            console.error("Error retrieving documents: ", error);
+          });
+
+      });
   };
-//Delete if things go wrong
+  //with passing pfp as a value to use 
+
+  //withOUT passing pfp as a value to use 
+  // const handleUpdate = () => {
+  //   getDocs(q)
+  //     .then((querySnapshot) => {
+  //       querySnapshot.forEach((docu) => {
+  //         console.log("Document ID: ", docu.id);
+  //         axios.get(`${serverAddress}/api/usersss/${localStorage.ID}`).then((res) => {
+  //           let pfp = res.data;
+  //           const updatedData = {
+  //             photoURL: pfp, 
+  //           };
+  //           const documentRef = doc(db, "messages", docu.id);
+  //           updateDoc(documentRef, updatedData)
+  //             .then(() => {
+  //               console.log("Document updated successfully.");
+  //             })
+  //             .catch((error) => {
+  //               console.error("Error updating document: ", error);
+  //             });
+  //         });
+  //       })
+  //         .catch((error) => {
+  //           console.error("Error retrieving documents: ", error);
+  //         });
+
+  //     });
+  // };
+  //withOUT passing pfp as a value to use 
 
   useEffect(() => {
     axios.get(`${serverAddress}/api/userss/${localStorage.ID}`).then((res) => {
       setProfilePic(res.data.profilePic);
-      // do here
-      // the call of all calls
+      // const compressed = pako.deflate(res.data.profilePic, { to: 'string' });
       handleUpdate(res.data.profilePic);
-      
     });
   }, [render]);
+
+  //pako
+  // const [originalData, setOriginalData] = useState('');
+  // const [compressedData, setCompressedData] = useState('');
+  // const [decompressedData, setDecompressedData] = useState('');
+
+  // const handleCompress = () => {
+  //   // Compress the original data
+  //   const compressed = pako.deflate(originalData, { to: 'string' });
+  //   setCompressedData(compressed);
+  // };
+
+  // const handleDecompress = () => {
+  //   // Decompress the compressed data
+  //   const decompressed = pako.inflate(compressedData, { to: 'string' });
+  //   setDecompressedData(decompressed);
+  // };
+  //pako
 
   useEffect(() => {
     axios.get(`${serverAddress}/api/userss/${localStorage.ID}`).then((res) => {

@@ -82,7 +82,7 @@ const [messages] = useCollectionData(queryWithOrderBy, { idField: "id" });
     <>
       <main className="max-w-[400px] h-[400px] overflow-auto bg-neutral-500 pt-2 mt-2 rounded-t-xl rounded-b-lg lg:ml-2">
         {messages &&
-          messages.map((msg) => <ChatMessage key={msg.id} message={msg} profilePic={profilePic}/>)}
+          messages.map((msg) => <ChatMessage key={msg.id} message={msg} profilePic={profilePic} uid={msg.uid}/>)}
         <div ref={dummy}></div>
         <form
           onSubmit={sendMessage}
