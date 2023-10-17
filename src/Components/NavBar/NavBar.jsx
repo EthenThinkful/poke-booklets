@@ -21,7 +21,7 @@ export default function NavBar() {
           <div className="ml-4 lg:ml-8">Home</div>
         </Link>
         <Link to={"/create"}>
-          <div className="ml-4 lg:ml-8">Create</div>
+          <div className="ml-4 lg:ml-8">Profile</div>
         </Link>
         {/* {user ? <SignOut /> : <SignIn />} */}
 

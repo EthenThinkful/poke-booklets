@@ -55,7 +55,7 @@ export default function Home({ serverAddress }) {
             className=" bg-red-200 rounded-xl p-2 m-2 text-xs"
             onClick={() => setShowChatRoom(!showChatRoom)}
           >
-            chat
+            Chat
           </button>
         </div>
         </>
