@@ -33,14 +33,18 @@ export default function Home({ serverAddress }) {
   const [userUid, setUserUid] = useState(null);
   useEffect(() => {
     axios.get(`${serverAddress}/api/userss/${localStorage.ID}`).then((res) => {
-      // Check if res.data.profilePic is null, and if so, set it to a default value
       const newProfilePic = res.data.profilePic || defaultImg;
       setProfilePic(newProfilePic);
       setUserUid(res.data.userName);
-      // console.log(res.data.userName)
-      // console.log("profilePic: ", newProfilePic); 
     });
   }, []);
+  // useEffect(() => {
+  //   axios.get(`${serverAddress}/api/usersss/${localStorage.ID}`).then((res) => {
+  //     const newProfilePic = res.data || defaultImg;
+  //     setProfilePic(newProfilePic);
+  //     setUserUid(res.data.userName);
+  //   });
+  // }, []);
 
   const [user] = useAuthState(auth);
   const [showChatRoom, setShowChatRoom] = useState(false);
