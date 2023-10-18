@@ -1,21 +1,17 @@
 import { useState, useRef, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import SearchCard from "../SearchCard/SearchCard";
-import CreateBooklet from "../CreateBooklet/CreateBooklet";
+import SearchCard from "./SearchCard/SearchCard";
+import CreateBooklet from "./CreateBooklet/CreateBooklet";
 
 export default function CardRender({ serverAddress, updateTotalCardNum }) {
   const [userName, setUserName] = useState("");
   const [book, setBook] = useState([]);
   const [card, setCard] = useState([]);
   const [poke, setPoke] = useState("");
-  //cardInfo = cardData
   const [cardInfo, setCardInfo] = useState([]);
 
   const [reload, setReload] = useState(false);
-  // useEffect(() => {
-  //   console.log("THE INFO HAS PERSISTED OMG: ", localStorage.ID)
-  // })
 
   //Passes value of cardInfo up to parent so we can access the length of the array and set the trainers total cards
   useEffect(() => {
@@ -37,7 +33,6 @@ export default function CardRender({ serverAddress, updateTotalCardNum }) {
             <div className="text-neutral-700 text-sm p-2 lg:text-md caret-transparent">
               Create Booklet!
             </div>
-            {/* <button className="bg-orange-300 rounded-xl p-2 text-xs caret-transparent">Save</button> */}
           </div>
           <SearchCard
             serverAddress={serverAddress}

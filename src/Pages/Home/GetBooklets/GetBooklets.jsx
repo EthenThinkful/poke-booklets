@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import DraggablePictureTwo from "../DraggablePictureTwo/DraggablePictureTwo";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { Link } from "react-router-dom";
+import DraggablePicture from "./DraggablePicture/DraggablePicture";
 import { UilCheckCircle } from '@iconscout/react-unicons'
 
 export default function GetBooklets({ serverAddress, defaultImg }) {
@@ -12,13 +9,14 @@ export default function GetBooklets({ serverAddress, defaultImg }) {
   const [bookletData, setBookletData] = useState([]);
   const [book, setBook] = useState([]); // Assuming this state is used elsewhere
 
+  // get all users and all their data
   useEffect(() => {
     axios.get(`${serverAddress}/api/users`).then((res) => {
-      // console.log(res.data);
       setBookletData(res.data);
     });
   }, []);
 
+  // capture current window size
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
@@ -30,14 +28,10 @@ export default function GetBooklets({ serverAddress, defaultImg }) {
     };
   }, []);
 
-  function handleAddBookClick(src, id) {
-    setBook((book) => [...book, { src, id }]);
-  }
-
+  // show 2 booklets side by side for desktop and 1 for mobile
   let chunkSize = windowWidth < 992 ? 1 : 2;
-
+  // don't render users to the home screen unless they have at least 1 card in their booklet
   let removedBooklets = bookletData.filter((item) => item.cardData.length > 0);
-
   let temp = [];
   for (let i = 0; i < removedBooklets.length; i += chunkSize) {
     let chunk = removedBooklets.slice(i, i + chunkSize);
@@ -61,7 +55,7 @@ export default function GetBooklets({ serverAddress, defaultImg }) {
                       {item.cardData.length > index && (
                         <>
                           <div className="group relative">
-                            <DraggablePictureTwo
+                            <DraggablePicture
                               src={item.cardData[index].pokemonCard}
                               id={item.cardData[index].id}
                             />

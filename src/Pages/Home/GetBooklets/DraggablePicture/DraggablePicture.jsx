@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDrag } from "react-dnd";
 import { usePreview } from 'react-dnd-preview';
-function DraggablePictureTwo({ src, id, className }) {
+function DraggablePicture({ src, id, className }) {
   const preview = usePreview()
   const { itemType, item, style, ref } = preview;
 
@@ -45,4 +45,4 @@ function DraggablePictureTwo({ src, id, className }) {
   );
 }
 
-export default DraggablePictureTwo;
+export default DraggablePicture;

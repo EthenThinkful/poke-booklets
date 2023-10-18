@@ -5,7 +5,7 @@ const auth = getAuth()
 const handleSignOut = () => {
   auth.signOut();
 }
-  return ( auth.currentUser && (  <button onClick={handleSignOut} className="bg-red-200 rounded-xl p-2 m-2 text-xs">chat sign out</button>)
+  return ( auth.currentUser && (  <button onClick={handleSignOut} className="ml-4 lg:ml-8">Logout</button>)
   )
 }
 

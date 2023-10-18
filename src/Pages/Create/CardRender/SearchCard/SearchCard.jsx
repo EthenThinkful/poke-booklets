@@ -1,8 +1,8 @@
 import React, {useState, useRef, useEffect} from 'react'
-import pokeNames from "../../assets/PokeJSON/pokeNames.json";
+import pokeNames from "../../../../assets/PokeJSON/pokeNames.json";
 import pokemon from "pokemontcgsdk";
-import SearchForm from '../SearchForm/SearchForm';
-import RenderCarousel from '../RenderCarousel/RenderCarousel';
+import SearchForm from './SearchForm';
+import RenderCarousel from './RenderCarousel';
 
 pokemon.configure({ apiKey: import.meta.env.VITE_TCG_API });
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import DraggablePictureTwo from "../DraggablePictureTwo/DraggablePictureTwo";
+import DraggablePictureTwo from "../../../Home/GetBooklets/DraggablePicture/DraggablePicture";
 import { useDrag, useDrop } from "react-dnd";
 import axios from "axios";
 import WebcamCapture from "./WebcamCampture";

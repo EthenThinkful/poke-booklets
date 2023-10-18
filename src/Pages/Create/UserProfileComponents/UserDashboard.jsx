@@ -1,6 +1,6 @@
 import React from "react";
-import UserIcon from "../UserIcon/UserIcon";
-import UserDetails from "../UserDetails/UserDetails";
+import UserIcon from "./UserIcon";
+import UserDetails from "./UserDetails";
 
 function UserDashboard({ serverAddress, totalCards }) {
   return (

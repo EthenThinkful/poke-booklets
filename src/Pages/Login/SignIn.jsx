@@ -5,17 +5,14 @@ import axios from 'axios';
 
 
 function SignIn({ setErrorMsg, serverAddress, errorMsg, toast }) {
+  const [succesfullSignUp, setSuccesfullSignUp] = useState(false);
   const navigate = useNavigate();
-
   const auth = getAuth();
   
-  const [succesfullSignUp, setSuccesfullSignUp] = useState(false);
   const checkUIDExist = async () => {
     const params = { user: auth.currentUser.uid };
-
     try {
       const res = await axios.get(`${serverAddress}/api/userss`, { params });
-
       if (res.data.id !== null) {
         setErrorMsg("Log in because you already have an account!");
         return true;
@@ -23,8 +20,28 @@ function SignIn({ setErrorMsg, serverAddress, errorMsg, toast }) {
     } catch (error) {
       console.error(error);
       return false;
-      // throw error;
     }
+  };
+
+  // signUpWithGoogle
+  const signUpWithGoogle = async () => {
+    setErrorMsg('');
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const currentUID = result.user.uid;
+        console.log(currentUID);
+
+        return checkUIDExist().then((exists) => {
+          console.log(exists);
+          if (!exists) {
+            postUID();
+          }  
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const postUID = async () => {
@@ -38,41 +55,9 @@ function SignIn({ setErrorMsg, serverAddress, errorMsg, toast }) {
         setErrorMsg('User already exist');
       });
   }
+  // End signUpWithGoogle
 
-  // PARENT FUNCTION FOR SIGN IN 
-  const signUpWithGoogle = async () => {
-    setErrorMsg('');
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const currentUID = result.user.uid;
-        console.log(currentUID);
-
-        return checkUIDExist().then((exists) => {
-          console.log(exists);
-          // Execute postUID() if exists is not true (an error was caught)
-          if (!exists) {
-            postUID();
-          }  
-        });
-      })
-      .catch((error) => {
-        // Handle the error from checkUIDExist() here
-        console.error(error);
-        // Execute postUID() when there's an error in checkUIDExist()
-        // postUID();
-      });
-  };
-
-  async function LoginWithGoogle() {
-    const provider = new GoogleAuthProvider();
-    try {
-      await signInWithPopup(auth, provider); // Wait for the login process to complete
-    } catch (error) {
-      console.error(error); // Handle any errors
-    }
-  };
-
+  // Login
   async function Login() {
     try {
       setErrorMsg('');
@@ -91,6 +76,16 @@ function SignIn({ setErrorMsg, serverAddress, errorMsg, toast }) {
       console.error('not workinjg');
     }
   }
+
+  async function LoginWithGoogle() {
+    const provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(auth, provider); // Wait for the login process to complete
+    } catch (error) {
+      console.error(error); 
+    }
+  };
+  // End Login
 
   return (
     <>

@@ -1,94 +1,67 @@
+// chat feature disabled for now so no need for this
+// import {
+//   collection,
+//   getFirestore,
+//   query,
+//   serverTimestamp,
+//   orderBy,
+//   addDoc,
+//   doc,
+//   where,
+//   updateDoc,
+//   getDocs
+// } from "firebase/firestore";
+// import { useCollectionData } from "react-firebase-hooks/firestore";
+// import { getAuth } from "firebase/auth";
+
 import ImageUploading from "react-images-uploading";
-import {
-  collection,
-  getFirestore,
-  query,
-  serverTimestamp,
-  orderBy,
-  addDoc,
-  doc,
-  where,
-  updateDoc,
-  getDocs
-} from "firebase/firestore";
 import React, { useRef, useState, useEffect } from "react";
-import { useCollectionData } from "react-firebase-hooks/firestore";
-import { getAuth } from "firebase/auth";
 import axios from "axios";
-import pako from 'pako';
+const defaultImg =
+    "https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=";
 
 function UserIcon({ serverAddress }) {
-  // not new 
   const [profilePic, setProfilePic] = useState(null);
   const [render, setRender] = useState(false);
+  const [userUid, setUserUid] = useState(null);
   let trainerID;
   let trainerName;
   let totalCards;
   let notablePokemon;
-  // not new end
 
-  const [userUid, setUserUid] = useState(null);
-
-  useEffect(() => {
-    axios.get(`${serverAddress}/api/userss/${localStorage.ID}`).then((res) => {
-      // Check if res.data.profilePic is null, and if so, set it to a default value
-      const newProfilePic = res.data.profilePic || defaultImg;
-      setProfilePic(newProfilePic);
-      setUserUid(res.data.userName);
-    });
-  }, []);
-
-  const auth = getAuth();
-  const db = getFirestore();
-  //here
-  const messagesRef = collection(db, "messages");
-  const dummy = useRef();
-  const queryWithOrderBy = query(messagesRef, orderBy("createdAt"));
-
-  const q = query(messagesRef, where('uid', '==', `${userUid}`))
-
-  const [documents] = useCollectionData(q, { idField: "id" })
-
-  // console.log(`Line 51, the query for current user:`, documents)
-  //Delete if things go wrong
-
-  const updatePhotoURL = async (docId) => {
-    try {
-      const docRef = doc(messagesRef, docId.uid);
-      console.log("Line 57: ", docRef);
-      // Replace with your document ID
-      await updateDoc(docRef, {
-        photoURL: profilePic, // Replace with the new URL
-      });
-    } catch (error) {
-      console.error("Error updating document:", error);
-    }
-  };
+  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~chat feature disabled for now so no need for this~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  // const auth = getAuth();
+  // const db = getFirestore();
+  // const messagesRef = collection(db, "messages");
+  // const dummy = useRef();
+  // const queryWithOrderBy = query(messagesRef, orderBy("createdAt"));
+  // const q = query(messagesRef, where('uid', '==', `${userUid}`))
+  // const [documents] = useCollectionData(q, { idField: "id" })
 
   //with passing pfp as a value to use 
-  const handleUpdate = (pfp) => {
-    getDocs(q)
-      .then((querySnapshot) => {
-        querySnapshot.forEach((docu) => {
-          console.log("Document ID: ", docu.id);
-          const updatedData = {
-            photoURL: pfp, 
-          };
-          const documentRef = doc(db, "messages", docu.id);
-            updateDoc(documentRef, updatedData)
-              .then(() => {
-                console.log("Document updated successfully.");
-              })
-              .catch((error) => {
-                console.error("Error updating document: ", error);
-              });
-        })
-          .catch((error) => {
-            console.error("Error retrieving documents: ", error);
-          });
+  // const handleUpdate = (pfp) => {
+  //   getDocs(q)
+  //     .then((querySnapshot) => {
+  //       querySnapshot.forEach((docu) => {
+  //         console.log("Document ID: ", docu.id);
+  //         const updatedData = {
+  //           photoURL: pfp, 
+  //         };
+  //         const documentRef = doc(db, "messages", docu.id);
+  //           updateDoc(documentRef, updatedData)
+  //             .then(() => {
+  //               console.log("Document updated successfully.");
+  //             })
+  //             .catch((error) => {
+  //               console.error("Error updating document: ", error);
+  //             });
+  //       })
+  //         .catch((error) => {
+  //           console.error("Error retrieving documents: ", error);
+  //         });
 
-      });
-  };
+  //     });
+  // };
   //with passing pfp as a value to use 
 
   //withOUT passing pfp as a value to use 
@@ -120,44 +93,37 @@ function UserIcon({ serverAddress }) {
   // };
   //withOUT passing pfp as a value to use 
 
-  useEffect(() => {
-    axios.get(`${serverAddress}/api/userss/${localStorage.ID}`).then((res) => {
-      setProfilePic(res.data.profilePic);
-      // const compressed = pako.deflate(res.data.profilePic, { to: 'string' });
-      handleUpdate(res.data.profilePic);
-    });
-  }, [render]);
-
-  //pako
-  // const [originalData, setOriginalData] = useState('');
-  // const [compressedData, setCompressedData] = useState('');
-  // const [decompressedData, setDecompressedData] = useState('');
-
-  // const handleCompress = () => {
-  //   // Compress the original data
-  //   const compressed = pako.deflate(originalData, { to: 'string' });
-  //   setCompressedData(compressed);
+  // const updatePhotoURL = async (docId) => {
+  //   try {
+  //     const docRef = doc(messagesRef, docId.uid);
+  //     console.log("Line 57: ", docRef);
+  //     await updateDoc(docRef, {
+  //       photoURL: profilePic, 
+  //     });
+  //   } catch (error) {
+  //     console.error("Error updating document:", error);
+  //   }
   // };
-
-  // const handleDecompress = () => {
-  //   // Decompress the compressed data
-  //   const decompressed = pako.inflate(compressedData, { to: 'string' });
-  //   setDecompressedData(decompressed);
-  // };
-  //pako
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~end chat feature disabled for now so no need for this~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   useEffect(() => {
     axios.get(`${serverAddress}/api/userss/${localStorage.ID}`).then((res) => {
-      // console.log(res.data);
-      setProfilePic(res.data.profilePic);
-      // console.log(profilePic)
+      const newProfilePic = res.data.profilePic || defaultImg;
+      setProfilePic(newProfilePic);
+      setUserUid(res.data.userName);
     });
   }, []);
 
+  useEffect(() => {
+    axios.get(`${serverAddress}/api/userss/${localStorage.ID}`).then((res) => {
+      setProfilePic(res.data.profilePic);
+      // chat feature disabled for now so no need for this
+      // handleUpdate(res.data.profilePic);
+    });
+  }, [render]);
+
   const [img, setImg] = useState([]);
   const maxNumImgs = 1;
-  const defaultImg =
-    "https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=";
   const onChange = (imageList, addUpdateIndex) => {
     const uploadedImg = imageList[0]?.dataURL;
     setImg(imageList);
