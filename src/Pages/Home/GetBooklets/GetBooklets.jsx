@@ -70,10 +70,7 @@ export default function GetBooklets({ serverAddress, defaultImg }) {
                           className="w-[30px] h-[30px] rounded-md mr-4"
                         />
                       </div>
-
-                      {Array.from({ length: totalNumPages }).map((_, i) => (
-                        <BookletPage key={i} item={item} />
-                      ))}
+                        <BookletPage totalNumPages={totalNumPages} item={item} />             
                     </div>
                   </div>
                 </div>
