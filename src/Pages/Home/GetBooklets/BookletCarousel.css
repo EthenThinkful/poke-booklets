@@ -7,4 +7,9 @@
     .carousel-root .slider-wrapper .slider .slide {
         margin: 0 0;
       }
+
+      .carousel-root .slider-wrapper .slider .slide img {
+        width: 90px;
+        height: 125px;
+      }
   }
