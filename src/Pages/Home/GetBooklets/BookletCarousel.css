@@ -1,6 +1,7 @@
 @media screen and (max-width: 576px) {
     .carousel-root {
       overflow-x: visible;
+      max-width: 125%;
     }
 
     .carousel-root .slider-wrapper .slider .slide {
