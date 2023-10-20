@@ -29,7 +29,7 @@ for (let i = 0; i < cardData.length; i += itemsPerPage) {
             <div className="group relative">
               <img src={item.pokemonCard} id={item.id} alt="card" className="card rounded-md"/>
               {item.verified === true && (
-                <div className="bg-blue-500 absolute ml-[5rem] top-[7rem] lg:ml-36 lg:top-[12.5rem] lg:left-[-5px] rounded-xl transform scale-100 group-hover:scale-150 group-hover:translate-x-[1rem] lg:group-hover:translate-x-[2rem] group-hover:translate-y-6 lg:group-hover:translate-y-10 transition-transform duration-300 text-white">
+                <div className="bg-blue-500 absolute ml-[5rem] top-[7rem] lg:ml-36 lg:top-[12.5rem] lg:left-[-5px] rounded-xl text-white">
                   <UilCheckCircle />
                 </div>
               )}
