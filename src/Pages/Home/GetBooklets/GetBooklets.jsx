@@ -58,8 +58,7 @@ export default function GetBooklets({ serverAddress, defaultImg }) {
                     <div className="carousel-purpose flex flex-col lg:px-8 max-w max-w-[320px] lg:max-w-[510px] mx-auto justify-center items-center">
                       <div className="flex flex-row-reverse items-center">
                         <div className="text-center flex h-full items-center">
-                          {item.nickName.length > 0 ? item.nickName : "Trainer"}
-                          's Booklet
+                          {item.nickName != null ? item.nickName : "Anonymous"}
                         </div>
 
                         <img
