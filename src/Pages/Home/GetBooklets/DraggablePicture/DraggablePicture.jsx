@@ -39,7 +39,6 @@ function DraggablePicture({ src, id, className }) {
         ref={drag}
         src={src}
         className={isDragging ? "card rounded-lg shadow-lg" : "card zoom rounded-lg shadow-lg"}
-      // style={isDragging ? style : null}
       />
     </div>
   );
