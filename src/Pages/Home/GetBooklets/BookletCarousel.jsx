@@ -27,9 +27,7 @@ for (let i = 0; i < cardData.length; i += itemsPerPage) {
         <div className="card__slot" key={index}>
           {item && (
             <div className="group relative">
-            <div className="zoom">
               <DraggablePicture src={item.pokemonCard} id={item.id} />
-              </div>
               {item.verified === true && (
                 <div className="bg-blue-500 absolute ml-[5rem] top-[7rem] lg:ml-36 lg:top-[12.5rem] lg:left-[-5px] rounded-xl transform scale-100 group-hover:scale-150 group-hover:translate-x-[1rem] lg:group-hover:translate-x-[2rem] group-hover:translate-y-6 lg:group-hover:translate-y-10 transition-transform duration-300 text-white">
                   <UilCheckCircle />
