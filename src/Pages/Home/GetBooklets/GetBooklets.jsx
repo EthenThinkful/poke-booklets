@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import BookletPage from "./BookletPage";
+import BookletCarousel from "./BookletCarousel"
+import './BookletCarousel.css';
 
 export default function GetBooklets({ serverAddress, defaultImg }) {
   const [isDeleted, setIsDeleted] = useState(false);
@@ -54,7 +55,7 @@ export default function GetBooklets({ serverAddress, defaultImg }) {
                   key={index}
                 >
                   <div>
-                    <div className="flex flex-col lg:px-8 max-w max-w-[320px] lg:max-w-[510px] mx-auto justify-center items-center">
+                    <div className="carousel-purpose flex flex-col lg:px-8 max-w max-w-[320px] lg:max-w-[510px] mx-auto justify-center items-center">
                       <div className="flex flex-row-reverse items-center">
                         <div className="text-center flex h-full items-center">
                           {item.nickName.length > 0 ? item.nickName : "Trainer"}
@@ -70,7 +71,7 @@ export default function GetBooklets({ serverAddress, defaultImg }) {
                           className="w-[30px] h-[30px] rounded-md mr-4"
                         />
                       </div>
-                        <BookletPage totalNumPages={totalNumPages} item={item} />             
+                        <BookletCarousel totalNumPages={totalNumPages} item={item}/>
                     </div>
                   </div>
                 </div>
