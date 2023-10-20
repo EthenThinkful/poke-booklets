@@ -22,7 +22,7 @@ for (let i = 0; i < cardData.length; i += itemsPerPage) {
 
   console.log(chunk);
   temp.push(
-    <div className="card__book card__book__width mt-2 max-w-[320px] lg:max-w-[510px] mx-auto" key={i}>
+    <div className="card__book card__book__width mt-2 max-w-[340px] lg:max-w-[510px] mx-auto px-2" key={i}>
       {chunk.map((item, index) => (
         <div className="card__slot" key={index}>
           {item && (
