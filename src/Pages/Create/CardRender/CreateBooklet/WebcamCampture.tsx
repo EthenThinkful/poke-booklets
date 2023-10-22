@@ -53,28 +53,31 @@ const WebcamCapture: React.FC<MyComponentProps> = ({
     }, []);
 
     return (
-        <div>
+        <div className="mb-6">
+            <div className="camera-container">
             <Webcam
                 audio={false}
                 ref={webcamRef}
                 screenshotFormat="image/jpeg"
                 videoConstraints={videoConstraints}
                 screenshotQuality={1}
+                mirrored={true}
                 className="mx-auto rounded-lg object-cover w-[160px] h-[220px] sm:w-[220px] sm:h-[360px]"
             />
-             <div className="flex flex-col justify-center items-center align-center">
-            <p className="text-zinc-600">Slot # you want to verify:</p>
+            </div>
+             <div className="flex flex-col justify-center items-center align-center mt-2">
+            <p className="text-zinc-600 mb-2">Slot # you want to verify:</p>
                 <input
-                    className="p-3 text-xs rounded-md w-160 h-14 bg-stone-600"
+                    className="p-3 text-xs rounded-md w-160 h-14 bg-stone-600 mb-2"
                     type="text"
                     name="cardSlot"
                     placeholder="Slot #"
                     onChange={(e) => setCardSlot(e.target.value)}
                     value={cardSlot}
                 />
-                <div className="mt-2">
-            <button onClick={capture} className="bg-slate-600 mx-4 p-2 rounded-xl">Verify Photo</button>
-            <button onClick={handleClick} className="bg-slate-600 p-2 rounded-xl">Switch camera</button>
+            <div className="mt-2 flex flex-row">
+            <button onClick={capture} className="bg-slate-500 mx-4 p-2 rounded-lg text-xs">Verify Photo</button>
+            <button onClick={handleClick} className="bg-slate-500 p-2 rounded-lg text-xs">Switch camera</button>
             {/* {imgSrc && <img src={imgSrc} alt="Captured" />} */}
             </div>
             </div>
