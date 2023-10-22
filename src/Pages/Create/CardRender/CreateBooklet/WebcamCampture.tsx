@@ -59,7 +59,10 @@ const WebcamCapture: React.FC<MyComponentProps> = ({
                 audio={false}
                 ref={webcamRef}
                 screenshotFormat="image/jpeg"
-                videoConstraints={videoConstraints}
+                videoConstraints={{
+                    width: 160,
+                    height: 220,
+                  }}
                 screenshotQuality={1}
                 mirrored={true}
                 className="mx-auto rounded-lg object-cover w-[160px] h-[220px] sm:w-[220px] sm:h-[360px]"

@@ -95,7 +95,7 @@ export default function CreateBooklet({
           (card, index) =>
             card.verified && (
               <div className="w-1/3 p-2" key={index}>
-                <img src={card.luhthang} alt={`Image ${index}`} />
+                <img src={card.luhthang} alt={`Image ${index}`} className="rounded-xl"/>
               </div>
             )
         )}
