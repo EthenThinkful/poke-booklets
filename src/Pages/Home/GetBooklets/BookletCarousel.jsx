@@ -6,11 +6,11 @@ import styles from "react-responsive-carousel/lib/styles/carousel.min.css";
 import axios from "axios";
 import './BookletCarousel.css';
 
-function BookletCarousel({totalNumPages, item}) {
+function BookletCarousel({totalNumPages, item, showDeleteConfirmation, setShowDeleteConfirmation, handleDeleteClick, handleConfirmDelete, handleCancelDelete}) {
 
-    let temp = [];
+let temp = [];
 const itemsPerPage = 6;
-const cardData = item.cardData;
+const cardData = item.cardData === undefined ? item : item.cardData;
 
 for (let i = 0; i < cardData.length; i += itemsPerPage) {
   let chunk = cardData.slice(i, i + itemsPerPage);
@@ -20,13 +20,12 @@ for (let i = 0; i < cardData.length; i += itemsPerPage) {
     chunk.push(null); // You can use any placeholder value for empty slots
   }
 
-  console.log(chunk);
   temp.push(
     <div className="card__book card__book__width mt-2 max-w-[340px] lg:max-w-[510px] mx-auto px-2" key={i}>
       {chunk.map((item, index) => (
         <div className="card__slot" key={index}>
           {item && (
-            <div className="group relative">
+            <div className="group relative" onClick={() => handleDeleteClick(item.id)}>
               <img src={item.pokemonCard} id={item.id} alt="card" className="card rounded-md"/>
               {item.verified === true && (
                 <div className="bg-blue-500 absolute ml-[5rem] top-[7rem] lg:ml-36 lg:top-[12.5rem] lg:left-[-5px] rounded-xl text-white">
@@ -40,8 +39,6 @@ for (let i = 0; i < cardData.length; i += itemsPerPage) {
     </div>
   );
 }
-
-        console.log(temp);
 
         function renderImgs(val) {
             // console.log(val);
