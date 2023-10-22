@@ -40,8 +40,8 @@ const WebcamCapture: React.FC<MyComponentProps> = ({
 
     const videoConstraints: MediaTrackConstraints = {
         facingMode: facingMode,
-        width: 270,
-        height: 480,
+        width: 160,
+        height: 220,
     };
 
     const handleClick = useCallback(() => {
@@ -52,6 +52,7 @@ const WebcamCapture: React.FC<MyComponentProps> = ({
         );
     }, []);
 
+
     return (
         <div className="mb-6">
             <div className="camera-container">
@@ -59,10 +60,7 @@ const WebcamCapture: React.FC<MyComponentProps> = ({
                 audio={false}
                 ref={webcamRef}
                 screenshotFormat="image/jpeg"
-                videoConstraints={{
-                    width: 160,
-                    height: 220,
-                  }}
+                videoConstraints={videoConstraints}
                 screenshotQuality={1}
                 mirrored={true}
                 className="mx-auto rounded-lg object-cover w-[160px] h-[220px] sm:w-[220px] sm:h-[360px]"
