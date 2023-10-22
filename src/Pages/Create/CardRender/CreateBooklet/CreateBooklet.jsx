@@ -63,6 +63,12 @@ export default function CreateBooklet({
   console.log(showDeleteConfirmation)
   // end method to delete a card from your booklet (changing delete functionality from trash can to this)
 
+  // onClick button to show react webcam 
+  const [showWebcam, setShowWebcam] = useState(false);
+
+
+  // end onClick button to show react webcam 
+
   return (
     <>
       <div className="lg:flex lg:justify-center lg:items-center lg:mb-6 max-w-[340px] mx-auto card__book__width lg:w-full lg:max-w-full lg:mx-4">
@@ -75,11 +81,14 @@ export default function CreateBooklet({
           <button onClick={handleCancelDelete}>No</button>
         </div>
       )}
+      <button className="w-46 text-xs bg-orange-300 p-3 rounded-lg mb-6" onClick={() => setShowWebcam(!showWebcam)}>Verify cards</button>
+      {showWebcam && (
         <WebcamCapture
           serverAddress={serverAddress}
           reload={reload}
           setReload={setReload}
         />
+      )}
       </div>
       <div className="flex flex-row flex-wrap">
         {cardInfo.map(
