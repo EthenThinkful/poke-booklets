@@ -20,7 +20,7 @@ import axios from "axios";
 const defaultImg =
     "https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=";
 
-function UserIcon({ serverAddress }) {
+function UserIcon({ serverAddress, userId }) {
   const [profilePic, setProfilePic] = useState(null);
   const [render, setRender] = useState(false);
   const [userUid, setUserUid] = useState(null);
@@ -106,16 +106,19 @@ function UserIcon({ serverAddress }) {
   // };
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~end chat feature disabled for now so no need for this~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+// render current user's profile picture or another user's profile picture
+let currId;
   useEffect(() => {
-    axios.get(`${serverAddress}/api/userss/${localStorage.ID}`).then((res) => {
+    currId = userId === undefined ? localStorage.ID : userId;
+    axios.get(`${serverAddress}/api/userss/${currId}`).then((res) => {
       const newProfilePic = res.data.profilePic || defaultImg;
       setProfilePic(newProfilePic);
       setUserUid(res.data.userName);
     });
-  }, []);
+  }, [userId]);
 
   useEffect(() => {
-    axios.get(`${serverAddress}/api/userss/${localStorage.ID}`).then((res) => {
+    axios.get(`${serverAddress}/api/userss/${currId}`).then((res) => {
       setProfilePic(res.data.profilePic);
       // chat feature disabled for now so no need for this
       // handleUpdate(res.data.profilePic);
@@ -150,7 +153,7 @@ function UserIcon({ serverAddress }) {
         return (
           <div>
             <div
-              onClick={() => onImageUpload()}
+              onClick={() => currId === localStorage.ID ? onImageUpload() : console.log("not your profile")}
               style={isDragging ? { transform: "scale(1.1)" } : null}
               className="w-[90px] h-[125px] sm:w-[160px] sm:h-[219px] rounded-lg mr-2 overflow-hidden sm:mx-auto"
               {...dragProps}

@@ -2,17 +2,22 @@ import React, { useState, useEffect } from "react";
 import { UilEdit } from "@iconscout/react-unicons";
 import axios from "axios";
 
-function UserDetails({ serverAddress, totalCards }) {
+function UserDetails({ serverAddress, totalCards, userId }) {
   const [isEditing, setIsEditing] = useState(false);
   const [trainerName, setTrainerName] = useState(null);
 
+// render current user's profile details or another user's profile details
+let currId;
+
   useEffect(() => {
-    axios.get(`${serverAddress}/api/userss/${localStorage.ID}`).then((res) => {
+    currId = userId === undefined ? localStorage.ID : userId;
+    axios.get(`${serverAddress}/api/userss/${currId}`).then((res) => {
       setTrainerName(res.data.nickName);
     });
-  }, []);
+  }, [userId]);
 
   const handleEditClick = () => {
+    currId === localStorage.ID &&
     setIsEditing(!isEditing);
   };
 

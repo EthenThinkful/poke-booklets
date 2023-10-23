@@ -27,6 +27,7 @@ function App() {
           <Route path="/" element={<Login serverAddress={serverAddress}/>} />
           <Route path="/home" element={<Home serverAddress={serverAddress}/>} />
           <Route path="/create" element={<Create serverAddress={serverAddress}/>} />
+          <Route path="/profile/:id" element={<Create serverAddress={serverAddress}/>} />
         </Routes>
       </DndProvider>
   );

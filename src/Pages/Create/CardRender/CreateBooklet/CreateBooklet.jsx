@@ -22,6 +22,7 @@ export default function CreateBooklet({
   setReload,
   cardInfo,
   setCardInfo,
+  userId,
 }) {
   function handleRemoveItem(itemId) {
     // console.log(item.id.current);
@@ -33,22 +34,26 @@ export default function CreateBooklet({
       });
   }
 
+  let currId;
   useEffect(() => {
-    axios.get(`${serverAddress}/api/cards/${localStorage.ID}`).then((res) => {
+    currId = userId === undefined ? localStorage.ID : userId;
+    axios.get(`${serverAddress}/api/cards/${currId}`).then((res) => {
       const sortedData = res.data.sort((a, b) => a.id - b.id);
       // console.log(sortedData);
       setCardInfo(sortedData);
     });
-  }, [reload]);
+  }, [reload, userId]);
 
   // method to delete a card from your booklet (changing delete functionality from trash can to this)
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const [deleteCard, setDeleteCard] = useState(null);
   
-  function handleDeleteClick (itemId) {
-    setShowDeleteConfirmation(true);
-    setDeleteCard(itemId);
-  };
+  function handleDeleteClick(itemId) {
+    if (userId === undefined) {
+      setShowDeleteConfirmation(true);
+      setDeleteCard(itemId);
+    }
+  }
 
   const handleConfirmDelete = () => {
     handleRemoveItem(deleteCard);
@@ -59,8 +64,6 @@ export default function CreateBooklet({
     setShowDeleteConfirmation(false);
     console.log("cancel delete");
   };
-
-  console.log(showDeleteConfirmation)
   // end method to delete a card from your booklet (changing delete functionality from trash can to this)
 
   // onClick button to show react webcam 
@@ -73,7 +76,7 @@ export default function CreateBooklet({
     <>
       <div className="lg:flex lg:justify-center lg:items-center lg:mb-6 max-w-[340px] mx-auto card__book__width lg:w-full lg:max-w-full lg:mx-4">
         <BookletCarousel item={cardInfo} showDeleteConfirmation={showDeleteConfirmation} setShowDeleteConfirmation={setShowDeleteConfirmation}
-        handleDeleteClick={handleDeleteClick} handleConfirmDelete={handleConfirmDelete} handleCancelDelete={handleCancelDelete}/>
+        handleDeleteClick={handleDeleteClick} handleConfirmDelete={handleConfirmDelete} handleCancelDelete={handleCancelDelete} userId={userId}/>
         {showDeleteConfirmation && (
         <div className="w-100 h-100 bg-slate-700 animate-pulse">
           <p>Delete card?</p>
@@ -81,7 +84,8 @@ export default function CreateBooklet({
           <button onClick={handleCancelDelete}>No</button>
         </div>
       )}
-      <button className="w-46 text-xs bg-orange-300 p-3 rounded-lg mb-6" onClick={() => setShowWebcam(!showWebcam)}>Verify cards</button>
+      {userId === undefined && (
+        <button className="w-46 text-xs bg-orange-300 p-3 rounded-lg mb-6" onClick={() => setShowWebcam(!showWebcam)}>Verify cards</button>)}
       {showWebcam && (
         <WebcamCapture
           serverAddress={serverAddress}

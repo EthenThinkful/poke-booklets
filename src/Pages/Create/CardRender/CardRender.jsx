@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import SearchCard from "./SearchCard/SearchCard";
 import CreateBooklet from "./CreateBooklet/CreateBooklet";
 
-export default function CardRender({ serverAddress, updateTotalCardNum }) {
+export default function CardRender({ serverAddress, updateTotalCardNum, userId }) {
   const [userName, setUserName] = useState("");
   const [book, setBook] = useState([]);
   const [card, setCard] = useState([]);
@@ -29,6 +29,8 @@ export default function CardRender({ serverAddress, updateTotalCardNum }) {
     <>
       <div className="iphone__screen">
         <div className="">
+          {userId === undefined ? ( 
+            <>
           <div className="flex justify-around text-center mb-4">
             <div className="text-neutral-700 text-sm p-2 lg:text-md caret-transparent">
               Create Booklet!
@@ -47,6 +49,7 @@ export default function CardRender({ serverAddress, updateTotalCardNum }) {
             setPoke={setPoke}
             reload={reload}
             setReload={setReload}
+            userId={userId}
           />
           <CreateBooklet
             setBook={setBook}
@@ -63,7 +66,27 @@ export default function CardRender({ serverAddress, updateTotalCardNum }) {
             setReload={setReload}
             cardInfo={cardInfo}
             setCardInfo={setCardInfo}
+            userId={userId}
           />
+          </>) : (
+            <CreateBooklet
+            setBook={setBook}
+            book={book}
+            setUserName={setUserName}
+            userName={userName}
+            toast={toast}
+            newArray={newArray}
+            setCard={setCard}
+            poke={poke}
+            setPoke={setPoke}
+            serverAddress={serverAddress}
+            reload={reload}
+            setReload={setReload}
+            cardInfo={cardInfo}
+            setCardInfo={setCardInfo}
+            userId={userId}
+          />
+          )}
         </div>
       </div>
     </>

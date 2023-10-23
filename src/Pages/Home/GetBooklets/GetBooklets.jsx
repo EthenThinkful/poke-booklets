@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import BookletCarousel from "./BookletCarousel"
 import './BookletCarousel.css';
@@ -8,6 +9,10 @@ export default function GetBooklets({ serverAddress, defaultImg }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [bookletData, setBookletData] = useState([]);
   const [book, setBook] = useState([]); // Assuming this state is used elsewhere
+  const navigate = useNavigate();
+  const handlePage = (id) => {
+    navigate(`/profile/${id}`);
+  };
 
   // get all users and all their data
   useEffect(() => {
@@ -45,9 +50,7 @@ export default function GetBooklets({ serverAddress, defaultImg }) {
       <div className="lg:flex caret-transparent lg:justify-between" key={i}>
         {chunk.map((item, index) =>
           item.cardData.length > 0
-            ? (console.log(
-                (totalNumPages = Math.ceil(item.cardData.length / 6))
-              ),
+            ? (
               (totalNumPages = Math.ceil(item.cardData.length / 6)),
               (
                 <div
@@ -56,7 +59,7 @@ export default function GetBooklets({ serverAddress, defaultImg }) {
                 >
                   <div>
                     <div className="carousel-purpose flex flex-col lg:px-8 max-w max-w-[320px] lg:max-w-[510px] mx-auto justify-center items-center">
-                      <div className="flex flex-row-reverse items-center">
+                      <div className="flex flex-row-reverse items-center" onClick={() => handlePage(item.id)}>
                         <div className="text-center flex h-full items-center">
                           {item.nickName != null ? item.nickName : "Anonymous"}
                         </div>

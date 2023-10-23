@@ -6,7 +6,7 @@ import RenderCarousel from './RenderCarousel';
 
 pokemon.configure({ apiKey: import.meta.env.VITE_TCG_API });
 
-export default function SearchCard({setBook, book, setUserName, userName, toast, setCard, card, newArray, poke, setPoke, serverAddress, reload, setReload}) {
+export default function SearchCard({setBook, book, setUserName, userName, toast, setCard, card, newArray, poke, setPoke, serverAddress, reload, setReload, userId}) {
   const [focusedIndex, setFocusedIndex] = useState(-1);
   const dropdownRef = useRef(null);
 
