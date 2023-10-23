@@ -40,8 +40,8 @@ const WebcamCapture: React.FC<MyComponentProps> = ({
 
     const videoConstraints: MediaTrackConstraints = {
         facingMode: "user",
-        width: 160,
-        height: 220,
+        width: 500,
+        height: 500,
     };
 
     const handleClick = useCallback(() => {
