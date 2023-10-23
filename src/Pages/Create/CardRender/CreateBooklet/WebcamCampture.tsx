@@ -39,7 +39,7 @@ const WebcamCapture: React.FC<MyComponentProps> = ({
     }, [webcamRef, cardSlot, reload]);
 
     const videoConstraints: MediaTrackConstraints = {
-        facingMode: "user",
+        facingMode: facingMode,
         width: 500,
         height: 500,
     };
@@ -61,8 +61,6 @@ const WebcamCapture: React.FC<MyComponentProps> = ({
                 ref={webcamRef}
                 screenshotFormat="image/jpeg"
                 videoConstraints={videoConstraints}
-                width={160}
-                height={220}
                 screenshotQuality={1}
                 mirrored={true}
                 className="mx-auto rounded-lg object-cover w-[160px] h-[220px] sm:w-[220px] sm:h-[360px]"
