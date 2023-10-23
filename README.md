@@ -1,25 +1,16 @@
 # Poke Booklets
-Full stack project primarily created to engage in something I'm passionate about to help me stay engaged with Java development (Backend repository below).
+Full stack project built using React for the frontend & Java in the backend. Poke Booklets is used to connect with others over Pokemon trading card collectibles.
 
-## What exists
-- Retrieve any card that exists and every version of it.
-- Add 6 cards to a personalized booklet page to create your own party and check out what others have created in the meantime.
+<img width="323" alt="Screenshot 2023-10-23 at 11 50 11 AM" src="https://github.com/EthenThinkful/poke-booklets/assets/104235709/cd16d7c8-6fd1-4678-92fc-d8a9cd606fea">
 
-## Plan
-1.) Expand on backend functionality 
-3.) Incorporate better error handling
-2.) Brainstorm ideas for evolving the site 
-
-## Tech
-Vite, React, and Tailwind CSS.
+## Plans for evolution of the site
+- Extensive card authentication/verification. Tesseract.js doesn't look viable enough.
+- CSS page flips for card booklets.
 
 ## Backend Repository
 https://github.com/EthenThinkful/PokemonAPIjectBackend
 
-### Demo
-https://candid-tiramisu-895796.netlify.app/
 
-https://github.com/EthenThinkful/poke-booklets/assets/104235709/0fbef656-b6fe-46d2-a499-a29f30842ae4
 
 
 
