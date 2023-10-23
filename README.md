@@ -1,5 +1,5 @@
 # Poke Booklets
-Full stack project built using React for the frontend & Java in the backend. Poke Booklets is used to connect with others over Pokemon trading card collectibles.
+Full stack project using React frontend & Java backend. Poke Booklets is used to connect with others over Pokemon trading card collectibles.
 
 <img width="323" alt="Screenshot 2023-10-23 at 11 50 11 AM" src="https://github.com/EthenThinkful/poke-booklets/assets/104235709/cd16d7c8-6fd1-4678-92fc-d8a9cd606fea">
 
