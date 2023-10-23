@@ -62,7 +62,7 @@ const WebcamCapture: React.FC<MyComponentProps> = ({
                 screenshotFormat="image/jpeg"
                 videoConstraints={videoConstraints}
                 screenshotQuality={1}
-                mirrored={true}
+                mirrored={facingMode === FACING_MODE_USER ? true : false} 
                 className="mx-auto rounded-lg object-cover w-[160px] h-[220px] sm:w-[220px] sm:h-[360px]"
             />
             </div>
